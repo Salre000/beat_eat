@@ -5,6 +5,7 @@ using UnityEngine;
 public class Createline : MonoBehaviour
 {
     [SerializeField] Material lineMaterial;
+    [SerializeField]Material lineMaterial2;
     [SerializeField, Header("ラインの分割数")] int _divisionCount = 12;
 
     private readonly int length = 40;
@@ -19,7 +20,10 @@ public class Createline : MonoBehaviour
         _tapArea=new CreateTapArea();
 
         float wideDivision = wide / (float)(_divisionCount + 1);
-        _tapArea.CreateMesh(_divisionCount,lineMaterial);
+
+        _tapArea.SetMaterial(lineMaterial, lineMaterial2);
+        _tapArea.CreateMesh(_divisionCount);
+
         for (int i = 0; i < _divisionCount + 2; i++)
         {
             GameObject lineObject = new GameObject("Line");
@@ -47,5 +51,11 @@ public class Createline : MonoBehaviour
 
 
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetMouseButton(0))_tapArea.GetClickPoint(Input.mousePosition);
+
     }
 }
