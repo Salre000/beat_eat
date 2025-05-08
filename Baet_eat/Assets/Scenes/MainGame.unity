@@ -251,7 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMaterial: {fileID: 2100000, guid: f14dfe32b117c4448963f99a1d5c1958, type: 2}
   lineMaterial2: {fileID: 2100000, guid: 0585254d320051e458cd9169c2a6b496, type: 2}
-  _divisionCount: 11
+  flashMaterial: {fileID: 2100000, guid: e2488a7a3f61bfb47bfea176a0fa0d9c, type: 2}
+  _divisionCount: 9
 --- !u!64 &883365720
 MeshCollider:
   m_ObjectHideFlags: 0

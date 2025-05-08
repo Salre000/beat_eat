@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CreateNotes : MonoBehaviour
 {
+    private readonly float startPosition = 50;
+
     [Serializable]
     public class Data
     {
@@ -60,9 +62,10 @@ public class CreateNotes : MonoBehaviour
             NoteType.Add(inputJson.notes[i].type);
             //プレハブを複製して見えないように変更
             NotesObj.Add(Instantiate(noteObj));
-           // NotesObj[i].gameObject.SetActive(false);
+            //NotesObj[i].gameObject.SetActive(false);
 
-            NotesObj[i].transform.position=new Vector3((inputJson.notes[i].block * -2)+5, 0, kankaku * inputJson.notes[i].num * 20);
+            //時間　 kankaku * inputJson.notes[i].num
+            NotesObj[i].transform.position=new Vector3((inputJson.notes[i].block * -2)+4, 0, startPosition);
             //親に纏める
             NotesObj[i].transform.parent = NotesParent.transform;
         }

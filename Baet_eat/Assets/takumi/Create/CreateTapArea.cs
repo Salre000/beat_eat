@@ -11,7 +11,9 @@ public class CreateTapArea
 
     private List<MeshRenderer> tapPoint = new List<MeshRenderer>();
     private List<BoxArea> tapPosition = new List<BoxArea>();
+    private List<float>timeCount = new List<float>();
 
+    private readonly float MaxTime = 1.7f;
     private Material normal;
     private Material click;
 
@@ -22,8 +24,7 @@ public class CreateTapArea
 
 
     }
-
-    private Vector3[] VerticePosition(BoxArea boxarea)
+    public static Vector3[] VerticePosition(BoxArea boxarea)
     {
         Vector3[] vector3s = new Vector3[]
         { boxarea.leftTop, boxarea.rightTop,
@@ -32,7 +33,8 @@ public class CreateTapArea
 
         return vector3s;
     }
-    public void GetClickPoint(Vector2 clickPoint)
+
+    public void GetClickPoint(Vector2 clickPoint,System.Action<int> action)
     {
         for (int i = 0; i < tapPoint.Count; i++)
         {
@@ -57,16 +59,31 @@ public class CreateTapArea
 
             }
 
-            if (flag) continue; 
+            if (flag) continue;
 
             //範囲内をクリックしたと認める
 
-
+            action(i);
+            timeCount[i] = 1;
             tapPoint[i].material = click;
 
             return;
         }
 
+       
+    }
+
+    public void CheckTime() 
+    {
+        for(int i = 0; i < timeCount.Count; i++) 
+        {
+            if (timeCount[i]<1) continue;
+            timeCount[i] += Time.deltaTime;
+            if (timeCount[i] < MaxTime) continue;
+
+            timeCount[i] = 0;
+            tapPoint[i].material = normal;
+        }
 
     }
 
@@ -103,6 +120,7 @@ public class CreateTapArea
 
             tapPosition.Add(boxarea);
             tapPoint.Add(go.GetComponent<MeshRenderer>());
+            timeCount.Add(0.0f);
         }
     }
 
