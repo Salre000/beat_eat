@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class NotesBase : MonoBehaviour
 {
-    protected enum Type 
+    //”»’èƒ^ƒCƒv
+    protected enum JudgmentType
     {
+        DC,
+        Delicious,
+        Yammy,
+        Good,
+        Miss
 
     }
 
@@ -18,6 +24,12 @@ public class NotesBase : MonoBehaviour
 
 
 
+
+    }
+
+    public void FixedUpdate()
+    {
+        
     }
 
 

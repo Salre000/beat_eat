@@ -2,37 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Createline : MonoBehaviour
+public class Createline
 {
-    [SerializeField] Material lineMaterial;
-    [SerializeField]Material lineMaterial2;
-    [SerializeField] Material flashMaterial;
-    [SerializeField, Header("ラインの分割数")] int _divisionCount = 12;
-
     private readonly int length = 40;
 
     private readonly int wide = 10;
 
-    //タップをする位置を生成するクラス
-    private CreateTapArea _tapArea;
-
-    //ラインを光らせるクラス
-    private CreateLineFlash _lineFlash;
-    void Awake()
+    public void SetLine(int _divisionCount,GameObject gameObject,Material material )
     {
-        _tapArea=new CreateTapArea();
-        _lineFlash=new CreateLineFlash();
 
         float wideDivision = wide / (float)(_divisionCount + 1);
-
-        _tapArea.SetMaterial(lineMaterial, lineMaterial2);
-        _tapArea.CreateMesh(_divisionCount);
-        _lineFlash.SetMaterial(flashMaterial);
-        _lineFlash.SetFlashLine(_divisionCount);
         for (int i = 0; i < _divisionCount + 2; i++)
         {
             GameObject lineObject = new GameObject("Line");
-            lineObject.transform.parent = transform;
+            lineObject.transform.parent = gameObject.transform;
 
             LineRenderer line = lineObject.AddComponent<LineRenderer>();
 
@@ -41,9 +24,9 @@ public class Createline : MonoBehaviour
             //���_����ύX
             line.positionCount = 2;
 
-            line.material = lineMaterial;
+            line.material = material;
 
-            Vector3 pos = this.transform.position;
+            Vector3 pos = gameObject.transform.position;
 
             pos.x = wide / 2 - wideDivision * i;
 
@@ -56,13 +39,5 @@ public class Createline : MonoBehaviour
 
 
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (Input.GetMouseButton(0))_tapArea.GetClickPoint(Input.mousePosition,_lineFlash.AddAlpha);
-
-        _lineFlash.SbuAlpha();
-        _tapArea.CheckTime();
     }
 }
