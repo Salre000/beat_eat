@@ -2,20 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class InGameStatus
+public  class InGameStatus
 {
-    private static int score = 0;
+    private static float score = 0;
+    //ゲーム開始時に決定する1ノーツ当たりのスコア
+    private static float upScore = -1;
 
     private static int HP = 1000;
 
     private static int damege = 50;
 
-    public static int GetScore(){ return score; }
+    private static int speed = 1;
+
+    private static int[][] judgments=new int[5][];
+
+    public InGameStatus() 
+    {
+        for(int i = 0; i < judgments.Length; i++) 
+        {
+            judgments[i]=new int[2];
+            for(int j = 0;j< judgments[i].Length; j++) 
+            {
+                judgments[i][j] = 0;
+            }
+        }
+
+
+    }
+
+    public static float GetScore(){ return score; }
     public static int GetHP(){ return HP; }
 
-    public static void AddScore(int addCount) {  score += addCount; }
+    //判定による上昇スコアの変動ありの関数
+    public static void AddScore(float rete) {  score += upScore* rete; }
+
+    public static void SetUpScore(float upscore) { upScore = upscore; }
 
     public static void HPDamege() { HP-=damege; }
 
+    public static int GetSpeed() { return speed; }
+
+    //判定の計算をする関数
+    public static void SetJudgments(int index,int index2) 
+    {
+        if (index > judgments.Length) { judgments[4][index2]++;return; }
+        judgments[index][index2]++;
+    }
 
 }

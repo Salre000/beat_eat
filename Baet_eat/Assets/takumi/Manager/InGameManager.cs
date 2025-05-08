@@ -8,6 +8,9 @@ public class InGameManager : MonoBehaviour
     [SerializeField] Material tapareaMaterial2;
     [SerializeField] Material flashMaterial;
 
+    //現在タップ可能なノーツの配列
+    [SerializeField] List<NotesBase> activeObject=new List<NotesBase>();
+
     //タップをする位置を生成するクラス
     private CreateTapArea _tapArea;
 
@@ -22,8 +25,13 @@ public class InGameManager : MonoBehaviour
     [SerializeField, Header("ラインの分割数")] int _divisionCount = 12;
 
 
+
     private void Awake()
     {
+        LineUtility.gameManager = this;
+
+        InGameStatus inGame =new InGameStatus();
+
         _tapArea = new CreateTapArea();
         _lineFlash = new CreateLineFlash();
         _line = new Createline();
@@ -35,13 +43,20 @@ public class InGameManager : MonoBehaviour
         _line.SetLine(_divisionCount,areaObject,tapareaMaterial);
 
     }
-    // Update is called once per frame
-    void Update()
+
+    private void FixedUpdate()
     {
         if (Input.GetMouseButton(0)) _tapArea.GetClickPoint(Input.mousePosition, _lineFlash.AddAlpha);
 
         _lineFlash.SbuAlpha();
         _tapArea.CheckTime();
 
+
     }
+
+    public float RangeToDecision(Vector3 position) { return -6.25f-position.z; }
+
+
+    public void AddActiveObject(NotesBase gameObject) { activeObject.Add(gameObject); }
+    public void SbuActiveObject(NotesBase gameObject) { activeObject.Remove(gameObject); }
 }
