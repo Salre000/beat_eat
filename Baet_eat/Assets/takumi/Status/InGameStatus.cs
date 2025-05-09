@@ -38,7 +38,10 @@ public  class InGameStatus
 
     public static void SetUpScore(float upscore) { upScore = upscore; }
 
-    public static void HPDamege() { HP-=damege; }
+    public static void HPDamege()
+    {
+        HP-=damege;
+    }
 
     public static int GetSpeed() { return speed; }
 
@@ -47,6 +50,10 @@ public  class InGameStatus
     {
         if (index > judgments.Length) { judgments[4][index2]++;return; }
         judgments[index][index2]++;
+    }
+    public static int GetJudgments(int index, int index2) 
+    {
+        return judgments[index][index2];
     }
 
 }

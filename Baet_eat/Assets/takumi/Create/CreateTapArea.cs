@@ -6,7 +6,7 @@ using static CreateTapArea;
 public class CreateTapArea
 {
     private float offset = -7;
-    private float areaRange = 1.5f;
+    private float areaRange = 0.075f*10;
     private float wide = 10;
 
     private List<MeshRenderer> tapPoint = new List<MeshRenderer>();
@@ -53,7 +53,6 @@ public class CreateTapArea
                 Vector2 vec = clickPoint - (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(tapPosition[i])[j]);
                 //ŠOÏ‚ðŽæ“¾
                 Vector3 dont = Vector3.Cross(vecs[j], vec);
-                Debug.Log(dont + "Count" + i);
 
                 if (dont.z > 0) flag = true;
 

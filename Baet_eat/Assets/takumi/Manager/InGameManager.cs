@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class InGameManager : MonoBehaviour
 {
@@ -24,6 +26,13 @@ public class InGameManager : MonoBehaviour
 
     [SerializeField, Header("ラインの分割数")] int _divisionCount = 12;
 
+    //デバッグ用
+    public TextMeshProUGUI _DC;
+    public TextMeshProUGUI _D;
+    public TextMeshProUGUI _Y;
+    public TextMeshProUGUI _G;
+    public TextMeshProUGUI _M;
+    public TextMeshProUGUI _HP;
 
 
     private void Awake()
@@ -46,11 +55,37 @@ public class InGameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(0)) _tapArea.GetClickPoint(Input.mousePosition, _lineFlash.AddAlpha);
+        if (Input.GetMouseButton(0)) _tapArea.GetClickPoint(Input.mousePosition, Click);
 
         _lineFlash.SbuAlpha();
         _tapArea.CheckTime();
 
+        //デバッグ用
+        _DC.text = "デリシャスクリティカル" + (InGameStatus.GetJudgments(0, 0) + InGameStatus.GetJudgments(0, 1));
+        _D.text = "デリシャス" + (InGameStatus.GetJudgments(1, 0) + InGameStatus.GetJudgments(1, 1));
+        _Y.text = "ヤミー" + (InGameStatus.GetJudgments(2, 0) + InGameStatus.GetJudgments(2, 1));
+        _G.text = "グッド" + (InGameStatus.GetJudgments(3, 0) + InGameStatus.GetJudgments(3, 1));
+        _M.text = "ミス" + (InGameStatus.GetJudgments(4, 0) + InGameStatus.GetJudgments(4, 1));
+        _HP.text = "HP " + InGameStatus.GetHP()+"score"+InGameStatus.GetScore();
+    }
+
+
+    private void Click(int index) 
+    {
+        _lineFlash.AddAlpha(index);
+
+        for(int i=0;i< activeObject.Count; i++) 
+        {
+            NotesBase notes = activeObject[i];
+
+            if (!notes.CheckHitlane(9-index)) continue;
+
+            notes.Hit();
+
+            return;
+
+
+        }
 
     }
 

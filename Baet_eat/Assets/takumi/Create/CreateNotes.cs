@@ -57,7 +57,6 @@ public class CreateNotes : MonoBehaviour
             float time = (beatSec * inputJson.notes[i].num / (float)inputJson.notes[i].LPB) + inputJson.offset + 0.01f;
 
             //ノーツの情報を纏める
-            //NotesTime.Add(time);
             LaneNum.Add(inputJson.notes[i].block);
             NoteType.Add(inputJson.notes[i].type);
             //プレハブを複製して見えないように変更
@@ -65,9 +64,19 @@ public class CreateNotes : MonoBehaviour
             //NotesObj[i].gameObject.SetActive(false);
 
             //時間　 kankaku * inputJson.notes[i].num
-            NotesObj[i].transform.position=new Vector3((inputJson.notes[i].block * -2)+4, 0, startPosition);
+
+
+            NotesObj[i].transform.position=new Vector3((inputJson.notes[i].block * -2)+4, 0.03f, kankaku * inputJson.notes[i].num*20);
             //親に纏める
             NotesObj[i].transform.parent = NotesParent.transform;
+
+            NotesBase notesBase= NotesObj[i].GetComponent<NotesBase>();
+
+            //２マス前提の書き方
+
+            notesBase.AddLaneIndex(inputJson.notes[i].block*2);
+            notesBase.AddLaneIndex((inputJson.notes[i].block*2)+1);
+
         }
     }
 }
