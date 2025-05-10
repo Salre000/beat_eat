@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 5756390623292599530}
   - component: {fileID: 6167054859835151532}
   - component: {fileID: 3395547359076305056}
-  - component: {fileID: 5769641532709727165}
   m_Layer: 0
   m_Name: NoteLine
   m_TagString: Untagged
@@ -181,15 +180,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5769641532709727165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6349937073034130827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a222de27588794445a33f80c1e60faff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

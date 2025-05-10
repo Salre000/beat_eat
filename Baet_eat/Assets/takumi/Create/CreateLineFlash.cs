@@ -58,6 +58,8 @@ public class CreateLineFlash
         {
             Color color= flashMaterial[i].color;
 
+            if (color.a <= 0) continue;
+
             color.a -= 0.01f;
             flashMaterial[i].color = color;
         }

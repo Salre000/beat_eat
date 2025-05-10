@@ -20,9 +20,6 @@ public class CreateTapArea
     public struct BoxArea
     {
         public Vector3 leftTop, rightTop, bottomRight, bottomLeft;
-
-
-
     }
     public static Vector3[] VerticePosition(BoxArea boxarea)
     {
