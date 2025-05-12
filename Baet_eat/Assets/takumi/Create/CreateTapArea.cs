@@ -6,7 +6,7 @@ using static CreateTapArea;
 public class CreateTapArea
 {
     private float offset = -7;
-    private float areaRange = 0.075f*10;
+    private float areaRange = 0.15f*10;
     private float wide = 10;
 
     private List<MeshRenderer> tapPoint = new List<MeshRenderer>();
@@ -31,7 +31,7 @@ public class CreateTapArea
         return vector3s;
     }
 
-    public void GetClickPoint(Vector2 clickPoint, System.Action<int> action)
+    public void GetClickPoint(Vector2 clickPoint, System.Action<int,int> action, int id)
     {
         for (int i = 0; i < tapPoint.Count; i++)
         {
@@ -59,7 +59,7 @@ public class CreateTapArea
 
             //範囲内をクリックしたと認める
 
-            action(i);
+            action(i,id);
             timeCount[i] = 1;
             tapPoint[i].material = click;
 

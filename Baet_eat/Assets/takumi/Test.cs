@@ -6,21 +6,20 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    //[SerializeField] TextMeshProUGUI textMeshProUGUI1;
+    [SerializeField] TextMeshProUGUI textMeshProUGUI1;
 
-    //Start is called before the first frame update
-    //void Start()
-    //{
+    void Start()
+    {
 
-    //}
+    }
 
-    //Update is called once per frame
-    //void Update()
-    //{
-    //    textMeshProUGUI1.text = Input.mousePosition.ToString();
+    void Update()
+    {
+        if (Input.touchCount == 0) return;
 
+        textMeshProUGUI1.text = Input.GetTouch(0).position.ToString();
 
+        int count=Input.touchCount;
 
-
-    //}
+    }
 }

@@ -10,6 +10,11 @@ public class NotesBase : MonoBehaviour
 
     private const int BaseSpeed = 3;
 
+    protected int touchID = -1;
+
+    public void SetTouchID(int ID) { if (touchID != -1) return; touchID = ID; }
+    public void ResetTouchID() { touchID = -1; }
+
     protected Vector3 Vec = new Vector3(0, 0, (BaseSpeed * InGameStatus.GetSpeed()) / 50.0f);
 
     //”»’èƒ^ƒCƒv
@@ -50,7 +55,7 @@ public class NotesBase : MonoBehaviour
 
         Action();
 
-        if (this.transform.position.z > -6.25 + -(int)JudgmentType.Miss) return;
+        if (this.transform.position.z > GetDestryDecision()) return;
 
         InGameStatus.HPDamege();
 
@@ -61,6 +66,8 @@ public class NotesBase : MonoBehaviour
         this.gameObject.SetActive(false);
 
     }
+
+    protected virtual double GetDestryDecision() { return -6.25 + -(int)JudgmentType.Miss; }
 
     protected virtual void Action() { }
 
@@ -93,11 +100,12 @@ public class NotesBase : MonoBehaviour
                 break;
         }
 
+       
 
         InGameStatus.AddScore(rete);
     }
 
-    public bool CheckHitlane(int index)
+    public virtual bool CheckHitlane(int index)
     {
         JudgmentType judgmentType = (JudgmentType)(int)LineUtility.RangeToDecision(this.transform.position);
 

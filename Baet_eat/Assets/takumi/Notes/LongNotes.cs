@@ -40,30 +40,20 @@ public class LongNotes : NotesBase
             boxarea.bottomLeft = new Vector3(-1+ vec*-i * 2, 0.01f, 0);
             boxarea.bottomRight = new Vector3(1 + vec*-i*2, 0.01f,0);
 
-
-
             //メッシュの基本設定
             Mesh mesh = new Mesh();
             mesh.vertices = VerticePosition(boxarea);
 
             mesh.triangles = new[] { 0, 1, 3, 3, 1, 2 };
 
-
             // 領域と法線を自動で再計算する
             mesh.RecalculateBounds();
             mesh.RecalculateNormals();
 
-
             // MeshFilterに設定
             longLongNotes.AddComponent<MeshFilter>().mesh = mesh;
             longLongNotes.AddComponent<MeshRenderer>().material = material;
-
-
-
-
-
         }
-
     }
 
     protected override void Action()
@@ -72,6 +62,16 @@ public class LongNotes : NotesBase
 
 
 
+    }
+
+    public override bool CheckHitlane(int index)
+    {
+        return base.CheckHitlane(index);
+    }
+
+    protected override double GetDestryDecision()
+    {
+        return base.GetDestryDecision()- _distanceNum;
     }
 
 }

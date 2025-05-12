@@ -11,6 +11,8 @@ public class FlickNotes : NotesBase
     private float startPos = 0;
     private float alpha = 0.01f;
     private float speed = 0.01f;
+
+    private bool count = false;
     public void Start()
     {
         FilickUp = this.transform.GetChild(0).gameObject;
@@ -23,7 +25,12 @@ public class FlickNotes : NotesBase
     protected override void Action()
     {
         base.Action();
+        FlickImageMove();
+        FlickDecision();
+    }
 
+    private void FlickImageMove()
+    {
         Vector3 pos = FilickUp.transform.position;
 
         pos.y += speed;
@@ -55,5 +62,39 @@ public class FlickNotes : NotesBase
         }
 
 
+    }
+
+    float time = 0;
+    readonly float MaxTime = 2;
+
+    Vector2 flickStartPos = Vector2.zero;
+
+    readonly float renge = 10;
+
+    private void FlickDecision()
+    {
+        if (!count || time > MaxTime) return;
+
+        time += Time.deltaTime;
+
+        LineUtility.ShowText(Vector2.Distance(flickStartPos, Input.GetTouch(touchID).position).ToString());
+        if (Vector2.Distance(flickStartPos, Input.GetTouch(touchID).position) < renge) return;
+
+
+        Hit();
+
+    }
+
+    public override bool CheckHitlane(int index)
+    {
+
+        if (base.CheckHitlane(index))
+        {
+            if (!count) flickStartPos = Input.GetTouch(touchID).position;
+            count = true;
+        }
+
+
+        return false;
     }
 }
