@@ -10,6 +10,7 @@ public class InGameManager : MonoBehaviour
     [SerializeField] Material tapareaMaterial;
     [SerializeField] Material tapareaMaterial2;
     [SerializeField] Material flashMaterial;
+    [SerializeField] AudioClip audioClip;
 
     //現在タップ可能なノーツの配列
     [SerializeField] List<NotesBase> activeObject=new List<NotesBase>();
@@ -22,6 +23,9 @@ public class InGameManager : MonoBehaviour
 
     //レーンを区切る線を生成するクラス
     private Createline _line;
+
+    //ノーツの音を纏めるクラス
+    private NotesSoundManager _notesSoundManager;
 
     [SerializeField] GameObject areaObject;
 
@@ -44,6 +48,7 @@ public class InGameManager : MonoBehaviour
         _tapArea = new CreateTapArea();
         _lineFlash = new CreateLineFlash();
         _line = new Createline();
+        _notesSoundManager = new NotesSoundManager(this.gameObject, audioClip);
 
         _tapArea.SetMaterial(tapareaMaterial, tapareaMaterial2);
         _tapArea.CreateMesh(_divisionCount);
@@ -96,6 +101,7 @@ public class InGameManager : MonoBehaviour
     public void SbuActiveObject(NotesBase gameObject) { activeObject.Remove(gameObject); }
 
     public CreateTapArea GetTapArea() { return _tapArea; }
+    public NotesSoundManager GetNotesSoundManager() { return _notesSoundManager; }
 
     public void ShowText(string text) { _MOZI.text = text; }
 }

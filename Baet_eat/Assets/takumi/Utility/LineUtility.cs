@@ -17,4 +17,6 @@ public static class LineUtility
     public static void Click(int index, int id) {  gameManager.Click(index,id); }
 
     public static void ShowText(string text) {  gameManager.ShowText(text); }
+
+    public static void NotesHitSound() { gameManager.GetNotesSoundManager().StartNotesHitSound(); }
 }
