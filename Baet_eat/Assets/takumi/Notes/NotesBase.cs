@@ -35,10 +35,23 @@ public class NotesBase : MonoBehaviour
 
     }
     //ƒm[ƒc‚ÉG‚ê‚½‚Æ‚«‚É“®‚­ŠÖ”
+    public void Hit(GameObject gameObject)
+    {
+        //”»’è‚Ì‰ÁŽZ‚ð‚·‚éŠÖ”
+        SetJudgment(gameObject);
+
+        //Ž©g‚ðactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
+        LineUtility.SbuActiveObject(this);
+
+        //Ž©•ª‚ðŒ©‚¦‚È‚­‚·‚é
+        this.gameObject.SetActive(false);
+
+
+    }
     public void Hit()
     {
         //”»’è‚Ì‰ÁŽZ‚ð‚·‚éŠÖ”
-        SetJudgment();
+        SetJudgment(this.gameObject);
 
         //Ž©g‚ðactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
         LineUtility.SbuActiveObject(this);
@@ -71,9 +84,9 @@ public class NotesBase : MonoBehaviour
 
     protected virtual void Action() { }
 
-    private void SetJudgment()
+    private void SetJudgment(GameObject gameObject)
     {
-        int renge = (int)LineUtility.RangeToDecision(this.transform.position);
+        int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position);
         renge = Mathf.Abs(renge);
         if (renge >= 0) InGameStatus.SetJudgments(renge, 0);
         else InGameStatus.SetJudgments(renge, 1);

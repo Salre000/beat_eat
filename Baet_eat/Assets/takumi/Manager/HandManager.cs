@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,18 +8,20 @@ using UnityEngine;
 public class HandManager : MonoBehaviour
 {
     //デバッグ用
-    public TextMeshProUGUI []m_TextMeshProUGUI;
+    public TextMeshProUGUI[] m_TextMeshProUGUI;
     public TextMeshProUGUI _TextMeshProUGUI;
 
 
-    private List<Hands> hand = new List<Hands>(12); 
-    private List<List<System.Action>> handEndAction = new List<List<System.Action>>(12); 
-    public void AddEndAction(System.Action action,int ID) 
+    private List<Hands> hand = new List<Hands>(12);
+    private List<List<System.Action>> handEndAction = new List<List<System.Action>>(12);
+
+    private bool commandMouse = false;
+    public void AddEndAction(System.Action action, int ID)
     {
         handEndAction[ID].Add(action);
 
     }
-    public List<Hands> GetHand() {  return hand; }
+    public List<Hands> GetHand() { return hand; }
     public Vector2 GetPosition(int id) { return hand[id].HandPosition; }
 
     private int touchPoint = 12;
@@ -34,12 +37,12 @@ public class HandManager : MonoBehaviour
     {
         HandUtility.handManager = this;
 
-        for(int i = 0; i < 12; i++) 
+        for (int i = 0; i < 12; i++)
         {
             Hands h = new Hands();
             h.ID = i;
             h.flag = true;
-            h.HandPosition=Vector2.zero;
+            h.HandPosition = Vector2.zero;
             hand.Add(h);
 
             List<System.Action> actions = new List<System.Action>();
@@ -67,12 +70,19 @@ public class HandManager : MonoBehaviour
     {
         List<Vector2> touchPosition = new List<Vector2>();
 
-        for (int i = 0; i < Input.touchCount; i++)
+        if (!commandMouse)
         {
-            touchPosition.Add(Input.GetTouch(i).position);
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                touchPosition.Add(Input.GetTouch(i).position);
+            }
+        }
+        else 
+        {
+            touchPosition.Add(Input.mousePosition);
         }
 
-        int sbuID = -1;
+            int sbuID = -1;
         float miniRange = 0;
 
         for (int i = 0; i < hand.Count; i++)
@@ -99,7 +109,7 @@ public class HandManager : MonoBehaviour
         Hands hands = hand[sbuID];
         hands.flag = false;
         hand[sbuID] = hands;
-        for(int i = 0; i < handEndAction[i].Count; i++)
+        for (int i = 0; i < handEndAction[i].Count; i++)
         {
             handEndAction[sbuID][i]();
 
@@ -111,9 +121,16 @@ public class HandManager : MonoBehaviour
     {
         List<Vector2> touchPosition = new List<Vector2>();
 
-        for (int i = 0; i < Input.touchCount; i++)
+        if (!commandMouse)
         {
-            touchPosition.Add(Input.GetTouch(i).position);
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                touchPosition.Add(Input.GetTouch(i).position);
+            }
+        }
+        else
+        {
+            touchPosition.Add(Input.mousePosition);
         }
 
         for (int i = 0; i < hand.Count; i++)
@@ -147,16 +164,49 @@ public class HandManager : MonoBehaviour
     public void FixedUpdate()
     {
 
-        CheckHand();
-        PositionUpdata();
-        _TextMeshProUGUI.text=Input.touchCount.ToString();
-
-        for(int i = 0; i < hand.Count; i++) 
+        if (Input.GetKey(KeyCode.Alpha1)&&!commandMouse)
         {
-            m_TextMeshProUGUI[i].text = hand[i].HandPosition.ToString()+hand[i].flag.ToString();
+            commandMouse = !commandMouse;
+        }
+        if (!commandMouse) CheckHand();
+        PositionUpdata();
+        _TextMeshProUGUI.text = Input.touchCount.ToString();
+
+        for (int i = 0; i < hand.Count; i++)
+        {
+            m_TextMeshProUGUI[i].text = hand[i].HandPosition.ToString() + hand[i].flag.ToString();
         }
 
+        if (Input.GetMouseButton(0) && commandMouse)
+        {
+            touchPoint = 1;
 
+           Hands hands = hand[0];
+            hands.flag = true;
+            hand[0] = hands;
+
+        }
+        else if (commandMouse) 
+        {
+            touchPoint = 0;
+
+            if (hand[0].flag) 
+            {
+                for (int i = 0; i < handEndAction[i].Count; i++)
+                {
+                    handEndAction[0][i]();
+
+                }
+                handEndAction[0].Clear();
+
+            }
+
+
+            Hands hands = hand[0];
+            hands.flag = false;
+            hand[0] = hands;
+
+        }
     }
 
     private void CheckHand()

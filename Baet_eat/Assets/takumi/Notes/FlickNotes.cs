@@ -77,7 +77,7 @@ public class FlickNotes : NotesBase
 
         time += Time.deltaTime;
 
-        LineUtility.ShowText(Vector2.Distance(flickStartPos, Input.GetTouch(touchID).position).ToString());
+        //LineUtility.ShowText(Vector2.Distance(flickStartPos, Input.GetTouch(touchID).position).ToString());
         if (Vector2.Distance(flickStartPos, Input.GetTouch(touchID).position) < renge) return;
 
 
@@ -90,7 +90,11 @@ public class FlickNotes : NotesBase
 
         if (base.CheckHitlane(index))
         {
-            if (!count) flickStartPos = Input.GetTouch(touchID).position;
+            if (!count)
+            {
+                flickStartPos = Input.GetTouch(touchID).position;
+
+            }
             count = true;
         }
 

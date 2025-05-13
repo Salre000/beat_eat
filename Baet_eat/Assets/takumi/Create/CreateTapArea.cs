@@ -31,6 +31,40 @@ public class CreateTapArea
         return vector3s;
     }
 
+    public int GetClickPositionID(Vector2 clickPosition) 
+    {
+        for (int i = 0; i < tapPoint.Count; i++)
+        {
+            Vector2[] vecs = new Vector2[4];
+
+            for (int j = 0; j < 4; j++)
+            {
+                //周りの方向ベクトルを取得
+                vecs[j] = (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(tapPosition[i])[(j + 1) % 4]) - (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(tapPosition[i])[j]);
+            }
+
+            bool flag = false;
+            for (int j = 0; j < 4; j++)
+            {
+                //クリックした方向ベクトルを取得
+                Vector2 vec = clickPosition - (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(tapPosition[i])[j]);
+                //外積を取得
+                Vector3 dont = Vector3.Cross(vecs[j], vec);
+
+                if (dont.z > 0) flag = true;
+
+            }
+
+            if (flag) continue;
+
+            //範囲内をクリックしたと認める
+            return i;
+        }
+
+        return -1;
+
+    }
+
     public void GetClickPoint(Vector2 clickPoint, System.Action<int,int> action, int id)
     {
         for (int i = 0; i < tapPoint.Count; i++)
