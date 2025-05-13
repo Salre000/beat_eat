@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd0ce4ba15797f4581dcc88d1e1162e, type: 3}
   m_Name: Test03
   m_EditorClassIdentifier: 
-  musicID: 3
+  musicID: 13
   musicName: Test03
-  musicLevel: 15
-  jacket: {fileID: 21300000, guid: 5dbeaa4ac214030409be8295d6668389, type: 3}
+  musicLevel: 3
+  jacket: {fileID: 21300000, guid: 485d04d8efefa6e49b3cdc6f9f1d13a6, type: 3}

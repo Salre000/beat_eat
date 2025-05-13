@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cd0ce4ba15797f4581dcc88d1e1162e, type: 3}
-  m_Name: Test00
+  m_Name: Test01 3
   m_EditorClassIdentifier: 
-  musicID: 0
-  musicName: Test00
-  musicLevel: 0
+  musicID: 4
+  musicName: Test01
+  musicLevel: 1
   jacket: {fileID: 21300000, guid: eecebf1c1c486bc419438982df359d9b, type: 3}
