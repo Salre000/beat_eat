@@ -18,5 +18,4 @@ public static class LineUtility
 
     public static void ShowText(string text) {  gameManager.ShowText(text); }
 
-    public static void NotesHitSound() { gameManager.GetNotesSoundManager().StartNotesHitSound(); }
 }

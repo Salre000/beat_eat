@@ -28,12 +28,6 @@ public class NotesManager : MonoBehaviour
 
         }
 
-        ////デバッグ用
-
-        //if(Input.GetMouseButton(0)) LineUtility.GetTapArea().GetClickPoint(Input.mousePosition, Click,0);
-
-
-
     }
 
     public void Click(int index, int id) 

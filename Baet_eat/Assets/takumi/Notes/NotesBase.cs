@@ -40,8 +40,7 @@ public class NotesBase : MonoBehaviour
         //判定の加算をする関数
         SetJudgment(gameObject);
 
-        LineUtility.NotesHitSound();
-
+        SoundUtility.NotesHitSoundPlay();
 
         //自身をactiveじゃない状態に変更
         LineUtility.SbuActiveObject(this);
@@ -56,7 +55,7 @@ public class NotesBase : MonoBehaviour
         //判定の加算をする関数
         SetJudgment(this.gameObject);
 
-        LineUtility.NotesHitSound();
+        SoundUtility.NotesHitSoundPlay();
 
         //自身をactiveじゃない状態に変更
         LineUtility.SbuActiveObject(this);
