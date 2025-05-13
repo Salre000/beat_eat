@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using System.Text;
 
-public class MusicSelect : MonoBehaviour
+public class SankouMusicSelect : MonoBehaviour
 {
     [SerializeField] private MusicDataBase dataBase;
     [SerializeField] private TextMeshProUGUI[] _musicNameText;
