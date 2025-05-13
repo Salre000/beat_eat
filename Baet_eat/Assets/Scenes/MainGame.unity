@@ -2086,6 +2086,7 @@ GameObject:
   - component: {fileID: 1325062687}
   - component: {fileID: 1325062688}
   - component: {fileID: 1325062689}
+  - component: {fileID: 1325062690}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2107,7 +2108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteNum: 0
   noteObjSkill: {fileID: 1701094039627799809, guid: a5199b564a787934999b9e40d07ddd81, type: 3}
-  noteObj: {fileID: 1701094039627799809, guid: 81b38653308feca4299d646110128310, type: 3}
+  noteObj: {fileID: 1701094039627799809, guid: 824731cdfe4edd445bb2cbb6c6840fa9, type: 3}
   noteObjLong: {fileID: 1701094039627799809, guid: c001ed5aa1f72864493b6031ca7df4fd, type: 3}
   noteObjFlick: {fileID: 1701094039627799809, guid: 824731cdfe4edd445bb2cbb6c6840fa9, type: 3}
 --- !u!4 &1325062684
@@ -2283,6 +2284,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1325062690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325062682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045514628398afc4386c6a81d9444356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1337566168
 GameObject:
   m_ObjectHideFlags: 0

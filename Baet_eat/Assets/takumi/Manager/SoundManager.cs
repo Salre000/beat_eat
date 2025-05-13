@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
         _soundSource = gameObject.GetComponent<AudioSource>();
 
         _soundSource.clip = mainBGM;
-        _soundSource.time = 11;
+        _soundSource.time = 0;
         _soundSource.Play();
     }
 

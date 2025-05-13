@@ -12,11 +12,13 @@ public class LongLongNotes : NotesBase
     private System.Action<int> SetTouchIDS;
     public void Set_SetTouchID(System.Action<int> action) { SetTouchIDS = action; }
 
-    
-    public void Update()
+    //必要
+    public void FixedUpdate()
     {
-        if (this.transform.position.z < -epsilon || this.transform.position.z > epsilon) return;
+        int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position);
+        renge = Mathf.Abs(renge);
 
+        if (renge >= 5) return;
 
 
         int ID = -1;
@@ -26,19 +28,19 @@ public class LongLongNotes : NotesBase
         float left = Mathf.Min(boxArea.bottomLeft.x, boxArea.leftTop.x);
         float right = Mathf.Min(boxArea.bottomRight.x, boxArea.rightTop.x);
 
+        float z = transform.position.z;
 
-        Vector2 leftpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(left, 0, 0));
-        Vector2 rightpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(right, 0, 0));
-        Debug.Log(leftpos.x+":"+ rightpos.x);
-
+        //一時的に座標をゼロに合わせる
+        transform.position -= new Vector3(0,0, z);   
+        Vector2 leftpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(left, 0,0));
+        Vector2 rightpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(right, 0,0));
+        this.transform.position += new Vector3(0, 0, z);
+        
         for (int i = 0; i < hands.Count; i++)
         {
-            
-            if (!hands[i].flag) continue;
-            if (Mathf.Min(leftpos.x,rightpos.x)-150 < hands[i].HandPosition.x && Mathf.Max(leftpos.x, rightpos.x)+150 > hands[i].HandPosition.x)ID = i;
-             
 
-            Debug.Log("DDD" + (int)leftpos.x + ":" + rightpos.x + ":" + hands[i].HandPosition.x);
+            if (!hands[i].flag) continue;
+            if (Mathf.Min(leftpos.x, rightpos.x) - 150 < hands[i].HandPosition.x && Mathf.Max(leftpos.x, rightpos.x) + 150 > hands[i].HandPosition.x) ID = i;
 
         }
 
