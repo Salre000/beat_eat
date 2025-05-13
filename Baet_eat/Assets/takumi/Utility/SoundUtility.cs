@@ -10,4 +10,6 @@ public static class SoundUtility
 
     public static void NotesHitSoundPlay() { soundManager.StartNotesHitSound(); }
 
+    public static float GetNowTime() { return soundManager.GetNowTime(); }
+
 }

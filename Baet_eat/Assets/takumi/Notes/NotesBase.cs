@@ -8,9 +8,15 @@ public class NotesBase : MonoBehaviour
     public void AddLaneIndex(int index) { laneIndex.Add(index); }
     public void SetLaneIndex(List<int> lane) { laneIndex = lane; }
 
-    private const int BaseSpeed = 3;
+    private const float BaseSpeed = 20;//20
 
     protected int touchID = -1;
+
+    protected float showTime = -1;
+    public void SetShowTime(float time) {  showTime = time; }
+    public float GetShowTime() { return showTime- SpeedTime(); }
+    
+    private float SpeedTime() {return 50.0f/( InGameStatus.GetSpeed()* BaseSpeed); }
 
     public void SetTouchID(int ID) { if (touchID != -1) return; touchID = ID; }
     public void ResetTouchID() { touchID = -1; }
@@ -48,9 +54,9 @@ public class NotesBase : MonoBehaviour
         //é©ï™Çå©Ç¶Ç»Ç≠Ç∑ÇÈ
         this.gameObject.SetActive(false);
 
-
+        showTime = -1;
     }
-    public void Hit()
+    public virtual void Hit()
     {
         //îªíËÇÃâ¡éZÇÇ∑ÇÈä÷êî
         SetJudgment(this.gameObject);
@@ -63,6 +69,7 @@ public class NotesBase : MonoBehaviour
         //é©ï™Çå©Ç¶Ç»Ç≠Ç∑ÇÈ
         this.gameObject.SetActive(false);
 
+        showTime = -1;
 
     }
 
@@ -82,6 +89,7 @@ public class NotesBase : MonoBehaviour
         //é©ï™Çå©Ç¶Ç»Ç≠Ç∑ÇÈ
         this.gameObject.SetActive(false);
 
+        showTime = -1;
     }
 
     protected virtual double GetDestryDecision() { return -6.25 + -(int)JudgmentType.Miss; }

@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CreateNotes : MonoBehaviour
 {
-    private readonly float startPosition = 50;
+    private float StartPosition = 50;
 
     [Serializable]
     public class Data
@@ -24,16 +25,16 @@ public class CreateNotes : MonoBehaviour
         public int num;
         public int block;
         public int LPB;
+        public Note[] notes;
+
     }
     public int noteNum;
     private string songName = "Notes/学園アイドルマスター_初星学園_EndressDance";
 
-    public List<int> LaneNum = new List<int>();
-    public List<int> NoteType = new List<int>();
-    public List<float> NotesTime = new List<float>();
-    public List<GameObject> NotesObj = new List<GameObject>();
-
-    [SerializeField,Header("ノーツのプレハブのオリジナル")] GameObject noteObj;
+    [SerializeField, Header("スキルノーツのプレハブのオリジナル")] GameObject noteObjSkill;
+    [SerializeField, Header("通常ノーツのプレハブのオリジナル")] GameObject noteObj;
+    [SerializeField, Header("ホールドノーツのプレハブのオリジナル")] GameObject noteObjLong;
+    [SerializeField, Header("フリックノーツのプレハブのオリジナル")] GameObject noteObjFlick;
 
     void Start()
     {
@@ -43,7 +44,7 @@ public class CreateNotes : MonoBehaviour
 
     private void Load(string SongName)
     {
-        GameObject NotesParent=new GameObject(SongName);
+        GameObject NotesParent = new GameObject(SongName);
 
         string inputString = Resources.Load<TextAsset>(SongName).ToString();
         Data inputJson = JsonUtility.FromJson<Data>(inputString);
@@ -56,27 +57,61 @@ public class CreateNotes : MonoBehaviour
             float beatSec = kankaku * (float)inputJson.notes[i].LPB;
             float time = (beatSec * inputJson.notes[i].num / (float)inputJson.notes[i].LPB) + inputJson.offset + 0.01f;
 
-            //ノーツの情報を纏める
-            LaneNum.Add(inputJson.notes[i].block);
-            NoteType.Add(inputJson.notes[i].type);
             //プレハブを複製して見えないように変更
-            NotesObj.Add(Instantiate(noteObj));
-            //NotesObj[i].gameObject.SetActive(false);
+            GameObject notes = CreateTypeNotes(inputJson.notes[i].type);
 
             //時間　 kankaku * inputJson.notes[i].num
 
 
-            NotesObj[i].transform.position=new Vector3((inputJson.notes[i].block * -2)+4, 0.03f, kankaku * inputJson.notes[i].num*20);
+            notes.transform.position = new Vector3((inputJson.notes[i].block * -2) + 4, 0.03f, StartPosition);
             //親に纏める
-            NotesObj[i].transform.parent = NotesParent.transform;
+            notes.transform.parent = NotesParent.transform;
 
-            NotesBase notesBase= NotesObj[i].GetComponent<NotesBase>();
+            NotesBase notesBase = notes.GetComponent<NotesBase>();
+
+            notesBase.SetShowTime(kankaku * inputJson.notes[i].num);
+
+            if (inputJson.notes[i].type == 2)
+            {
+                LongNotes longNotes = notes.GetComponent<LongNotes>();
+
+                for (int j = 0; j < inputJson.notes[i].notes.Length; j++)
+                {
+                    if (j == 0)
+                    {
+                        longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].num);
+                        longNotes.SetBlock(inputJson.notes[i].notes[j].block - inputJson.notes[i].block);
+                    }
+                    else
+                    {
+                        longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].notes[j-1].num);
+                        longNotes.SetBlock(inputJson.notes[i].notes[j].block - inputJson.notes[i].notes[j-1].block);
+                    }
+                }
+            }
 
             //２マス前提の書き方
 
-            notesBase.AddLaneIndex(inputJson.notes[i].block*2);
-            notesBase.AddLaneIndex((inputJson.notes[i].block*2)+1);
+            notesBase.AddLaneIndex(inputJson.notes[i].block * 2);
+            notesBase.AddLaneIndex((inputJson.notes[i].block * 2) + 1);
+
+            NotesUtility.AddNotes(notesBase);
+
+            notes.SetActive(false);
+        }
+    }
+
+    GameObject CreateTypeNotes(int type)
+    {
+        switch (type)
+        {
+
+            case 0: return GameObject.Instantiate(noteObjSkill);
+            case 1: return GameObject.Instantiate(noteObj);
+            case 2: return GameObject.Instantiate(noteObjLong);
+            case 3: return GameObject.Instantiate(noteObjFlick);
 
         }
+        return null;
     }
 }

@@ -23,6 +23,7 @@ public class SoundManager : MonoBehaviour
         _soundSource = gameObject.GetComponent<AudioSource>();
 
         _soundSource.clip = mainBGM;
+        _soundSource.time = 11;
         _soundSource.Play();
     }
 
@@ -30,6 +31,8 @@ public class SoundManager : MonoBehaviour
 
     public void MainBGMStop() { if (time != 0) return; time = _soundSource.time; _soundSource.Stop(); }
     public void MainBGMStart() { if (time == 0) return; _soundSource.time = time; _soundSource.Play(); time = 0; }
+
+    public float GetNowTime() { return _soundSource.time; }
 
 
 
