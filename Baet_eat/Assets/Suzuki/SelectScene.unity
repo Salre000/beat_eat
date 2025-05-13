@@ -1978,6 +1978,7 @@ GameObject:
   - component: {fileID: 84093880}
   - component: {fileID: 84093881}
   - component: {fileID: 84093882}
+  - component: {fileID: 84093883}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -2191,6 +2192,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045514628398afc4386c6a81d9444356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &84093883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84093875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaac661a4e39e14a8edb18d5b9e9754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upLimit: {fileID: 453830983}
+  _downLimit: {fileID: 2046260033}
 --- !u!1 &96870999
 GameObject:
   m_ObjectHideFlags: 0
@@ -5650,7 +5665,7 @@ RectTransform:
   m_Children:
   - {fileID: 29399094}
   m_Father: {fileID: 569721012}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7347,7 +7362,7 @@ GameObject:
   - component: {fileID: 320348850}
   - component: {fileID: 320348849}
   m_Layer: 5
-  m_Name: MusicSele (1)
+  m_Name: MusicSelect10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9112,6 +9127,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447633318}
   m_CullTransparentMesh: 1
+--- !u!1 &453830982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 453830983}
+  m_Layer: 5
+  m_Name: UpLimit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &453830983
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453830982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 569721012}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -202.99998, y: 658}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &460802874
 GameObject:
   m_ObjectHideFlags: 0
@@ -11492,6 +11543,8 @@ RectTransform:
   m_Children:
   - {fileID: 690494018}
   - {fileID: 1034055643}
+  - {fileID: 453830983}
+  - {fileID: 2046260033}
   - {fileID: 257195873}
   m_Father: {fileID: 1263181244}
   m_RootOrder: 6
@@ -15978,7 +16031,7 @@ GameObject:
   - component: {fileID: 812237382}
   - component: {fileID: 812237381}
   m_Layer: 5
-  m_Name: MusicSele (2)
+  m_Name: MusicSelect11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24079,7 +24132,7 @@ GameObject:
   - component: {fileID: 1246712226}
   - component: {fileID: 1246712225}
   m_Layer: 5
-  m_Name: MusicSelect04 (1)
+  m_Name: MusicSelect08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38782,6 +38835,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043070424}
   m_CullTransparentMesh: 1
+--- !u!1 &2046260032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2046260033}
+  m_Layer: 5
+  m_Name: DownLimit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2046260033
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046260032}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 569721012}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -202.99998, y: -661}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2048555551
 GameObject:
   m_ObjectHideFlags: 0
@@ -39175,7 +39264,7 @@ GameObject:
   - component: {fileID: 2067056888}
   - component: {fileID: 2067056887}
   m_Layer: 5
-  m_Name: MusicSele (3)
+  m_Name: MusicSelect12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40708,7 +40797,7 @@ GameObject:
   - component: {fileID: 2131684311}
   - component: {fileID: 2131684310}
   m_Layer: 5
-  m_Name: MusicSele
+  m_Name: MusicSelect09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
