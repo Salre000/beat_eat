@@ -10,4 +10,5 @@ public class MusicData : ScriptableObject
     [SerializeField] public string musicName;
     [SerializeField] public int musicLevel;
     [SerializeField] public Sprite jacket;
+    public int difficulty=4;
 }
