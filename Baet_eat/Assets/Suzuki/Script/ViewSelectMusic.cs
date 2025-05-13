@@ -2,6 +2,7 @@ using NoteEditor.Model;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class ViewSelectMusic : MonoBehaviour
     [SerializeField] private MusicDataBase dataBase;
     [SerializeField, Header("右の大きなジャケット表示部分")] private Image _jacket;
     [SerializeField, Header("ジャケットの背景表示部分")] private Image _backJacket;
+    [SerializeField, Header("曲難易度テキスト")] private TextMeshProUGUI _musicLevel;
 
     private AudioSource _audioSource;
     private AudioClip _music;
