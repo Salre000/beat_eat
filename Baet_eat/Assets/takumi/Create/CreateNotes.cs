@@ -67,7 +67,7 @@ public class CreateNotes : MonoBehaviour
             //時間　 kankaku * inputJson.notes[i].num
 
 
-            notes.transform.position = new Vector3((inputJson.notes[i].block * -2) + 4, 0.03f, StartPosition);
+            notes.transform.position = new Vector3((inputJson.notes[i].block*-1) + 4.5f, 0.03f, StartPosition);
             //親に纏める
             notes.transform.parent = NotesParent.transform;
 
@@ -97,8 +97,8 @@ public class CreateNotes : MonoBehaviour
 
             //２マス前提の書き方
 
-            notesBase.AddLaneIndex(inputJson.notes[i].block * 2);
-            notesBase.AddLaneIndex((inputJson.notes[i].block * 2) + 1);
+            notesBase.AddLaneIndex(inputJson.notes[i].block);
+            notesBase.AddLaneIndex((inputJson.notes[i].block) + 1);
 
             NotesUtility.AddNotes(notesBase);
 

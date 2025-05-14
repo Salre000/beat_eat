@@ -41,7 +41,7 @@ public class LongNotes : NotesBase
     {
         endNotes = transform.GetChild(0).gameObject;
 
-        endNotes.transform.position = transform.position + new Vector3((Allrange(_block))*-2, 0, Allrange(_distanceNum) * InGameStatus.GetSpeed());
+        endNotes.transform.position = transform.position + new Vector3((Allrange(_block))*-1, 0, Allrange(_distanceNum) * InGameStatus.GetSpeed());
         for (int j = 0; j < _distanceNum.Count; j++)
         {
 
@@ -55,15 +55,15 @@ public class LongNotes : NotesBase
 
 
                 longLongNotes.transform.parent = transform;
-                longLongNotes.transform.position = this.transform.position + new Vector3(Range(j,_block)*-2, 0, (i * InGameStatus.GetSpeed()) + (Range(j, _distanceNum) *InGameStatus.GetSpeed()));
+                longLongNotes.transform.position = this.transform.position + new Vector3(Range(j,_block)*-1, 0, (i * InGameStatus.GetSpeed()) + (Range(j, _distanceNum) *InGameStatus.GetSpeed()));
 
 
                 BoxArea boxarea = new BoxArea();
                 //メッシュの座標を設定
-                boxarea.leftTop = new Vector3(-1 + vec * (-i*2 - 2), 0.01f, InGameStatus.GetSpeed());
-                boxarea.rightTop = new Vector3(1 + vec * (-i*2 - 2), 0.01f, InGameStatus.GetSpeed());
-                boxarea.bottomLeft = new Vector3(-1 + vec * -i*2, 0.01f, 0);
-                boxarea.bottomRight = new Vector3(1 + vec * -i*2, 0.01f, 0);
+                boxarea.leftTop = new Vector3(-0.5f + vec * (-i - 1), 0.01f, InGameStatus.GetSpeed());
+                boxarea.rightTop = new Vector3(0.5f + vec * (-i - 1), 0.01f, InGameStatus.GetSpeed());
+                boxarea.bottomLeft = new Vector3(-0.5f + vec * -i, 0.01f, 0);
+                boxarea.bottomRight = new Vector3(0.5f + vec * -i, 0.01f, 0);
 
                 longNotes.SetBoxArea(boxarea);
                 longNotes.Set_SetTouchID(SetTouchIDs);
@@ -82,6 +82,7 @@ public class LongNotes : NotesBase
                 // MeshFilterに設定
                 longLongNotes.AddComponent<MeshFilter>().mesh = mesh;
                 longLongNotes.AddComponent<MeshRenderer>().material = material;
+
             }
         }
     }
@@ -142,7 +143,7 @@ public class LongNotes : NotesBase
         for (int i = 0; i < list.Count; i++)
         {
             //２マス前提
-            list[i] += (int)Allrange(_block) - 2;
+            list[i] += (int)Allrange(_block);
 
 
         }
