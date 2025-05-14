@@ -164,10 +164,9 @@ public class LongNotes : NotesBase
 
         List<int> list = new List<int>();
 
-        list = laneIndex;
-        for (int i = 0; i < list.Count; i++)
+        for (int i = 0; i < _renge[_renge.Count - 1]; i++)
         {
-            list[i] += (int)Allrange(_block);
+            list[i] = (int)Allrange(_block)+i;
 
 
         }
