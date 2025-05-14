@@ -5,6 +5,7 @@ using UnityEngine;
 public  class InGameStatus
 {
     private static float score = 0;
+    private const float MAX_SCORE =1010000.0f;
     //ゲーム開始時に決定する1ノーツ当たりのスコア
     private static float upScore = -1;
 
@@ -36,7 +37,12 @@ public  class InGameStatus
     //判定による上昇スコアの変動ありの関数
     public static void AddScore(float rete) {  score += upScore* rete; }
 
-    public static void SetUpScore(float upscore) { upScore = upscore; }
+    public static void SetUpScore(int notesCount) 
+    {
+        float upscore=MAX_SCORE/notesCount;
+
+        upScore = upscore; 
+    }
 
     public static void HPDamege()
     {

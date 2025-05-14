@@ -8,6 +8,8 @@ public class CreateNotes : MonoBehaviour
 {
     private float StartPosition = 50;
 
+    private int NotesCount = 0;
+
     [Serializable]
     public class Data
     {
@@ -53,6 +55,8 @@ public class CreateNotes : MonoBehaviour
 
         for (int i = 0; i < inputJson.notes.Length; i++)
         {
+            NotesCount++;
+
             float kankaku = 60 / (inputJson.BPM * (float)inputJson.notes[i].LPB);
             float beatSec = kankaku * (float)inputJson.notes[i].LPB;
             float time = (beatSec * inputJson.notes[i].num / (float)inputJson.notes[i].LPB) + inputJson.offset + 0.01f;
@@ -77,6 +81,7 @@ public class CreateNotes : MonoBehaviour
 
                 for (int j = 0; j < inputJson.notes[i].notes.Length; j++)
                 {
+                    NotesCount++;
                     if (j == 0)
                     {
                         longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].num);
@@ -84,8 +89,8 @@ public class CreateNotes : MonoBehaviour
                     }
                     else
                     {
-                        longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].notes[j-1].num);
-                        longNotes.SetBlock(inputJson.notes[i].notes[j].block - inputJson.notes[i].notes[j-1].block);
+                        longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].notes[j - 1].num);
+                        longNotes.SetBlock(inputJson.notes[i].notes[j].block - inputJson.notes[i].notes[j - 1].block);
                     }
                 }
             }
@@ -99,6 +104,9 @@ public class CreateNotes : MonoBehaviour
 
             notes.SetActive(false);
         }
+
+
+        InGameStatus.SetUpScore(NotesCount);
     }
 
     GameObject CreateTypeNotes(int type)

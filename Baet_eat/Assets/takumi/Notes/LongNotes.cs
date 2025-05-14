@@ -108,54 +108,57 @@ public class LongNotes : NotesBase
                 LineUtility.ShowText("start");
                 //ここが一度だけの場所
 
-                HandUtility.AddEndAction(() =>
-                {
-                    LineUtility.ShowText("end1");
-
-                    count = false;
-
-                    int endAreaID = LineUtility.GetTapArea().GetClickPositionID(HandUtility.handPosition(touchID));
-
-                    //ノーツ用のIDに変更
-                    endAreaID = 9 - endAreaID;
-
-                    if (endAreaID < 0) return;
-
-                    LineUtility.ShowText("end2");
+                HandUtility.AddEndAction(EndNotes, touchID);
 
 
-                    List<int> list = new List<int>();
-
-                    list = laneIndex;
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        //２マス前提
-                        list[i] += (int)Allrange(_block)-2;
-
-
-                    }
-                    JudgmentType judgmentType = (JudgmentType)(int)LineUtility.RangeToDecision(endNotes.transform.position);
-
-
-
-                    bool flag = list.Exists(number => number == endAreaID) && judgmentType <= JudgmentType.Miss && (int)judgmentType >= -(int)JudgmentType.Miss;
-
-                    LineUtility.ShowText(list[0].ToString() + ":" + list[1].ToString() + " :" + endAreaID.ToString());
-
-                    if (!flag) return;
-
-                    Hit(endNotes);
-                    LineUtility.ShowText("end");
-
-                }, touchID);
-
-
+                Hit(false);
 
             }
             count = true;
         }
 
         return false;
+    }
+
+    private void EndNotes() 
+    {
+        LineUtility.ShowText("end1");
+
+        count = false;
+
+        int endAreaID = LineUtility.GetTapArea().GetClickPositionID(HandUtility.handPosition(touchID));
+
+        //ノーツ用のIDに変更
+        endAreaID = 9 - endAreaID;
+
+        if (endAreaID < 0) return;
+
+        LineUtility.ShowText("end2");
+
+
+        List<int> list = new List<int>();
+
+        list = laneIndex;
+        for (int i = 0; i < list.Count; i++)
+        {
+            //２マス前提
+            list[i] += (int)Allrange(_block) - 2;
+
+
+        }
+        JudgmentType judgmentType = (JudgmentType)(int)LineUtility.RangeToDecision(endNotes.transform.position);
+
+
+
+        bool flag = list.Exists(number => number == endAreaID) && judgmentType <= JudgmentType.Miss && (int)judgmentType >= -(int)JudgmentType.Miss;
+
+        LineUtility.ShowText(list[0].ToString() + ":" + list[1].ToString() + " :" + endAreaID.ToString());
+
+        if (!flag) return;
+
+        Hit(endNotes);
+        LineUtility.ShowText("end");
+
     }
 
     protected override double GetDestryDecision()
@@ -167,6 +170,8 @@ public class LongNotes : NotesBase
     {
         touchID = ID;
         for(int i = 0; i < LongLongNotesList.Count; i++) LongLongNotesList[i].SetTouchID(ID);
+        HandUtility.AddEndAction(EndNotes, touchID);
+
 
         HandUtility.AddEndAction(() =>
         {
