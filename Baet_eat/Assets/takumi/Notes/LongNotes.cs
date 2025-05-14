@@ -48,6 +48,7 @@ public class LongNotes : NotesBase
         endNotes = transform.GetChild(0).gameObject;
 
         endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) * -1, 0, Allrange(_distanceNum) * InGameStatus.GetSpeed());
+        endNotes.transform.localScale = new Vector3(0.1f * _renge[_renge.Count-1] + 0.1f, 1, 1);
 
         float num = (Range(1, _block) + block + _renge[0]) - ((float)block + (float)renge);
         float vecRight = num / (float)_distanceNum[0];
