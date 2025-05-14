@@ -23,8 +23,24 @@ public class SoundManager : MonoBehaviour
         _soundSource = gameObject.GetComponent<AudioSource>();
 
         _soundSource.clip = mainBGM;
-        _soundSource.time = 0;
+        _soundSource.time = 195;
         _soundSource.Play();
+    }
+
+    float afterTime = 0;
+    public void FixedUpdate()
+    {
+        if (_soundSource.isPlaying || time != 0) return;
+
+        //音楽が終了したときに回る
+        afterTime += Time.deltaTime;
+
+        if (afterTime <= 1) return;
+
+        Debug.Log("シーン移行");
+
+
+
     }
 
     public void StartNotesHitSound() { _soundSource.PlayOneShot(_notesHitSound); }
