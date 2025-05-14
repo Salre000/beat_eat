@@ -25,9 +25,11 @@ namespace NoteEditor.Notes
 
         ReactiveProperty<NoteTypes> noteType = new ReactiveProperty<NoteTypes>();
         CompositeDisposable disposable = new CompositeDisposable();
-
-        public void Init(NoteTypes noteTypes)
+       public int AddRenge =0;
+        public void Init(NoteTypes noteTypes,int addRenge)
         {
+            AddRenge = addRenge;
+
             disposable = new CompositeDisposable(
                 isSelected,
                 LateUpdateObservable,

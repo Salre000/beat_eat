@@ -9,27 +9,33 @@ public class LongNotes : NotesBase
 
     GameObject endNotes;
 
-    private List<LongLongNotes> LongLongNotesList=new List<LongLongNotes>();
+    private int block;
+    public void Setblock(int num) {  block=num; }
+
+    private List<LongLongNotes> LongLongNotesList = new List<LongLongNotes>();
 
     private List<int> _distanceNum = new List<int>();
     public void SetDistanceNum(int distanceNum) { _distanceNum.Add(distanceNum); }
     private List<int> _block = new List<int>();
     public void SetBlock(int num) { _block.Add(num); }
 
-    private float Allrange(List<int> list) 
+    private List<int> _renge = new List<int>();
+    public void SetRenges(int num) { _renge.Add(num); }
+
+    private float Allrange(List<int> list)
     {
         int allrange = 0;
-        for(int i = 0; i < list.Count; i++) 
+        for (int i = 0; i < list.Count; i++)
         {
             allrange += list[i];
         }
         return allrange;
     }
-    private float Range(int count,List<int> list) 
+    private float Range(int count, List<int> list)
     {
 
         int allrange = 0;
-        if(count> list.Count)count = list.Count;
+        if (count > list.Count) count = list.Count;
         for (int i = 0; i < count; i++)
         {
             allrange += list[i];
@@ -41,29 +47,36 @@ public class LongNotes : NotesBase
     {
         endNotes = transform.GetChild(0).gameObject;
 
-        endNotes.transform.position = transform.position + new Vector3((Allrange(_block))*-1, 0, Allrange(_distanceNum) * InGameStatus.GetSpeed());
+        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) * -1, 0, Allrange(_distanceNum) * InGameStatus.GetSpeed());
+
+        float num = (Range(1, _block) + block + _renge[0]) - ((float)block + (float)renge);
+        float vecRight = num / (float)_distanceNum[0];
+        vecRight *= -1;
+        float vecLeft = ((float)_block[0])*-1 / (float)_distanceNum[0];
+
+        float renges = renge+1;
         for (int j = 0; j < _distanceNum.Count; j++)
         {
 
             for (int i = 0; i < _distanceNum[j]; i++)
             {
-                float vec = ((float)_block[j] / (float)(_distanceNum[j]));
 
                 GameObject longLongNotes = new GameObject("LongLongNotes");
 
-               LongLongNotes longNotes= longLongNotes.AddComponent<LongLongNotes>();
+                LongLongNotes longNotes = longLongNotes.AddComponent<LongLongNotes>();
 
 
                 longLongNotes.transform.parent = transform;
-                longLongNotes.transform.position = this.transform.position + new Vector3(Range(j,_block)*-1, 0, (i * InGameStatus.GetSpeed()) + (Range(j, _distanceNum) *InGameStatus.GetSpeed()));
+                longLongNotes.transform.position = this.transform.position + new Vector3(0, 0, (i * InGameStatus.GetSpeed()) + (Range(j, _distanceNum) * InGameStatus.GetSpeed()));
 
 
                 BoxArea boxarea = new BoxArea();
                 //メッシュの座標を設定
-                boxarea.leftTop = new Vector3(-0.5f + vec * (-i - 1), 0.01f, InGameStatus.GetSpeed());
-                boxarea.rightTop = new Vector3(0.5f + vec * (-i - 1), 0.01f, InGameStatus.GetSpeed());
-                boxarea.bottomLeft = new Vector3(-0.5f + vec * -i, 0.01f, 0);
-                boxarea.bottomRight = new Vector3(0.5f + vec * -i, 0.01f, 0);
+                boxarea.leftTop = new Vector3((Range(j, _block) - 5)+ vecLeft * (-i - 1), 0.01f, InGameStatus.GetSpeed());
+                boxarea.bottomLeft = new Vector3((Range(j,_block)-5) + vecLeft * -i, 0.01f, 0);
+
+                boxarea.rightTop = new Vector3((Range(j, _block) - 5)+renges + vecRight * (-i - 1), 0.01f, InGameStatus.GetSpeed());
+                boxarea.bottomRight = new Vector3((Range(j, _block) - 5) + renges + vecRight * -i, 0.01f, 0);
 
                 longNotes.SetBoxArea(boxarea);
                 longNotes.Set_SetTouchID(SetTouchIDs);
@@ -84,6 +97,17 @@ public class LongNotes : NotesBase
                 longLongNotes.AddComponent<MeshRenderer>().material = material;
 
             }
+
+            if(j>= _distanceNum.Count-1) 
+            {
+                return;
+            }
+            num = (Range(j+2, _block)+ _renge[j + 1]) - (Range(j + 1, _block) + (float)_renge[j]);
+            vecRight = num / (float)_distanceNum[j+1];
+            vecRight *= -1;
+            vecLeft = ((float)_block[j + 1]) * -1 / (float)_distanceNum[j + 1];
+            renges = _renge[j]+1;
+
         }
     }
 
@@ -121,7 +145,7 @@ public class LongNotes : NotesBase
         return false;
     }
 
-    private void EndNotes() 
+    private void EndNotes()
     {
         LineUtility.ShowText("end1");
 
@@ -142,7 +166,6 @@ public class LongNotes : NotesBase
         list = laneIndex;
         for (int i = 0; i < list.Count; i++)
         {
-            //２マス前提
             list[i] += (int)Allrange(_block);
 
 
@@ -167,10 +190,10 @@ public class LongNotes : NotesBase
         return base.GetDestryDecision() - Allrange(_distanceNum);
     }
 
-    private void SetTouchIDs(int ID) 
+    private void SetTouchIDs(int ID)
     {
         touchID = ID;
-        for(int i = 0; i < LongLongNotesList.Count; i++) LongLongNotesList[i].SetTouchID(ID);
+        for (int i = 0; i < LongLongNotesList.Count; i++) LongLongNotesList[i].SetTouchID(ID);
         HandUtility.AddEndAction(EndNotes, touchID);
 
 

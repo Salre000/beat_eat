@@ -90,6 +90,7 @@ namespace NoteEditor.Model
             note.block = noteObject.note.position.block;
             note.LPB = noteObject.note.position.LPB;
             note.type = (int)noteObject.note.type;
+            note.renge = noteObject.AddRenge;
             note.notes = new List<MusicDTO.Note>();
             return note;
         }
