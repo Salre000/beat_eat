@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public static class SceneManager
 {
     // ƒV[ƒ“‚Ì–¼‘O
-    public const string mainSceneName = "MainScene";
+    public const string mainSceneName = "MainGame";
     public const string clearSceneName = "ClearScene";
     public const string resultSceneName = "ResultScene";
 
