@@ -14,6 +14,8 @@ public class JudgmentImageManager : MonoBehaviour
     private float time =0;
     private readonly float MAX_TIME = 3.0f;
 
+
+
     public void Awake()
     {
         JudgmentImageUtility.judgmentImageManager = this;
