@@ -148,7 +148,9 @@ namespace NoteEditor.Presenter
 
             var noteObject = new NoteObject();
             noteObject.SetState(note);
-            noteObject.Init(note.type);
+            noteObject.Init(note.type,NotesSize.m_Size);
+
+            NotesSize.m_Size = 0;
 
             EditData.Notes.Add(noteObject.note.position, noteObject);
         }

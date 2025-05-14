@@ -13,6 +13,9 @@ public class NotesBase : MonoBehaviour
     protected int touchID = -1;
 
     protected float showTime = -1;
+    protected int renge = 0;
+    public void SetRemge(int Renge) {  renge = Renge; }
+    public int GetRemge() { return renge; } 
     public void SetShowTime(float time) {  showTime = time; }
     public float GetShowTime() { return showTime- SpeedTime(); }
     

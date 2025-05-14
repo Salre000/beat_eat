@@ -27,6 +27,7 @@ public class CreateNotes : MonoBehaviour
         public int num;
         public int block;
         public int LPB;
+        public int renge;
         public Note[] notes;
 
     }
@@ -67,21 +68,24 @@ public class CreateNotes : MonoBehaviour
             //時間　 kankaku * inputJson.notes[i].num
 
 
-            notes.transform.position = new Vector3((inputJson.notes[i].block * -2) + 4, 0.03f, StartPosition);
+            notes.transform.position = new Vector3((inputJson.notes[i].block * -1) + 4.5f - (float)inputJson.notes[i].renge / 2.0f, 0.03f, StartPosition);
             //親に纏める
             notes.transform.parent = NotesParent.transform;
 
             NotesBase notesBase = notes.GetComponent<NotesBase>();
+
+            notesBase.SetRemge(inputJson.notes[i].renge);
 
             notesBase.SetShowTime(kankaku * inputJson.notes[i].num);
 
             if (inputJson.notes[i].type == 2)
             {
                 LongNotes longNotes = notes.GetComponent<LongNotes>();
-
+                longNotes.Setblock(inputJson.notes[i].block);
                 for (int j = 0; j < inputJson.notes[i].notes.Length; j++)
                 {
                     NotesCount++;
+                    longNotes.SetRenges(inputJson.notes[i].notes[j].renge);
                     if (j == 0)
                     {
                         longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].num);
@@ -95,12 +99,13 @@ public class CreateNotes : MonoBehaviour
                 }
             }
 
-            //２マス前提の書き方
 
-            notesBase.AddLaneIndex(inputJson.notes[i].block * 2);
-            notesBase.AddLaneIndex((inputJson.notes[i].block * 2) + 1);
+            for (int j = 0; j < inputJson.notes[i].renge + 1; j++) notesBase.AddLaneIndex(inputJson.notes[i].block + j);
 
             NotesUtility.AddNotes(notesBase);
+
+            if (inputJson.notes[i].renge != 0)
+                notes.transform.localScale = new Vector3(0.1f * inputJson.notes[i].renge + 0.1f, 1, 0.075f);
 
             notes.SetActive(false);
         }
