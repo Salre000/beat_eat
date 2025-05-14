@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // シーン管理
-public static class SceneManager
+public static class GameSceneManager
 {
     // シーンの名前
     public const string mainSceneName = "MainGame";

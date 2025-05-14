@@ -16,6 +16,6 @@ public class ButtonOnScene : MonoBehaviour
 
     private void OnStart()
     {
-        SceneManager.LoadScene(SceneManager.mainSceneName);
+        GameSceneManager.LoadScene(GameSceneManager.mainSceneName);
     }
 }
