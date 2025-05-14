@@ -25,7 +25,7 @@ namespace NoteEditor.Model
 
             foreach (var noteObject in sortedNoteObjects)
             {
-                if (noteObject.note.type == NoteTypes.Single)
+                if (noteObject.note.type != NoteTypes.Long)
                 {
                     dto.notes.Add(ToDTO(noteObject));
                 }
@@ -89,7 +89,7 @@ namespace NoteEditor.Model
             note.num = noteObject.note.position.num;
             note.block = noteObject.note.position.block;
             note.LPB = noteObject.note.position.LPB;
-            note.type = noteObject.note.type == NoteTypes.Long ? 2 : 1;
+            note.type = (int)noteObject.note.type;
             note.notes = new List<MusicDTO.Note>();
             return note;
         }
@@ -98,7 +98,7 @@ namespace NoteEditor.Model
         {
             return new Note(
                 new NotePosition(musicNote.LPB, musicNote.num, musicNote.block),
-                musicNote.type == 1 ? NoteTypes.Single : NoteTypes.Long);
+                (NoteTypes)musicNote.type);
         }
     }
 }

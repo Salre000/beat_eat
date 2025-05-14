@@ -72,6 +72,17 @@ public class NotesBase : MonoBehaviour
         showTime = -1;
 
     }
+    public virtual void Hit(bool flag) 
+    {
+        //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
+        SetJudgment(this.gameObject);
+
+        SoundUtility.NotesHitSoundPlay();
+
+        showTime = -1;
+
+
+    }
 
     public void FixedUpdate()
     {

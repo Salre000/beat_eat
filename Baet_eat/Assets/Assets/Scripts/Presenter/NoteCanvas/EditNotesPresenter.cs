@@ -129,6 +129,15 @@ namespace NoteEditor.Presenter
 
         public void AddNote(Note note)
         {
+            if (ChengeNotes.flag)
+            {
+                Note note1 = note;
+                note1.type = ChengeNotes.NoteTypes;
+                note = note1;
+
+            }
+
+
             if (EditData.Notes.ContainsKey(note.position))
             {
                 if (!EditData.Notes[note.position].note.Equals(note))
@@ -139,7 +148,8 @@ namespace NoteEditor.Presenter
 
             var noteObject = new NoteObject();
             noteObject.SetState(note);
-            noteObject.Init();
+            noteObject.Init(note.type);
+
             EditData.Notes.Add(noteObject.note.position, noteObject);
         }
 

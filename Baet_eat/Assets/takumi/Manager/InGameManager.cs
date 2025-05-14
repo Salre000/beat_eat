@@ -33,6 +33,7 @@ public class InGameManager : MonoBehaviour
     public TextMeshProUGUI _Y;
     public TextMeshProUGUI _G;
     public TextMeshProUGUI _M;
+    public TextMeshProUGUI _S;
     public TextMeshProUGUI _MOZI;
 
     private void Awake()
@@ -67,6 +68,7 @@ public class InGameManager : MonoBehaviour
         _Y.text = "Y" + (InGameStatus.GetJudgments(2, 0) + InGameStatus.GetJudgments(2, 1));
         _G.text = "G" + (InGameStatus.GetJudgments(3, 0) + InGameStatus.GetJudgments(3, 1));
         _M.text = "M" + (InGameStatus.GetJudgments(4, 0) + InGameStatus.GetJudgments(4, 1));
+        _S.text = "Score" + InGameStatus.GetScore();
     }
 
 

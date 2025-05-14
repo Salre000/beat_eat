@@ -26,7 +26,7 @@ namespace NoteEditor.Notes
         ReactiveProperty<NoteTypes> noteType = new ReactiveProperty<NoteTypes>();
         CompositeDisposable disposable = new CompositeDisposable();
 
-        public void Init()
+        public void Init(NoteTypes noteTypes)
         {
             disposable = new CompositeDisposable(
                 isSelected,
@@ -41,7 +41,7 @@ namespace NoteEditor.Notes
             disposable.Add(noteType.Where(_ => !isSelected.Value)
                 .Merge(isSelected.Select(_ => noteType.Value))
                 .Select(type => type == NoteTypes.Long)
-                .Subscribe(isLongNote => noteColor_.Value = isLongNote ? longNoteColor : singleNoteColor));
+                .Subscribe(isLongNote => noteColor_.Value = isLongNote ? longNoteColor : ChengeNotes.SetColor(noteTypes)));
 
             disposable.Add(isSelected.Where(selected => selected)
                 .Subscribe(_ => noteColor_.Value = selectedStateColor));
@@ -116,7 +116,7 @@ namespace NoteEditor.Notes
 
         public void SetState(Note note)
         {
-            if (note.type == NoteTypes.Single)
+            if (note.type != NoteTypes.Long)
             {
                 RemoveLink();
             }
