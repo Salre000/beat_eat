@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 27424142}
   - component: {fileID: 27424141}
   m_Layer: 5
-  m_Name: SpectrumImage (10)
+  m_Name: SpectrumImage11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1409,7 +1409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 48354430}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1587,7 +1587,7 @@ GameObject:
   - component: {fileID: 56835240}
   - component: {fileID: 56835239}
   m_Layer: 5
-  m_Name: MusicSelect02
+  m_Name: MusicSelect03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1685,7 +1685,7 @@ GameObject:
   - component: {fileID: 59880453}
   - component: {fileID: 59880452}
   m_Layer: 5
-  m_Name: SpectrumImage (9)
+  m_Name: SpectrumImage10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2201,7 +2201,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 84093877}
-  - component: {fileID: 84093876}
   - component: {fileID: 84093878}
   - component: {fileID: 84093880}
   - component: {fileID: 84093881}
@@ -2216,47 +2215,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &84093876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 84093875}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 931a583448d32f941ba793e25911b6a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dataBase: {fileID: 11400000, guid: 4d94ffb7e3fecf041a4d7d28dcfbed1d, type: 2}
-  _musicNameText:
-  - {fileID: 613245326}
-  - {fileID: 1085019249}
-  - {fileID: 257203956}
-  - {fileID: 486306380}
-  - {fileID: 1971344911}
-  - {fileID: 867169008}
-  - {fileID: 2122154863}
-  - {fileID: 814894849}
-  _musicLevelText:
-  - {fileID: 1930423444}
-  - {fileID: 487040968}
-  - {fileID: 447633320}
-  - {fileID: 474259458}
-  - {fileID: 274831381}
-  - {fileID: 1309785589}
-  - {fileID: 2108105467}
-  - {fileID: 294072805}
-  _musicJacket:
-  - {fileID: 1264918622}
-  - {fileID: 1519814426}
-  - {fileID: 1193213850}
-  - {fileID: 1568251289}
-  - {fileID: 96871001}
-  - {fileID: 308382950}
-  - {fileID: 2061292866}
-  - {fileID: 1683136680}
-  _jacket: {fileID: 222058357}
 --- !u!4 &84093877
 Transform:
   m_ObjectHideFlags: 0
@@ -2281,7 +2239,7 @@ AudioSource:
   m_GameObject: {fileID: 84093875}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4446015037887449748, guid: 373bae3b351eed94ebf4e2e4ebf6c59f, type: 2}
+  OutputAudioMixerGroup: {fileID: 839213503387421162, guid: 373bae3b351eed94ebf4e2e4ebf6c59f, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -3876,7 +3834,7 @@ GameObject:
   - component: {fileID: 180010565}
   - component: {fileID: 180010564}
   m_Layer: 5
-  m_Name: SpectrumImage (23)
+  m_Name: SpectrumImage24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5116,7 +5074,7 @@ RectTransform:
   - {fileID: 316525433}
   - {fileID: 643718262}
   m_Father: {fileID: 1279611178}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -5754,7 +5712,7 @@ GameObject:
   - component: {fileID: 244124356}
   - component: {fileID: 244124355}
   m_Layer: 5
-  m_Name: SpectrumImage (19)
+  m_Name: SpectrumImage20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5964,6 +5922,7 @@ GameObject:
   - component: {fileID: 247862580}
   - component: {fileID: 247862582}
   - component: {fileID: 247862581}
+  - component: {fileID: 247862583}
   m_Layer: 5
   m_Name: MainDish
   m_TagString: Untagged
@@ -6031,6 +5990,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247862579}
   m_CullTransparentMesh: 1
+--- !u!114 &247862583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247862579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 247862581}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &256974279
 GameObject:
   m_ObjectHideFlags: 0
@@ -7776,6 +7779,7 @@ GameObject:
   - component: {fileID: 316616142}
   - component: {fileID: 316616141}
   - component: {fileID: 316616143}
+  - component: {fileID: 316616144}
   m_Layer: 5
   m_Name: Drink
   m_TagString: Untagged
@@ -7858,6 +7862,50 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.74509805}
   m_EffectDistance: {x: 0.1, y: 0.1}
   m_UseGraphicAlpha: 1
+--- !u!114 &316616144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316616139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 316616141}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &320348847
 GameObject:
   m_ObjectHideFlags: 0
@@ -7871,7 +7919,7 @@ GameObject:
   - component: {fileID: 320348850}
   - component: {fileID: 320348849}
   m_Layer: 5
-  m_Name: MusicSelect10
+  m_Name: MusicSelect11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8330,7 +8378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 366566701}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8343,7 +8391,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366566700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8352,12 +8400,12 @@ RectTransform:
   - {fileID: 874550237}
   - {fileID: 1532271828}
   - {fileID: 628752316}
-  m_Father: {fileID: 1265447824}
+  m_Father: {fileID: 1279611178}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 3.4000108, y: -10.000012}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &368747626
@@ -8519,8 +8567,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607845, g: 0.19607845, b: 0.19607845, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9343,7 +9391,7 @@ GameObject:
   - component: {fileID: 426220232}
   - component: {fileID: 426220231}
   m_Layer: 5
-  m_Name: SpectrumImage (8)
+  m_Name: SpectrumImage09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10893,7 +10941,7 @@ GameObject:
   - component: {fileID: 497843854}
   - component: {fileID: 497843853}
   m_Layer: 5
-  m_Name: SpectrumImage (15)
+  m_Name: SpectrumImage16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11255,12 +11303,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 221359626}
-  m_Father: {fileID: 1265447824}
+  m_Father: {fileID: 1279611178}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58.5, y: -35.2}
+  m_AnchoredPosition: {x: 61.90001, y: -45.200012}
   m_SizeDelta: {x: 142, y: 22.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &510956450
@@ -11661,7 +11709,7 @@ GameObject:
   - component: {fileID: 530917039}
   - component: {fileID: 530917038}
   m_Layer: 5
-  m_Name: MusicSelect05
+  m_Name: MusicSelect06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12419,8 +12467,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12995,7 +13043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 591794526}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13189,7 +13237,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1279611178}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14624,7 +14672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 668174280}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15642,7 +15690,7 @@ GameObject:
   - component: {fileID: 741388988}
   - component: {fileID: 741388987}
   m_Layer: 5
-  m_Name: SpectrumImage (1)
+  m_Name: SpectrumImage02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15854,7 +15902,7 @@ GameObject:
   - component: {fileID: 761161205}
   - component: {fileID: 761161204}
   m_Layer: 5
-  m_Name: MusicSelect04
+  m_Name: MusicSelect05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15950,7 +15998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 764560582}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16532,7 +16580,7 @@ GameObject:
   - component: {fileID: 775638649}
   - component: {fileID: 775638648}
   m_Layer: 5
-  m_Name: SpectrumImage (22)
+  m_Name: SpectrumImage23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16947,7 +16995,7 @@ GameObject:
   - component: {fileID: 795842535}
   - component: {fileID: 795842534}
   m_Layer: 5
-  m_Name: SpectrumImage
+  m_Name: SpectrumImage01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17192,7 +17240,7 @@ GameObject:
   - component: {fileID: 812237382}
   - component: {fileID: 812237381}
   m_Layer: 5
-  m_Name: MusicSelect11
+  m_Name: MusicSelect12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17784,7 +17832,7 @@ GameObject:
   - component: {fileID: 821257653}
   - component: {fileID: 821257652}
   m_Layer: 5
-  m_Name: SpectrumImage (2)
+  m_Name: SpectrumImage03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18819,7 +18867,7 @@ GameObject:
   - component: {fileID: 890283163}
   - component: {fileID: 890283162}
   m_Layer: 5
-  m_Name: MusicSelect07
+  m_Name: MusicSelect08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19479,7 +19527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &920852657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19513,7 +19561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7331336, b: 0.19339621, a: 1}
+  m_Color: {r: 1, g: 0.7058824, b: 0.0990566, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21233,6 +21281,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048073406}
   m_CullTransparentMesh: 1
+--- !u!1 &1050575108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1050575110}
+  - component: {fileID: 1050575109}
+  - component: {fileID: 1050575111}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1050575109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050575108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c1d8a362ae8e143b9dd679a7640be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _diffiObject:
+  - {fileID: 316616139}
+  - {fileID: 1467280592}
+  - {fileID: 1436273944}
+  - {fileID: 247862579}
+  - {fileID: 1145058752}
+--- !u!4 &1050575110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050575108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 69.30296, y: -20.43915, z: 6946}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1050575111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050575108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ea78756409dcb4dac0a00054fb7142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1054370556
 GameObject:
   m_ObjectHideFlags: 0
@@ -21547,7 +21658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1062689184}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22384,7 +22495,7 @@ GameObject:
   - component: {fileID: 1087957628}
   - component: {fileID: 1087957627}
   m_Layer: 5
-  m_Name: SpectrumImage (21)
+  m_Name: SpectrumImage22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22596,7 +22707,7 @@ GameObject:
   - component: {fileID: 1093275438}
   - component: {fileID: 1093275437}
   m_Layer: 5
-  m_Name: SpectrumImage (24)
+  m_Name: SpectrumImage25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22768,7 +22879,7 @@ RectTransform:
   - {fileID: 1552597774}
   - {fileID: 744007877}
   m_Father: {fileID: 1279611178}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -23164,7 +23275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130368321}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23432,7 +23543,7 @@ GameObject:
   - component: {fileID: 1140541860}
   - component: {fileID: 1140541859}
   m_Layer: 5
-  m_Name: SpectrumImage (4)
+  m_Name: SpectrumImage05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23642,6 +23753,7 @@ GameObject:
   - component: {fileID: 1145058753}
   - component: {fileID: 1145058755}
   - component: {fileID: 1145058754}
+  - component: {fileID: 1145058756}
   m_Layer: 5
   m_Name: Dessert
   m_TagString: Untagged
@@ -23709,6 +23821,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145058752}
   m_CullTransparentMesh: 1
+--- !u!114 &1145058756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145058752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1145058754}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1147083893
 GameObject:
   m_ObjectHideFlags: 0
@@ -24029,7 +24185,7 @@ RectTransform:
   m_Children:
   - {fileID: 1264918621}
   m_Father: {fileID: 1279611178}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -24254,7 +24410,7 @@ GameObject:
   - component: {fileID: 1188344725}
   - component: {fileID: 1188344724}
   m_Layer: 5
-  m_Name: SpectrumImage (11)
+  m_Name: SpectrumImage12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25751,7 +25907,7 @@ GameObject:
   - component: {fileID: 1246712226}
   - component: {fileID: 1246712225}
   m_Layer: 5
-  m_Name: MusicSelect08
+  m_Name: MusicSelect09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26325,44 +26481,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264918620}
   m_CullTransparentMesh: 1
---- !u!1 &1265447823
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1265447824}
-  m_Layer: 5
-  m_Name: Scores
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1265447824
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265447823}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 366566701}
-  - {fileID: 510956449}
-  m_Father: {fileID: 1279611178}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 353.4, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1268851474
 GameObject:
   m_ObjectHideFlags: 0
@@ -26631,7 +26749,7 @@ GameObject:
   - component: {fileID: 1279611179}
   - component: {fileID: 1279611181}
   m_Layer: 5
-  m_Name: MusicSelect00
+  m_Name: MusicSelect01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26649,7 +26767,8 @@ RectTransform:
   m_LocalScale: {x: 0.69999987, y: 0.69999987, z: 0.69999987}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1265447824}
+  - {fileID: 366566701}
+  - {fileID: 510956449}
   - {fileID: 613245325}
   - {fileID: 1170905196}
   - {fileID: 223245242}
@@ -27834,7 +27953,7 @@ GameObject:
   - component: {fileID: 1369105953}
   - component: {fileID: 1369105952}
   m_Layer: 5
-  m_Name: SpectrumImage (20)
+  m_Name: SpectrumImage21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28651,8 +28770,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281348144
-  m_fontColor: {r: 0.18823531, g: 0.18823531, b: 0.18823531, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -29088,6 +29207,7 @@ GameObject:
   - component: {fileID: 1436273945}
   - component: {fileID: 1436273947}
   - component: {fileID: 1436273946}
+  - component: {fileID: 1436273948}
   m_Layer: 5
   m_Name: Soup
   m_TagString: Untagged
@@ -29155,6 +29275,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436273944}
   m_CullTransparentMesh: 1
+--- !u!114 &1436273948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436273944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1436273946}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1447169578
 GameObject:
   m_ObjectHideFlags: 0
@@ -29739,6 +29903,7 @@ GameObject:
   - component: {fileID: 1467280593}
   - component: {fileID: 1467280595}
   - component: {fileID: 1467280594}
+  - component: {fileID: 1467280596}
   m_Layer: 5
   m_Name: Horsdoeuvre
   m_TagString: Untagged
@@ -29806,6 +29971,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467280592}
   m_CullTransparentMesh: 1
+--- !u!114 &1467280596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467280592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1467280594}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1473215853
 GameObject:
   m_ObjectHideFlags: 0
@@ -30101,7 +30310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1476395536}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30837,7 +31046,7 @@ GameObject:
   - component: {fileID: 1510739214}
   - component: {fileID: 1510739213}
   m_Layer: 5
-  m_Name: MusicSelect01
+  m_Name: MusicSelect02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32475,7 +32684,7 @@ GameObject:
   - component: {fileID: 1580740007}
   - component: {fileID: 1580740006}
   m_Layer: 5
-  m_Name: SpectrumImage (3)
+  m_Name: SpectrumImage04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33275,7 +33484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1627772831}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33452,7 +33661,7 @@ GameObject:
   - component: {fileID: 1630635671}
   - component: {fileID: 1630635673}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AudioLevelMeterManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33539,7 +33748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1631020971}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34756,7 +34965,7 @@ GameObject:
   - component: {fileID: 1707076202}
   - component: {fileID: 1707076201}
   m_Layer: 5
-  m_Name: SpectrumImage (12)
+  m_Name: SpectrumImage13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35045,7 +35254,7 @@ RectTransform:
   - {fileID: 353641587}
   - {fileID: 682426636}
   m_Father: {fileID: 1279611178}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -35238,7 +35447,7 @@ GameObject:
   - component: {fileID: 1726957070}
   - component: {fileID: 1726957069}
   m_Layer: 5
-  m_Name: SpectrumImage (5)
+  m_Name: SpectrumImage06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36176,7 +36385,7 @@ GameObject:
   - component: {fileID: 1758518970}
   - component: {fileID: 1758518969}
   m_Layer: 5
-  m_Name: SpectrumImage (6)
+  m_Name: SpectrumImage07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36328,7 +36537,7 @@ GameObject:
   - component: {fileID: 1778830814}
   - component: {fileID: 1778830813}
   m_Layer: 5
-  m_Name: SpectrumImage (14)
+  m_Name: SpectrumImage15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37231,7 +37440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1867467220}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38016,7 +38225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1886005100}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38307,7 +38516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1904654986
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40267,7 +40476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1983537896
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40339,7 +40548,7 @@ GameObject:
   - component: {fileID: 1983886140}
   - component: {fileID: 1983886139}
   m_Layer: 5
-  m_Name: MusicSelect06
+  m_Name: MusicSelect07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40435,7 +40644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1984391996}
   m_Layer: 5
-  m_Name: Box
+  m_Name: ColorBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41553,8 +41762,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607845, g: 0.19607845, b: 0.19607845, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -41745,7 +41954,7 @@ GameObject:
   - component: {fileID: 2050080155}
   - component: {fileID: 2050080154}
   m_Layer: 5
-  m_Name: SpectrumImage (18)
+  m_Name: SpectrumImage19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41897,7 +42106,7 @@ GameObject:
   - component: {fileID: 2051859035}
   - component: {fileID: 2051859034}
   m_Layer: 5
-  m_Name: SpectrumImage (7)
+  m_Name: SpectrumImage08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41978,7 +42187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2055632830
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42277,7 +42486,7 @@ GameObject:
   - component: {fileID: 2064758829}
   - component: {fileID: 2064758828}
   m_Layer: 5
-  m_Name: SpectrumImage (16)
+  m_Name: SpectrumImage17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42354,7 +42563,7 @@ GameObject:
   - component: {fileID: 2067056888}
   - component: {fileID: 2067056887}
   m_Layer: 5
-  m_Name: MusicSelect12
+  m_Name: MusicSelect13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42890,7 +43099,7 @@ GameObject:
   - component: {fileID: 2100012191}
   - component: {fileID: 2100012190}
   m_Layer: 5
-  m_Name: MusicSelect03
+  m_Name: MusicSelect04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42988,7 +43197,7 @@ GameObject:
   - component: {fileID: 2101152648}
   - component: {fileID: 2101152647}
   m_Layer: 5
-  m_Name: SpectrumImage (17)
+  m_Name: SpectrumImage18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43963,7 +44172,7 @@ GameObject:
   - component: {fileID: 2131684311}
   - component: {fileID: 2131684310}
   m_Layer: 5
-  m_Name: MusicSelect09
+  m_Name: MusicSelect10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44229,7 +44438,7 @@ GameObject:
   - component: {fileID: 2146603584}
   - component: {fileID: 2146603583}
   m_Layer: 5
-  m_Name: SpectrumImage (13)
+  m_Name: SpectrumImage14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

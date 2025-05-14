@@ -13,6 +13,10 @@ public class MusicManager : MonoBehaviour
     private const float _DISTANCE = 125.0f;
     // 現在選択中のカード
     private int _selectMusicNumber = 0;
+    // 選択中の難易度 0~4
+    private int _difficultyNumber = 0;
+    // 難易度の変更を感知
+    private bool _changeDifficulty = false;
 
     private void Awake()
     {
@@ -35,4 +39,9 @@ public class MusicManager : MonoBehaviour
 
     public void SetSelectMusicNumer(int selectMusicNumber) { _selectMusicNumber = selectMusicNumber; }
 
+    public int GetDifficultyNumber() {  return _difficultyNumber; }
+    public void SetDifficultyNumber(int setDifficulty) {  _difficultyNumber = setDifficulty; }
+
+    public bool GetChangeDifficulty() { return _changeDifficulty; }
+    public void SetChangeDifficulty() { _changeDifficulty = !_changeDifficulty; }
 }
