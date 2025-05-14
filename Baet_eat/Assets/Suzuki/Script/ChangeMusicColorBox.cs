@@ -11,11 +11,7 @@ public class ChangeMusicColorBox : MonoBehaviour
     private const int _BOX_MAX = 4;
     Image boxImage;
     // 難易度別カラー
-    private readonly Color32 _DRINK_COLOR = new Color32(42, 144, 255, 255);
-    private readonly Color32 _HORSDOEUVRE_COLOR = new Color32(47, 255, 32, 255);
-    private readonly Color32 _SOUP_COLOR = new Color32(255, 180, 25, 255);
-    private readonly Color32 _MAINDISH_COLOR = new Color32(255, 40, 40, 255);
-    private readonly Color32 _DESSERT_COLOR = new Color32(200, 0, 255, 255);
+
 
     private void Start()
     {
@@ -37,19 +33,19 @@ public class ChangeMusicColorBox : MonoBehaviour
                 switch (MusicManager.instance.GetDifficultyNumber())
                 {
                     case 0:
-                        boxImage.color = _DRINK_COLOR;
+                        boxImage.color = ColorManager.DRINK_COLOR;
                         break;
                     case 1:
-                        boxImage.color = _HORSDOEUVRE_COLOR;
+                        boxImage.color = ColorManager.HORSDOEUVRE_COLOR;
                         break;
                     case 2:
-                        boxImage.color = _SOUP_COLOR;
+                        boxImage.color = ColorManager.SOUP_COLOR;
                         break;
                     case 3:
-                        boxImage.color = _MAINDISH_COLOR;
+                        boxImage.color = ColorManager.MAINDISH_COLOR;
                         break;
                     case 4:
-                        boxImage.color = _DESSERT_COLOR;
+                        boxImage.color = ColorManager.DESSERT_COLOR;
                         break;
                 }
             }
@@ -63,7 +59,7 @@ public class ChangeMusicColorBox : MonoBehaviour
     private void Update()
     {
         // 難易度変更ボタンが実行され、難易度変更が行われたとき
-        if (MusicManager.instance.GetChangeDifficulty())
+        if (MusicManager.instance.IsChangeDifficulty())
         {
             ChangeColor();
             MusicManager.instance.SetChangeDifficulty();
@@ -81,19 +77,19 @@ public class ChangeMusicColorBox : MonoBehaviour
                 switch (MusicManager.instance.GetDifficultyNumber())
                 {
                     case 0:
-                        boxImage.color = _DRINK_COLOR;
+                        boxImage.color = ColorManager.DRINK_COLOR;
                         break;
                     case 1:
-                        boxImage.color = _HORSDOEUVRE_COLOR;
+                        boxImage.color = ColorManager.HORSDOEUVRE_COLOR;
                         break;
                     case 2:
-                        boxImage.color = _SOUP_COLOR;
+                        boxImage.color = ColorManager.SOUP_COLOR;
                         break;
                     case 3:
-                        boxImage.color = _MAINDISH_COLOR;
+                        boxImage.color = ColorManager.MAINDISH_COLOR;
                         break;
                     case 4:
-                        boxImage.color = _DESSERT_COLOR;
+                        boxImage.color = ColorManager.DESSERT_COLOR;
                         break;
                 }
 

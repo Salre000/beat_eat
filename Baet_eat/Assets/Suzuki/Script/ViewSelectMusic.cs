@@ -46,6 +46,7 @@ public class ViewSelectMusic : MonoBehaviour
             _selectNumber = MusicManager.instance.GetSelectMusicNumber();
             SelectedMusic();
         }
+        if (!_audioSource.isPlaying) _audioSource.PlayOneShot(_music);
     }
 
     // 選択カードが切り替わるたびに呼び出し
