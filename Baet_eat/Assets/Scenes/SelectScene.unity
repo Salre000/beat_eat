@@ -35442,7 +35442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecd1e717b52adc48afd9d7ce6b99b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfSamples: 1024
+  numberOfSamples: 2048
   bandType: 6
   fallSpeed: 0.08
   sensibility: 8
@@ -35527,7 +35527,7 @@ MonoBehaviour:
   - {fileID: 1885535232}
   - {fileID: 1850289444}
   - {fileID: 953703660}
-  scale: 50
+  scale: 64
 --- !u!1 &1631020970
 GameObject:
   m_ObjectHideFlags: 0

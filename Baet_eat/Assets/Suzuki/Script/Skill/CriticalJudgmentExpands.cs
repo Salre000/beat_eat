@@ -6,15 +6,14 @@ using static NotesBase;
 
 public class CriticalJudgmentExpands : SkillBase
 {
+    // クリティカル判定増加
+
     public override void Initialize()
     {
-        
+        SkillManager.SkillList[0] = false;
     }
-    public override void Execute()
-    {
-        
-    }
-    protected JudgmentType GetJudgment(float renge)
+
+    public JudgmentType ExecuteSetJudgment(float renge)
     {
         if (renge < 1.5f) return JudgmentType.DC;
         else if (renge < 1.5f + (0.875f * 1)) return JudgmentType.Delicious;
