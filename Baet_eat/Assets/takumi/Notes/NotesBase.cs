@@ -17,7 +17,7 @@ public class NotesBase : MonoBehaviour
     public void SetRemge(int Renge) {  renge = Renge; }
     public int GetRemge() { return renge; } 
     public void SetShowTime(float time) {  showTime = time; }
-    public float GetShowTime() { return showTime- SpeedTime(); }
+    public float GetShowTime() { return showTime- SpeedTime()-0.3f; }
     
     private float SpeedTime() {return 50.0f/( InGameStatus.GetSpeed()* BaseSpeed); }
 

@@ -38,6 +38,9 @@ public class InGameManager : MonoBehaviour
 
     private void Awake()
     {
+
+        //SaveData.SaveFoundation();
+
         LineUtility.gameManager = this;
 
         InGameStatus inGame =new InGameStatus();

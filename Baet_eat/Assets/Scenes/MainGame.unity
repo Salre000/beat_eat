@@ -2615,6 +2615,7 @@ MonoBehaviour:
   noteObj: {fileID: 1701094039627799809, guid: 81b38653308feca4299d646110128310, type: 3}
   noteObjLong: {fileID: 1701094039627799809, guid: c001ed5aa1f72864493b6031ca7df4fd, type: 3}
   noteObjFlick: {fileID: 1701094039627799809, guid: 824731cdfe4edd445bb2cbb6c6840fa9, type: 3}
+  noteLineObject: {fileID: 2246287542641351205, guid: 54c15c5a85990c946854b5282012448b, type: 3}
 --- !u!4 &1325062684
 Transform:
   m_ObjectHideFlags: 0

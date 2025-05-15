@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static CreateTapArea;
 
 public class CreateNotes : MonoBehaviour
 {
@@ -39,12 +40,21 @@ public class CreateNotes : MonoBehaviour
     [SerializeField, Header("ホールドノーツのプレハブのオリジナル")] GameObject noteObjLong;
     [SerializeField, Header("フリックノーツのプレハブのオリジナル")] GameObject noteObjFlick;
 
+
+    readonly float lineRenge= 1.1f;
+    [SerializeField]private GameObject noteLineObject;
+
     void Start()
     {
         noteNum = 0;
         Load(songName);
     }
 
+    int preNum = -1;
+    int preID = -1;
+    List<int>preNumList = new List<int>();
+    List<int>preblockList = new List<int>();
+    List<int>preRengeList = new List<int>();
     private void Load(string SongName)
     {
         GameObject NotesParent = new GameObject(SongName);
@@ -96,6 +106,14 @@ public class CreateNotes : MonoBehaviour
                         longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].notes[j - 1].num);
                         longNotes.SetBlock(inputJson.notes[i].notes[j].block - inputJson.notes[i].notes[j - 1].block);
                     }
+
+                    if(j== inputJson.notes[i].notes.Length - 1) 
+                    {
+
+                        preblockList.Add(inputJson.notes[i].notes[j].block);
+                        preNumList.Add(inputJson.notes[i].notes[j].num);
+                        preRengeList.Add(inputJson.notes[i].notes[j].renge);
+                    }
                 }
             }
 
@@ -108,6 +126,64 @@ public class CreateNotes : MonoBehaviour
                 notes.transform.localScale = new Vector3(0.1f * inputJson.notes[i].renge + 0.1f, 1, 0.075f);
 
             notes.SetActive(false);
+
+
+            if(preNum== inputJson.notes[i].num) 
+            {
+                //GameObject Line = Instantiate(noteLineObject);
+
+                //Line.transform.parent = notes.transform;
+
+
+                //float x = (Mathf.Max((9 - inputJson.notes[i].block), (9 - inputJson.notes[preID].block)) - Mathf.Min((9 - inputJson.notes[i].block), (9 - inputJson.notes[preID].block)))+1- inputJson.notes[i].renge;
+
+                //Line.transform.localScale = new Vector3(x* lineRenge, 1, 1);
+                //if (inputJson.notes[i].block > inputJson.notes[preID].block) x *= -1;
+
+                //Line.transform.localPosition = new Vector3(((float)x/2.0f),0,0);
+
+            }
+
+            for (int j = 0; j < preNumList.Count; j++) 
+            {
+                if (preNumList[j] == inputJson.notes[i].num)
+                {
+
+
+
+
+
+
+
+
+                }
+
+            }
+
+
+
+
+
+
+            preNum = inputJson.notes[i].num;
+            preID = i;
+
+
+            for (int j = 0; j < preNumList.Count; j++)
+            {
+
+                if (preNumList[j] > preNum) continue;
+
+                preNumList.RemoveAt(j);
+                preblockList.RemoveAt(j);
+                preRengeList.RemoveAt(j);
+
+                j--;
+
+
+            }
+
+
         }
 
 
