@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
 
     AudioSource _soundSource;
 
+
     public void Awake()
     {
         SoundUtility.soundManager = this;

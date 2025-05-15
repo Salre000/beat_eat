@@ -57,9 +57,9 @@ public class LongNotes : NotesBase
         endNotes.transform.localScale = new Vector3(sizeX, 1, 1);
 
         float num = (Range(1, _block) + block + _renge[0]) - ((float)block + (float)renge);
-        float vecRight = num / (float)_distanceNum[0];
-        vecRight *= -1;
-        float vecLeft = ((float)_block[0]) * -1 / (float)_distanceNum[0];
+        float vecRight = ((float)_block[0]) * -1 / (float)_distanceNum[0];
+        //vecRight *= -1;
+        float vecLeft = num / (float)_distanceNum[0]; ;
 
         float renges = renge + 1;
 
@@ -81,11 +81,11 @@ public class LongNotes : NotesBase
 
                 BoxArea boxarea = new BoxArea();
                 //ÉÅÉbÉVÉÖÇÃç¿ïWÇê›íË
-                boxarea.leftTop = new Vector3((Range(j, _block)-renges/2)- vec + vecLeft * (-i - 1), 0.01f, InGameStatus.GetSpeed());
-                boxarea.bottomLeft = new Vector3((Range(j, _block) - renges / 2) - vec + vecLeft * -i, 0.01f, 0);
+                boxarea.leftTop = new Vector3((Range(j, _block)-renges/2) +vec + vecLeft * (-i - 1), 0.01f, InGameStatus.GetSpeed());
+                boxarea.bottomLeft = new Vector3((Range(j, _block) - renges / 2) + vec + vecLeft * -i, 0.01f, 0);
 
-                boxarea.rightTop = new Vector3((Range(j, _block) ) - vec + renges/2 + vecRight * (-i - 1), 0.01f, InGameStatus.GetSpeed());
-                boxarea.bottomRight = new Vector3((Range(j, _block) ) - vec + renges/2 + vecRight * -i, 0.01f, 0);
+                boxarea.rightTop = new Vector3((Range(j, _block) )+ vec + renges/2 + vecRight * (-i - 1), 0.01f, InGameStatus.GetSpeed());
+                boxarea.bottomRight = new Vector3((Range(j, _block) ) + vec + renges/2 + vecRight * -i, 0.01f, 0);
 
                 longNotes.SetBoxArea(boxarea);
                 longNotes.Set_SetTouchID(SetTouchIDs);
@@ -120,9 +120,9 @@ public class LongNotes : NotesBase
                 vec = Range(j, _renge) / 2.0f - (_renge[j] * 0.5f);
             }
                 num = (Range(j + 2, _block) + _renge[j + 1]) - (Range(j + 1, _block) + (float)_renge[j]);
-            vecRight = num / (float)_distanceNum[j + 1];
-            vecRight *= -1;
-            vecLeft = ((float)_block[j + 1]) * -1 / (float)_distanceNum[j + 1];
+            vecRight = ((float)_block[j + 1]) * -1 / (float)_distanceNum[j + 1];
+            //vecRight *= -1;
+            vecLeft = num / (float)_distanceNum[j + 1];
             renges = _renge[j] + 1;
 
         }
