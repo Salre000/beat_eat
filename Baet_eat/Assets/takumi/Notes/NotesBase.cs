@@ -27,7 +27,7 @@ public class NotesBase : MonoBehaviour
     protected Vector3 Vec = new Vector3(0, 0, (BaseSpeed * InGameStatus.GetSpeed()) / 50.0f);
 
     //”»’èƒ^ƒCƒv
-    protected enum JudgmentType
+    public enum JudgmentType
     {
         DC,
         Delicious,
