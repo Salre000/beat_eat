@@ -10,13 +10,13 @@ public class HeelHp : SkillBase
     private const int _HEEL_VOLUME = 500;
     public override void Execute()
     {
-
+        if (!isSkillActiveFlagList[1]) return;
         InGameStatus.HPHeel(_HEEL_VOLUME);
     }
 
     public override void Initialize()
     {
-        SkillManager.isSkillActiveFlagList[1] = false;
+        isSkillActiveFlagList[1] = false;
     }
     
 

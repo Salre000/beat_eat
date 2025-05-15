@@ -8,5 +8,5 @@ using UnityEngine.UI;
 public class MusicDataBase : ScriptableObject
 {
     // MusicData‚ð”z—ñ‚Å•Û‘¶
-    [SerializeField] public MusicData[] musicData;
+    [SerializeField] public List<MusicData> musicData;
 }

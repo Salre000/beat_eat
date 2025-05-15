@@ -36,7 +36,7 @@ public class SankouMusicSelect : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (_select < dataBase.musicData.Length)
+            if (_select < dataBase.musicData.Count)
             {
                 _select++;
                 MusicUpdateALL();

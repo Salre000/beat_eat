@@ -7,7 +7,7 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
-    public const int _CAPACITY = 20;
+    public const int _CAPACITY = 13;
     // 全ての曲カードを挿入
     [SerializeField] private List<GameObject> _musicCards = new(_CAPACITY);
     private const float _DISTANCE = 125.0f;
@@ -35,13 +35,17 @@ public class MusicManager : MonoBehaviour
     {
         return _musicCards;
     }
+
+    // 選ばれている曲を返す
     public int GetSelectMusicNumber() { return _selectMusicNumber; }
-
+    // 選ばれた曲IDのセット
     public void SetSelectMusicNumer(int selectMusicNumber) { _selectMusicNumber = selectMusicNumber; }
-
+    // 現在の難易度を返す
     public int GetDifficultyNumber() {  return _difficultyNumber; }
+    // 難易度の変更があれば合わせて変更する
     public void SetDifficultyNumber(int setDifficulty) {  _difficultyNumber = setDifficulty; }
-
+    // 難易度の変更検知
     public bool IsChangeDifficulty() { return _isChangeDifficulty; }
+    // 難易度の変更をお知らせ
     public void SetChangeDifficulty() { _isChangeDifficulty = !_isChangeDifficulty; }
 }

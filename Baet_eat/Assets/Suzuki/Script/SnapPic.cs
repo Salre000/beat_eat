@@ -1,25 +1,59 @@
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.EventSystems;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class SnapPic : MonoBehaviour
 {
     // 斜めに並べつつ中央にあるカードをピックアップ
 
-    public ScrollRect scrollRect;       // 対象のScrollRect
-    public RectTransform content;      // コンテンツ（カードの親）
-    public float snapSpeed = 10f;      // スナップ速度
-    private bool isDragging = false;   // ユーザーがドラッグ中かどうか
+    [SerializeField] private ScrollRect scrollRect;
+    [SerializeField] private RectTransform content;
+    private float snapSpeed = 30f;      // Lerpにかける時間
+    private bool isDragging = false;
+
+    // ボタンが押されたら中央に持ってくる
+    private bool _isSelected = false;
+
+    private List<Button> _buttonCards = new(MusicManager._CAPACITY);
+
+    RectTransform closest = null;
+    float minDist = float.MaxValue;
+    // 中心となる指標のY座標を取得
+    float centerY = 0;
 
     [SerializeField] RectTransform pic;
+    private void Start()
+    {
+        int index = 0;
+        foreach (GameObject gameObject in MusicManager.instance.GetMusicCards())
+        {
+            int buttonIndex = index;
+            _buttonCards.Add(gameObject.GetComponent<Button>());
+            _buttonCards[index].onClick.AddListener(() => OnButton(buttonIndex));
+            index++;
+        }
+    }
+
+
     void Update()
+    {
+        if (_isSelected)
+            SnapMuve();   
+        else
+            SnapCard();
+    }
+
+    private void SnapCard()
     {
         // ドラッグしておらず、スクロール速度が遅くなったらスナップ開始
         if (!isDragging && scrollRect.velocity.magnitude < 100f)
         {
-            RectTransform closest = null;
-            float minDist = float.MaxValue;
+            closest = null;
+            minDist = float.MaxValue;
             // 中心となる指標のY座標を取得
-            float centerY = pic.position.y;
+            centerY = pic.position.y;
             // 一番中心に近い曲を探す
             foreach (RectTransform child in content)
             {
@@ -41,13 +75,14 @@ public class SnapPic : MonoBehaviour
             }
         }
     }
+
     // ドラッグ開始
-    public void OnBeginDrag()
+    public void BegingEvent()
     {
         isDragging = true;
     }
     // ドラッグ終了
-    public void OnEndDrag()
+    public void EndEvent()
     {
         isDragging = false;
     }
@@ -61,7 +96,7 @@ public class SnapPic : MonoBehaviour
             // 距離を正規化
             float dist = Mathf.Abs(centerY - card.position.y);
             float scale = Mathf.Clamp(1.0f - dist / 50f, 0.7f, 1.0f); // 距離に応じてスケール
-            card.localScale = Vector3.Lerp(card.localScale, new Vector3(scale, scale, scale),  10f);
+            card.localScale = Vector3.Lerp(card.localScale, new Vector3(scale, scale, scale), 10f);
             UpdateCardPosition(card, centerY);
         }
     }
@@ -74,5 +109,46 @@ public class SnapPic : MonoBehaviour
         Vector2 targetPos = card.anchoredPosition;
         targetPos.x = xOffset;
         card.anchoredPosition = Vector2.Lerp(card.anchoredPosition, targetPos, 10f);
+    }
+
+    private void SnapMuve()
+    {
+        // 見つけた曲を中央にスナップさせる
+        if (closest != null)
+        {
+            float delta = centerY - closest.position.y;
+            Vector3 newPos = content.localPosition + new Vector3(0, delta, 0);
+            content.localPosition = Vector3.Lerp(content.localPosition, newPos, Time.deltaTime * snapSpeed);
+            if((content.localPosition - newPos).sqrMagnitude <= 5f&& (content.localPosition - newPos).sqrMagnitude >= 5f || isDragging) _isSelected = false;
+        }
+    }
+
+    // indexにはどの曲が押されたかの数値を持っている
+    public void OnButton(int index)
+    {
+        closest = null;
+        minDist = float.MaxValue;
+        // 中心となる指標のY座標を取得
+        centerY = pic.position.y;
+
+        int count = 0;
+        foreach (RectTransform child in content)
+        {
+            if (count != index)
+            {
+                count++; 
+                continue;
+            }
+            float dist = Mathf.Abs(centerY - child.position.y);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = child;
+            }
+            break;
+        }
+
+        _isSelected = true;
+        Debug.Log(index);
     }
 }
