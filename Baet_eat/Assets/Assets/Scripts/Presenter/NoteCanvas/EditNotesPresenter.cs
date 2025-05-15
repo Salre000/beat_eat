@@ -103,7 +103,8 @@ namespace NoteEditor.Presenter
 
             RequestForEditNote.Subscribe(note =>
             {
-                if (note.type == NoteTypes.Single)
+                //変えた
+                if (note.type == ChengeNotes.NoteTypes)
                 {
                     (EditData.Notes.ContainsKey(note.position)
                         ? RequestForRemoveNote

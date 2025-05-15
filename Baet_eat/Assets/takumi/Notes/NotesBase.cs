@@ -104,6 +104,7 @@ public class NotesBase : MonoBehaviour
         this.gameObject.SetActive(false);
 
         showTime = -1;
+
     }
 
     protected virtual double GetDestryDecision() { return -6.25 + -(int)JudgmentType.Miss; }
@@ -114,11 +115,15 @@ public class NotesBase : MonoBehaviour
     {
         int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position);
         renge = Mathf.Abs(renge);
-        if (renge >= 0) InGameStatus.SetJudgments(renge, 0);
-        else InGameStatus.SetJudgments(renge, 1);
         float rete = 1;
 
         if (renge >= (int)JudgmentType.Miss) renge = (int)JudgmentType.Miss;
+
+        renge = (int)GetJudgment(renge);
+
+        if (renge >= 0) InGameStatus.SetJudgments(renge, 0);
+        else InGameStatus.SetJudgments(renge, 1);
+
 
         switch ((JudgmentType)renge)
         {
@@ -143,6 +148,21 @@ public class NotesBase : MonoBehaviour
 
         InGameStatus.AddScore(rete);
     }
+
+    protected JudgmentType GetJudgment(float renge) 
+    {
+
+        if(renge<1.5f)return JudgmentType.DC;
+        else if(renge < 1.5f+(0.875f*1)) return JudgmentType.Delicious;
+        else if(renge < 1.5f + (0.875f * 2)) return JudgmentType.Yammy;
+        else if(renge < 1.5f + (0.875f * 3)) return JudgmentType.Good;
+        else if(renge < 1.5f + (0.875f * 4)) return JudgmentType.Miss;
+        return JudgmentType.Miss;
+
+    }
+
+
+
 
     public virtual bool CheckHitlane(int index)
     {

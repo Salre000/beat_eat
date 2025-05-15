@@ -52,11 +52,31 @@ namespace NoteEditor.Notes
                 .Select(_ => EditState.NoteType.Value)
                 .Where(_ => NoteCanvas.ClosestNotePosition.Value.Equals(note.position));
 
-            disposable.Add(mouseDownObservable.Where(editType => editType == NoteTypes.Single)
+            //変えた
+            disposable.Add(mouseDownObservable.Where(editType => 
+            {
+                return ChengeNotes.NoteTypes == NoteTypes.Single;
+                
+                })
                 .Where(editType => editType == noteType.Value)
                 .Subscribe(_ => editPresenter.RequestForRemoveNote.OnNext(note)));
 
-            disposable.Add(mouseDownObservable.Where(editType => editType == NoteTypes.Long)
+            disposable.Add(mouseDownObservable.Where(editType =>
+            {
+                return ChengeNotes.NoteTypes == NoteTypes.Skill;
+
+            })
+                .Where(editType => editType == noteType.Value)
+                .Subscribe(_ => editPresenter.RequestForRemoveNote.OnNext(note)));
+            disposable.Add(mouseDownObservable.Where(editType =>
+            {
+                return ChengeNotes.NoteTypes == NoteTypes.Flick;
+
+            })
+                .Where(editType => editType == noteType.Value)
+                .Subscribe(_ => editPresenter.RequestForRemoveNote.OnNext(note)));
+
+            disposable.Add(mouseDownObservable.Where(editType => ChengeNotes.NoteTypes == NoteTypes.Long)
                 .Where(editType => editType == noteType.Value)
                 .Subscribe(_ =>
                 {

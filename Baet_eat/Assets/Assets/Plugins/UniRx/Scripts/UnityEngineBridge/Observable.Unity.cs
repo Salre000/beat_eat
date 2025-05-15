@@ -768,6 +768,7 @@ namespace UniRx
             {
                 if (currentFrame++ == dueTimeFrameCount)
                 {
+                    //変えた
                     observer.OnNext(1);
                     observer.OnCompleted();
                     break;

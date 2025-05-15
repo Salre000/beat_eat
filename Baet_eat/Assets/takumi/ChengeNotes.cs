@@ -20,6 +20,7 @@ public class ChengeNotes : MonoBehaviour
         if (Input.GetKey(KeyCode.F)) NoteTypes = NoteTypes.Flick;
         if (Input.GetKey(KeyCode.S)) NoteTypes = NoteTypes.Skill;
         if (Input.GetKey(KeyCode.N)) NoteTypes = NoteTypes.Single;
+        if (Input.GetKey(KeyCode.L)) NoteTypes = NoteTypes.Long;
 
         text.text = NoteTypes.ToString();
 

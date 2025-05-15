@@ -48,6 +48,15 @@ public class InGameStatus
     {
         HP -= damege;
     }
+    public static void HPHeel(int heel) 
+    {
+        if (HP + heel >= 2000)
+        {
+            HP = 2000;
+            return;
+        }
+        HP += heel;
+    }
 
     public static int GetSpeed() { return speed; }
 
