@@ -59,17 +59,17 @@ namespace NoteEditor.Model
 
             foreach (var note in editData.notes)
             {
-                if (note.type == 1)
+                if (note.type != 2)
                 {
-                    notePresenter.AddNote(ToNoteObject(note));
+                    notePresenter.AddNote(ToNoteObject(note, note.renge));
                     continue;
                 }
 
                 var longNoteObjects = new[] { note }.Concat(note.notes)
                     .Select(note_ =>
                     {
-                        notePresenter.AddNote(ToNoteObject(note_));
-                        return EditData.Notes[ToNoteObject(note_).position];
+                        notePresenter.AddNote(ToNoteObject(note_, note_.renge));
+                        return EditData.Notes[ToNoteObject(note_, note_.renge).position];
                     })
                     .ToList();
 
@@ -95,11 +95,11 @@ namespace NoteEditor.Model
             return note;
         }
 
-        public static Note ToNoteObject(MusicDTO.Note musicNote)
+        public static Note ToNoteObject(MusicDTO.Note musicNote,int renge)
         {
             return new Note(
                 new NotePosition(musicNote.LPB, musicNote.num, musicNote.block),
-                (NoteTypes)musicNote.type);
+                (NoteTypes)musicNote.type, renge);
         }
     }
 }

@@ -139,6 +139,8 @@ namespace NoteEditor.Notes
 
         public void SetState(Note note)
         {
+
+            AddRenge = note.AddRenge;
             if (note.type != NoteTypes.Long)
             {
                 RemoveLink();

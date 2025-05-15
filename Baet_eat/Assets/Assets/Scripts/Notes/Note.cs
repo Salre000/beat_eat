@@ -6,6 +6,7 @@
         public NoteTypes type = NoteTypes.Single;
         public NotePosition next = NotePosition.None;
         public NotePosition prev = NotePosition.None;
+        public int AddRenge = -1;
 
         public Note(NotePosition position, NoteTypes type, NotePosition next, NotePosition prev)
         {
@@ -15,11 +16,25 @@
             this.prev = prev;
         }
 
+        public Note(NotePosition position, NoteTypes type,int addNote)
+        {
+            this.position = position;
+            this.type = type;
+            this.AddRenge = addNote;
+
+
+        }
+
         public Note(NotePosition position, NoteTypes type)
         {
             this.position = position;
             this.type = type;
+            
+
+
         }
+
+
 
         public Note(NotePosition position)
         {

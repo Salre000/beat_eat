@@ -150,7 +150,7 @@ namespace NoteEditor.Presenter
 
             var noteObject = new NoteObject();
             noteObject.SetState(note);
-            noteObject.Init(note.type,NotesSize.m_Size);
+            noteObject.Init(note.type,note.AddRenge==-1?NotesSize.m_Size:note.AddRenge);
 
             NotesSize.m_Size = 0;
 
