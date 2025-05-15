@@ -9,8 +9,14 @@ public static class SkillManager
     /// 0 = クリティカル判定3割
     /// 1 = 体力250以下で500回復
     /// </summary>
-    public static List<bool> SkillList = new(_SKILLLIST_CAPACITY);
+    public static List<bool> isSkillActiveFlagList = new(_SKILLLIST_CAPACITY);
 
     public static readonly CriticalJudgmentExpands criticalJudgmentExpands = new CriticalJudgmentExpands();
     public static readonly HeelHp heelHp = new HeelHp();
+
+    public static void Initialize()
+    {
+        criticalJudgmentExpands.Initialize();
+        heelHp.Initialize();
+    }
 }

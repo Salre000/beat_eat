@@ -10,7 +10,7 @@ public class CriticalJudgmentExpands : SkillBase
 
     public override void Initialize()
     {
-        SkillManager.SkillList[0] = false;
+        SkillManager.isSkillActiveFlagList[0] = false;
     }
 
     public JudgmentType ExecuteSetJudgment(float renge)
