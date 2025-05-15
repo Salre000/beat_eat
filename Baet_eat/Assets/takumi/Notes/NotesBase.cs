@@ -119,7 +119,7 @@ public class NotesBase : MonoBehaviour
 
         if (renge >= (int)JudgmentType.Miss) renge = (int)JudgmentType.Miss;
 
-        renge = (int)GetJudgment(renge);
+        renge = (int)SkillManager.criticalJudgmentExpands.ExecuteSetJudgment(renge);
 
         if (renge >= 0) InGameStatus.SetJudgments(renge, 0);
         else InGameStatus.SetJudgments(renge, 1);
@@ -147,18 +147,6 @@ public class NotesBase : MonoBehaviour
        
 
         InGameStatus.AddScore(rete);
-    }
-
-    protected JudgmentType GetJudgment(float renge) 
-    {
-
-        if(renge<1.5f)return JudgmentType.DC;
-        else if(renge < 1.5f+(0.875f*1)) return JudgmentType.Delicious;
-        else if(renge < 1.5f + (0.875f * 2)) return JudgmentType.Yammy;
-        else if(renge < 1.5f + (0.875f * 3)) return JudgmentType.Good;
-        else if(renge < 1.5f + (0.875f * 4)) return JudgmentType.Miss;
-        return JudgmentType.Miss;
-
     }
 
 

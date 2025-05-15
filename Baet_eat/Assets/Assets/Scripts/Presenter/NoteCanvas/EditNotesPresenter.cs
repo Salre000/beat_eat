@@ -47,7 +47,8 @@ namespace NoteEditor.Presenter
                         RequestForEditNote.OnNext(
                            new Note(
                                NoteCanvas.ClosestNotePosition.Value,
-                               EditState.NoteType.Value,
+                               /*EditState.NoteTypee.Value,*/
+                               ChengeNotes.NoteTypes,
                                NotePosition.None,
                                EditState.LongNoteTailPosition.Value));
                     }

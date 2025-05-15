@@ -55,24 +55,25 @@ namespace NoteEditor.Notes
             //変えた
             disposable.Add(mouseDownObservable.Where(editType => 
             {
+                editPresenter.RequestForRemoveNote.OnNext(note);
                 return ChengeNotes.NoteTypes == NoteTypes.Single;
+                })
+                .Where(editType => editType == noteType.Value)
+                .Subscribe(_ => editPresenter.RequestForRemoveNote.OnNext(note)));
+
+            disposable.Add(mouseDownObservable.Where(editType => 
+            {
+                return ChengeNotes.NoteTypes == NoteTypes.Skill;
                 
                 })
                 .Where(editType => editType == noteType.Value)
                 .Subscribe(_ => editPresenter.RequestForRemoveNote.OnNext(note)));
 
-            disposable.Add(mouseDownObservable.Where(editType =>
-            {
-                return ChengeNotes.NoteTypes == NoteTypes.Skill;
-
-            })
-                .Where(editType => editType == noteType.Value)
-                .Subscribe(_ => editPresenter.RequestForRemoveNote.OnNext(note)));
-            disposable.Add(mouseDownObservable.Where(editType =>
+            disposable.Add(mouseDownObservable.Where(editType => 
             {
                 return ChengeNotes.NoteTypes == NoteTypes.Flick;
-
-            })
+                
+                })
                 .Where(editType => editType == noteType.Value)
                 .Subscribe(_ => editPresenter.RequestForRemoveNote.OnNext(note)));
 

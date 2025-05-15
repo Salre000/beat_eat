@@ -17,6 +17,9 @@ public class InGameStatus
 
     private static int[][] judgments = new int[5][];
 
+    private static int combo = 0;
+    private static int MaxCombo = 0;
+
     public InGameStatus()
     {
         for (int i = 0; i < judgments.Length; i++)
@@ -44,9 +47,19 @@ public class InGameStatus
         upScore = upscore;
     }
 
+    static bool HeelFlag = false;  
     public static void HPDamege()
     {
         HP -= damege;
+
+        if (HP <= 150&&!HeelFlag) 
+        {
+            HeelFlag = true;
+            //‰ñ•œ‚·‚é
+            SkillManager.heelHp.Execute();
+
+        }
+
     }
     public static void HPHeel(int heel) 
     {
@@ -60,9 +73,21 @@ public class InGameStatus
 
     public static int GetSpeed() { return speed; }
 
+    private static bool heelFlag = false;
     //”»’è‚ÌŒvŽZ‚ð‚·‚éŠÖ”
     public static void SetJudgments(int index, int index2)
     {
+
+        //ƒ„ƒ~[ˆÈã‚Ì”»’è‚Ì‚Æ‚«‚É
+        if (index < 3) 
+        {
+            combo++;
+            if (combo > MaxCombo) MaxCombo = combo;
+        }
+        else 
+        {
+            combo = 0;
+        }
         if (index > judgments.Length)
         {
             JudgmentImageUtility.SetNowJudgmentObject(4);
