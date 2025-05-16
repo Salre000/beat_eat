@@ -1,8 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.EventSystems;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class SnapPic : MonoBehaviour
 {
@@ -13,47 +11,38 @@ public class SnapPic : MonoBehaviour
     private float snapSpeed = 30f;      // Lerpにかける時間
     private bool isDragging = false;
 
-    // ボタンが押されたら中央に持ってくる
-    private bool _isSelected = false;
-
-    private List<Button> _buttonCards = new(MusicManager._CAPACITY);
-
-    RectTransform closest = null;
     float minDist = float.MaxValue;
     // 中心となる指標のY座標を取得
     float centerY = 0;
 
-    [SerializeField] RectTransform pic;
+    [SerializeField] RectTransform targetPic;
+
     private void Start()
     {
-        int index = 0;
-        foreach (GameObject gameObject in MusicManager.instance.GetMusicCards())
-        {
-            int buttonIndex = index;
-            _buttonCards.Add(gameObject.GetComponent<Button>());
-            _buttonCards[index].onClick.AddListener(() => OnButton(buttonIndex));
-            index++;
-        }
+        SelectPicSnap.MusicSelectCard(targetPic,content);
     }
 
 
     void Update()
     {
-        if (_isSelected)
-            SnapMuve();   
-        else
-            SnapCard();
+        SnapCard();
     }
 
     private void SnapCard()
     {
+        if (MusicManager.instance.IsSelected())
+        {
+            SelectPicSnap.MusicPicMuve(centerY, content, snapSpeed, isDragging);
+            return;
+        }
         // ドラッグしておらず、スクロール速度が遅くなったらスナップ開始
         if (!isDragging && scrollRect.velocity.magnitude < 100f)
         {
-            closest = null;
+
+        MusicManager.instance.SetClosest(null);
             minDist = float.MaxValue;
             // 中心となる指標のY座標を取得
-            centerY = pic.position.y;
+            centerY = targetPic.position.y;
             // 一番中心に近い曲を探す
             foreach (RectTransform child in content)
             {
@@ -61,17 +50,13 @@ public class SnapPic : MonoBehaviour
                 if (dist < minDist)
                 {
                     minDist = dist;
-                    closest = child;
+                MusicManager.instance.SetClosest(child);
                 }
             }
             // 見つけた曲を中央にスナップさせる
-            if (closest != null)
+            if (MusicManager.instance.GetClosest() != null)
             {
-                // 中心との差分を求めてその分だけ移動
-                float delta = centerY - closest.position.y;
-                // Content全体の位置を調整してスナップ
-                Vector2 newPos = content.localPosition + new Vector3(0, delta, 0);
-                content.localPosition = Vector3.Lerp(content.localPosition, newPos, snapSpeed);
+                SelectPicSnap.MusicPicMuve(centerY, content, snapSpeed, isDragging);
             }
         }
     }
@@ -90,7 +75,7 @@ public class SnapPic : MonoBehaviour
     // 中央拡大
     void LateUpdate()
     {
-        float centerY = pic.position.y;
+        float centerY = targetPic.position.y;
         foreach (RectTransform card in content)
         {
             // 距離を正規化
@@ -111,44 +96,4 @@ public class SnapPic : MonoBehaviour
         card.anchoredPosition = Vector2.Lerp(card.anchoredPosition, targetPos, 10f);
     }
 
-    private void SnapMuve()
-    {
-        // 見つけた曲を中央にスナップさせる
-        if (closest != null)
-        {
-            float delta = centerY - closest.position.y;
-            Vector3 newPos = content.localPosition + new Vector3(0, delta, 0);
-            content.localPosition = Vector3.Lerp(content.localPosition, newPos, Time.deltaTime * snapSpeed);
-            if((content.localPosition - newPos).sqrMagnitude <= 5f&& (content.localPosition - newPos).sqrMagnitude >= 5f || isDragging) _isSelected = false;
-        }
-    }
-
-    // indexにはどの曲が押されたかの数値を持っている
-    public void OnButton(int index)
-    {
-        closest = null;
-        minDist = float.MaxValue;
-        // 中心となる指標のY座標を取得
-        centerY = pic.position.y;
-
-        int count = 0;
-        foreach (RectTransform child in content)
-        {
-            if (count != index)
-            {
-                count++; 
-                continue;
-            }
-            float dist = Mathf.Abs(centerY - child.position.y);
-            if (dist < minDist)
-            {
-                minDist = dist;
-                closest = child;
-            }
-            break;
-        }
-
-        _isSelected = true;
-        Debug.Log(index);
-    }
 }

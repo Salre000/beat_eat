@@ -17,6 +17,9 @@ public class MusicManager : MonoBehaviour
     private int _difficultyNumber = 0;
     // 難易度の変更を感知
     private bool _isChangeDifficulty = false;
+    // 曲をタップで選択したかを判定
+    private bool _isSelected = false;
+    private RectTransform _closest = null;
 
     private void Awake()
     {
@@ -48,4 +51,12 @@ public class MusicManager : MonoBehaviour
     public bool IsChangeDifficulty() { return _isChangeDifficulty; }
     // 難易度の変更をお知らせ
     public void SetChangeDifficulty() { _isChangeDifficulty = !_isChangeDifficulty; }
+    // タップで検知
+    public bool IsSelected() { return _isSelected; }
+    // タップしたかをもらう
+    public void SetSelected(bool isSelected) {  _isSelected = isSelected; }
+    // 押したボタンを動かすために返す
+    public RectTransform GetClosest() { return _closest; }
+    // 対象を取得
+    public void SetClosest(RectTransform closest) { _closest = closest; }
 }

@@ -56,7 +56,7 @@ public class InGameStatus
         {
             HeelFlag = true;
             //‰ñ•œ‚·‚é
-            SkillManager.heelHp.Execute();
+            SkillManager.instance.heelHp.Execute();
 
         }
 
