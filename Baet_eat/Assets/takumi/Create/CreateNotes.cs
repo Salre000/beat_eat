@@ -138,7 +138,7 @@ public class CreateNotes : MonoBehaviour
 
                 //Line.transform.parent = notes.transform;
 
-
+                
                 //float x = (Mathf.Max((9 - inputJson.notes[i].block), (9 - inputJson.notes[preID].block)) - Mathf.Min((9 - inputJson.notes[i].block), (9 - inputJson.notes[preID].block)))+1- inputJson.notes[i].renge;
 
                 //Line.transform.localScale = new Vector3(x* lineRenge, 1, 1);
@@ -152,6 +152,7 @@ public class CreateNotes : MonoBehaviour
             {
                 if (preNumList[j] == inputJson.notes[i].num)
                 {
+
 
 
 
