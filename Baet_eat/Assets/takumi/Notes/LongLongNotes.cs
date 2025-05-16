@@ -12,9 +12,22 @@ public class LongLongNotes : NotesBase
     private System.Action<int> SetTouchIDS;
     public void Set_SetTouchID(System.Action<int> action) { SetTouchIDS = action; }
 
+    bool DamegeFlag = false;
     //必要
     public void FixedUpdate()
     {
+
+        if (this.transform.position.z < GetDestryDecision())
+        {
+            if (!DamegeFlag)
+            {
+                DamegeFlag = true;
+                InGameStatus.HPDamege();
+
+            }           
+        }
+
+
         int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position);
         renge = Mathf.Abs(renge);
 
@@ -31,11 +44,11 @@ public class LongLongNotes : NotesBase
         float z = transform.position.z;
 
         //一時的に座標をゼロに合わせる
-        transform.position -= new Vector3(0,0, z);   
-        Vector2 leftpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(left, 0,0));
-        Vector2 rightpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(right, 0,0));
+        transform.position -= new Vector3(0, 0, z);
+        Vector2 leftpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(left, 0, 0));
+        Vector2 rightpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(right, 0, 0));
         this.transform.position += new Vector3(0, 0, z);
-        
+
         for (int i = 0; i < hands.Count; i++)
         {
 
