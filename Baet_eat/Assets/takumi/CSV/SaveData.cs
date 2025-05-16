@@ -58,7 +58,7 @@ public static class SaveData
         //¡‚Ìline‚Ì”Ô†
         int LineCount = 0;
 
-        int musicMax = dataBase.musicData.Length;
+        int musicMax = dataBase.musicData.Count;
 
         StringBuilder sb = new StringBuilder();
 
