@@ -22,6 +22,9 @@ public class InGameStatus
 
     public InGameStatus()
     {
+        HP = 1000;
+        score = 0;
+
         for (int i = 0; i < judgments.Length; i++)
         {
             judgments[i] = new int[2];
@@ -51,6 +54,7 @@ public class InGameStatus
     public static void HPDamege()
     {
         HP -= damege;
+        combo = 0;
 
         if (HP <= 150&&!HeelFlag) 
         {
@@ -100,5 +104,7 @@ public class InGameStatus
     {
         return judgments[index][index2];
     }
+
+    public static int GetCombo() { return combo; }
 
 }

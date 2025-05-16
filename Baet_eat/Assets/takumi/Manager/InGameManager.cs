@@ -73,7 +73,7 @@ public class InGameManager : MonoBehaviour
         _G.text = "G" + (InGameStatus.GetJudgments(3, 0) + InGameStatus.GetJudgments(3, 1));
         _M.text = "M" + (InGameStatus.GetJudgments(4, 0) + InGameStatus.GetJudgments(4, 1));
         _S.text = "Score" + InGameStatus.GetScore();
-        _HP.text = "HP :" + InGameStatus.GetHP();
+        _HP.text = "combo :" + InGameStatus.GetCombo();
     }
 
 

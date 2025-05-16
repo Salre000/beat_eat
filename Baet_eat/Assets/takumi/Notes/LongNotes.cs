@@ -183,13 +183,16 @@ public class LongNotes : NotesBase
 
         for (int i = 0; i < _renge[_renge.Count - 1]; i++)
         {
-            list[i] = (int)Allrange(_block) + i;
+            list.Add((int)Allrange(_block) + i);
 
 
         }
         JudgmentType judgmentType = (JudgmentType)(int)LineUtility.RangeToDecision(endNotes.transform.position);
 
 
+        Debug.Log(list.Exists(number => number == endAreaID));
+        Debug.Log(judgmentType <= JudgmentType.Miss);
+        Debug.Log((int)judgmentType >= -(int)JudgmentType.Miss);
 
         bool flag = list.Exists(number => number == endAreaID) && judgmentType <= JudgmentType.Miss && (int)judgmentType >= -(int)JudgmentType.Miss;
 
