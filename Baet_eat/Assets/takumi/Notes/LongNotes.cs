@@ -49,8 +49,9 @@ public class LongNotes : NotesBase
 
         float posx = (0.5f * (renge + 1))-(0.5f * (_renge[_renge.Count - 1] + 1));
 
-        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) * -1- posx, 0, Allrange(_distanceNum) * InGameStatus.GetSpeed());
+        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) * -1- posx, 0, (Allrange(_distanceNum)-1) * (InGameStatus.GetSpeed()*2.8f));
         float sizeX = Mathf.Min(renge, _renge[_renge.Count - 1])- Mathf.Max(renge, _renge[_renge.Count - 1]);
+        Debug.Log(Allrange(_distanceNum)+"FFF");
 
         if (sizeX < 0) sizeX = 1.0f / 2*(float)Mathf.Abs(sizeX);
         else sizeX += 1.0f;

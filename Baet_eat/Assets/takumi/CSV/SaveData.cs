@@ -70,7 +70,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append("DDD");
+                sb.Append("100"+i);
                 sb.Append(Spece);
 
             }
@@ -87,7 +87,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append("DNot");
+                sb.Append("100" + i);
                 sb.Append(Spece);
 
             }
@@ -103,7 +103,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append("DDDO");
+                sb.Append("100" + i);
                 sb.Append(Spece);
 
             }
@@ -120,7 +120,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append("DNotO");
+                sb.Append("100" + i);
                 sb.Append(Spece);
 
             }
@@ -137,7 +137,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append("DNotO");
+                sb.Append("-1");
                 sb.Append(Spece);
 
             }
@@ -153,7 +153,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append("DNotO");
+                sb.Append("-1");
                 sb.Append(Spece);
 
             }
@@ -170,7 +170,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append("DNotO");
+                sb.Append("-1");
                 sb.Append(Spece);
 
             }
@@ -181,12 +181,12 @@ public static class SaveData
 
         }
         //デザート無しの難易度の曲のクリア状況を記録
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append("DNotO");
+                sb.Append("-1");
                 sb.Append(Spece);
 
             }

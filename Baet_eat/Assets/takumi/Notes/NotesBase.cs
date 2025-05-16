@@ -8,7 +8,7 @@ public class NotesBase : MonoBehaviour
     public void AddLaneIndex(int index) { laneIndex.Add(index); }
     public void SetLaneIndex(List<int> lane) { laneIndex = lane; }
 
-    private const float BaseSpeed = 20;//20
+    protected const float BaseSpeed = 20;//20
 
     protected int touchID = -1;
 
