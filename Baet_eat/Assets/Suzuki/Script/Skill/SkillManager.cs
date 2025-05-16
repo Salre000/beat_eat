@@ -15,7 +15,7 @@ public class SkillManager : MonoBehaviour
     /// (0 = クリティカル判定3割) :
     /// (1 = 体力250以下で500回復) :
     /// </summary>
-    public static List<bool> isSkillActiveFlagList = new(SKILLLIST_CAPACITY);
+    public static List<bool> isSkillActiveFlags = new(SKILLLIST_CAPACITY);
     [SerializeField, Header("スキルとなるもの全て")]
     private List<GameObject> _skillCards = new(SKILLLIST_CAPACITY);
 
@@ -30,7 +30,7 @@ public class SkillManager : MonoBehaviour
     private void Initialize()
     {
         for (int i = 0; i < SKILLLIST_CAPACITY; i++)
-            isSkillActiveFlagList.Add(false);
+            isSkillActiveFlags.Add(false);
         criticalJudgmentExpands.Initialize();
         heelHp.Initialize();
     }
@@ -46,5 +46,8 @@ public class SkillManager : MonoBehaviour
     public void SetClosest(RectTransform closest) { _closest = closest; }
     // 選ばれているスキルを返す
     public int GetSelectedSkillID() { return _selectedSkillID; }
+    // どのスキルが選らばれているかセット
     public void SetSelectedSkillID(int selectSkillID) { _selectedSkillID = selectSkillID; }
+    // スキルのアクティブと非アクティブをセットする
+    public void SetIsSkillActiveFlags(int i,bool flag=false) { isSkillActiveFlags[i] = flag; }
 }
