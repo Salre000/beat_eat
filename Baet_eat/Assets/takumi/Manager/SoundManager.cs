@@ -41,6 +41,7 @@ public class SoundManager : MonoBehaviour
         if (afterTime <= 1) return;
 
         Debug.Log("ƒV[ƒ“ˆÚs");
+        GameSceneManager.LoadScene(GameSceneManager.resultScene);
 
 
 
