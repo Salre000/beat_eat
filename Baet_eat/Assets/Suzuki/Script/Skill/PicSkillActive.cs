@@ -39,11 +39,13 @@ public class PicSkillActive : MonoBehaviour
             {
                 // 選ばれていないスキルなら非アクティブ
                 SkillManager.instance.SetIsSkillActiveFlags(i);
+                _isSkillActives[i] = false;
             }
             else
             {
                 // 選ばれているスキルをアクティブ
                 SkillManager.instance.SetIsSkillActiveFlags(i,true);
+                _isSkillActives[i] = true;
             }
         }
        

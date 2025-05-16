@@ -73,7 +73,7 @@ public static class SelectPicSnap
         float delta = centerY - closest.position.y;
         // Content全体の位置を調整してスナップ
         Vector3 newPos = content.localPosition + new Vector3(0, delta, 0);
-        content.localPosition = Vector3.Lerp(content.localPosition, newPos, Time.deltaTime * snapSpeed);
+        content.localPosition = Vector3.Lerp(content.localPosition, newPos, /*Time.deltaTime * */snapSpeed);
         if (!SkillManager.instance.IsSelected()) return;
         float value = (content.localPosition - newPos).sqrMagnitude;
         if (value <= 5f && value >= 5f || isDragging)

@@ -18,7 +18,7 @@ public class SelectPicMusic : MonoBehaviour
     private void Start()
     {
         _musicCard = MusicManager.instance.GetMusicCards();
-        _skillCard =SkillManager.instance.GetSkillCards();
+        _skillCard = SkillManager.instance.GetSkillCards();
     }
 
     private void Update()
@@ -30,7 +30,7 @@ public class SelectPicMusic : MonoBehaviour
     private void PicUpMusicCard()
     {
         int selectNumber = 0;
-        // 選ばれているものを特定
+        // どの曲か選ばれているものを特定
         foreach (GameObject musicCard in _musicCard)
         {
             if ((musicCard.transform.position - _musicSelectBox.position).sqrMagnitude < 10)
@@ -43,7 +43,7 @@ public class SelectPicMusic : MonoBehaviour
     private void PicUpSkillCard()
     {
         int selectNumber = 0;
-        // 選ばれているものを特定
+        // どのスキルか選ばれているものを特定
         foreach (GameObject skillCard in _skillCard)
         {
             if ((skillCard.transform.position - _skillSelectBox.position).sqrMagnitude < 10)
