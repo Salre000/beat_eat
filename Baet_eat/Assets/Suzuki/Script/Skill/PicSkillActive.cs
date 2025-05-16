@@ -46,6 +46,7 @@ public class PicSkillActive : MonoBehaviour
                 SkillManager.instance.SetIsSkillActiveFlags(i,true);
             }
         }
+       
     }
 
 

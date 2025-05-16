@@ -24,7 +24,11 @@ public class SkillManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this);
+
         Initialize();
     }
     private void Initialize()
@@ -49,5 +53,5 @@ public class SkillManager : MonoBehaviour
     // どのスキルが選らばれているかセット
     public void SetSelectedSkillID(int selectSkillID) { _selectedSkillID = selectSkillID; }
     // スキルのアクティブと非アクティブをセットする
-    public void SetIsSkillActiveFlags(int i,bool flag=false) { isSkillActiveFlags[i] = flag; }
+    public void SetIsSkillActiveFlags(int i,bool flag=false) { isSkillActiveFlags[i] = flag;}
 }
