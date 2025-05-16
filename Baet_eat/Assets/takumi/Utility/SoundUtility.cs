@@ -12,4 +12,6 @@ public static class SoundUtility
 
     public static float GetNowTime() { return soundManager.GetNowTime(); }
 
+    public static void SetObject(GameObject aa) { soundManager._sound = aa; }
+
 }

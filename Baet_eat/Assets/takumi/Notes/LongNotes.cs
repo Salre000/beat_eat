@@ -204,7 +204,7 @@ public class LongNotes : NotesBase
 
     protected override double GetDestryDecision()
     {
-        return base.GetDestryDecision() - Allrange(_distanceNum);
+        return base.GetDestryDecision() - Allrange(_distanceNum)*2.8;
     }
 
     private void SetTouchIDs(int ID)

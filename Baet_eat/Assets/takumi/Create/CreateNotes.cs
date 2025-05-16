@@ -59,8 +59,12 @@ public class CreateNotes : MonoBehaviour
     {
         GameObject NotesParent = new GameObject(SongName);
 
+        NotesParent.AddComponent<NotesMove>();
+
         string inputString = Resources.Load<TextAsset>(SongName).ToString();
         Data inputJson = JsonUtility.FromJson<Data>(inputString);
+        SoundUtility.SetObject(NotesParent);
+
 
         noteNum = inputJson.notes.Length;
 
@@ -78,7 +82,7 @@ public class CreateNotes : MonoBehaviour
             //éûä‘Å@ kankaku * inputJson.notes[i].num
 
 
-            notes.transform.position = new Vector3((inputJson.notes[i].block * -1) + 4.5f - (float)inputJson.notes[i].renge / 2.0f, 0.03f, StartPosition);
+            notes.transform.position = new Vector3((inputJson.notes[i].block * -1) + 4.5f - (float)inputJson.notes[i].renge / 2.0f, 0.03f, kankaku * inputJson.notes[i].num*InGameStatus.GetSpeed()*20);
             //êeÇ…ìZÇﬂÇÈ
             notes.transform.parent = NotesParent.transform;
 
@@ -125,7 +129,7 @@ public class CreateNotes : MonoBehaviour
             if (inputJson.notes[i].renge != 0)
                 notes.transform.localScale = new Vector3(0.1f * inputJson.notes[i].renge + 0.1f, 1, 0.075f);
 
-            notes.SetActive(false);
+            //notes.SetActive(false);
 
 
             if(preNum== inputJson.notes[i].num) 

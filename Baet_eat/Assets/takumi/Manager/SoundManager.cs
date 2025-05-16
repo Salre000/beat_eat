@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -13,7 +14,7 @@ public class SoundManager : MonoBehaviour
 
     AudioSource _soundSource;
 
-
+    [SerializeField] public GameObject _sound;
     public void Awake()
     {
         SoundUtility.soundManager = this;
@@ -25,6 +26,7 @@ public class SoundManager : MonoBehaviour
 
         _soundSource.clip = mainBGM;
         _soundSource.time = 180;//èIÇÌÇËÇ©ÇØÇ™195
+        _sound.transform.position+=new Vector3(0,0, -180*20);
         _soundSource.Play();
     }
 

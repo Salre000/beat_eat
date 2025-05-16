@@ -18,7 +18,7 @@ public class NotesManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        ShowNotes();
+        //ShowNotes();
 
         List<HandManager.Hands> hands = HandUtility.GetHands();
 
