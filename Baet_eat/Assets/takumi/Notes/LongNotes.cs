@@ -49,7 +49,7 @@ public class LongNotes : NotesBase
 
         float posx = (0.5f * (renge + 1))-(0.5f * (_renge[_renge.Count - 1] + 1));
 
-        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) * -1- posx, 0, (Allrange(_distanceNum)-1) * (InGameStatus.GetSpeed()*2.8f));
+        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) * -1- posx, 0, (Allrange(_distanceNum)) * (InGameStatus.GetSpeed()*20*0.125f));
         float sizeX = Mathf.Min(renge, _renge[_renge.Count - 1])- Mathf.Max(renge, _renge[_renge.Count - 1]);
         Debug.Log(Allrange(_distanceNum)+"FFF");
 
@@ -77,15 +77,15 @@ public class LongNotes : NotesBase
 
 
                 longLongNotes.transform.parent = transform;
-                longLongNotes.transform.position = this.transform.position + new Vector3(0, 0, (i * InGameStatus.GetSpeed()) + (Range(j, _distanceNum) * InGameStatus.GetSpeed()));
+                longLongNotes.transform.position = this.transform.position + new Vector3(0, 0, (i * InGameStatus.GetSpeed() * 20 * 0.125f) + (Range(j, _distanceNum) * InGameStatus.GetSpeed() * 20 * 0.125f));
 
 
                 BoxArea boxarea = new BoxArea();
                 //ÉÅÉbÉVÉÖÇÃç¿ïWÇê›íË
-                boxarea.leftTop = new Vector3((Range(j, _block) * -1 - renges/2) +vec + vecLeft * (-i - 1), 0.01f, InGameStatus.GetSpeed());
+                boxarea.leftTop = new Vector3((Range(j, _block) * -1 - renges/2) +vec + vecLeft * (-i - 1), 0.01f, InGameStatus.GetSpeed()*20 * 0.125f);
                 boxarea.bottomLeft = new Vector3((Range(j, _block) * -1 - renges / 2) + vec + vecLeft * -i, 0.01f, 0);
 
-                boxarea.rightTop = new Vector3((Range(j, _block) * -1) + vec + renges/2 + vecRight * (-i - 1), 0.01f, InGameStatus.GetSpeed());
+                boxarea.rightTop = new Vector3((Range(j, _block) * -1) + vec + renges/2 + vecRight * (-i - 1), 0.01f, InGameStatus.GetSpeed() * 20 * 0.125f);
                 boxarea.bottomRight = new Vector3((Range(j, _block) *-1) + vec + renges/2 + vecRight * -i, 0.01f, 0);
 
                 longNotes.SetBoxArea(boxarea);
