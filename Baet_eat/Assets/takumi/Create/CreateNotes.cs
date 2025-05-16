@@ -158,8 +158,6 @@ public class CreateNotes : MonoBehaviour
 
 
 
-
-
                 }
 
             }
