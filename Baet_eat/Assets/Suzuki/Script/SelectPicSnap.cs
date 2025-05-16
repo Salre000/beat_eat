@@ -118,7 +118,6 @@ public static class SelectPicSnap
             }
             break;
         }
-        Debug.Log(index);
         SkillManager.instance.SetSelected(true);
     }
     #endregion

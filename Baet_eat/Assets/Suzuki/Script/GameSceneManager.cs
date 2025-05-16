@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public static class GameSceneManager
 {
     // シーンの名前
-    public const string mainSceneName = "MainGame";
-    public const string clearSceneName = "ClearScene";
-    public const string resultSceneName = "ResultScene";
+    public const string mainScene = "MainGame";
+    public const string selectScene = "SelectScene";
+    public const string resultScene = "ResultScene";
 
     // 普通のシーン遷移
     public static void LoadScene(string sceneName)
