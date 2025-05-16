@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class SkillPic : MonoBehaviour
 {
@@ -11,17 +12,32 @@ public class SkillPic : MonoBehaviour
     [SerializeField] private RectTransform content;
     private float snapSpeed = 10f;      // Lerpにかける時間
     private bool isDragging = false;
+    float minDist = float.MaxValue;
+    // 中心となる指標のY座標を取得
+    float centerY = 0;
+    [SerializeField] RectTransform targetPic;
+    private List<GameObject> _skillCards = new(SkillManager.SKILLLIST_CAPACITY);
 
-    [SerializeField] RectTransform pic;
+    private void Start()
+    {
+        _skillCards = SkillManager.instance.GetSkillCards();
+        SelectPicSnap.SkillSelectCard(targetPic, content);
+    }
     void Update()
     {
+        if (SkillManager.instance.IsSelected())
+        {
+            SelectPicSnap.SkillPicMuve(centerY, content, snapSpeed, isDragging);
+            return;
+        }
         // ドラッグしておらず、スクロール速度が遅くなったらスナップ開始
         if (!isDragging && scrollRect.velocity.magnitude < 10f)
         {
-            RectTransform closest = null;
-            float minDist = float.MaxValue;
+
+            SkillManager.instance.SetClosest(null);
+            minDist = float.MaxValue;
             // 中心となる指標のY座標を取得
-            float centerY = pic.position.y;
+            centerY = targetPic.position.y;
             // 一番中心に近い曲を探す
             foreach (RectTransform child in content)
             {
@@ -29,17 +45,13 @@ public class SkillPic : MonoBehaviour
                 if (dist < minDist)
                 {
                     minDist = dist;
-                    closest = child;
+                    SkillManager.instance.SetClosest(child);
                 }
             }
             // 見つけた曲を中央にスナップさせる
-            if (closest != null)
+            if (SkillManager.instance.GetClosest() != null)
             {
-                // 中心との差分を求めてその分だけ移動
-                float delta = centerY - closest.position.y;
-                // Content全体の位置を調整してスナップ
-                Vector2 newPos = content.localPosition + new Vector3(0, delta, 0);
-                content.localPosition = Vector3.Lerp(content.localPosition, newPos, snapSpeed);
+                SelectPicSnap.SkillPicMuve(centerY, content, snapSpeed, isDragging);
             }
         }
     }

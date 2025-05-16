@@ -119,7 +119,7 @@ public class NotesBase : MonoBehaviour
 
         if (renge >= (int)JudgmentType.Miss) renge = (int)JudgmentType.Miss;
 
-        renge = (int)SkillManager.criticalJudgmentExpands.ExecuteSetJudgment(renge);
+        renge = (int)SkillManager.instance.criticalJudgmentExpands.ExecuteSetJudgment(renge);
 
         if (renge >= 0) InGameStatus.SetJudgments(renge, 0);
         else InGameStatus.SetJudgments(renge, 1);

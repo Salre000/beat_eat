@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillSelect : MonoBehaviour
+public class SkillSelectOpen : MonoBehaviour
 {
     [SerializeField, Header("SkillSelectButton")] private GameObject _selectButtonObject;
     private Button _selectButton;
 
-    [SerializeField, Header("ƒXƒLƒ‹‚Æ‚È‚é‚à‚Ì‘S‚Ä")] private List<Button> _skillButtons = new(SkillManager.SKILLLIST_CAPACITY);
     [SerializeField] private RectTransform _skillMask;
     [SerializeField] private RectTransform _content;
     private bool _isSelect = false;

@@ -2,34 +2,53 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SelectPicMusic : MonoBehaviour
 {
     // 現在選ばれているカードを特定
 
-    [SerializeField] private Transform _selectBox;
+    // 曲カード
+    [SerializeField] private Transform _musicSelectBox;
     private List<GameObject> _musicCard = new(MusicManager._CAPACITY);
+
+    // スキルカード
+    [SerializeField] private Transform _skillSelectBox;
+    private List<GameObject> _skillCard = new(SkillManager.SKILLLIST_CAPACITY);
 
     private void Start()
     {
-        _musicCard=MusicManager.instance.GetMusicCards();
+        _musicCard = MusicManager.instance.GetMusicCards();
+        _skillCard =SkillManager.instance.GetSkillCards();
     }
 
     private void Update()
     {
-        PicUpCard();
+        PicUpMusicCard();
+        PicUpSkillCard();
     }
 
-    private void PicUpCard()
+    private void PicUpMusicCard()
     {
         int selectNumber = 0;
         // 選ばれているものを特定
-        foreach(GameObject musicCard in _musicCard)
+        foreach (GameObject musicCard in _musicCard)
         {
-            if ((musicCard.transform.position - _selectBox.position).sqrMagnitude < 10)
+            if ((musicCard.transform.position - _musicSelectBox.position).sqrMagnitude < 10)
             {
                 MusicManager.instance.SetSelectMusicNumer(selectNumber);
+            }
+            selectNumber++;
+        }
+    }
+    private void PicUpSkillCard()
+    {
+        int selectNumber = 0;
+        // 選ばれているものを特定
+        foreach (GameObject skillCard in _skillCard)
+        {
+            if ((skillCard.transform.position - _skillSelectBox.position).sqrMagnitude < 10)
+            {
+                SkillManager.instance.SetSelectedSkillID(selectNumber);
             }
             selectNumber++;
         }
