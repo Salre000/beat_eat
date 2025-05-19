@@ -36700,7 +36700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecd1e717b52adc48afd9d7ce6b99b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smplesNumber: 4096
+  smplesNumber: 2048
   bandType: 7
   fallSpeed: 0.08
   sensibility: 8

@@ -40,7 +40,7 @@ public class LevelMeter : MonoBehaviour
             _localScale.y = spectrum.Levels[i] * scale;
             if(_localScale.y <= 0.1f) _localScale.y = 0.1f;
             _currentScale = _transform.localScale;
-            _currentScale.y = Mathf.Lerp(_currentScale.y, _localScale.y, Time.deltaTime * 120);
+            _currentScale.y = Mathf.Lerp(_currentScale.y, _localScale.y, Time.deltaTime * 100);
             _transform.localScale = _currentScale;
         }
     }
