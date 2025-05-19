@@ -33747,7 +33747,7 @@ GameObject:
   - component: {fileID: 1510739213}
   - component: {fileID: 1510739216}
   m_Layer: 5
-  m_Name: EndressDance01
+  m_Name: Exercise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36656,8 +36656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecd1e717b52adc48afd9d7ce6b99b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfSamples: 2048
-  bandType: 6
+  smplesNumber: 4096
+  bandType: 7
   fallSpeed: 0.08
   sensibility: 8
 --- !u!4 &1630635672
