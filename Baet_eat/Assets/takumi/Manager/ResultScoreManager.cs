@@ -8,7 +8,7 @@ public class ResultScoreManager : MonoBehaviour
     void Start()
     {
         //‚±‚±‚Å‚»‚Ì‹È‚Ì•Û‘¶ó‹µ‚ğ“ü‚ê‚é
-        ScoreStaus.SetDessertScore(ScoreStaus.nowMusi, ScoreStaus.nowDifficulty,(int)InGameStatus.GetScore());
+        ScoreStaus.SetDessertScore(ScoreStaus.nowMusic, ScoreStaus.nowDifficulty,(int)InGameStatus.GetScore());
 
 
 

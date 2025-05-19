@@ -108,6 +108,8 @@ public class DifficultySelect : MonoBehaviour
 
         MusicManager.instance.SetDifficultyNumber(_diffiNumber);
 
+        ScoreUtility.ChengeDifficulty();
+
         // 選択されているものは背景カラーの表示とテキストカラーの変更を加える
         for (int i = 0; i < _DIFFICULTY_MAX; i++)
         {

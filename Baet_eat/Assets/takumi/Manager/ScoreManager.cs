@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    //難易度ごとのクリア状況のパーフェクト時に使うオブジェクト配列
+    private List<List<GameObject>> PlusDifficulty = new List<List<GameObject>>(MusicManager.CAPACITY);
 
     //スコアを表示するテキスト
     [SerializeField] private List<TextMeshProUGUI> scoreTexts = new List<TextMeshProUGUI>(MusicManager.CAPACITY);
@@ -23,9 +26,17 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private List<GameObject> C = new List<GameObject>(MusicManager.CAPACITY);
     [SerializeField] private List<GameObject> D = new List<GameObject>(MusicManager.CAPACITY);
 
+    //音楽のレベルを見せるテキスト
+    [SerializeField] private List<TextMeshProUGUI> Level = new List<TextMeshProUGUI>(MusicManager.CAPACITY);
+
+
+
+    [SerializeField] Color[] DifficultyColor = new Color[3];
 
     public void Awake()
     {
+
+        ScoreUtility.scoreManager = this;
         //initializeの引数は曲の数
         ScoreStaus.Initialize(Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData.Count);
 
@@ -40,8 +51,11 @@ public class ScoreManager : MonoBehaviour
 
 
 
+
         for (int i = 0; i < MusicManager.CAPACITY; i++)
         {
+
+            PlusDifficulty.Add(new List<GameObject>());
 
             scoreTexts.Add(card[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>());
 
@@ -56,10 +70,21 @@ public class ScoreManager : MonoBehaviour
             C.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(1).gameObject);
             D.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(0).gameObject);
 
+            Level.Add(card[i].transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
 
+            SetLevel(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber());
 
             SwitchRank(i, ScoreStaus.GetDessertClearRanks(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
-            scoreTexts[scoreTexts.Count-1].text = ScoreStaus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
+            scoreTexts[scoreTexts.Count - 1].text = ScoreStaus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
+
+
+            for (int j = 0; j < 5; j++)
+            {
+                PlusDifficulty[i].Add(card[i].transform.GetChild(4).transform.GetChild(j).transform.GetChild(0).gameObject);
+
+                SetDifficulty(i, (publicEnum.Difficulty)j, ScoreStaus.GetDessertDifficulty(i, (publicEnum.Difficulty)j));
+            }
+
 
         }
 
@@ -79,8 +104,9 @@ public class ScoreManager : MonoBehaviour
         {
             SwitchRank(i, ScoreStaus.GetDessertClearRanks(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
 
-            scoreTexts[i].text= ScoreStaus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
+            scoreTexts[i].text = ScoreStaus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
 
+            SetLevel(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber());
 
         }
 
@@ -139,8 +165,37 @@ public class ScoreManager : MonoBehaviour
 
     }
 
+    private void SetDifficulty(int ID, publicEnum.Difficulty difficulty, publicEnum.ClearStates clearStates)
+    {
+
+        PlusDifficulty[ID][(int)difficulty].SetActive(false);
+        switch (clearStates)
+        {
+            case publicEnum.ClearStates.Unplayed:
+                PlusDifficulty[ID][(int)difficulty].transform.parent.GetComponent<Image>().color = DifficultyColor[0];
+                break;
+            case publicEnum.ClearStates.Clear:
+                PlusDifficulty[ID][(int)difficulty].transform.parent.GetComponent<Image>().color = DifficultyColor[1];
+                break;
+            case publicEnum.ClearStates.FullCombo:
+                PlusDifficulty[ID][(int)difficulty].transform.parent.GetComponent<Image>().color = DifficultyColor[2];
+                break;
+            case publicEnum.ClearStates.ALLDC:
+                PlusDifficulty[ID][(int)difficulty].SetActive(true);
+
+                break;
+        }
 
 
+
+    }
+
+    private void SetLevel(int ID, publicEnum.Difficulty difficulty) 
+    {
+        Level[ID].text = ScoreStaus.GetMusicLevel(ID, (int)difficulty).ToString();
+
+
+    }
 
 
 }

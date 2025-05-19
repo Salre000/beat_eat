@@ -40,7 +40,12 @@ public static class ScoreStaus
     public static void SetMainDeshDifficulty(int ID, publicEnum.Difficulty difficulty, publicEnum.ClearStates clearStates) { MainDeshClearStates[difficulty.ChengeInt()][ID] = clearStates; }
     public static publicEnum.ClearStates GetMainDeshDifficulty(int ID, publicEnum.Difficulty difficulty) { return MainDeshClearStates[difficulty.ChengeInt()][ID]; }
 
-    public static int nowMusi=-1;
+    private static List<List<int>> musicLevel = new List<List<int>>(MusicManager.CAPACITY);
+    public static void AddSetMusicLevel(List<int> list) { musicLevel.Add(list); }
+
+    public  static int GetMusicLevel(int ID,int Difficulty) { return musicLevel[ID][Difficulty]; }
+
+    public static int nowMusic=-1;
     public static publicEnum.Difficulty nowDifficulty=publicEnum.Difficulty.None;
 
 
@@ -48,7 +53,7 @@ public static class ScoreStaus
     private static bool OneFlag = false;
     public static void Initialize(int musicCount)
     {
-        nowMusi = -1;
+        nowMusic = -1;
         nowDifficulty = publicEnum.Difficulty.None;
 
         if (OneFlag) return;
@@ -107,6 +112,7 @@ public static class ScoreStaus
 
         //ÉXÉRÉAÇÃèÛãµÇälìæ
         LoadData.LoadFoundation();
+        LoadData.LoadMusicLevel();
 
         OneFlag = true;
 
