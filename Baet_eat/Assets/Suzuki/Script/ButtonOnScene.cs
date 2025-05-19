@@ -18,7 +18,7 @@ public class ButtonOnScene : MonoBehaviour
     {
         GameSceneManager.LoadScene(GameSceneManager.mainScene);
 
-        ScoreStaus.nowMusi=MusicManager.instance.GetSelectMusicNumber();
+        ScoreStaus.nowMusic=MusicManager.instance.GetSelectMusicNumber();
 
         ScoreStaus.nowDifficulty=(publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber();
 

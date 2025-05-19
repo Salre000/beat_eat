@@ -237,6 +237,56 @@ public static class LoadData
 
     }
 
+    private static string MusicLevelPass = "MusicLevel";
 
+
+    public static void LoadMusicLevel()
+    {
+        //読み込んだCSVファイルを格納
+        List<string[]> csvDatas = new List<string[]>();
+
+        //CSVファイルの行数を格納
+        int height = 0;
+
+        //ファイルパスとファイルの名前を繋げる
+        StringBuilder builder = new StringBuilder();
+        builder.Clear();
+        builder.Append(MusicLevelPass);
+
+        //繋げたファイルパスを使いファイルのロードを行う
+        TextAsset textAsset = Resources.Load<TextAsset>(builder.ToString());
+
+        //読み込んだテキストをString型にして格納
+        StringReader reader = new StringReader(textAsset.text);
+
+        while (reader.Peek() > -1)
+        {
+            string line = reader.ReadLine();
+            // ,で区切ってCSVに格納
+            csvDatas.Add(line.Split(','));
+            height++; // 行数加算
+        }
+        Debug.Log(csvDatas[0][1]);
+
+        MusicDataBase dataBase = Resources.Load<MusicDataBase>(SaveData.MusicDataName);
+
+
+        List<int> list = new List<int>();
+        for (int i = 0; i < dataBase.musicData.Count; i++)
+        {
+
+            list.Clear();
+
+            for (int j = 0; j < 5; j++)
+            {
+                list.Add(int.Parse(csvDatas[i][j+1]));
+
+            }
+
+            ScoreStaus.AddSetMusicLevel(list);
+
+        }
+
+    }
 
 }
