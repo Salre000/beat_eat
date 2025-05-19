@@ -6,6 +6,9 @@ using System.Collections;
 
 public class AudioSpectrum : MonoBehaviour
 {
+    private const float _UPDATE_INTERVAL = 0.05f;
+    private float _time = 0f;
+
     #region Band type definition
     public enum SmplesNumber
     {
@@ -109,6 +112,12 @@ public class AudioSpectrum : MonoBehaviour
 
     void Update ()
     {
+        _time += Time.deltaTime;
+        if(_time<=_UPDATE_INTERVAL)
+            return;
+
+        _time = 0f;
+
         CheckBuffers ();
 
         AudioListener.GetSpectrumData (rawSpectrum, 0, FFTWindow.BlackmanHarris);

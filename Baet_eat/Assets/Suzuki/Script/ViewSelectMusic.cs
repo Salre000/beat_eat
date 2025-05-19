@@ -78,7 +78,6 @@ public class ViewSelectMusic : MonoBehaviour
         {
             BuildingString(dataBase.musicData[i].musicName, true);
             string musicName = _stringBuilder.ToString();
-            //AudioClip audioClip = (AudioClip)Resources.Load(musicName);
             _musicList.Add((AudioClip)Resources.Load(musicName));
         }
     }
