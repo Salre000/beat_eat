@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class ChangeMusicColorBox : MonoBehaviour
 {
-    private List<GameObject> _musicSelects = new(MusicManager._CAPACITY);
-    private List<Outline> _musicSelectOutLine = new(MusicManager._CAPACITY);
-    private List<GameObject> _colorBoxs = new(MusicManager._CAPACITY);
+    private List<GameObject> _musicSelects = new(MusicManager.CAPACITY);
+    private List<Outline> _musicSelectOutLine = new(MusicManager.CAPACITY);
+    private List<GameObject> _colorBoxs = new(MusicManager.CAPACITY);
     private const int _BOX_MAX = 4;
     Image boxImage;
     // ìÔà’ìxï ÉJÉâÅ[

@@ -6,7 +6,7 @@ public class MusicCardPool : MonoBehaviour
 {
     [SerializeField] private Transform _upLimit;
     [SerializeField] private Transform _downLimit;
-    private List<GameObject> _musicCards = new(MusicManager._CAPACITY);
+    private List<GameObject> _musicCards = new(MusicManager.CAPACITY);
 
     private void Start()
     {

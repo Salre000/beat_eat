@@ -51,7 +51,7 @@ public class AudioSpectrum : MonoBehaviour
     #endregion
 
     #region Public variables
-    // サンプリングレートを変更しやすいようにenumに変更
+    // FFTサイズを変更しやすいようにenumに変更
     public SmplesNumber smplesNumber = SmplesNumber.Smples1024;
     public BandType bandType = BandType.TenBand;
     public float fallSpeed = 0.08f;

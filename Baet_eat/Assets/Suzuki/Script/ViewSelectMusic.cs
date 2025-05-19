@@ -16,7 +16,7 @@ public class ViewSelectMusic : MonoBehaviour
     [SerializeField, Header("曲難易度テキスト")] private TextMeshProUGUI _musicLevel;
 
     private AudioSource _audioSource;
-    private AudioClip _music;
+    private List<AudioClip> _musicList=new(MusicManager.CAPACITY);
     private StringBuilder _stringBuilder;
     private string _musicName;
     private int _selectNumber;
@@ -32,9 +32,8 @@ public class ViewSelectMusic : MonoBehaviour
         _stringBuilder = new StringBuilder();
         _stringBuilder.Clear();
         _audioSource = GetComponent<AudioSource>();
-        BuildingString(dataBase.musicData[_selectNumber].musicName, true);
-        _musicName = _stringBuilder.ToString();
-        _music = (AudioClip)Resources.Load(_musicName);
+        // 
+        LoadMusic();
         SelectedMusic();
     }
 
@@ -46,18 +45,16 @@ public class ViewSelectMusic : MonoBehaviour
             _selectNumber = MusicManager.instance.GetSelectMusicNumber();
             SelectedMusic();
         }
-        if (!_audioSource.isPlaying) _audioSource.PlayOneShot(_music);
+        if (!_audioSource.isPlaying) _audioSource.PlayOneShot(_musicList[_selectNumber]);
     }
 
     // 選択カードが切り替わるたびに呼び出し
     private void SelectedMusic()
     {
-        BuildingString(dataBase.musicData[_selectNumber].musicName, true);
         ChangeJacket();
         _musicName = _stringBuilder.ToString();
-        _music = (AudioClip)Resources.Load(_musicName);
         _audioSource.Stop();
-        _audioSource.PlayOneShot(_music);
+        _audioSource.PlayOneShot(_musicList[_selectNumber]);
     }
 
     private void ChangeJacket()
@@ -73,5 +70,16 @@ public class ViewSelectMusic : MonoBehaviour
             _stringBuilder.Append("Music/");
 
         _stringBuilder.Append(toString);
+    }
+
+    private void LoadMusic()
+    {
+        for(int i = 0;i<dataBase.musicData.Count;i++)
+        {
+            BuildingString(dataBase.musicData[i].musicName, true);
+            string musicName = _stringBuilder.ToString();
+            //AudioClip audioClip = (AudioClip)Resources.Load(musicName);
+            _musicList.Add((AudioClip)Resources.Load(musicName));
+        }
     }
 }

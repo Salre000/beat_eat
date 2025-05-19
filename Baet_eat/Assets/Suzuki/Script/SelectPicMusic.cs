@@ -9,7 +9,7 @@ public class SelectPicMusic : MonoBehaviour
 
     // 曲カード
     [SerializeField] private Transform _musicSelectBox;
-    private List<GameObject> _musicCard = new(MusicManager._CAPACITY);
+    private List<GameObject> _musicCard = new(MusicManager.CAPACITY);
 
     // スキルカード
     [SerializeField] private Transform _skillSelectBox;

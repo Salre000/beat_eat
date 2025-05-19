@@ -23,7 +23,7 @@ public static class SelectPicSnap
 
     public static void MusicSelectCard(RectTransform targetPic, RectTransform content)
     {
-        List<Button> _buttonCards = new (MusicManager._CAPACITY);
+        List<Button> _buttonCards = new (MusicManager.CAPACITY);
         int index = 0;
         foreach (GameObject gameObject in MusicManager.instance.GetMusicCards())
         {

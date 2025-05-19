@@ -7,9 +7,9 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
-    public const int _CAPACITY = 13;
+    public const int CAPACITY = 13;
     // 全ての曲カードを挿入
-    [SerializeField] private List<GameObject> _musicCards = new(_CAPACITY);
+    [SerializeField] private List<GameObject> _musicCards = new(CAPACITY);
     private const float _DISTANCE = 125.0f;
     // 現在選択中のカード
     private int _selectMusicNumber = 0;
