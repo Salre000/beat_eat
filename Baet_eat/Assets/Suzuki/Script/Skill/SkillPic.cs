@@ -24,7 +24,6 @@ public class SkillPic : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(isDragging);
         if (SkillManager.instance.IsSelected())
         {
             SelectPicSnap.SkillPicMuve(centerY, content, snapSpeed, isDragging);
