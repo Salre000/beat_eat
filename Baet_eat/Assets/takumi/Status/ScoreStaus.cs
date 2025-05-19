@@ -41,13 +41,15 @@ public static class ScoreStaus
     public static publicEnum.ClearStates GetMainDeshDifficulty(int ID, publicEnum.Difficulty difficulty) { return MainDeshClearStates[difficulty.ChengeInt()][ID]; }
 
     public static int nowMusi=-1;
-    public static publicEnum.Difficulty difficulty=publicEnum.Difficulty.None;
+    public static publicEnum.Difficulty nowDifficulty=publicEnum.Difficulty.None;
+
+
 
     private static bool OneFlag = false;
     public static void Initialize(int musicCount)
     {
         nowMusi = -1;
-        difficulty = publicEnum.Difficulty.None;
+        nowDifficulty = publicEnum.Difficulty.None;
 
         if (OneFlag) return;
         DessertScore = new List<List<int>>();
