@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
         _soundSource = gameObject.GetComponent<AudioSource>();
 
         _soundSource.clip = mainBGM;
-        _soundSource.time = 180;//I‚í‚è‚©‚¯‚ª195
+        _soundSource.time = 0;//I‚í‚è‚©‚¯‚ª195
         _sound.transform.position+=new Vector3(0,0, -180*20);
         _soundSource.Play();
     }
