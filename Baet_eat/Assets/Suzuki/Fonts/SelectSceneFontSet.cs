@@ -13,16 +13,8 @@ public class SelectSceneFontSet : MonoBehaviour
     private TextMeshProUGUI _text=new();
     private List<GameObject> gameObjects = new(MusicManager.CAPACITY);
 
-    [SerializeField] private TMP_FontAsset _fontAsset;
-    [SerializeField] private Texture2D _fontTexture;
-
-    [SerializeField] private TMP_FontAsset _CheckfontAsset;
-
     private void Awake()
     {
-        _fontAsset.atlas=_fontTexture;
-        Debug.Log(_CheckfontAsset);
-
         gameObjects = MusicManager.instance.GetMusicCards();
         for (int i = 0; i < MusicManager.CAPACITY; i++)
         {
