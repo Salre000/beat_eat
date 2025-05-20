@@ -28352,6 +28352,7 @@ GameObject:
   - component: {fileID: 1050575109}
   - component: {fileID: 1050575111}
   - component: {fileID: 1050575112}
+  - component: {fileID: 1050575113}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -28419,6 +28420,20 @@ MonoBehaviour:
   _startButton: {fileID: 209875997}
   _settingButton: {fileID: 640044208}
   _notesButton: {fileID: 1604164564}
+--- !u!114 &1050575113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050575108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2618f92468d2f24c8f8dd54a0c097b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rankAndScoreFontMaterial: {fileID: 2100000, guid: 78cde9c0251891a44a1c463ec0dde8ed, type: 2}
+  _nomalFontMaterial: {fileID: -4958864320207702157, guid: e702c1b6e64fa8d46805513a53c86820, type: 2}
 --- !u!1 &1061295992
 GameObject:
   m_ObjectHideFlags: 0
