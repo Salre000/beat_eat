@@ -15,5 +15,5 @@ MonoBehaviour:
   musicID: 1
   musicName: "\u3064\u3088\u3064\u3088\u6700\u5F37\u30A8\u30AF\u30B5\u30B5\u30A4\u30BA"
   musicLevel: 14
-  jacket: {fileID: 21300000, guid: cae68fc2209ee0b4fa74a770ef8dffef, type: 3}
+  jacket: {fileID: 21300000, guid: b3dc8adc49715804a98ed38eb5ea4619, type: 3}
   difficulty: 4
