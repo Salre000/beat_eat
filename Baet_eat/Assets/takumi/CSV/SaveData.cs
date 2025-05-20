@@ -38,7 +38,9 @@ public static class SaveData
     /// 最後に選んでいたスキル　int 
     /// ノーツの速さ　float 
     /// ノーツの判定位置　float
-    /// ノーツとノーツの間の線
+    /// 成功判定の位置
+    /// 成功判定のoffset
+    /// ノーツとノーツの間の線 bool
     /// BGMの音量　float
     /// SEの音量　float
     /// ノーツの見た目　int
@@ -226,6 +228,8 @@ public static class SaveData
         sw.WriteLine(OptioStatus.GetSkillIndex().ToString());
         sw.WriteLine(OptioStatus.GetNotesSpeed().ToString());
         sw.WriteLine(OptioStatus.GetNotesHitLinePos().ToString());
+        sw.WriteLine(OptioStatus.GetNotesTouchPos().ToString());
+        sw.WriteLine(OptioStatus.GetNotesTouchOffset().ToString());
         sw.WriteLine(OptioStatus.GetNotesToNotesLineFlag().ToString());
         sw.WriteLine(OptioStatus.GetBGM_Volume().ToString());
         sw.WriteLine(OptioStatus.GetSE_Volume().ToString());

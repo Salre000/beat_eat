@@ -39,6 +39,7 @@ public class InGameManager : MonoBehaviour
 
     private void Awake()
     {
+
         LineUtility.gameManager = this;
 
         InGameStatus inGame =new InGameStatus();

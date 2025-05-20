@@ -27,6 +27,15 @@ public static class OptioStatus
     public static float GetNotesHitLinePos() { return _notesHitLinePos; }
     public static void SetNotesHitLinePos(float num) { _notesHitLinePos = num; }
 
+    private static bool _notesTouchPos = false;
+    public static bool GetNotesTouchPos() { return _notesTouchPos; }
+    public static void SetNotesTouchPos(bool flag) { _notesTouchPos = flag; }
+
+    private static float _notesTouchOffset = 0;
+    public static float GetNotesTouchOffset() { return _notesTouchOffset; }
+    public static void SetNotesTouchOffset(float num) { _notesTouchOffset = num; }
+
+
     private static bool _notesToNotesLineFlag = false;
     public static bool GetNotesToNotesLineFlag() { return _notesToNotesLineFlag; }
     public static void SetNotesToNotesLineFlag(bool flag) { _notesToNotesLineFlag = flag; }
@@ -40,6 +49,9 @@ public static class OptioStatus
     public static float GetSE_Volume() { return _SE_Volume; }
     public static void SetSE_Volume(float num) { _SE_Volume = num; }
 
+
+
+
     private static int _notesID = 0;
     public static int GetNotesID() { return _notesID; }
     public static void SetNotesID(int num) { _notesID = num; }
@@ -47,6 +59,7 @@ public static class OptioStatus
     private static int _SEID = 0;
     public static int GetSEID() { return _SEID; }
     public static void SetSEID(int ID) { _SEID = ID; }
+
 
     private static bool OneFlag = false;
     public static void Initialize() 
