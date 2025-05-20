@@ -236,7 +236,9 @@ public static class LoadData
         OptioStatus.SetBGM_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
         OptioStatus.SetSE_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
         OptioStatus.SetNotesID(int.Parse(csvDatas[LineCount][0])); LineCount++;
-        OptioStatus.SetSEID(int.Parse(csvDatas[LineCount][0])); LineCount++; ;
+        OptioStatus.SetSEID(int.Parse(csvDatas[LineCount][0])); LineCount++;
+
+
 
     }
 
