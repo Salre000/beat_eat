@@ -107,4 +107,33 @@ public class InGameStatus
 
     public static int GetCombo() { return combo; }
 
+    public static publicEnum.ClearRank GetScoreClearRank(int score) 
+    {
+        float scoreRate = (float)MAX_SCORE / (float)publicEnum.ClearRank.MAX + 2;
+
+        int scoreRank = (int)((float)score / scoreRate);
+
+
+        switch (scoreRank) 
+        {
+            case 0:
+            case 1: return publicEnum.ClearRank.D;
+            case 2: return publicEnum.ClearRank.C;
+            case 3: return publicEnum.ClearRank.B;
+
+            case 5: return publicEnum.ClearRank.A;
+
+            case 6: return publicEnum.ClearRank.S;
+
+            case 7: return publicEnum.ClearRank.SPlus;
+
+
+
+        }
+
+        return publicEnum.ClearRank.None;
+
+
+    }
+
 }

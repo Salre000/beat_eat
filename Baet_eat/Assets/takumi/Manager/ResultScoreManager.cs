@@ -10,6 +10,7 @@ public class ResultScoreManager : MonoBehaviour
         //‚±‚±‚Å‚»‚Ì‹È‚Ì•Û‘¶ó‹µ‚ğ“ü‚ê‚é
         ScoreStaus.SetDessertScore(ScoreStaus.nowMusic, ScoreStaus.nowDifficulty,(int)InGameStatus.GetScore());
 
+        ScoreStaus.SetDessertClearRanks(ScoreStaus.nowMusic, ScoreStaus.nowDifficulty, InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore()));
 
 
         SaveData.SaveFoundation();

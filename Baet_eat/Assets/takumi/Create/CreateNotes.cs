@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
 using static CreateTapArea;
@@ -33,7 +34,18 @@ public class CreateNotes : MonoBehaviour
 
     }
     public int noteNum;
-    private string songName = "Notes/学園アイドルマスター_初星学園_EndressDance";
+
+    private readonly string FilePass = "Notes/";
+
+    private readonly string[] Difficulty =
+    {
+        "Drink/",
+        "Horsd'oeuvre/",
+        "Soup/",
+        "MainDish/",
+        "Dessert/"
+    };
+    private string songName = "学園アイドルマスター_初星学園_EndressDance";
 
     [SerializeField, Header("スキルノーツのプレハブのオリジナル")] GameObject noteObjSkill;
     [SerializeField, Header("通常ノーツのプレハブのオリジナル")] GameObject noteObj;
@@ -41,20 +53,27 @@ public class CreateNotes : MonoBehaviour
     [SerializeField, Header("フリックノーツのプレハブのオリジナル")] GameObject noteObjFlick;
 
 
-    readonly float lineRenge= 1.1f;
-    [SerializeField]private GameObject noteLineObject;
+    readonly float lineRenge = 1.1f;
+    [SerializeField] private GameObject noteLineObject;
 
     void Start()
     {
         noteNum = 0;
-        Load(songName);
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.Append(FilePass);
+        stringBuilder.Append(Difficulty[(int)ScoreStaus.nowDifficulty]);
+        stringBuilder.Append(songName);
+
+        Load(stringBuilder.ToString());
     }
 
     int preNum = -1;
     int preID = -1;
-    List<int>preNumList = new List<int>();
-    List<int>preblockList = new List<int>();
-    List<int>preRengeList = new List<int>();
+    List<int> preNumList = new List<int>();
+    List<int> preblockList = new List<int>();
+    List<int> preRengeList = new List<int>();
     private void Load(string SongName)
     {
         GameObject NotesParent = new GameObject(SongName);
@@ -82,7 +101,7 @@ public class CreateNotes : MonoBehaviour
             //時間　 kankaku * inputJson.notes[i].num
 
 
-            notes.transform.position = new Vector3((inputJson.notes[i].block * -1) + 4.5f - (float)inputJson.notes[i].renge / 2.0f, 0.03f, kankaku * inputJson.notes[i].num*InGameStatus.GetSpeed()*20);
+            notes.transform.position = new Vector3((inputJson.notes[i].block * -1) + 4.5f - (float)inputJson.notes[i].renge / 2.0f, 0.03f, kankaku * inputJson.notes[i].num * InGameStatus.GetSpeed() * 20);
             //親に纏める
             notes.transform.parent = NotesParent.transform;
 
@@ -111,7 +130,7 @@ public class CreateNotes : MonoBehaviour
                         longNotes.SetBlock(inputJson.notes[i].notes[j].block - inputJson.notes[i].notes[j - 1].block);
                     }
 
-                    if(j== inputJson.notes[i].notes.Length - 1) 
+                    if (j == inputJson.notes[i].notes.Length - 1)
                     {
 
                         preblockList.Add(inputJson.notes[i].notes[j].block);
@@ -132,13 +151,13 @@ public class CreateNotes : MonoBehaviour
             //notes.SetActive(false);
 
 
-            if(preNum== inputJson.notes[i].num) 
+            if (preNum == inputJson.notes[i].num)
             {
                 //GameObject Line = Instantiate(noteLineObject);
 
                 //Line.transform.parent = notes.transform;
 
-                
+
                 //float x = (Mathf.Max((9 - inputJson.notes[i].block), (9 - inputJson.notes[preID].block)) - Mathf.Min((9 - inputJson.notes[i].block), (9 - inputJson.notes[preID].block)))+1- inputJson.notes[i].renge;
 
                 //Line.transform.localScale = new Vector3(x* lineRenge, 1, 1);
@@ -148,7 +167,7 @@ public class CreateNotes : MonoBehaviour
 
             }
 
-            for (int j = 0; j < preNumList.Count; j++) 
+            for (int j = 0; j < preNumList.Count; j++)
             {
                 if (preNumList[j] == inputJson.notes[i].num)
                 {
