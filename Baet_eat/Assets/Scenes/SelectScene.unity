@@ -40312,6 +40312,7 @@ MonoBehaviour:
   C: []
   D: []
   Level: []
+  test: {fileID: 0}
   DifficultyColor:
   - {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
   - {r: 1, g: 1, b: 0, a: 1}

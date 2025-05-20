@@ -218,6 +218,8 @@ public static class LoadData
         /// 最後に選んでいたスキル　int 
         /// ノーツの速さ　float 
         /// ノーツの判定位置　float
+        /// 成功判定の位置
+        /// 成功判定のoffset
         /// ノーツとノーツの間の線 bool
         /// BGMの音量　float
         /// SEの音量　float
@@ -228,6 +230,8 @@ public static class LoadData
         LineCount++;
         OptioStatus.SetNotesSpeed(float.Parse(csvDatas[LineCount][0]));LineCount++;
         OptioStatus.SetNotesHitLinePos(float.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptioStatus.SetNotesTouchPos(bool.Parse(csvDatas[LineCount][0]));LineCount++;
+        OptioStatus.SetNotesTouchOffset(float.Parse(csvDatas[LineCount][0])); LineCount++;
         OptioStatus.SetNotesToNotesLineFlag(bool.Parse(csvDatas[LineCount][0])); LineCount++;
         OptioStatus.SetBGM_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
         OptioStatus.SetSE_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;

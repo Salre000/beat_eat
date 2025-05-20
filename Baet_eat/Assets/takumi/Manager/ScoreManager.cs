@@ -30,7 +30,6 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> Level = new List<TextMeshProUGUI>(MusicManager.CAPACITY);
 
 
-
     [SerializeField] Color[] DifficultyColor = new Color[3];
 
     public void Awake()
@@ -41,6 +40,8 @@ public class ScoreManager : MonoBehaviour
         ScoreStatus.Initialize(Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData.Count);
 
         MusicManager.instance.GetMusicCards();
+
+
 
     }
 
