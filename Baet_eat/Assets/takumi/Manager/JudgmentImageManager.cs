@@ -30,15 +30,19 @@ public class JudgmentImageManager : MonoBehaviour
     }
     public void FixedUpdate()
     {
+        if (nowJudgmentObject == null) return;
+
         time += Time.deltaTime;
 
         if (MAX_TIME < time) 
         {
             time = 0;
+            nowJudgmentObject.SetActive(false);
             nowJudgmentObject = null;
+
+            return;
         }
 
-        if (nowJudgmentObject == null) return;
 
         if (nowJudgmentObject.transform.localScale.x >= 1) return;
 
@@ -56,8 +60,7 @@ public class JudgmentImageManager : MonoBehaviour
         }
         nowJudgmentObject = JudgmentObjects[index];
         nowJudgmentObject.transform.localScale = new Vector3(UP_SIZE, UP_SIZE, 0);
-
-
+        time = 0;
         nowJudgmentObject.SetActive(true);
     }
 
