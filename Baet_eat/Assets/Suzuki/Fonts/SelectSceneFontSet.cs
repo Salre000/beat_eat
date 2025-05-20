@@ -13,6 +13,7 @@ public class SelectSceneFontSet : MonoBehaviour
 
     private void Awake()
     {
+        gameObjects=MusicManager.instance.GetMusicCards();
         for(int i = 0; i < MusicManager.CAPACITY; i++)
         {
             // スコアテキストのマテリアル変更
