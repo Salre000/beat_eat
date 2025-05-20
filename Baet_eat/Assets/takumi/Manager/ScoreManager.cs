@@ -59,10 +59,10 @@ public class ScoreManager : MonoBehaviour
 
             scoreTexts.Add(card[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>());
 
-            Plus.Add(card[i].transform.GetChild(6).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
+            Plus.Add(card[i].transform.GetChild(6).transform.GetChild(1).GetComponent<TextMeshProUGUI>());
 
-            ClearRank.Add(card[i].transform.GetChild(6).transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
-            ClearRankOutLine.Add(card[i].transform.GetChild(6).transform.GetChild(1).GetComponent<TextMeshProUGUI>());
+            ClearRank.Add(card[i].transform.GetChild(6).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
+            ClearRankOutLine.Add(card[i].transform.GetChild(6).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
 
             S.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(4).gameObject);
             A.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(3).gameObject);
