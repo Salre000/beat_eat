@@ -46,7 +46,7 @@ public class SelectSceneFontSet : MonoBehaviour
             _text.fontMaterial = rankAndScoreFontMaterial;
 
             // 難易度マテリアル設定
-            if(i>_difficultys.Count) return;
+            if(i>_difficultys.Count-1) return;
             _text = _difficultys[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             _text.fontMaterial=_difficultyFontMaterial;
         }

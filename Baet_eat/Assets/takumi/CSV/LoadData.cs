@@ -225,7 +225,7 @@ public static class LoadData
         /// SEÇÃâπÅ@int
 
         int LineCount = 0;
-
+        LineCount++;
         OptioStatus.SetNotesSpeed(float.Parse(csvDatas[LineCount][0]));LineCount++;
         OptioStatus.SetNotesHitLinePos(float.Parse(csvDatas[LineCount][0])); LineCount++;
         OptioStatus.SetNotesToNotesLineFlag(bool.Parse(csvDatas[LineCount][0])); LineCount++;

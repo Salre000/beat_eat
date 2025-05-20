@@ -46,7 +46,7 @@ public static class ScoreStatus
     public  static int GetMusicLevel(int ID,int Difficulty) { return _musicLevel[ID][Difficulty]; }
 
     public static int nowMusic=-1;
-    public static publicEnum.Difficulty nowDifficulty=publicEnum.Difficulty.None;
+    public static publicEnum.Difficulty nowDifficulty=publicEnum.Difficulty.Drink;
 
 
 
