@@ -8,6 +8,8 @@ public class SelectSceneFontSet : MonoBehaviour
     // SelectSceneのフォントマテリアルをセットする
     [SerializeField,Header("アウトライン用マテリアル")] private Material rankAndScoreFontMaterial;
     [SerializeField, Header("共通マテリアル")] private Material _nomalFontMaterial;
+    [SerializeField, Header("難易度アウトラインマテリアル")] private Material _difficultyFontMaterial;
+    [SerializeField] private List<GameObject> _difficultys=new(5);
     private TextMeshProUGUI _text=new();
     private List<GameObject> gameObjects = new(MusicManager.CAPACITY);
 
@@ -42,6 +44,11 @@ public class SelectSceneFontSet : MonoBehaviour
             // 「Rank」
             _text = gameObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
             _text.fontMaterial = rankAndScoreFontMaterial;
+
+            // 難易度マテリアル設定
+            if(i>_difficultys.Count) return;
+            _text = _difficultys[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+            _text.fontMaterial=_difficultyFontMaterial;
         }
     }
 }

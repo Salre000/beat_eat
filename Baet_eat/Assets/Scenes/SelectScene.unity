@@ -28434,6 +28434,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rankAndScoreFontMaterial: {fileID: 2100000, guid: b70a5bcca6896204d9f58a81d4d7dc5e, type: 2}
   _nomalFontMaterial: {fileID: -4958864320207702157, guid: e702c1b6e64fa8d46805513a53c86820, type: 2}
+  _difficultyFontMaterial: {fileID: 2100000, guid: adfbff2040582f244962b18b9517057b, type: 2}
+  _difficultys:
+  - {fileID: 316616139}
+  - {fileID: 1467280592}
+  - {fileID: 1436273944}
+  - {fileID: 247862579}
+  - {fileID: 1145058752}
 --- !u!1 &1061295992
 GameObject:
   m_ObjectHideFlags: 0
