@@ -27,12 +27,27 @@ public class OptionManager : MonoBehaviour
         NowPageShow();
     }
 
+    private void FixedUpdate()
+    {
+        //Debagよう
+        if (Input.GetKeyDown(KeyCode.Escape)) ChengeActive();
+
+
+    }
+
+    public void ChengeActive() 
+    {
+        _sliderVolume.gameObject.SetActive(!_sliderVolume.gameObject.activeSelf);
+    }
+
+    //システム敵に音量を設定する関数
     public void SetOptionData() 
     {
         _sliderVolume.SetBGM(OptioStatus.GetBGM_Volume());
         _sliderVolume.SetSE(OptioStatus.GetSE_Volume());
 
     }
+    //描画するページだけをアクティブに変更する関数
     private void NowPageShow() 
     {
 
