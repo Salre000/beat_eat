@@ -16,6 +16,7 @@ public static class OptioStatus
     /// 
 
     private static int _skillIndex;
+    public static int GetSkillIndex() { return _skillIndex; }
 
     private static float _notesSpeed;
     private static float _notesHitLinePos;
