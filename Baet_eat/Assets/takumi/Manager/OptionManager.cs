@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
 {
     [SerializeField]SliderVolume _sliderVolume;
 
-    private int nowPage = 0;
+    [SerializeField]private int nowPage = 0;
 
     private List<GameObject> PageList = new List<GameObject>();
     private void Start()
@@ -16,6 +17,13 @@ public class OptionManager : MonoBehaviour
 
         for (int i = 0; i < _sliderVolume.gameObject.transform.childCount; i++) 
             PageList.Add(_sliderVolume.gameObject.transform.GetChild(i).gameObject);
+
+        for(int i = 1; i < PageList.Count - 1; i++) 
+        {
+            PageList[i].transform.GetChild(PageList[i].transform.childCount - 1).GetComponent<Button>().onClick.AddListener(i%2==0? SbuPage: AddPage);
+
+        }
+
         NowPageShow();
     }
 
@@ -32,7 +40,7 @@ public class OptionManager : MonoBehaviour
         {
             PageList[i].SetActive(false);
 
-            if (i != nowPage * 2 && i != nowPage + 1) continue;
+            if (i != nowPage * 2 && i != nowPage * 2 + 1) continue;
 
             PageList[i].SetActive(true);
 
@@ -41,6 +49,8 @@ public class OptionManager : MonoBehaviour
 
 
     }
-    public void AddPage() { nowPage += 1;if (nowPage > 2) nowPage = 2; NowPageShow(); }
-    public void SbuPage() { nowPage -= 1; if (nowPage < 0) nowPage = 0; NowPageShow(); }
+    public void AddPage() 
+    { nowPage += 1;if (nowPage > 2) nowPage = 2; NowPageShow(); }
+    public void SbuPage() 
+    { nowPage -= 1; if (nowPage < 0) nowPage = 0; NowPageShow(); }
 }
