@@ -223,14 +223,14 @@ public static class SaveData
         /// ノーツの見た目　int
         /// SEの音　int
 
-        sw.WriteLine("saigoni eranda sukiru");
-        sw.WriteLine("noutuno hayasa");
-        sw.WriteLine("noutuno hannteinoiti");
-        sw.WriteLine("noututo noutuno senn");
-        sw.WriteLine("BGMno onnrixyou");
-        sw.WriteLine("SEno onnrixyou");
-        sw.WriteLine("noutuno mitameID");
-        sw.WriteLine("SEno otonoID");
+        sw.WriteLine(OptioStatus.GetSkillIndex().ToString());
+        sw.WriteLine(OptioStatus.GetNotesSpeed().ToString());
+        sw.WriteLine(OptioStatus.GetNotesHitLinePos().ToString());
+        sw.WriteLine(OptioStatus.GetNotesToNotesLineFlag().ToString());
+        sw.WriteLine(OptioStatus.GetBGM_Volume().ToString());
+        sw.WriteLine(OptioStatus.GetSE_Volume().ToString());
+        sw.WriteLine(OptioStatus.GetNotesID().ToString());
+        sw.WriteLine(OptioStatus.GetSEID().ToString());
 
 
 

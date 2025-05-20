@@ -224,9 +224,15 @@ public static class LoadData
         /// ノーツの見た目　int
         /// SEの音　int
 
+        int LineCount = 0;
 
-
-
+        OptioStatus.SetNotesSpeed(float.Parse(csvDatas[LineCount][0]));LineCount++;
+        OptioStatus.SetNotesHitLinePos(float.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptioStatus.SetNotesToNotesLineFlag(bool.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptioStatus.SetBGM_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptioStatus.SetSE_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptioStatus.SetNotesID(int.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptioStatus.SetSEID(int.Parse(csvDatas[LineCount][0])); LineCount++; ;
 
     }
 
