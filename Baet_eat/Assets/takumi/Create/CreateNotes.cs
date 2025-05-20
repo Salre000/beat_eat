@@ -63,7 +63,7 @@ public class CreateNotes : MonoBehaviour
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.Append(FilePass);
-        stringBuilder.Append(Difficulty[(int)ScoreStaus.nowDifficulty]);
+        stringBuilder.Append(Difficulty[(int)ScoreStatus.nowDifficulty]);
         stringBuilder.Append(songName);
 
         Load(stringBuilder.ToString());

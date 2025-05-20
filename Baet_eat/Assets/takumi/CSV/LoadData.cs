@@ -50,7 +50,7 @@ public static class LoadData
             {
                 int score = int.Parse(csvDatas[nowLine][musicID]);
 
-                ScoreStaus.SetDessertScore(musicID, (Difficulty)difficulty, score);
+                ScoreStatus.SetDessertScore(musicID, (Difficulty)difficulty, score);
 
                 clearScore.Add(score);
             }
@@ -70,7 +70,7 @@ public static class LoadData
             {
                 int score = int.Parse(csvDatas[nowLine][musicID]);
 
-                ScoreStaus.SetMainDeshScore(musicID, (Difficulty)difficulty, score);
+                ScoreStatus.SetMainDeshScore(musicID, (Difficulty)difficulty, score);
 
                 clearScore.Add(score);
             }
@@ -88,7 +88,7 @@ public static class LoadData
             for (int musicID = 0; musicID < musicMax; musicID++)
             {
                 int score = int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStaus.SetDessertOverScore(musicID, (Difficulty)difficulty, score);
+                ScoreStatus.SetDessertOverScore(musicID, (Difficulty)difficulty, score);
 
 
                 clearScore.Add(score);
@@ -107,7 +107,7 @@ public static class LoadData
             for (int musicID = 0; musicID < musicMax; musicID++)
             {
                 int score = int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStaus.SetMainDeshOverScore(musicID, (Difficulty)difficulty, score);
+                ScoreStatus.SetMainDeshOverScore(musicID, (Difficulty)difficulty, score);
 
                 clearScore.Add(score);
             }
@@ -124,7 +124,7 @@ public static class LoadData
             for (int musicID = 0; musicID < musicMax; musicID++)
             {
                 ClearRank score = (ClearRank)int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStaus.SetDessertClearRanks(musicID, (Difficulty)difficulty, score);
+                ScoreStatus.SetDessertClearRanks(musicID, (Difficulty)difficulty, score);
 
                 clearScore.Add(score);
             }
@@ -141,7 +141,7 @@ public static class LoadData
             for (int musicID = 0; musicID < musicMax; musicID++)
             {
                 ClearRank score = (ClearRank)int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStaus.SetMainDeshClearRanks(musicID, (Difficulty)difficulty, score);
+                ScoreStatus.SetMainDeshClearRanks(musicID, (Difficulty)difficulty, score);
 
 
                 clearScore.Add(score);
@@ -159,7 +159,7 @@ public static class LoadData
             for (int musicID = 0; musicID < musicMax; musicID++)
             {
                 ClearStates score = (ClearStates)int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStaus.SetDessertDifficulty(musicID, (Difficulty)difficulty, score);
+                ScoreStatus.SetDessertDifficulty(musicID, (Difficulty)difficulty, score);
 
                 clearScore.Add(score);
             }
@@ -176,7 +176,7 @@ public static class LoadData
             for (int musicID = 0; musicID < musicMax; musicID++)
             {
                 ClearStates score = (ClearStates)int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStaus.SetMainDeshDifficulty(musicID, (Difficulty)difficulty, score);
+                ScoreStatus.SetMainDeshDifficulty(musicID, (Difficulty)difficulty, score);
 
                 clearScore.Add(score);
             }
@@ -283,7 +283,7 @@ public static class LoadData
 
             }
 
-            ScoreStaus.AddSetMusicLevel(list);
+            ScoreStatus.AddSetMusicLevel(list);
 
         }
 

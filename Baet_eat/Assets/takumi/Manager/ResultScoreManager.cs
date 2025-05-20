@@ -8,9 +8,9 @@ public class ResultScoreManager : MonoBehaviour
     void Start()
     {
         //Ç±Ç±Ç≈ÇªÇÃã»ÇÃï€ë∂èÛãµÇì¸ÇÍÇÈ
-        ScoreStaus.SetDessertScore(ScoreStaus.nowMusic, ScoreStaus.nowDifficulty,(int)InGameStatus.GetScore());
+        ScoreStatus.SetDessertScore(ScoreStatus.nowMusic, ScoreStatus.nowDifficulty,(int)InGameStatus.GetScore());
 
-        ScoreStaus.SetDessertClearRanks(ScoreStaus.nowMusic, ScoreStaus.nowDifficulty, InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore()));
+        ScoreStatus.SetDessertClearRanks(ScoreStatus.nowMusic, ScoreStatus.nowDifficulty, InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore()));
 
 
         SaveData.SaveFoundation();

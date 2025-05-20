@@ -70,7 +70,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append(ScoreStaus.GetDessertScore(soundNumber,(publicEnum.Difficulty)i));
+                sb.Append(ScoreStatus.GetDessertScore(soundNumber,(publicEnum.Difficulty)i));
                 sb.Append(Spece);
 
             }
@@ -87,7 +87,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append(ScoreStaus.GetMainDeshScore(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(ScoreStatus.GetMainDeshScore(soundNumber, (publicEnum.Difficulty)i));
                 sb.Append(Spece);
 
             }
@@ -103,7 +103,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append(ScoreStaus.GetDessertOverScore(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(ScoreStatus.GetDessertOverScore(soundNumber, (publicEnum.Difficulty)i));
                 sb.Append(Spece);
 
             }
@@ -120,7 +120,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append(ScoreStaus.GetMainDeshOverScore(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(ScoreStatus.GetMainDeshOverScore(soundNumber, (publicEnum.Difficulty)i));
                 sb.Append(Spece);
 
             }
@@ -137,7 +137,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append((int)ScoreStaus.GetDessertClearRanks(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append((int)ScoreStatus.GetDessertClearRanks(soundNumber, (publicEnum.Difficulty)i));
                 sb.Append(Spece);
 
             }
@@ -153,7 +153,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append((int)ScoreStaus.GetMainDeshClearRanks(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append((int)ScoreStatus.GetMainDeshClearRanks(soundNumber, (publicEnum.Difficulty)i));
                 sb.Append(Spece);
 
             }
@@ -170,7 +170,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append((int)ScoreStaus.GetDessertDifficulty(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append((int)ScoreStatus.GetDessertDifficulty(soundNumber, (publicEnum.Difficulty)i));
                 sb.Append(Spece);
 
             }
@@ -186,7 +186,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append((int)ScoreStaus.GetMainDeshDifficulty(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append((int)ScoreStatus.GetMainDeshDifficulty(soundNumber, (publicEnum.Difficulty)i));
                 sb.Append(Spece);
 
             }

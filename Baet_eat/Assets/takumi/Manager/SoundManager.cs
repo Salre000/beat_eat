@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField]private float time = 0;
 
     AudioSource _soundSource;
+    [SerializeField]AudioSource _BGMSoundSource;
 
     [SerializeField] public GameObject _sound;
     public void Awake()
@@ -42,12 +43,10 @@ public class SoundManager : MonoBehaviour
 
         Debug.Log("ÉVÅ[Éìà⁄çs");
         GameSceneManager.LoadScene(GameSceneManager.resultScene);
-
-
-
     }
 
-    public void StartNotesHitSound() { _soundSource.PlayOneShot(_notesHitSound); }
+    public void SetNotesHitSound(AudioClip clip) { _notesHitSound = clip; }
+    public void StartNotesHitSound() { _BGMSoundSource.PlayOneShot(_notesHitSound); }
 
     public void MainBGMStop() { if (time != 0) return; time = _soundSource.time; _soundSource.Stop(); }
     public void MainBGMStart() { if (time == 0) return; _soundSource.time = time; _soundSource.Play(); time = 0; }
