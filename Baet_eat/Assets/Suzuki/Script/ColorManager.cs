@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ColorManager
 {
-    private const byte _ALFA_COLOR = 100;
+    private const byte _ALFA_COLOR = 150;
     // ìÔà’ìxï ÉJÉâÅ[ translucent
     public static readonly Color32 DRINK_COLOR = new Color32(42, 144, 255, 255);
     public static readonly Color32 HORSDOEUVRE_COLOR = new Color32(47, 255, 32, 255);
