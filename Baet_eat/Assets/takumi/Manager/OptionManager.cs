@@ -1,57 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
 {
-    [SerializeField]SliderVolume _sliderVolume;
+    [SerializeField] SliderVolume _sliderVolume;
 
-    [SerializeField]private int nowPage = 0;
+    [SerializeField] private int nowPage = 0;
+    [SerializeField] private int nextPage = 0;
 
-    private List<GameObject> PageList = new List<GameObject>();
+    [SerializeField] private List<GameObject> PageList = new List<GameObject>();
+
+    [SerializeField] private List<RectTransform> PageRoot = new List<RectTransform>();
     private void Start()
     {
         OptioStatus.Initialize();
         SetOptionData();
 
-        for (int i = 0; i < _sliderVolume.gameObject.transform.childCount; i++) 
+        for (int i = 0; i < _sliderVolume.gameObject.transform.childCount - 4; i++)
             PageList.Add(_sliderVolume.gameObject.transform.GetChild(i).gameObject);
 
-        for(int i = 1; i < PageList.Count - 1; i++) 
+        for (int i = 1; i < PageList.Count - 1; i++)
         {
-            PageList[i].transform.GetChild(PageList[i].transform.childCount - 1).GetComponent<Button>().onClick.AddListener(i%2==0? SbuPage: AddPage);
+            PageList[i].transform.GetChild(PageList[i].transform.childCount - 1).GetComponent<Button>().onClick.AddListener(i % 2 == 0 ? SbuPage : AddPage);
 
         }
 
         NowPageShow();
     }
 
+    bool flipFlag = false;
+
     private void FixedUpdate()
     {
         //Debagよう
         if (Input.GetKeyDown(KeyCode.Escape)) ChengeActive();
 
+        if (!flipFlag || nextPage == nowPage) return;
 
+        if(PageList[nowPage * 2 + offsetA].activeSelf) PageList[nowPage * 2 + offsetA].transform.Rotate(0, 1, 0);
+
+        if (PageList[nowPage * 2 + offsetA].transform.eulerAngles.y < 90) return;
+
+        if (PageList[nowPage * 2 + offsetA].activeSelf) 
+        {
+            PageList[nowPage * 2 + offsetA].SetActive(false);
+            PageList[nextPage * 2 + offsetB].SetActive(true);
+        }
+        if (PageList[nextPage * 2 + offsetB].activeSelf) PageList[nextPage * 2 + offsetB].transform.Rotate(0, -1, 0);
+
+        if (PageList[nextPage * 2 + offsetB].transform.eulerAngles.y <91) return;
+
+        for (int i = 0; i < PageList.Count; i++)
+        {
+            PageList[i].transform.SetParent(_sliderVolume.transform);
+
+            PageList[i].transform.eulerAngles = Vector3.zero;
+
+        }
+        flipFlag = false;
+
+        nowPage = nextPage;
+        NowPageShow();
     }
 
-    public void ChengeActive() 
+    public void ChengeActive()
     {
         _sliderVolume.gameObject.SetActive(!_sliderVolume.gameObject.activeSelf);
     }
 
     //システム敵に音量を設定する関数
-    public void SetOptionData() 
+    public void SetOptionData()
     {
         _sliderVolume.SetBGM(OptioStatus.GetBGM_Volume());
         _sliderVolume.SetSE(OptioStatus.GetSE_Volume());
 
     }
     //描画するページだけをアクティブに変更する関数
-    private void NowPageShow() 
+    private void NowPageShow()
     {
 
-        for(int i = 0; i < PageList.Count; i++) 
+        for (int i = 0; i < PageList.Count; i++)
         {
             PageList[i].SetActive(false);
 
@@ -64,8 +95,47 @@ public class OptionManager : MonoBehaviour
 
 
     }
-    public void AddPage() 
-    { nowPage += 1;if (nowPage > 2) nowPage = 2; NowPageShow(); }
-    public void SbuPage() 
-    { nowPage -= 1; if (nowPage < 0) nowPage = 0; NowPageShow(); }
+    int offsetA = 0;
+    int offsetB = 1;
+
+    private void PageFlipStart()
+    {
+
+        if (nextPage > nowPage)
+        {
+            offsetA = 1;
+            offsetB = 0;
+        }
+        else
+        {
+            offsetA = 0;
+            offsetB = 1;
+
+        }
+
+        PageList[nextPage * 2 + offsetA].transform.SetParent(PageRoot[3]);
+        PageList[nextPage * 2 + offsetA].SetActive(true);
+        PageList[nowPage * 2 + offsetB].transform.SetParent(PageRoot[2]);
+        PageList[nowPage * 2 + offsetA].transform.SetParent(PageRoot[1]);
+        PageList[nextPage * 2 + offsetB].transform.SetParent(PageRoot[0]);
+
+        PageList[nextPage * 2 + offsetB].transform.eulerAngles = new Vector3(0, 90, 0);
+
+
+
+
+    }
+    private void PageFlip()
+    {
+
+
+
+
+
+    }
+
+    public void AddPage()
+    { nextPage += 1; if (nextPage > 2) {nextPage = 2; return; } PageFlipStart(); flipFlag = true; }
+    public void SbuPage()
+    { nextPage -= 1; if (nextPage < 0) { nextPage = 0;return; } PageFlipStart(); flipFlag = true; }
 }
