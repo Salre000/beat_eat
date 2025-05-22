@@ -15,9 +15,11 @@ public class OptionManager : MonoBehaviour
 
     [SerializeField] private List<RectTransform> PageRoot = new List<RectTransform>();
     [SerializeField] private GameObject DC;
+
+    [SerializeField]private GameObject HitLine;
     private RectTransform Bell;
 
-    private Vector2 hitPos=Vector2.zero;
+    private Vector2 hitPos = Vector2.zero;
     private void Awake()
     {
         OptisonUility.optionManager = this;
@@ -38,7 +40,7 @@ public class OptionManager : MonoBehaviour
 
         }
 
-        Bell = _sliderVolume.gameObject.transform.GetChild(_sliderVolume.gameObject.transform.childCount-1).GetComponent<RectTransform>();
+        Bell = _sliderVolume.gameObject.transform.GetChild(_sliderVolume.gameObject.transform.childCount - 1).GetComponent<RectTransform>();
 
         NowPageShow();
     }
@@ -81,7 +83,7 @@ public class OptionManager : MonoBehaviour
 
         }
 
-        switch (nowPage) 
+        switch (nowPage)
         {
             case 0:
 
@@ -92,7 +94,7 @@ public class OptionManager : MonoBehaviour
 
     }
 
-    private void DCSizeChenge() 
+    private void DCSizeChenge()
     {
         if (DC.transform.localScale.x > 1) return;
         DC.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
@@ -100,15 +102,15 @@ public class OptionManager : MonoBehaviour
 
     }
 
-    private void HitNotesChangePos() 
+    private void HitNotesChangePos()
     {
-        if (!OptionStatus.GetNotesTouchPos()) 
+        if (!OptionStatus.GetNotesTouchPos())
         {
-            DC.transform.GetChild(0).GetComponent<RectTransform>().position = hitPos;
+            DC.transform.localPosition = hitPos * 20+new Vector2(0, OptionStatus.GetNotesTouchOffset()*5);
         }
-        else 
+        else
         {
-            DC.transform.GetChild(0).GetComponent<RectTransform>().localPosition = Vector2.zero;
+            DC.transform.localPosition = Vector2.zero;
         }
 
 
@@ -185,10 +187,53 @@ public class OptionManager : MonoBehaviour
 
     }
 
-    public void AddPage()
-    { nextPage += 1; if (nextPage > 2) {nextPage = 2; return; } PageFlipStart(); flipFlag = true; }
-    public void SbuPage()
-    { nextPage -= 1; if (nextPage < 0) { nextPage = 0;return; } PageFlipStart(); flipFlag = true; }
+    private void SetNotesLineOffset()
+    {
+        Vector3 vector= HitLine.transform.position;
+        vector.z = OptionStatus.GetNotesHitLinePos()*0.1f-11;
+        HitLine.transform.position = vector;
+    }
 
-    public void AddNotesSpeed() { OptionStatus.SetNotesSpeed(OptionStatus.GetNotesSpeed()+1); }
+    public void AddPage()
+    { if (flipFlag) return; nextPage += 1; if (nextPage > 2) { nextPage = 2; return; } PageFlipStart(); flipFlag = true; }
+    public void SbuPage()
+    { if (flipFlag) return; nextPage -= 1; if (nextPage < 0) { nextPage = 0; return; } PageFlipStart(); flipFlag = true; }
+
+    public void AddNotesSpeed()
+    {
+        if (OptionStatus.GetNotesSpeed() >= 5) return;
+        OptionStatus.SetNotesSpeed(OptionStatus.GetNotesSpeed() + 1);
+    }
+    public void SbuNotesSpeed()
+    {
+        if (OptionStatus.GetNotesSpeed() <= 0) return;
+        OptionStatus.SetNotesSpeed(OptionStatus.GetNotesSpeed() - 1);
+    }
+    public void AddNotesPos()
+    {
+        if (OptionStatus.GetNotesHitLinePos() >= 30) return;
+        OptionStatus.SetNotesHitLinePos(OptionStatus.GetNotesHitLinePos() + 1);
+        SetNotesLineOffset();
+
+    }
+    public void SbuNotesPos()
+    {
+        if (OptionStatus.GetNotesHitLinePos() <= 0) return;
+        OptionStatus.SetNotesHitLinePos(OptionStatus.GetNotesHitLinePos() - 1);
+        SetNotesLineOffset();
+
+    }
+    public void AddNotesTouchOffset()
+    {
+        if (OptionStatus.GetNotesTouchOffset() >= 10) return;
+        OptionStatus.SetNotesTouchOffset(OptionStatus.GetNotesTouchOffset() + 1);
+    }
+    public void SbuNotesTouchOffset()
+    {
+        if (OptionStatus.GetNotesTouchOffset() <= 0) return;
+        OptionStatus.SetNotesTouchOffset(OptionStatus.GetNotesTouchOffset() - 1);
+    }
+
+    public void ChengeHitType() { OptionStatus.SetNotesTouchPos(!OptionStatus.GetNotesTouchPos()); }
+
 }

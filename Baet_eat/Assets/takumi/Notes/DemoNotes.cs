@@ -13,11 +13,13 @@ public class DemoNotes : MonoBehaviour
     {
         transform.position -= new Vector3(0,0, BaseSpeed*OptionStatus.GetNotesSpeed()/50);
 
-        if (transform.position.z < -11 && !ActionFlag) 
+
+        if (transform.position.z < -11+(OptionStatus.GetNotesHitLinePos()*0.1f) && !ActionFlag) 
         {
+        Debug.Log(transform.localPosition);
             //”»’èŒ‹‰Ê‚ðo‚·
             OptisonUility.DCStart();
-            OptisonUility.SetHitPos(_camera.WorldToScreenPoint(transform.position));
+            OptisonUility.SetHitPos(transform.localPosition);
 
             ActionFlag = true;
         }
