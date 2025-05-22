@@ -11,9 +11,10 @@ public class DemoNotes : MonoBehaviour
     {
         transform.position += new Vector3(0,0, BaseSpeed*OptioStatus.GetNotesSpeed()/50);
 
-        if (transform.position.z < 0 && !ActionFlag) 
+        if (transform.position.z < -11 && !ActionFlag) 
         {
             //”»’èŒ‹‰Ê‚ðo‚·
+            OptisonUility.DCStart();
 
             ActionFlag = true;
         }

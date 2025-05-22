@@ -14,8 +14,13 @@ public class OptionManager : MonoBehaviour
     [SerializeField] private List<GameObject> PageList = new List<GameObject>();
 
     [SerializeField] private List<RectTransform> PageRoot = new List<RectTransform>();
-
+    [SerializeField] private GameObject DC;
     private RectTransform Bell;
+
+    private void Awake()
+    {
+        OptisonUility.optionManager = this;
+    }
     private void Start()
     {
         OptioStatus.Initialize();
@@ -40,41 +45,11 @@ public class OptionManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debagよう
-        if (Input.GetKeyDown(KeyCode.Escape)) ChengeActive();
-
-        if (!flipFlag || nextPage == nowPage) return;
-
-        if(PageList[nowPage * 2 + offsetA].activeSelf) PageList[nowPage * 2 + offsetA].transform.Rotate(0, 1, 0);
-
-        if (PageList[nowPage * 2 + offsetA].transform.eulerAngles.y < 90) return;
-
-        if (PageList[nowPage * 2 + offsetA].activeSelf) 
-        {
-            PageList[nowPage * 2 + offsetA].SetActive(false);
-            PageList[nextPage * 2 + offsetB].SetActive(true);
-        }
-        if (PageList[nextPage * 2 + offsetB].activeSelf) PageList[nextPage * 2 + offsetB].transform.Rotate(0, -1, 0);
-
-        if (PageList[nextPage * 2 + offsetB].transform.eulerAngles.y <91) return;
-
-        for (int i = 0; i < PageList.Count; i++)
-        {
-            PageList[i].transform.SetParent(_sliderVolume.transform);
-
-            PageList[i].transform.eulerAngles = Vector3.zero;
-
-        }
-
-        flipFlag = false;
-
-        nowPage = nextPage;
-        NowPageShow();
-
-        //同じ親へのペアレント設定は無効化されるから一度nullを入れる
-        Bell.transform.parent=null;
-        Bell.transform.parent=(_sliderVolume.transform);
+        PageFlip();
+        DCSizeChenge();
     }
+
+
 
     public void ChengeActive()
     {
@@ -103,8 +78,26 @@ public class OptionManager : MonoBehaviour
 
         }
 
+        switch (nowPage) 
+        {
+            case 0:
+
+                //DC.SetActive(false);
+                break;
+        }
+
 
     }
+
+    private void DCSizeChenge() 
+    {
+        if (DC.transform.localScale.x > 1) return;
+        DC.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+
+
+    }
+
+    public void DCStart() { DC.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f); }
     int offsetA = 0;
     int offsetB = 1;
 
@@ -137,6 +130,37 @@ public class OptionManager : MonoBehaviour
     private void PageFlip()
     {
 
+        if (!flipFlag || nextPage == nowPage) return;
+
+        if (PageList[nowPage * 2 + offsetA].activeSelf) PageList[nowPage * 2 + offsetA].transform.Rotate(0, 1, 0);
+
+        if (PageList[nowPage * 2 + offsetA].transform.eulerAngles.y < 90) return;
+
+        if (PageList[nowPage * 2 + offsetA].activeSelf)
+        {
+            PageList[nowPage * 2 + offsetA].SetActive(false);
+            PageList[nextPage * 2 + offsetB].SetActive(true);
+        }
+        if (PageList[nextPage * 2 + offsetB].activeSelf) PageList[nextPage * 2 + offsetB].transform.Rotate(0, -1, 0);
+
+        if (PageList[nextPage * 2 + offsetB].transform.eulerAngles.y < 91) return;
+
+        for (int i = 0; i < PageList.Count; i++)
+        {
+            PageList[i].transform.SetParent(_sliderVolume.transform);
+
+            PageList[i].transform.eulerAngles = Vector3.zero;
+
+        }
+
+        flipFlag = false;
+
+        nowPage = nextPage;
+        NowPageShow();
+
+        //同じ親へのペアレント設定は無効化されるから一度nullを入れる
+        Bell.transform.parent = null;
+        Bell.transform.parent = (_sliderVolume.transform);
 
 
 
