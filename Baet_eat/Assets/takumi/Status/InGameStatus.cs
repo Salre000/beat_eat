@@ -11,6 +11,9 @@ public class InGameStatus
 
     private static int HP = 1000;
 
+    private static int MAX_HP = 1000;
+
+    private static int GetMAXHP() {  return MAX_HP; }
     private static int damege = 50;
 
     private static int speed = 1;

@@ -14,12 +14,15 @@ public class OptionManager : MonoBehaviour
     [SerializeField] private List<GameObject> PageList = new List<GameObject>();
 
     [SerializeField] private List<RectTransform> PageRoot = new List<RectTransform>();
+
+    private RectTransform Bell;
     private void Start()
     {
         OptioStatus.Initialize();
         SetOptionData();
 
-        for (int i = 0; i < _sliderVolume.gameObject.transform.childCount - 4; i++)
+        //ページ以外の子供オブジェクトの数だけ低く
+        for (int i = 0; i < _sliderVolume.gameObject.transform.childCount - 5; i++)
             PageList.Add(_sliderVolume.gameObject.transform.GetChild(i).gameObject);
 
         for (int i = 1; i < PageList.Count - 1; i++)
@@ -27,6 +30,8 @@ public class OptionManager : MonoBehaviour
             PageList[i].transform.GetChild(PageList[i].transform.childCount - 1).GetComponent<Button>().onClick.AddListener(i % 2 == 0 ? SbuPage : AddPage);
 
         }
+
+        Bell = _sliderVolume.gameObject.transform.GetChild(_sliderVolume.gameObject.transform.childCount-1).GetComponent<RectTransform>();
 
         NowPageShow();
     }
@@ -60,10 +65,15 @@ public class OptionManager : MonoBehaviour
             PageList[i].transform.eulerAngles = Vector3.zero;
 
         }
+
         flipFlag = false;
 
         nowPage = nextPage;
         NowPageShow();
+
+        //同じ親へのペアレント設定は無効化されるから一度nullを入れる
+        Bell.transform.parent=null;
+        Bell.transform.parent=(_sliderVolume.transform);
     }
 
     public void ChengeActive()
@@ -120,7 +130,6 @@ public class OptionManager : MonoBehaviour
         PageList[nextPage * 2 + offsetB].transform.SetParent(PageRoot[0]);
 
         PageList[nextPage * 2 + offsetB].transform.eulerAngles = new Vector3(0, 90, 0);
-
 
 
 
