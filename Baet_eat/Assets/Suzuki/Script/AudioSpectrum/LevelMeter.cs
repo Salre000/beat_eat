@@ -10,7 +10,7 @@ public class LevelMeter : MonoBehaviour
     private List<Image> images;
     private Transform _transform=null;
     private Vector3 _localScale = new Vector3(0,0,0);
-    private const float _UPDATE_INTERVAL = 0.05f;
+    private const float _UPDATE_INTERVAL = 0.02f;
     private float _time = 0f;
     Vector3 _currentScale = Vector3.one;
 

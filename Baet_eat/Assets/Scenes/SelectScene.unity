@@ -2026,7 +2026,7 @@ GameObject:
   - component: {fileID: 33164751}
   - component: {fileID: 33164750}
   m_Layer: 5
-  m_Name: Exercise (1)
+  m_Name: Betrayal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3120,7 +3120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 55.39203, y: 29.533127}
+  m_AnchoredPosition: {x: 55.39203, y: 36.99608}
   m_SizeDelta: {x: -134.71594, y: 5000}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &77004325
@@ -22118,7 +22118,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TestJacketMusic
+  m_text: EndressDance
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 99974654b65e6af47bcea5822c39a08b, type: 2}
   m_sharedMaterial: {fileID: -5905864060214881907, guid: 99974654b65e6af47bcea5822c39a08b, type: 2}
@@ -26717,7 +26717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TestJacketMusic02
+  m_text: Betrayal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 99974654b65e6af47bcea5822c39a08b, type: 2}
   m_sharedMaterial: {fileID: -5905864060214881907, guid: 99974654b65e6af47bcea5822c39a08b, type: 2}
@@ -38511,7 +38511,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -58, y: 6}
-  m_SizeDelta: {x: 400, y: 120}
+  m_SizeDelta: {x: 480, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1085019249
 MonoBehaviour:
@@ -38533,7 +38533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TestJacketMusic02
+  m_text: "\u3064\u3088\u3064\u3088\u6700\u5F37\u30A8\u30AF\u30B5\u30B5\u30A4\u30BA"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 99974654b65e6af47bcea5822c39a08b, type: 2}
   m_sharedMaterial: {fileID: -5905864060214881907, guid: 99974654b65e6af47bcea5822c39a08b, type: 2}
@@ -38560,8 +38560,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -44037,7 +44037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3dc8adc49715804a98ed38eb5ea4619, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 77736ded4272212438282508721d2db5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
