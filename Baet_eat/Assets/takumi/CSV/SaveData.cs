@@ -225,16 +225,16 @@ public static class SaveData
         /// ノーツの見た目　int
         /// SEの音　int
 
-        sw.WriteLine(OptioStatus.GetSkillIndex().ToString());
-        sw.WriteLine(OptioStatus.GetNotesSpeed().ToString());
-        sw.WriteLine(OptioStatus.GetNotesHitLinePos().ToString());
-        sw.WriteLine(OptioStatus.GetNotesTouchPos().ToString());
-        sw.WriteLine(OptioStatus.GetNotesTouchOffset().ToString());
-        sw.WriteLine(OptioStatus.GetNotesToNotesLineFlag().ToString());
-        sw.WriteLine(OptioStatus.GetBGM_Volume().ToString());
-        sw.WriteLine(OptioStatus.GetSE_Volume().ToString());
-        sw.WriteLine(OptioStatus.GetNotesID().ToString());
-        sw.WriteLine(OptioStatus.GetSEID().ToString());
+        sw.WriteLine(OptionStatus.GetSkillIndex().ToString());
+        sw.WriteLine(OptionStatus.GetNotesSpeed().ToString());
+        sw.WriteLine(OptionStatus.GetNotesHitLinePos().ToString());
+        sw.WriteLine(OptionStatus.GetNotesTouchPos().ToString());
+        sw.WriteLine(OptionStatus.GetNotesTouchOffset().ToString());
+        sw.WriteLine(OptionStatus.GetNotesToNotesLineFlag().ToString());
+        sw.WriteLine(OptionStatus.GetBGM_Volume().ToString());
+        sw.WriteLine(OptionStatus.GetSE_Volume().ToString());
+        sw.WriteLine(OptionStatus.GetNotesID().ToString());
+        sw.WriteLine(OptionStatus.GetSEID().ToString());
 
 
 
