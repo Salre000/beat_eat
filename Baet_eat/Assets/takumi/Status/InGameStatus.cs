@@ -6,6 +6,7 @@ public class InGameStatus
 {
     private static float score = 0;
     private const float MAX_SCORE = 1010000.0f;
+    public static float GetMAXScore() { return MAX_SCORE; }
     //ゲーム開始時に決定する1ノーツ当たりのスコア
     private static float upScore = -1;
 
@@ -24,7 +25,7 @@ public class InGameStatus
     private static int MaxCombo = 0;
 
     private static System.Action ChengeHpAction;
-    public void SetChengeHPUIAction(System.Action damegeUIAction) { ChengeHpAction = damegeUIAction; }
+    public static void SetChengeHPUIAction(System.Action damegeUIAction) { ChengeHpAction = damegeUIAction; }
 
     public InGameStatus()
     {
