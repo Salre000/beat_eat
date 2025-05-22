@@ -228,15 +228,15 @@ public static class LoadData
 
         int LineCount = 0;
         LineCount++;
-        OptioStatus.SetNotesSpeed(float.Parse(csvDatas[LineCount][0]));LineCount++;
-        OptioStatus.SetNotesHitLinePos(float.Parse(csvDatas[LineCount][0])); LineCount++;
-        OptioStatus.SetNotesTouchPos(bool.Parse(csvDatas[LineCount][0]));LineCount++;
-        OptioStatus.SetNotesTouchOffset(float.Parse(csvDatas[LineCount][0])); LineCount++;
-        OptioStatus.SetNotesToNotesLineFlag(bool.Parse(csvDatas[LineCount][0])); LineCount++;
-        OptioStatus.SetBGM_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
-        OptioStatus.SetSE_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
-        OptioStatus.SetNotesID(int.Parse(csvDatas[LineCount][0])); LineCount++;
-        OptioStatus.SetSEID(int.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptionStatus.SetNotesSpeed(float.Parse(csvDatas[LineCount][0]));LineCount++;
+        OptionStatus.SetNotesHitLinePos(float.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptionStatus.SetNotesTouchPos(bool.Parse(csvDatas[LineCount][0]));LineCount++;
+        OptionStatus.SetNotesTouchOffset(float.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptionStatus.SetNotesToNotesLineFlag(bool.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptionStatus.SetBGM_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptionStatus.SetSE_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptionStatus.SetNotesID(int.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptionStatus.SetSEID(int.Parse(csvDatas[LineCount][0])); LineCount++;
 
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public static class OptioStatus 
+public static class OptionStatus 
 {
     /// 最後に選んでいたスキル　int 
     /// ノーツの速さ　float 

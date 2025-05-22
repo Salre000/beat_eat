@@ -17,17 +17,19 @@ public class OptionManager : MonoBehaviour
     [SerializeField] private GameObject DC;
     private RectTransform Bell;
 
+    private Vector2 hitPos=Vector2.zero;
     private void Awake()
     {
         OptisonUility.optionManager = this;
     }
     private void Start()
     {
-        OptioStatus.Initialize();
+        OptionStatus.Initialize();
         SetOptionData();
 
-        //ページ以外の子供オブジェクトの数だけ低く
-        for (int i = 0; i < _sliderVolume.gameObject.transform.childCount - 5; i++)
+        //ページより前のページ以外の子供オブジェクトの数だけ高くスタート
+        //ページより後のページ以外の子供オブジェクトの数だけ低く終了
+        for (int i = 2; i < _sliderVolume.gameObject.transform.childCount - 5; i++)
             PageList.Add(_sliderVolume.gameObject.transform.GetChild(i).gameObject);
 
         for (int i = 1; i < PageList.Count - 1; i++)
@@ -47,6 +49,7 @@ public class OptionManager : MonoBehaviour
     {
         PageFlip();
         DCSizeChenge();
+        HitNotesChangePos();
     }
 
 
@@ -59,8 +62,8 @@ public class OptionManager : MonoBehaviour
     //システム敵に音量を設定する関数
     public void SetOptionData()
     {
-        _sliderVolume.SetBGM(OptioStatus.GetBGM_Volume());
-        _sliderVolume.SetSE(OptioStatus.GetSE_Volume());
+        _sliderVolume.SetBGM(OptionStatus.GetBGM_Volume());
+        _sliderVolume.SetSE(OptionStatus.GetSE_Volume());
 
     }
     //描画するページだけをアクティブに変更する関数
@@ -97,10 +100,25 @@ public class OptionManager : MonoBehaviour
 
     }
 
+    private void HitNotesChangePos() 
+    {
+        if (!OptionStatus.GetNotesTouchPos()) 
+        {
+            DC.transform.GetChild(0).GetComponent<RectTransform>().position = hitPos;
+        }
+        else 
+        {
+            DC.transform.GetChild(0).GetComponent<RectTransform>().localPosition = Vector2.zero;
+        }
+
+
+    }
+
     public void DCStart() { DC.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f); }
     int offsetA = 0;
     int offsetB = 1;
 
+    public void SetHitPos(Vector2 pos) { hitPos = pos; }
     private void PageFlipStart()
     {
 
@@ -171,4 +189,6 @@ public class OptionManager : MonoBehaviour
     { nextPage += 1; if (nextPage > 2) {nextPage = 2; return; } PageFlipStart(); flipFlag = true; }
     public void SbuPage()
     { nextPage -= 1; if (nextPage < 0) { nextPage = 0;return; } PageFlipStart(); flipFlag = true; }
+
+    public void AddNotesSpeed() { OptionStatus.SetNotesSpeed(OptionStatus.GetNotesSpeed()+1); }
 }
