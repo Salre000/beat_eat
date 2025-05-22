@@ -23,6 +23,9 @@ public class InGameStatus
     private static int combo = 0;
     private static int MaxCombo = 0;
 
+    private static System.Action ChengeHpAction;
+    public void SetChengeHPUIAction(System.Action damegeUIAction) { ChengeHpAction = damegeUIAction; }
+
     public InGameStatus()
     {
         HP = 1000;
@@ -34,6 +37,8 @@ public class InGameStatus
             for (int j = 0; j < judgments[i].Length; j++)
             {
                 judgments[i][j] = 0;
+
+
             }
         }
 
@@ -58,13 +63,13 @@ public class InGameStatus
     {
         HP -= damege;
         combo = 0;
-
+        if(ChengeHpAction!=null)ChengeHpAction();
         if (HP <= 150&&!HeelFlag) 
         {
             HeelFlag = true;
             //‰ñ•œ‚·‚é
             SkillManager.instance.heelHp.Execute();
-
+            if (ChengeHpAction != null) ChengeHpAction();
         }
 
     }

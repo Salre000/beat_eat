@@ -10,6 +10,5 @@ public class NotesMove : MonoBehaviour
     private void FixedUpdate()
     {
         this.transform.position -= Vec;
-
     }
 }
