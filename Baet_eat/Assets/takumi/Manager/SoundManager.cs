@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour
 
         _soundSource.clip = mainBGM;
         _soundSource.time = 0;//èIÇÌÇËÇ©ÇØÇ™195
-        _sound.transform.position+=new Vector3(0,0, -180*20);
+        _sound.transform.position+=new Vector3(0,0, 0*20);
         _soundSource.Play();
     }
 

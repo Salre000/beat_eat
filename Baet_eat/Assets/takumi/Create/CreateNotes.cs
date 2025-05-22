@@ -78,6 +78,8 @@ public class CreateNotes : MonoBehaviour
     {
         GameObject NotesParent = new GameObject(SongName);
 
+        NotesParent.transform.position=Vector3.zero;
+
         NotesParent.AddComponent<NotesMove>();
 
         string inputString = Resources.Load<TextAsset>(SongName).ToString();
@@ -97,6 +99,7 @@ public class CreateNotes : MonoBehaviour
 
             //プレハブを複製して見えないように変更
             GameObject notes = CreateTypeNotes(inputJson.notes[i].type);
+            notes.SetActive(false);
 
             //時間　 kankaku * inputJson.notes[i].num
 
