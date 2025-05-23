@@ -67,7 +67,7 @@ public class ViewSelectMusic : MonoBehaviour
     {
         _stringBuilder.Clear();
         if (isFileName != false)
-            _stringBuilder.Append("Music/");
+            _stringBuilder.Append("Musics/");
 
         _stringBuilder.Append(toString);
     }

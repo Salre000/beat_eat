@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
     {
         SoundUtility.soundManager = this;
     }
-    private readonly string FliePass = "Music/";
+    private readonly string FliePass = "Musics/";
 
     public void Start()
     {
