@@ -15,6 +15,7 @@ public class InGameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreUI;
 
     [SerializeField] GameObject[] Ranks;
+    private GameObject Plus;
 
     //現在タップ可能なノーツの配列
     [SerializeField] List<NotesBase> activeObject=new List<NotesBase>();
@@ -53,7 +54,10 @@ public class InGameManager : MonoBehaviour
         _lineFlash.SetMaterial(flashMaterial);
         _lineFlash.SetFlashLine(_divisionCount);
         _line.SetLine(_divisionCount,areaObject,tapareaMaterial);
+        Plus = Ranks[0].transform.GetChild(1).gameObject;
 
+        RankNotShow();
+        Ranks[4].SetActive(true);
     }
 
     private void FixedUpdate()
@@ -103,9 +107,15 @@ public class InGameManager : MonoBehaviour
 
     public void ShowText(string text) {}
 
+    private void RankNotShow() 
+    {
+        Plus.SetActive(false);
+        for (int i = 0; i < Ranks.Length; i++) { Ranks[i].SetActive(false); }
+    }
+
     public void SetScore() 
     {
-
+        RankNotShow();
         scoreUI.text = ((int)InGameStatus.GetScore()).ToSafeString();
         float scoreRate=InGameStatus.GetScoreRate();
 
@@ -116,21 +126,31 @@ public class InGameManager : MonoBehaviour
         switch (clearRank)
         {
             case publicEnum.ClearRank.SPlus:
+                Ranks[0].SetActive(true);
+                Plus.SetActive(true);
                 offset = 0.9f;
                 break;
             case publicEnum.ClearRank.S:
+                Ranks[0].SetActive(true);
                 offset = 0.775f;
                 break;
             case publicEnum.ClearRank.A:
+                Ranks[1].SetActive(true);
                 offset = 0.65f;
                 break;
             case publicEnum.ClearRank.B:
+                Ranks[2].SetActive(true);
+
                 offset = 0.525f;
                 break;
             case publicEnum.ClearRank.C:
+                Ranks[3].SetActive(true);
+
                 offset = 0.4f;
                 break;
             case publicEnum.ClearRank.D:
+                Ranks[4].SetActive(true);
+
                 break;
         }
 
