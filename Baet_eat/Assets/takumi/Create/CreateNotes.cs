@@ -64,6 +64,8 @@ public class CreateNotes : MonoBehaviour
 
         stringBuilder.Append(FilePass);
         stringBuilder.Append(Difficulty[(int)ScoreStatus.nowDifficulty]);
+
+        songName=Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].musicName;
         stringBuilder.Append(songName);
 
         Load(stringBuilder.ToString());
