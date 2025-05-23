@@ -67,7 +67,7 @@ public class JudgmentImageManager : MonoBehaviour
 
         if (OptionStatus.GetNotesTouchPos())
         {
-            nowJudgmentObject.transform.localPosition = Vector3.zero;
+            nowJudgmentObject.transform.localPosition = Vector3.zero + new Vector3(0, OptionStatus.GetNotesTouchOffset() * 30 + 30,0);
         }
         else 
         {

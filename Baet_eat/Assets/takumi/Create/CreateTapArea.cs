@@ -166,8 +166,8 @@ public class CreateTapArea
         line.material = new Material(normal);
         line.material.color = Color.red;
 
-        line.SetPosition(0, new Vector3(wide / 2, 0.02f, offset + areaRange / 2));
-        line.SetPosition(1, new Vector3(-wide/2, 0.02f, offset+areaRange/2));
+        line.SetPosition(0, new Vector3(wide / 2, 0.02f, offset + areaRange / 2+(OptionStatus.GetNotesHitLinePos() * 0.5f)));
+        line.SetPosition(1, new Vector3(-wide/2, 0.02f, offset+areaRange/2 + (OptionStatus.GetNotesHitLinePos() * 0.5f)));
         line.startWidth = line.endWidth = 0.1f;
 
 

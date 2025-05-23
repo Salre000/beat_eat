@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +21,13 @@ public class OptionManager : MonoBehaviour
 
     [SerializeField]private GameObject HitLine;
     private RectTransform Bell;
+
+    [SerializeField] TextMeshProUGUI SppedText;
+    [SerializeField] TextMeshProUGUI LineOffsetText;
+    [SerializeField] TextMeshProUGUI TouchOffsetText;
+
+    [SerializeField] Image HitUIImage;
+    [SerializeField] RectTransform HitUIImageFlag;
 
     private Vector2 hitPos = Vector2.zero;
     private void Awake()
@@ -44,6 +53,11 @@ public class OptionManager : MonoBehaviour
         Bell = _sliderVolume.gameObject.transform.GetChild(_sliderVolume.gameObject.transform.childCount - 1).GetComponent<RectTransform>();
 
         NowPageShow();
+        SetNotesLineOffset();
+        TouchOffsetText.text = OptionStatus.GetNotesTouchOffset().ToString();
+        SppedText.text = OptionStatus.GetNotesSpeed().ToString();
+        SetHitImage();
+
     }
 
     bool flipFlag = false;
@@ -113,7 +127,7 @@ public class OptionManager : MonoBehaviour
         }
         else
         {
-            DC.transform.localPosition = Vector2.zero;
+            DC.transform.localPosition = Vector2.zero + new Vector2(0, OptionStatus.GetNotesTouchOffset() * 5);
         }
 
 
@@ -195,6 +209,25 @@ public class OptionManager : MonoBehaviour
         Vector3 vector= HitLine.transform.position;
         vector.z = OptionStatus.GetNotesHitLinePos()*0.1f-11;
         HitLine.transform.position = vector;
+
+        LineOffsetText.text = OptionStatus.GetNotesHitLinePos().ToString();
+    }
+
+    private  void SetHitImage() 
+    {
+        if (OptionStatus.GetNotesTouchPos()) 
+        {
+            HitUIImage.color = Color.grey;
+            HitUIImageFlag.localPosition = new Vector2(-70, 0);
+
+        }
+        else
+        {
+            HitUIImage.color = Color.red;
+            HitUIImageFlag.localPosition = new Vector2(70, 0);
+
+
+        }
     }
 
     public void AddPage()
@@ -206,11 +239,13 @@ public class OptionManager : MonoBehaviour
     {
         if (OptionStatus.GetNotesSpeed() >= 5) return;
         OptionStatus.SetNotesSpeed(OptionStatus.GetNotesSpeed() + 1);
+        SppedText.text = OptionStatus.GetNotesSpeed().ToString();
     }
     public void SbuNotesSpeed()
     {
         if (OptionStatus.GetNotesSpeed() <= 1) return;
         OptionStatus.SetNotesSpeed(OptionStatus.GetNotesSpeed() - 1);
+        SppedText.text = OptionStatus.GetNotesSpeed().ToString();
     }
     public void AddNotesPos()
     {
@@ -230,13 +265,15 @@ public class OptionManager : MonoBehaviour
     {
         if (OptionStatus.GetNotesTouchOffset() >= 10) return;
         OptionStatus.SetNotesTouchOffset(OptionStatus.GetNotesTouchOffset() + 1);
+        TouchOffsetText.text= OptionStatus.GetNotesTouchOffset().ToString();
     }
     public void SbuNotesTouchOffset()
     {
         if (OptionStatus.GetNotesTouchOffset() <= 0) return;
         OptionStatus.SetNotesTouchOffset(OptionStatus.GetNotesTouchOffset() - 1);
+        TouchOffsetText.text= OptionStatus.GetNotesTouchOffset().ToString();
     }
 
-    public void ChengeHitType() { OptionStatus.SetNotesTouchPos(!OptionStatus.GetNotesTouchPos()); }
+    public void ChengeHitType() { OptionStatus.SetNotesTouchPos(!OptionStatus.GetNotesTouchPos()); SetHitImage(); }
 
 }
