@@ -8511,6 +8511,8 @@ MonoBehaviour:
   tapareaMaterial: {fileID: 2100000, guid: f14dfe32b117c4448963f99a1d5c1958, type: 2}
   tapareaMaterial2: {fileID: 2100000, guid: 0585254d320051e458cd9169c2a6b496, type: 2}
   flashMaterial: {fileID: 2100000, guid: e2488a7a3f61bfb47bfea176a0fa0d9c, type: 2}
+  ScoreGage: {fileID: 153811495}
+  scoreUI: {fileID: 165779359}
   activeObject: []
   areaObject: {fileID: 883365718}
   _divisionCount: 9
@@ -11497,7 +11499,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _notesHitSound: {fileID: 8300000, guid: b95d95928a2f7984e839cb828238fec7, type: 3}
-  mainBGM: {fileID: 8300000, guid: f020cd0eecbed28478a73e04a8ae5ead, type: 3}
   time: 0
   _BGMSoundSource: {fileID: 1297515989}
   _sound: {fileID: 0}

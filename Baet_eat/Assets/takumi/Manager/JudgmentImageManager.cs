@@ -9,6 +9,8 @@ public class JudgmentImageManager : MonoBehaviour
 
     private GameObject nowJudgmentObject;
 
+    private int ImagePosID= 0;
+
     private readonly float UP_SIZE = 0.15f;
 
     private float time =0;
@@ -51,7 +53,7 @@ public class JudgmentImageManager : MonoBehaviour
 
 
     }
-
+    public void SetImagePos(int posID) { ImagePosID = posID; }
     public void SetNowJudgmentObject(int index)
     {
         for (int i = 0; i < JudgmentObjects.Length; i++)
@@ -62,6 +64,16 @@ public class JudgmentImageManager : MonoBehaviour
         nowJudgmentObject.transform.localScale = new Vector3(UP_SIZE, UP_SIZE, 0);
         time = 0;
         nowJudgmentObject.SetActive(true);
+
+        if (OptionStatus.GetNotesTouchPos())
+        {
+            nowJudgmentObject.transform.localPosition = Vector3.zero;
+        }
+        else 
+        {
+
+            nowJudgmentObject.transform.position = HandUtility.handPosition(ImagePosID)+new Vector2(0,OptionStatus.GetNotesTouchOffset()*30+30);
+        }
     }
 
 }

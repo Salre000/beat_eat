@@ -10,6 +10,9 @@ public class InGameStatus
     //ゲーム開始時に決定する1ノーツ当たりのスコア
     private static float upScore = -1;
 
+    private static float ScoreRate = 0;
+    public static float GetScoreRate() {  return ScoreRate; }
+
     private static int HP = 1000;
 
     private static int MAX_HP = 1000;
@@ -42,6 +45,7 @@ public class InGameStatus
 
             }
         }
+        ScoreRate = (float)MAX_SCORE / (float)(publicEnum.ClearRank.MAX + 2);
 
 
     }
@@ -50,11 +54,13 @@ public class InGameStatus
     public static int GetHP() { return HP; }
 
     //判定による上昇スコアの変動ありの関数
-    public static void AddScore(float rete) { score += upScore * rete; }
+    public static void AddScore(float rete) 
+    { score += upScore * rete;LineUtility.SetScoreGage(); Debug.Log(rete + "倍率:結果" + score+"ランク"+ GetScoreClearRank((int)score).ToString());
+    }
 
     public static void SetUpScore(int notesCount)
     {
-        float upscore = MAX_SCORE / notesCount;
+        float upscore = MAX_SCORE / (float)notesCount;
 
         upScore = upscore;
     }
@@ -118,9 +124,8 @@ public class InGameStatus
 
     public static publicEnum.ClearRank GetScoreClearRank(int score) 
     {
-        float scoreRate = (float)MAX_SCORE / (float)publicEnum.ClearRank.MAX + 2;
 
-        int scoreRank = (int)((float)score / scoreRate);
+        int scoreRank = (int)((float)score / ScoreRate);
 
 
         switch (scoreRank) 
@@ -130,15 +135,20 @@ public class InGameStatus
             case 2: return publicEnum.ClearRank.C;
             case 3: return publicEnum.ClearRank.B;
 
-            case 5: return publicEnum.ClearRank.A;
+            case 4: return publicEnum.ClearRank.A;
 
-            case 6: return publicEnum.ClearRank.S;
+            case 5: return publicEnum.ClearRank.S;
 
+            case 6: return publicEnum.ClearRank.SPlus;
             case 7: return publicEnum.ClearRank.SPlus;
+            case 8: return publicEnum.ClearRank.SPlus;
+            case 9: return publicEnum.ClearRank.SPlus;
 
 
 
         }
+
+        Debug.Log("何で" + scoreRank);
 
         return publicEnum.ClearRank.None;
 

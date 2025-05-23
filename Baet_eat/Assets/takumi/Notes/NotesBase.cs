@@ -57,6 +57,8 @@ public class NotesBase : MonoBehaviour
         //Ž©•ª‚ðŒ©‚¦‚È‚­‚·‚é
         this.gameObject.SetActive(false);
 
+        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
+
         showTime = -1;
     }
     public virtual void Hit()
@@ -68,6 +70,7 @@ public class NotesBase : MonoBehaviour
 
         //Ž©g‚ðactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
         LineUtility.SbuActiveObject(this);
+        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
 
         //Ž©•ª‚ðŒ©‚¦‚È‚­‚·‚é
         this.gameObject.SetActive(false);
@@ -84,6 +87,7 @@ public class NotesBase : MonoBehaviour
 
         showTime = -1;
 
+        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
 
     }
 
@@ -119,7 +123,7 @@ public class NotesBase : MonoBehaviour
 
         if (renge >= (int)JudgmentType.Miss) renge = (int)JudgmentType.Miss;
 
-        renge = (int)SkillManager.instance.criticalJudgmentExpands.ExecuteSetJudgment(renge);
+        //renge = (int)SkillManager.instance.criticalJudgmentExpands.ExecuteSetJudgment(renge);
 
         if (renge >= 0) InGameStatus.SetJudgments(renge, 0);
         else InGameStatus.SetJudgments(renge, 1);

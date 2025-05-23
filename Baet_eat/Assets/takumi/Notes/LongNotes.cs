@@ -43,7 +43,7 @@ public class LongNotes : NotesBase
         return allrange;
     }
 
-    public void Start()
+    public void Initialize()
     {
         endNotes = transform.GetChild(0).gameObject;
 
@@ -70,6 +70,7 @@ public class LongNotes : NotesBase
 
             for (int i = 0; i < _distanceNum[j]; i++)
             {
+                LineUtility.AddCount();
 
                 GameObject longLongNotes = new GameObject("LongLongNotes");
 
