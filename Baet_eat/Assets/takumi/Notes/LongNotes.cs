@@ -78,7 +78,7 @@ public class LongNotes : NotesBase
 
 
                 longLongNotes.transform.parent = transform;
-                longLongNotes.transform.position = this.transform.position + new Vector3(0, 0, (i * InGameStatus.GetSpeed() * 20) + (Range(j, _distanceNum) * InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku));
+                longLongNotes.transform.position = this.transform.position + new Vector3(0, 0, (i * InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku) + (Range(j, _distanceNum) * InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku));
 
 
                 BoxArea boxarea = new BoxArea();
