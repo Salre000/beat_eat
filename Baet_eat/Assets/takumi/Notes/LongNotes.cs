@@ -49,7 +49,7 @@ public class LongNotes : NotesBase
 
         float posx = (0.5f * (renge + 1))-(0.5f * (_renge[_renge.Count - 1] + 1));
 
-        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) * -1- posx, 0, (Allrange(_distanceNum)) * (InGameStatus.GetSpeed()*20* CreateNotes.Kankaku));
+        endNotes.transform.position = transform.position + new Vector3((Allrange(_block))- posx, 0, (Allrange(_distanceNum)) * (InGameStatus.GetSpeed()*20* CreateNotes.Kankaku));
         float sizeX = Mathf.Min(renge, _renge[_renge.Count - 1])- Mathf.Max(renge, _renge[_renge.Count - 1]);
         Debug.Log(Allrange(_distanceNum)+"FFF");
 
@@ -59,9 +59,7 @@ public class LongNotes : NotesBase
 
         float num = (Range(1, _block) + block + _renge[0]) - ((float)block + (float)renge);
         float vecRight =((float)_block[0]) / (float)_distanceNum[0];
-        //vecRight *= -1;
         float vecLeft = num / (float)_distanceNum[0]; ;
-
         float renges = renge + 1;
 
         float vec = 0;
@@ -83,11 +81,11 @@ public class LongNotes : NotesBase
 
                 BoxArea boxarea = new BoxArea();
                 //メッシュの座標を設定
-                boxarea.leftTop = new Vector3((Range(j, _block) * -1 - renges/2) +vec + vecLeft * (-i - 1), 0.01f, InGameStatus.GetSpeed()*20*CreateNotes.Kankaku);
-                boxarea.bottomLeft = new Vector3((Range(j, _block) * -1 - renges / 2) + vec + vecLeft * -i, 0.01f, 0);
+                boxarea.leftTop = new Vector3((Range(j, _block) - renges/2) +vec + vecLeft * (i + 1), 0.01f, InGameStatus.GetSpeed()*20*CreateNotes.Kankaku);
+                boxarea.bottomLeft = new Vector3((Range(j, _block) - renges / 2) + vec + vecLeft * i, 0.01f, 0);
 
-                boxarea.rightTop = new Vector3((Range(j, _block) * -1) + vec + renges/2 + vecRight * (-i - 1), 0.01f, InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku);
-                boxarea.bottomRight = new Vector3((Range(j, _block) *-1) + vec + renges/2 + vecRight * -i, 0.01f, 0);
+                boxarea.rightTop = new Vector3((Range(j, _block)) + vec + renges/2 + vecRight * (i + 1), 0.01f, InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku);
+                boxarea.bottomRight = new Vector3((Range(j, _block)) + vec + renges/2 + vecRight * i, 0.01f, 0);
 
                 longNotes.SetBoxArea(boxarea);
                 longNotes.Set_SetTouchID(SetTouchIDs);
@@ -174,7 +172,6 @@ public class LongNotes : NotesBase
         int endAreaID = LineUtility.GetTapArea().GetClickPositionID(HandUtility.handPosition(touchID));
 
         //ノーツ用のIDに変更
-        endAreaID = 9 - endAreaID;
 
         if (endAreaID < 0) return;
 

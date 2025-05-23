@@ -86,7 +86,7 @@ public class InGameManager : MonoBehaviour
 
             notes.SetTouchID(id);
 
-            if (!notes.CheckHitlane(9-index)) continue;
+            if (!notes.CheckHitlane(index)) continue;
 
             notes.Hit();
 

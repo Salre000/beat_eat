@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NotesBase : MonoBehaviour
 {
-    protected List<int> laneIndex = new List<int>();
+    [SerializeField]protected List<int> laneIndex = new List<int>();
     public void AddLaneIndex(int index) { laneIndex.Add(index); }
     public void SetLaneIndex(List<int> lane) { laneIndex = lane; }
 
