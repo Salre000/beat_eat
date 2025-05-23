@@ -49,7 +49,7 @@ public class LongNotes : NotesBase
 
         float posx = (0.5f * (renge + 1))-(0.5f * (_renge[_renge.Count - 1] + 1));
 
-        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) * -1- posx, 0, (Allrange(_distanceNum)) * (InGameStatus.GetSpeed()*20*0.125f));
+        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) * -1- posx, 0, (Allrange(_distanceNum)) * (InGameStatus.GetSpeed()*20* CreateNotes.Kankaku));
         float sizeX = Mathf.Min(renge, _renge[_renge.Count - 1])- Mathf.Max(renge, _renge[_renge.Count - 1]);
         Debug.Log(Allrange(_distanceNum)+"FFF");
 
@@ -72,21 +72,21 @@ public class LongNotes : NotesBase
             {
                 LineUtility.AddCount();
 
-                GameObject longLongNotes = new GameObject("LongLongNotes");
 
+                GameObject longLongNotes = new GameObject("LongLongNotes");
                 LongLongNotes longNotes = longLongNotes.AddComponent<LongLongNotes>();
 
 
                 longLongNotes.transform.parent = transform;
-                longLongNotes.transform.position = this.transform.position + new Vector3(0, 0, (i * InGameStatus.GetSpeed() * 20 * 0.125f) + (Range(j, _distanceNum) * InGameStatus.GetSpeed() * 20 * 0.125f));
+                longLongNotes.transform.position = this.transform.position + new Vector3(0, 0, (i * InGameStatus.GetSpeed() * 20) + (Range(j, _distanceNum) * InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku));
 
 
                 BoxArea boxarea = new BoxArea();
                 //ÉÅÉbÉVÉÖÇÃç¿ïWÇê›íË
-                boxarea.leftTop = new Vector3((Range(j, _block) * -1 - renges/2) +vec + vecLeft * (-i - 1), 0.01f, InGameStatus.GetSpeed()*20 * 0.125f);
+                boxarea.leftTop = new Vector3((Range(j, _block) * -1 - renges/2) +vec + vecLeft * (-i - 1), 0.01f, InGameStatus.GetSpeed()*20*CreateNotes.Kankaku);
                 boxarea.bottomLeft = new Vector3((Range(j, _block) * -1 - renges / 2) + vec + vecLeft * -i, 0.01f, 0);
 
-                boxarea.rightTop = new Vector3((Range(j, _block) * -1) + vec + renges/2 + vecRight * (-i - 1), 0.01f, InGameStatus.GetSpeed() * 20 * 0.125f);
+                boxarea.rightTop = new Vector3((Range(j, _block) * -1) + vec + renges/2 + vecRight * (-i - 1), 0.01f, InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku);
                 boxarea.bottomRight = new Vector3((Range(j, _block) *-1) + vec + renges/2 + vecRight * -i, 0.01f, 0);
 
                 longNotes.SetBoxArea(boxarea);
@@ -121,7 +121,8 @@ public class LongNotes : NotesBase
             {
                 vec = Range(j, _renge) / 2.0f - (_renge[j+1] * 0.5f);
             }
-                num = (Range(j + 2, _block) + _renge[j + 1]) - (Range(j + 1, _block) + (float)_renge[j]);
+
+            num = (Range(j + 2, _block) + _renge[j + 1]) - (Range(j + 1, _block) + (float)_renge[j]);
             vecRight = ((float)_block[j + 1]) / (float)_distanceNum[j + 1];
             //vecRight *= -1;
             vecLeft = num / (float)_distanceNum[j + 1];

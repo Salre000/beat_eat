@@ -78,6 +78,8 @@ public class CreateNotes : MonoBehaviour
     List<int> preNumList = new List<int>();
     List<int> preblockList = new List<int>();
     List<int> preRengeList = new List<int>();
+    
+    public static float Kankaku=0;
     private void Load(string SongName)
     {
         GameObject NotesParent = new GameObject(SongName);
@@ -98,13 +100,17 @@ public class CreateNotes : MonoBehaviour
             NotesCount++;
 
             float kankaku = 60 / (inputJson.BPM * (float)inputJson.notes[i].LPB);
+
+            Kankaku=kankaku;
+
             float beatSec = kankaku * (float)inputJson.notes[i].LPB;
+
             float time = (beatSec * inputJson.notes[i].num / (float)inputJson.notes[i].LPB) + inputJson.offset + 0.01f;
 
             //プレハブを複製して見えないように変更
             GameObject notes = CreateTypeNotes(inputJson.notes[i].type);
 
-            //時間　 kankaku * inputJson.notes[i].num
+            // 時間　 kankaku * inputJson.notes[i].num 
 
 
             notes.transform.position = new Vector3((inputJson.notes[i].block * -1) + 4.5f - (float)inputJson.notes[i].renge / 2.0f, 0.03f, kankaku * inputJson.notes[i].num * InGameStatus.GetSpeed() * 20);
@@ -121,10 +127,11 @@ public class CreateNotes : MonoBehaviour
 
             NotesUtility.AddNotes(notesBase);
 
+
+
             if (inputJson.notes[i].renge != 0)
                 notes.transform.localScale = new Vector3(0.1f * inputJson.notes[i].renge + 0.1f, 1, 0.075f);
 
-            //notes.SetActive(false);
             notes.SetActive(false);
 
 

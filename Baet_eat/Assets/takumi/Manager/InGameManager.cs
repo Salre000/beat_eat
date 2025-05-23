@@ -13,6 +13,9 @@ public class InGameManager : MonoBehaviour
     [SerializeField] Material flashMaterial;
     [SerializeField] Image ScoreGage;
     [SerializeField] TextMeshProUGUI scoreUI;
+
+    [SerializeField] GameObject[] Ranks;
+
     //現在タップ可能なノーツの配列
     [SerializeField] List<NotesBase> activeObject=new List<NotesBase>();
 
@@ -33,15 +36,6 @@ public class InGameManager : MonoBehaviour
     public void AddCount() {  LongLongNotesCount++; }
 
     private bool preStart = false;  
-    ////デバッグ用
-    public TextMeshProUGUI _DC;
-    public TextMeshProUGUI _D;
-    public TextMeshProUGUI _Y;
-    public TextMeshProUGUI _G;
-    public TextMeshProUGUI _M;
-    public TextMeshProUGUI _S;
-    public TextMeshProUGUI _MOZI;
-    public TextMeshProUGUI _HP;
 
     private void Awake()
     {
@@ -73,14 +67,6 @@ public class InGameManager : MonoBehaviour
         _lineFlash.SbuAlpha();
         _tapArea.CheckTime();
 
-        //デバッグ用
-        _DC.text = "DC" + (InGameStatus.GetJudgments(0, 0) + InGameStatus.GetJudgments(0, 1));
-        _D.text = "D" + (InGameStatus.GetJudgments(1, 0) + InGameStatus.GetJudgments(1, 1));
-        _Y.text = "Y" + (InGameStatus.GetJudgments(2, 0) + InGameStatus.GetJudgments(2, 1));
-        _G.text = "G" + (InGameStatus.GetJudgments(3, 0) + InGameStatus.GetJudgments(3, 1));
-        _M.text = "M" + (InGameStatus.GetJudgments(4, 0) + InGameStatus.GetJudgments(4, 1));
-        _S.text = "Score" + InGameStatus.GetScore();
-        _HP.text = "HP :" + InGameStatus.GetHP();
     }
 
 
@@ -115,7 +101,7 @@ public class InGameManager : MonoBehaviour
 
     public CreateTapArea GetTapArea() { return _tapArea; }
 
-    public void ShowText(string text) { _MOZI.text = text; }
+    public void ShowText(string text) {}
 
     public void SetScore() 
     {

@@ -8513,17 +8513,15 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: e2488a7a3f61bfb47bfea176a0fa0d9c, type: 2}
   ScoreGage: {fileID: 153811495}
   scoreUI: {fileID: 165779359}
+  Ranks:
+  - {fileID: 1684534298}
+  - {fileID: 87938848}
+  - {fileID: 1036427119}
+  - {fileID: 26293176}
+  - {fileID: 415182981}
   activeObject: []
   areaObject: {fileID: 883365718}
   _divisionCount: 9
-  _DC: {fileID: 1547392673}
-  _D: {fileID: 1410506966}
-  _Y: {fileID: 200993756}
-  _G: {fileID: 1387107150}
-  _M: {fileID: 1733164438}
-  _S: {fileID: 1187194817}
-  _MOZI: {fileID: 1157339800}
-  _HP: {fileID: 1192632376}
 --- !u!114 &1325062687
 MonoBehaviour:
   m_ObjectHideFlags: 0
