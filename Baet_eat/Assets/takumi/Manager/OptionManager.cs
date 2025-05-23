@@ -206,19 +206,19 @@ public class OptionManager : MonoBehaviour
     }
     public void SbuNotesSpeed()
     {
-        if (OptionStatus.GetNotesSpeed() <= 0) return;
+        if (OptionStatus.GetNotesSpeed() <= 1) return;
         OptionStatus.SetNotesSpeed(OptionStatus.GetNotesSpeed() - 1);
     }
     public void AddNotesPos()
     {
-        if (OptionStatus.GetNotesHitLinePos() >= 30) return;
+        if (OptionStatus.GetNotesHitLinePos() >= 12) return;
         OptionStatus.SetNotesHitLinePos(OptionStatus.GetNotesHitLinePos() + 1);
         SetNotesLineOffset();
 
     }
     public void SbuNotesPos()
     {
-        if (OptionStatus.GetNotesHitLinePos() <= 0) return;
+        if (OptionStatus.GetNotesHitLinePos() <= -12) return;
         OptionStatus.SetNotesHitLinePos(OptionStatus.GetNotesHitLinePos() - 1);
         SetNotesLineOffset();
 
