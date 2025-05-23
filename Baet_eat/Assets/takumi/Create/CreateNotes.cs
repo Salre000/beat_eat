@@ -45,7 +45,7 @@ public class CreateNotes : MonoBehaviour
         "MainDish/",
         "Dessert/"
     };
-    private string songName = "学園アイドルマスター_初星学園_EndressDance";
+    private string songName = "Kokage_De_Yuttari-2(Fast)";
 
     [SerializeField, Header("スキルノーツのプレハブのオリジナル")] GameObject noteObjSkill;
     [SerializeField, Header("通常ノーツのプレハブのオリジナル")] GameObject noteObj;
