@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -59,6 +60,8 @@ public class OptionManager : MonoBehaviour
     public void ChengeActive()
     {
         _sliderVolume.gameObject.SetActive(!_sliderVolume.gameObject.activeSelf);
+
+        if (!_sliderVolume.gameObject.activeSelf) SaveData.SaveOption();
     }
 
     //ƒVƒXƒeƒ€“G‚É‰¹—Ê‚ğİ’è‚·‚éŠÖ”

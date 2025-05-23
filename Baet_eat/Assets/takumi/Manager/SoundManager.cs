@@ -8,7 +8,6 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] AudioClip _notesHitSound;
 
-    [SerializeField] AudioClip mainBGM;
 
     [SerializeField]private float time = 0;
 
@@ -20,12 +19,15 @@ public class SoundManager : MonoBehaviour
     {
         SoundUtility.soundManager = this;
     }
+    private readonly string FliePass = "Music/";
 
     public void Start()
     {
         _soundSource = gameObject.GetComponent<AudioSource>();
 
-        _soundSource.clip = mainBGM;
+
+
+        _soundSource.clip = Resources.Load<AudioClip>(FliePass+Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].musicName); ;
         _soundSource.time = 0;//èIÇÌÇËÇ©ÇØÇ™195
         _sound.transform.position+=new Vector3(0,0, 0*20);
         _soundSource.Play();

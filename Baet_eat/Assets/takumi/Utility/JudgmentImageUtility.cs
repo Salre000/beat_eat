@@ -7,6 +7,7 @@ public static class JudgmentImageUtility
     public static JudgmentImageManager judgmentImageManager;
 
     public static void SetNowJudgmentObject(int index) { judgmentImageManager.SetNowJudgmentObject(index); }
+    public static void SetNowJudgmentObjectPos(int pos) { judgmentImageManager.SetImagePos(pos); }
 
 
 

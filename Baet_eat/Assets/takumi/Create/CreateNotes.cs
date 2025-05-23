@@ -11,7 +11,7 @@ public class CreateNotes : MonoBehaviour
     private float StartPosition = 50;
 
     private int NotesCount = 0;
-
+    public int GetCount() {  return NotesCount; }
     [Serializable]
     public class Data
     {
@@ -64,9 +64,13 @@ public class CreateNotes : MonoBehaviour
 
         stringBuilder.Append(FilePass);
         stringBuilder.Append(Difficulty[(int)ScoreStatus.nowDifficulty]);
+
+        songName=Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].musicName;
         stringBuilder.Append(songName);
 
         Load(stringBuilder.ToString());
+
+
     }
 
     int preNum = -1;
@@ -99,7 +103,6 @@ public class CreateNotes : MonoBehaviour
 
             //プレハブを複製して見えないように変更
             GameObject notes = CreateTypeNotes(inputJson.notes[i].type);
-            notes.SetActive(false);
 
             //時間　 kankaku * inputJson.notes[i].num
 
@@ -113,6 +116,17 @@ public class CreateNotes : MonoBehaviour
             notesBase.SetRemge(inputJson.notes[i].renge);
 
             notesBase.SetShowTime(kankaku * inputJson.notes[i].num);
+
+            for (int j = 0; j < inputJson.notes[i].renge + 1; j++) notesBase.AddLaneIndex(inputJson.notes[i].block + j);
+
+            NotesUtility.AddNotes(notesBase);
+
+            if (inputJson.notes[i].renge != 0)
+                notes.transform.localScale = new Vector3(0.1f * inputJson.notes[i].renge + 0.1f, 1, 0.075f);
+
+            //notes.SetActive(false);
+            notes.SetActive(false);
+
 
             if (inputJson.notes[i].type == 2)
             {
@@ -141,17 +155,12 @@ public class CreateNotes : MonoBehaviour
                         preRengeList.Add(inputJson.notes[i].notes[j].renge);
                     }
                 }
+
+                longNotes.Initialize();
+
             }
 
 
-            for (int j = 0; j < inputJson.notes[i].renge + 1; j++) notesBase.AddLaneIndex(inputJson.notes[i].block + j);
-
-            NotesUtility.AddNotes(notesBase);
-
-            if (inputJson.notes[i].renge != 0)
-                notes.transform.localScale = new Vector3(0.1f * inputJson.notes[i].renge + 0.1f, 1, 0.075f);
-
-            //notes.SetActive(false);
 
 
             if (preNum == inputJson.notes[i].num)
@@ -212,7 +221,6 @@ public class CreateNotes : MonoBehaviour
         }
 
 
-        InGameStatus.SetUpScore(NotesCount);
     }
 
     GameObject CreateTypeNotes(int type)
@@ -228,4 +236,6 @@ public class CreateNotes : MonoBehaviour
         }
         return null;
     }
+
+
 }
