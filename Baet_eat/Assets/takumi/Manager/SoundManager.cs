@@ -32,11 +32,27 @@ public class SoundManager : MonoBehaviour
 
         _soundSource = gameObject.GetComponent<AudioSource>();
 
-        jacketCanvas.gameObject.transform.GetChild(2).GetComponent<Image>().sprite =
+        GameObject jacket = jacketCanvas.gameObject.transform.GetChild(2).gameObject;
+
+        jacket.GetComponent<Image>().sprite =
            musicData.musicData[ScoreStatus.nowMusic].jacket;
 
-        jacketCanvas.gameObject.transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
+        //ã»ñº
+        jacket.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
             musicData.musicData[ScoreStatus.nowMusic].name;
+
+
+        //íòçÏé“
+        jacket.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text =
+            musicData.musicData[ScoreStatus.nowMusic].musicAuthorName;
+
+        //çÏã»é“
+        jacket.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text +=
+            musicData.musicData[ScoreStatus.nowMusic].musicComposerName;
+
+        //ï“ã»é“
+        jacket.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text +=
+            musicData.musicData[ScoreStatus.nowMusic].musicArrangerName;
 
         _soundSource.clip = Resources.Load<AudioClip>(FliePass + musicData.musicData[ScoreStatus.nowMusic].musicName); ;
         _soundSource.time = 0;//èIÇÌÇËÇ©ÇØÇ™195
