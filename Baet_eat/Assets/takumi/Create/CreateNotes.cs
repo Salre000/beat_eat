@@ -8,6 +8,8 @@ using static CreateTapArea;
 
 public class CreateNotes : MonoBehaviour
 {
+    [SerializeField] float offset;
+    
     private float StartPosition = 50;
 
     private int NotesCount = 0;
@@ -113,7 +115,7 @@ public class CreateNotes : MonoBehaviour
             // éûä‘Å@ kankaku * inputJson.notes[i].num 
 
 
-            notes.transform.position = new Vector3((inputJson.notes[i].block) - 3.5f - (float)inputJson.notes[i].renge / 2.0f, 0.03f, kankaku * inputJson.notes[i].num * InGameStatus.GetSpeed() * 20);
+            notes.transform.position = new Vector3((inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,( kankaku * inputJson.notes[i].num * InGameStatus.GetSpeed() * 20)+offset);
             //êeÇ…ìZÇﬂÇÈ
             notes.transform.parent = NotesParent.transform;
 
