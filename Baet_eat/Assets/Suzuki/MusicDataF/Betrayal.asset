@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicID: 2
   musicName: Betrayal
+  BPM: 133
   musicLevel: 1
   jacket: {fileID: 21300000, guid: 77736ded4272212438282508721d2db5, type: 3}
+  musicAuthorName: kuku
+  musicComposerName: kuku
+  musicArrangerName: kuku
   difficulty: 5
