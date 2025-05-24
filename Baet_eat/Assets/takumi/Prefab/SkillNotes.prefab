@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3279315163412311457}
   - component: {fileID: 8533777801110089451}
   - component: {fileID: 415881547071775788}
-  - component: {fileID: 1220711225229538104}
+  - component: {fileID: -6775281427265139462}
   m_Layer: 0
   m_Name: SkillNotes
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1220711225229538104
+--- !u!114 &-6775281427265139462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701094039627799809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a222de27588794445a33f80c1e60faff, type: 3}
+  m_Script: {fileID: 11500000, guid: c98492b9ad16ba04a9c07d3d723e21c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laneIndex: 
 --- !u!1 &4022792658025254265
 GameObject:
   m_ObjectHideFlags: 0
