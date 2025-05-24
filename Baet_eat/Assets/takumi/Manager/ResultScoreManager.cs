@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ResultScoreManager : MonoBehaviour
 {
+
+    [SerializeField] TextMeshProUGUI MusicName;
+    [SerializeField] TextMeshProUGUI DifficultyName;
     // Start is called before the first frame update
     void Start()
     {
+        //Šy‹È‚Ì–¼‘O‚ğ“ü‚ê‚é
+        MusicName.text = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].name;
+
+        DifficultyName.text= ScoreStatus.nowDifficulty.ToString();
+
         //‚±‚±‚Å‚»‚Ì‹È‚Ì•Û‘¶ó‹µ‚ğ“ü‚ê‚é
         ScoreStatus.SetDessertScore(ScoreStatus.nowMusic, ScoreStatus.nowDifficulty,(int)InGameStatus.GetScore());
 
