@@ -135,7 +135,7 @@ public class ResultScoreManager : MonoBehaviour
 
     private void ImageMove()
     {
-        if (moveFlag) return;
+        if (moveFlag|| BinderImage.localPosition.x<=-500) return;
         ImageMoveCount++;
 
         BinderImage.localPosition = Vector3.Lerp(StartPos, TargetPos, ImageMoveCount / 100.0f);
