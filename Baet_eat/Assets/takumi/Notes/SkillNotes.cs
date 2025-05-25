@@ -6,6 +6,7 @@ public class SkillNotes : NotesBase
 {
     public override void Hit()
     {
+        NotesType = 1;
         InGameStatus.SetJudgments(0, 0);
 
         SoundUtility.NotesHitSoundPlay();
@@ -14,6 +15,7 @@ public class SkillNotes : NotesBase
         LineUtility.SbuActiveObject(this);
         JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
 
+        InGameStatus.AddNoesTypeSuccess(NotesType);
         //Ž©•ª‚ðŒ©‚¦‚È‚­‚·‚é
         this.gameObject.SetActive(false);
 

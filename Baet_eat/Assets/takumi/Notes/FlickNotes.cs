@@ -20,6 +20,7 @@ public class FlickNotes : NotesBase
         MeshRenderer = FilickUp.GetComponent<MeshRenderer>();
 
         MeshRenderer.material = new Material(MeshRenderer.material);
+        NotesType = 2;
     }
 
     protected override void Action()

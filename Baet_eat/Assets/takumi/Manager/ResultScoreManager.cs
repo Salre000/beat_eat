@@ -16,12 +16,14 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI RankTextOutLine;
     [SerializeField] TextMeshProUGUI ScoreText;
     [SerializeField] TextMeshProUGUI ComboText;
-
+    [SerializeField] TextMeshProUGUI[] Judgment;
+    [SerializeField] TextMeshProUGUI[] Success;
+    [SerializeField] TextMeshProUGUI[] Miss;
     [SerializeField] RectTransform BinderImage;
     // Start is called before the first frame update
     void Start()
     {
-        TargetPos = new Vector3(0, 271,0);
+        TargetPos = new Vector3(0, 271, 0);
         StartPos = BinderImage.localPosition;
 
         //Šy‹È‚Ì–¼‘O‚ð“ü‚ê‚é
@@ -30,6 +32,7 @@ public class ResultScoreManager : MonoBehaviour
         DifficultyName.text = ScoreStatus.nowDifficulty.ToString();
 
         SetRank();
+        SetJudgment();
 
         ScoreText.text = InGameStatus.GetScore().ToString();
         ComboText.text = InGameStatus.GetCombo().ToString();
@@ -45,7 +48,7 @@ public class ResultScoreManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(0)&& moveFlag) SetMoveImage();
+        if (Input.GetMouseButton(0) && moveFlag) SetMoveImage();
         ImageMove();
     }
 
@@ -54,7 +57,7 @@ public class ResultScoreManager : MonoBehaviour
         publicEnum.ClearRank rank = publicEnum.ClearRank.B;//InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
         int RankIndex = 0;
         Plus.SetActive(false);
-        for(int i = 0; i < 5; i++) 
+        for (int i = 0; i < 5; i++)
         {
             circleRank[i].gameObject.SetActive(false);
             Rank[i].gameObject.SetActive(false);
@@ -93,34 +96,55 @@ public class ResultScoreManager : MonoBehaviour
         Rank[RankIndex].gameObject.SetActive(true);
     }
 
+    private void SetJudgment()
+    {
+        Judgment[0].text = InGameStatus.GetJudgments(4, 1).ToString() + "‰ñ";
+        Judgment[1].text = InGameStatus.GetJudgments(3, 1).ToString() + "‰ñ";
+        Judgment[2].text = InGameStatus.GetJudgments(2, 1).ToString() + "‰ñ";
+        Judgment[3].text = InGameStatus.GetJudgments(1, 1).ToString() + "‰ñ";
+        Judgment[4].text = InGameStatus.GetJudgments(0, 0).ToString() + "‰ñ";
+        Judgment[5].text = InGameStatus.GetJudgments(1, 0).ToString() + "‰ñ";
+        Judgment[6].text = InGameStatus.GetJudgments(2, 0).ToString() + "‰ñ";
+        Judgment[7].text = InGameStatus.GetJudgments(3, 0).ToString() + "‰ñ";
+        Judgment[8].text = InGameStatus.GetJudgments(4, 0).ToString() + "‰ñ";
+
+        for (int i = 0; i < 4; i++)
+        {
+            Success[i].text = InGameStatus.GetNoesTypeSuccess(i).ToString()+"‰ñ";
+            Miss[i].text = InGameStatus.GetNoesTypeMIss(i).ToString() + "‰ñ";
+        }
+    }
+
 
     int ImageMoveCount = 0;
     bool moveFlag = true;
 
     Vector3 TargetPos = Vector3.zero;
     Vector3 StartPos = Vector3.zero;
-    Vector3 TargetSize = new Vector3(1400,1400,0);
+    Vector3 TargetSize = new Vector3(1400, 1400, 0);
     Vector3 StartSize = new Vector3(1400, 1400, 0);
 
-    private void SetMoveImage() 
+    private void SetMoveImage()
     {
         ImageMoveCount = 0;
         StartPos = BinderImage.localPosition;
         moveFlag = false;
     }
 
-    private void ImageMove() 
+
+
+    private void ImageMove()
     {
         if (moveFlag) return;
         ImageMoveCount++;
 
-        BinderImage.localPosition =Vector3.Lerp(StartPos,TargetPos, ImageMoveCount/100.0f);
-        BinderImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Vector3.Lerp(StartSize, TargetSize, ImageMoveCount / 100.0f).x); 
-        BinderImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Vector3.Lerp(StartSize, TargetSize, ImageMoveCount / 100.0f).y); 
+        BinderImage.localPosition = Vector3.Lerp(StartPos, TargetPos, ImageMoveCount / 100.0f);
+        BinderImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Vector3.Lerp(StartSize, TargetSize, ImageMoveCount / 100.0f).x);
+        BinderImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Vector3.Lerp(StartSize, TargetSize, ImageMoveCount / 100.0f).y);
         if (ImageMoveCount < 100) return;
         moveFlag = true;
         TargetPos = new Vector3(-500, 0, 0);
-        TargetSize=new Vector3(500, 680, 0);
+        TargetSize = new Vector3(500, 680, 0);
     }
 
 }

@@ -171,6 +171,7 @@ public class ScoreManager : MonoBehaviour
         PlusDifficulty[ID][(int)difficulty].SetActive(false);
         switch (clearStates)
         {
+            case publicEnum.ClearStates.None:
             case publicEnum.ClearStates.Unplayed:
                 PlusDifficulty[ID][(int)difficulty].transform.parent.GetComponent<Image>().color = DifficultyColor[0];
                 break;

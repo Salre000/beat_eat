@@ -33,6 +33,7 @@ public class OptionManager : MonoBehaviour
     private void Awake()
     {
         OptisonUility.optionManager = this;
+
     }
     private void Start()
     {
@@ -57,6 +58,8 @@ public class OptionManager : MonoBehaviour
         TouchOffsetText.text = OptionStatus.GetNotesTouchOffset().ToString();
         SppedText.text = OptionStatus.GetNotesSpeed().ToString();
         SetHitImage();
+
+        _sliderVolume.gameObject.SetActive(false);
 
     }
 

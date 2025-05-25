@@ -23,7 +23,8 @@ public class InGameStatus
     private static int speed = 1;
 
     private static int[][] judgments = new int[5][];
-    private static int[] NoesType = {0,0,0,0};
+    private static int[] NoesTypeSuccess = {0,0,0,0};
+    private static int[] NoesTypeMIss = {0,0,0,0};
 
     private static int combo = 0;
     private static int MaxCombo = 0;
@@ -65,7 +66,10 @@ public class InGameStatus
 
         upScore = upscore;
     }
-
+    public static void AddNoesTypeSuccess(int notesType) { NoesTypeSuccess[notesType]++; }
+    public static void AddNoesTypeMIss(int notesType) { NoesTypeMIss[notesType]++; }
+    public static int GetNoesTypeSuccess(int notesType) { return  NoesTypeSuccess[notesType]; }
+    public static int GetNoesTypeMIss(int notesType) { return NoesTypeMIss[notesType]; }
     static bool HeelFlag = false;  
     public static void HPDamege()
     {

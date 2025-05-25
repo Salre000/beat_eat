@@ -45,6 +45,8 @@ public class LongNotes : NotesBase
 
     public void Initialize()
     {
+
+        NotesType = 3;
         endNotes = transform.GetChild(0).gameObject;
 
         float posx = (0.5f * (renge + 1))-(0.5f * (_renge[_renge.Count - 1] + 1));

@@ -59,6 +59,8 @@ public class NotesBase : MonoBehaviour
 
         JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
 
+        InGameStatus.AddNoesTypeSuccess(NotesType);
+
         showTime = -1;
     }
     public virtual void Hit()
@@ -75,6 +77,7 @@ public class NotesBase : MonoBehaviour
         //Ž©•ª‚ðŒ©‚¦‚È‚­‚·‚é
         this.gameObject.SetActive(false);
 
+        InGameStatus.AddNoesTypeSuccess(NotesType);
         showTime = -1;
 
     }
@@ -88,9 +91,11 @@ public class NotesBase : MonoBehaviour
         showTime = -1;
 
         JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
+        InGameStatus.AddNoesTypeSuccess(NotesType);
 
     }
 
+    protected int NotesType=0;
     public void FixedUpdate()
     {
         //this.transform.position -= Vec;
@@ -108,6 +113,7 @@ public class NotesBase : MonoBehaviour
         this.gameObject.SetActive(false);
 
         showTime = -1;
+        InGameStatus.AddNoesTypeMIss(NotesType);
 
     }
 
