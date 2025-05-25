@@ -23,6 +23,7 @@ public class InGameStatus
     private static int speed = 1;
 
     private static int[][] judgments = new int[5][];
+    private static int[] NoesType = {0,0,0,0};
 
     private static int combo = 0;
     private static int MaxCombo = 0;
@@ -120,7 +121,7 @@ public class InGameStatus
         return judgments[index][index2];
     }
 
-    public static int GetCombo() { return combo; }
+    public static int GetCombo() { return MaxCombo; }
 
     public static publicEnum.ClearRank GetScoreClearRank(int score) 
     {
