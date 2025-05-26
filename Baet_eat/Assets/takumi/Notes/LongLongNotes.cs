@@ -31,7 +31,7 @@ public class LongLongNotes : NotesBase
         int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position);
         renge = Mathf.Abs(renge);
 
-        if (renge >= 2) return;
+        if (renge >= 1) return;
 
 
         int ID = -1;
