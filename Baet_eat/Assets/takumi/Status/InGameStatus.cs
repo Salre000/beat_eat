@@ -35,6 +35,9 @@ public class InGameStatus
     private static int combo = 0;
     private static int MaxCombo = 0;
 
+    private static int NotesCount = 0;
+    public static int GetNotesCount() {  return NotesCount; }
+
     private static System.Action ChengeHpAction;
     public static void SetChengeHPUIAction(System.Action damegeUIAction) { ChengeHpAction = damegeUIAction; }
 
@@ -70,7 +73,7 @@ public class InGameStatus
     public static void SetUpScore(int notesCount)
     {
         float upscore = MAX_SCORE / (float)notesCount;
-
+        NotesCount= notesCount;
         upScore = upscore;
     }
     public static void AddNoesTypeSuccess(int notesType) { NoesTypeSuccess[notesType]++; }

@@ -72,6 +72,8 @@ public class SoundManager : MonoBehaviour
 
     }
 
+    public static void DebagClear() { GameSceneManager.LoadScene(GameSceneManager.resultScene); }
+
     public void SetNotesHitSound(AudioClip clip) { _notesHitSound = clip; }
     public void StartNotesHitSound() { _BGMSoundSource.PlayOneShot(_notesHitSound); }
 
