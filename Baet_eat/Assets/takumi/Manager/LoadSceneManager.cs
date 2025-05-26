@@ -38,8 +38,25 @@ public class LoadSceneManager : MonoBehaviour
             musicData.musicData[ScoreStatus.nowMusic].musicArrangerName;
 
     }    // Update is called once per frame
-    void Update()
+
+    float time =0;
+    private void FixedUpdate()
     {
-        
+        time += Time.deltaTime;
+
+        if (time < 2.5f || CheckLoad()) return;
+
+        GameSceneManager.LoadScene(GameSceneManager.mainScene);
+
+
+
+    }
+
+    private bool CheckLoad() 
+    {
+        //ƒ[ƒhŠÖŒW‚ðì‚é‚È‚ç‚±‚±‚Å
+        return false;
+        if (InGameStatus.GetMusicData() == null) return true;
+        if (InGameStatus.GetNowMusic() == null) return true;
     }
 }
