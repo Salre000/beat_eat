@@ -122,7 +122,7 @@ public class LongNotes : NotesBase
             }
             else 
             {
-                vec = Range(j, _renge) / 2.0f - (_renge[j+1] * 0.5f);
+                vec = 0;// Range(j, _renge) / 2.0f - (_renge[j+1] * 0.5f);
             }
 
             num = (Range(j + 2, _block) + _renge[j + 1]) - (Range(j + 1, _block) + (float)_renge[j]);
