@@ -42,6 +42,8 @@ public class NotesManager : MonoBehaviour
             //ƒm[ƒc‚Ì•`‰æ‚ğ‚·‚é
             AllNotes[i].gameObject.SetActive(true);
 
+            Debug.Log(AllNotes[i].name);
+
 
         }
 

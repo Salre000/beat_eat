@@ -231,6 +231,7 @@ public class CreateNotes : MonoBehaviour
         }
 
 
+
     }
 
     GameObject CreateTypeNotes(int type)

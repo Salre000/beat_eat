@@ -19,7 +19,7 @@ public class SkillNotes : NotesBase
         //Ž©•ª‚ðŒ©‚¦‚È‚­‚·‚é
         this.gameObject.SetActive(false);
 
-        showTime = -1;
+        showTime = -100;
 
     }
 }

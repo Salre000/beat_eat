@@ -9,6 +9,8 @@ public class LongNotes : NotesBase
 
     GameObject endNotes;
 
+    GameObject startNotes;
+
     private int block;
     public void Setblock(int num) { block = num; }
 
@@ -48,6 +50,7 @@ public class LongNotes : NotesBase
 
         NotesType = 3;
         endNotes = transform.GetChild(0).gameObject;
+        startNotes=transform.GetChild(1).gameObject;
 
         float posx = (0.5f * (renge + 1))-(0.5f * (_renge[_renge.Count - 1] + 1));
 
@@ -151,6 +154,8 @@ public class LongNotes : NotesBase
             {
 
                 LineUtility.ShowText("start");
+
+                startNotes.SetActive(false);
                 //‚±‚±‚ªˆê“x‚¾‚¯‚ÌêŠ
 
                 HandUtility.AddEndAction(EndNotes, touchID);

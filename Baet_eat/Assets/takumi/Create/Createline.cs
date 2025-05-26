@@ -17,14 +17,14 @@ public class Createline
 
             LineRenderer line = lineObject.AddComponent<LineRenderer>();
 
-            line.startWidth = line.endWidth = 0.1f;
+            line.startWidth = line.endWidth = 0.05f;
 
             //���_����ύX
             line.positionCount = 2;
 
             line.material = material;
 
-            Vector3 pos = gameObject.transform.position;
+            Vector3 pos = gameObject.transform.position+new Vector3(0,0.05f,0);
 
             pos.x = wide / 2 - wideDivision * i;
 
