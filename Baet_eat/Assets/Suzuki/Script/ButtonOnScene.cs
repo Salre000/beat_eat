@@ -16,7 +16,7 @@ public class ButtonOnScene : MonoBehaviour
 
     private void OnStart()
     {
-        GameSceneManager.LoadScene(GameSceneManager.mainScene);
+        GameSceneManager.LoadScene(GameSceneManager.loadScene);
 
         ScoreStatus.nowMusic=MusicManager.instance.GetSelectMusicNumber();
 

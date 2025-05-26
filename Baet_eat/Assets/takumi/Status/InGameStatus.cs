@@ -11,20 +11,26 @@ public class InGameStatus
     private static float upScore = -1;
 
     private static float ScoreRate = 0;
-    public static float GetScoreRate() {  return ScoreRate; }
+    public static float GetScoreRate() { return ScoreRate; }
 
     private static int HP = 1000;
 
     private static int MAX_HP = 1000;
 
-    public static int GetMAXHP() {  return MAX_HP; }
+    private static AudioClip nowMusic;
+    public static void SetNowMusic(AudioClip clip) { nowMusic = clip; }
+    public static AudioClip GetNowMusic() { return nowMusic; }
+    private  static MusicData Data;
+    public static void SetMusicData(MusicData music) { Data = music; }
+    public static MusicData GetMusicData() { return Data; }
+    public static int GetMAXHP() { return MAX_HP; }
     private static int damege = 50;
 
     private static int speed = 1;
 
     private static int[][] judgments = new int[5][];
-    private static int[] NoesTypeSuccess = {0,0,0,0};
-    private static int[] NoesTypeMIss = {0,0,0,0};
+    private static int[] NoesTypeSuccess = { 0, 0, 0, 0 };
+    private static int[] NoesTypeMIss = { 0, 0, 0, 0 };
 
     private static int combo = 0;
     private static int MaxCombo = 0;
@@ -56,8 +62,9 @@ public class InGameStatus
     public static int GetHP() { return HP; }
 
     //判定による上昇スコアの変動ありの関数
-    public static void AddScore(float rete) 
-    { score += upScore * rete;LineUtility.SetScoreGage(); Debug.Log(rete + "倍率:結果" + score+"ランク"+ GetScoreClearRank((int)score).ToString());
+    public static void AddScore(float rete)
+    {
+        score += upScore * rete; LineUtility.SetScoreGage(); Debug.Log(rete + "倍率:結果" + score + "ランク" + GetScoreClearRank((int)score).ToString());
     }
 
     public static void SetUpScore(int notesCount)
@@ -68,15 +75,15 @@ public class InGameStatus
     }
     public static void AddNoesTypeSuccess(int notesType) { NoesTypeSuccess[notesType]++; }
     public static void AddNoesTypeMIss(int notesType) { NoesTypeMIss[notesType]++; }
-    public static int GetNoesTypeSuccess(int notesType) { return  NoesTypeSuccess[notesType]; }
+    public static int GetNoesTypeSuccess(int notesType) { return NoesTypeSuccess[notesType]; }
     public static int GetNoesTypeMIss(int notesType) { return NoesTypeMIss[notesType]; }
-    static bool HeelFlag = false;  
+    static bool HeelFlag = false;
     public static void HPDamege()
     {
         HP -= damege;
         combo = 0;
-        if(ChengeHpAction!=null)ChengeHpAction();
-        if (HP <= 150&&!HeelFlag) 
+        if (ChengeHpAction != null) ChengeHpAction();
+        if (HP <= 150 && !HeelFlag)
         {
             HeelFlag = true;
             //回復する
@@ -85,7 +92,7 @@ public class InGameStatus
         }
 
     }
-    public static void HPHeel(int heel) 
+    public static void HPHeel(int heel)
     {
         if (HP + heel >= 2000)
         {
@@ -103,12 +110,12 @@ public class InGameStatus
     {
 
         //ヤミー以上の判定のときに
-        if (index < 3) 
+        if (index < 3)
         {
             combo++;
             if (combo > MaxCombo) MaxCombo = combo;
         }
-        else 
+        else
         {
             combo = 0;
         }
@@ -127,13 +134,13 @@ public class InGameStatus
 
     public static int GetCombo() { return MaxCombo; }
 
-    public static publicEnum.ClearRank GetScoreClearRank(int score) 
+    public static publicEnum.ClearRank GetScoreClearRank(int score)
     {
 
         int scoreRank = (int)((float)score / ScoreRate);
 
 
-        switch (scoreRank) 
+        switch (scoreRank)
         {
             case 0:
             case 1: return publicEnum.ClearRank.D;

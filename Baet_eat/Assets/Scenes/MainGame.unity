@@ -9089,7 +9089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!223 &1313299960
 Canvas:
   m_ObjectHideFlags: 0
@@ -12317,7 +12317,6 @@ MonoBehaviour:
   _notesHitSound: {fileID: 8300000, guid: b95d95928a2f7984e839cb828238fec7, type: 3}
   time: 0
   _BGMSoundSource: {fileID: 1297515989}
-  jacketCanvas: {fileID: 1313299960}
   _sound: {fileID: 1313299959}
 --- !u!4 &1846545984
 Transform:

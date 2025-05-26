@@ -16,43 +16,19 @@ public class SoundManager : MonoBehaviour
     AudioSource _soundSource;
     [SerializeField] AudioSource _BGMSoundSource;
 
-    [SerializeField] Canvas jacketCanvas;
-
     public GameObject _sound;
     public void Awake()
     {
         SoundUtility.soundManager = this;
     }
     private readonly string FliePass = "Musics/";
-    private float StartOffset = OptionStatus.GetNotesSpeed() * 20 * 2.5f;
+    private float StartOffset = OptionStatus.GetNotesSpeed() * 20 * 6f;
 
     public void Start()
     {
         MusicDataBase musicData = Resources.Load<MusicDataBase>(SaveData.MusicDataName);
 
         _soundSource = gameObject.GetComponent<AudioSource>();
-
-        GameObject jacket = jacketCanvas.gameObject.transform.GetChild(2).gameObject;
-
-        jacket.GetComponent<Image>().sprite =
-           musicData.musicData[ScoreStatus.nowMusic].jacket;
-
-        //曲名
-        jacket.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
-            musicData.musicData[ScoreStatus.nowMusic].name;
-
-
-        //著作者
-        jacket.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text =
-            musicData.musicData[ScoreStatus.nowMusic].musicAuthorName;
-
-        //作曲者
-        jacket.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text +=
-            musicData.musicData[ScoreStatus.nowMusic].musicComposerName;
-
-        //編曲者
-        jacket.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text +=
-            musicData.musicData[ScoreStatus.nowMusic].musicArrangerName;
 
         _soundSource.clip = Resources.Load<AudioClip>(FliePass + musicData.musicData[ScoreStatus.nowMusic].musicName); ;
         _soundSource.time = 0;//終わりかけが195
@@ -87,13 +63,10 @@ public class SoundManager : MonoBehaviour
         if (OneFlag) return false;
         DelayTime += Time.deltaTime;
 
-        if (DelayTime < 2.5f) return true;
+        if (DelayTime < 6f) return true;
 
         _soundSource.Play();
         OneFlag = true;
-
-        //ここでジャケットを消す
-        jacketCanvas.gameObject.SetActive(false);
 
         return false;
 

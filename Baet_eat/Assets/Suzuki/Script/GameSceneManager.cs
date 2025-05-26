@@ -10,6 +10,7 @@ public static class GameSceneManager
     public const string mainScene = "MainGame";
     public const string selectScene = "SelectScene";
     public const string resultScene = "ResultScene";
+    public const string loadScene = "LoadScene";
 
     // •’Ê‚ÌƒV[ƒ“‘JˆÚ
     public static void LoadScene(string sceneName)
