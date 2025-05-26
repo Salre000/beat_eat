@@ -17,7 +17,7 @@ public class NotesBase : MonoBehaviour
     public void SetRemge(int Renge) {  renge = Renge; }
     public int GetRemge() { return renge; } 
     public void SetShowTime(float time) {  showTime = time; }
-    public float GetShowTime() { return showTime- SpeedTime()-0.3f; }
+    public float GetShowTime() { return showTime; }
     
     private float SpeedTime() {return 50.0f/( InGameStatus.GetSpeed()* BaseSpeed); }
 
@@ -54,6 +54,7 @@ public class NotesBase : MonoBehaviour
         //é©êgÇactiveÇ∂Ç·Ç»Ç¢èÛë‘Ç…ïœçX
         LineUtility.SbuActiveObject(this);
 
+        showTime = -100;
         //é©ï™Çå©Ç¶Ç»Ç≠Ç∑ÇÈ
         this.gameObject.SetActive(false);
 
@@ -61,7 +62,6 @@ public class NotesBase : MonoBehaviour
 
         InGameStatus.AddNoesTypeSuccess(NotesType);
 
-        showTime = -1;
     }
     public virtual void Hit()
     {
@@ -74,11 +74,13 @@ public class NotesBase : MonoBehaviour
         LineUtility.SbuActiveObject(this);
         JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
 
+        showTime = -100;
         //é©ï™Çå©Ç¶Ç»Ç≠Ç∑ÇÈ
         this.gameObject.SetActive(false);
 
         InGameStatus.AddNoesTypeSuccess(NotesType);
-        showTime = -1;
+
+        
 
     }
     public virtual void Hit(bool flag) 
@@ -88,7 +90,7 @@ public class NotesBase : MonoBehaviour
 
         SoundUtility.NotesHitSoundPlay();
 
-        showTime = -1;
+        showTime = -100;
 
         JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
         InGameStatus.AddNoesTypeSuccess(NotesType);
@@ -112,7 +114,7 @@ public class NotesBase : MonoBehaviour
         //é©ï™Çå©Ç¶Ç»Ç≠Ç∑ÇÈ
         this.gameObject.SetActive(false);
 
-        showTime = -1;
+        showTime = -100;
         InGameStatus.AddNoesTypeMIss(NotesType);
 
     }
