@@ -16,7 +16,6 @@ public class LongLongNotes : NotesBase
     //必要
     public void FixedUpdate()
     {
-
         if (this.transform.position.z < GetDestryDecision())
         {
             if (!DamegeFlag)
@@ -72,6 +71,8 @@ public class LongLongNotes : NotesBase
 
     public override void Hit()
     {
+        NotesType = 3;
+
         //判定の加算をする関数
         InGameStatus.AddScore(1);
 
@@ -82,12 +83,12 @@ public class LongLongNotes : NotesBase
 
         //自身をactiveじゃない状態に変更
         LineUtility.SbuActiveObject(this);
+        InGameStatus.AddNoesTypeSuccess(NotesType);
 
         //自分を見えなくする
         this.gameObject.SetActive(false);
 
         showTime = -100;
-
 
     }
 

@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Test01 2
   m_EditorClassIdentifier: 
   musicID: 3
-  musicName: Test01
+  musicName: "\u30E1\u30C8\u30ED\u30CE\u30FC\u30E0"
+  BPM: 143
   musicLevel: 1
   jacket: {fileID: 21300000, guid: 105faac93838a6947a83930e2ac28f88, type: 3}
+  musicAuthorName: "\u30E1\u30C8\u30ED\u30CE\u30FC\u30E0"
+  musicComposerName: "\u30E1\u30C8\u30ED\u30CE\u30FC\u30E0"
+  musicArrangerName: "\u30E1\u30C8\u30ED\u30CE\u30FC\u30E0"
   difficulty: 4

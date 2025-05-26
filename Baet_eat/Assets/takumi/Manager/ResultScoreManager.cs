@@ -14,12 +14,20 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] GameObject Plus;
     [SerializeField] TextMeshProUGUI RankText;
     [SerializeField] TextMeshProUGUI RankTextOutLine;
-    [SerializeField] TextMeshProUGUI ScoreText;
     [SerializeField] TextMeshProUGUI ComboText;
-    [SerializeField] TextMeshProUGUI[] Judgment;
-    [SerializeField] TextMeshProUGUI[] Success;
-    [SerializeField] TextMeshProUGUI[] Miss;
+    [SerializeField] Image[] Success;
+    [SerializeField] Image[] Miss;
     [SerializeField] RectTransform BinderImage;
+
+
+    [SerializeField] TextMeshProUGUI FASTALL;
+    [SerializeField] TextMeshProUGUI LATEALL;
+
+    [SerializeField] Image DC;
+    [SerializeField] Image FASTD;
+    [SerializeField] Image FASTY;
+    [SerializeField] Image LATED;
+    [SerializeField] Image LATEY;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +42,6 @@ public class ResultScoreManager : MonoBehaviour
         SetRank();
         SetJudgment();
 
-        ScoreText.text = InGameStatus.GetScore().ToString();
         ComboText.text = InGameStatus.GetCombo().ToString();
 
         //Ç±Ç±Ç≈ÇªÇÃã»ÇÃï€ë∂èÛãµÇì¸ÇÍÇÈ
@@ -98,21 +105,53 @@ public class ResultScoreManager : MonoBehaviour
 
     private void SetJudgment()
     {
-        Judgment[0].text = InGameStatus.GetJudgments(4, 1).ToString() + "âÒ";
-        Judgment[1].text = InGameStatus.GetJudgments(3, 1).ToString() + "âÒ";
-        Judgment[2].text = InGameStatus.GetJudgments(2, 1).ToString() + "âÒ";
-        Judgment[3].text = InGameStatus.GetJudgments(1, 1).ToString() + "âÒ";
-        Judgment[4].text = InGameStatus.GetJudgments(0, 0).ToString() + "âÒ";
-        Judgment[5].text = InGameStatus.GetJudgments(1, 0).ToString() + "âÒ";
-        Judgment[6].text = InGameStatus.GetJudgments(2, 0).ToString() + "âÒ";
-        Judgment[7].text = InGameStatus.GetJudgments(3, 0).ToString() + "âÒ";
-        Judgment[8].text = InGameStatus.GetJudgments(4, 0).ToString() + "âÒ";
+        float percentage = (float)InGameStatus.GetJudgments(0, 0)/(float)InGameStatus.GetNotesCount();
+
+        DC.transform.localPosition = Vector2.Lerp(DC.transform.localPosition, Vector2.zero, percentage);
+         percentage = (float)InGameStatus.GetJudgments(1, 0)/(float)InGameStatus.GetNotesCount();
+
+        FASTD.transform.localPosition = Vector2.Lerp(FASTD.transform.localPosition, Vector2.zero, percentage);
+         percentage = (float)InGameStatus.GetJudgments(2, 0)/(float)InGameStatus.GetNotesCount();
+
+        FASTY.transform.localPosition = Vector2.Lerp(FASTY.transform.localPosition, Vector2.zero, percentage);
+         percentage = (float)InGameStatus.GetJudgments(1, 1)/(float)InGameStatus.GetNotesCount();
+
+        LATED.transform.localPosition = Vector2.Lerp(LATED.transform.localPosition, Vector2.zero, percentage);
+         percentage = (float)InGameStatus.GetJudgments(2, 1)/(float)InGameStatus.GetNotesCount();
+
+        LATEY.transform.localPosition = Vector2.Lerp(LATEY.transform.localPosition, Vector2.zero, percentage);
+
+
 
         for (int i = 0; i < 4; i++)
         {
-            Success[i].text = InGameStatus.GetNoesTypeSuccess(i).ToString()+"âÒ";
-            Miss[i].text = InGameStatus.GetNoesTypeMIss(i).ToString() + "âÒ";
+
+            int Add = InGameStatus.GetNoesTypeSuccess(i) + InGameStatus.GetNoesTypeMIss(i);
+            int sbu = InGameStatus.GetNoesTypeSuccess(i) - InGameStatus.GetNoesTypeMIss(i);
+
+            float rete = (float)InGameStatus.GetNoesTypeSuccess(i) / (float)Add;
+
+            if (sbu == 0) rete = 0.5f;
+
+            Success[i].transform.localPosition = Vector2.Lerp(Success[i].transform.localPosition, new Vector2(0,-7.5f), Mathf.Abs(rete));
+            Miss[i].transform.localPosition = Vector2.Lerp(Miss[i].transform.localPosition, new Vector2(0, -7.5f), Mathf.Abs(  rete-1));
+
         }
+
+        int fast=0;
+        int late=0;
+
+        for(int i = 1; i < 3; i++) 
+        {
+            fast += InGameStatus.GetJudgments(i, 0);
+            late += InGameStatus.GetJudgments(i, 1);
+
+        }
+
+        FASTALL.text += fast.ToString();
+        LATEALL.text += late.ToString();
+
+
     }
 
 
