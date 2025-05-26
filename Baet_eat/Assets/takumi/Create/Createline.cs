@@ -24,7 +24,7 @@ public class Createline
 
             line.material = material;
 
-            Vector3 pos = gameObject.transform.position+new Vector3(0,0.05f,0);
+            Vector3 pos = gameObject.transform.position+new Vector3(0,0.02f,0.05f);
 
             pos.x = wide / 2 - wideDivision * i;
 
