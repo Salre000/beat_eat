@@ -11,6 +11,7 @@ public static class GameSceneManager
     public const string selectScene = "SelectScene";
     public const string resultScene = "ResultScene";
     public const string loadScene = "LoadScene";
+    public const string changeScene = "ChangeScene";
 
     // 普通のシーン遷移
     public static void LoadScene(string sceneName)
@@ -24,9 +25,10 @@ public static class GameSceneManager
         SceneManager.LoadScene(sceneName, mode);
     }
 
-    public static void FadeOutLoadScene(string sceneName, LoadSceneMode mode)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
+    // 非同期ロードシーン
+    //public static void LoadSceneAsync(string sceneName)
+    //{
+    //    SceneManager.LoadSceneAsync(sceneName);
+    //}
 
 }
