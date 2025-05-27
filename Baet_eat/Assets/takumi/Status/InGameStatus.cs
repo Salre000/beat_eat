@@ -158,16 +158,17 @@ public class InGameStatus
             case 7: return publicEnum.ClearRank.SPlus;
             case 8: return publicEnum.ClearRank.SPlus;
             case 9: return publicEnum.ClearRank.SPlus;
-
-
-
         }
-
-        Debug.Log("‰½‚Å" + scoreRank);
 
         return publicEnum.ClearRank.None;
 
+    }
 
+    public static publicEnum.ClearStates CheckEnd() 
+    {
+        if (combo >= judgments[0][0])return publicEnum.ClearStates.ALLDC;
+        else if(combo>=NotesCount)return publicEnum.ClearStates.FullCombo;
+        else return publicEnum.ClearStates.Clear;
     }
 
 }

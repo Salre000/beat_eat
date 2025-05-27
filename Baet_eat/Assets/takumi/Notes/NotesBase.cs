@@ -166,8 +166,8 @@ public class NotesBase : MonoBehaviour
 
     public virtual bool CheckHitlane(int index)
     {
-        JudgmentType judgmentType = (JudgmentType)(int)LineUtility.RangeToDecision(this.transform.position);
-
+        JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position));
+        
         bool flag = laneIndex.Exists(number => number == index) && judgmentType <= JudgmentType.Miss && (int)judgmentType >= -(int)JudgmentType.Miss;
         return flag;
     }
