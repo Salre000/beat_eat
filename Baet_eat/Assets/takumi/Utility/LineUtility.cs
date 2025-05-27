@@ -7,7 +7,7 @@ public static class LineUtility
     
     public static InGameManager gameManager{ set; private get; } 
 
-    public static float RangeToDecision(Vector3 pos) { return gameManager.RangeToDecision(pos); }
+    public static float RangeToDecision(Vector3 pos) { return gameManager.RangeToDecision(pos)*2; }
 
     public static void AddActiveObject(NotesBase gameObject) { gameManager.AddActiveObject(gameObject); }
     public static void SbuActiveObject(NotesBase gameObject) { gameManager.SbuActiveObject(gameObject); }
@@ -21,5 +21,7 @@ public static class LineUtility
     public static void AddCount() {  gameManager.AddCount(); }
 
     public static void SetScoreGage() {  gameManager.SetScore(); }
+    public static Material GetInbisible() {return  gameManager.Getinvisible(); }
+    public static Material GetNOtInbisible() { return gameManager.GetNoeInvisible(); }
 
 }

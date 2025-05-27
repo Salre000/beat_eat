@@ -41,6 +41,9 @@ public class InGameStatus
     private static System.Action ChengeHpAction;
     public static void SetChengeHPUIAction(System.Action damegeUIAction) { ChengeHpAction = damegeUIAction; }
 
+    private static bool Auto = false;
+    public  static bool GetAuto() {  return Auto; }
+    public static void AutoMode() {  Auto = true; }
     public InGameStatus()
     {
         HP = 1000;
@@ -158,16 +161,17 @@ public class InGameStatus
             case 7: return publicEnum.ClearRank.SPlus;
             case 8: return publicEnum.ClearRank.SPlus;
             case 9: return publicEnum.ClearRank.SPlus;
-
-
-
         }
-
-        Debug.Log("‰½‚Å" + scoreRank);
 
         return publicEnum.ClearRank.None;
 
+    }
 
+    public static publicEnum.ClearStates CheckEnd() 
+    {
+        if (combo >= judgments[0][0])return publicEnum.ClearStates.ALLDC;
+        else if(combo>=NotesCount)return publicEnum.ClearStates.FullCombo;
+        else return publicEnum.ClearStates.Clear;
     }
 
 }

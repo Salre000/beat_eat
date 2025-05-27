@@ -13,6 +13,7 @@ public class LongLongNotes : NotesBase
     public void Set_SetTouchID(System.Action<int> action) { SetTouchIDS = action; }
 
     bool DamegeFlag = false;
+    private MeshRenderer mesh;
     //ïKóv
     public void FixedUpdate()
     {
@@ -32,6 +33,8 @@ public class LongLongNotes : NotesBase
 
         if (renge >= 1) return;
 
+
+        if (InGameStatus.GetAuto()) { Hit();return; }
 
         int ID = -1;
 
@@ -71,6 +74,7 @@ public class LongLongNotes : NotesBase
 
     public override void Hit()
     {
+        if (DamegeFlag) return;
         NotesType = 3;
 
         //îªíËÇÃâ¡éZÇÇ∑ÇÈä÷êî
@@ -86,9 +90,14 @@ public class LongLongNotes : NotesBase
         InGameStatus.AddNoesTypeSuccess(NotesType);
 
         //é©ï™Çå©Ç¶Ç»Ç≠Ç∑ÇÈ
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+
+        DamegeFlag = true;
 
         showTime = -100;
+
+        mesh=this.GetComponent<MeshRenderer>();
+        mesh.material = LineUtility.GetInbisible();
 
     }
 

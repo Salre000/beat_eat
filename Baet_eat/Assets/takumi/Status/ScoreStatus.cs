@@ -33,7 +33,7 @@ public static class ScoreStatus
 
 
     private static List<List<publicEnum.ClearStates>> _dessertClearStates;
-    public static void SetDessertDifficulty(int ID, publicEnum.Difficulty difficulty, publicEnum.ClearStates clearStates) { _dessertClearStates[difficulty.ChengeInt()][ID] = clearStates; }
+    public static void SetDessertDifficulty(int ID, publicEnum.Difficulty difficulty, publicEnum.ClearStates clearStates) { if ((int)_dessertClearStates[difficulty.ChengeInt()][ID] > (int)clearStates) return; _dessertClearStates[difficulty.ChengeInt()][ID] = clearStates; }
     public static publicEnum.ClearStates GetDessertDifficulty(int ID, publicEnum.Difficulty difficulty) { return _dessertClearStates[difficulty.ChengeInt()][ID]; }
 
     private static List<List<publicEnum.ClearStates>> _mainDeshClearStates;

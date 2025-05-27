@@ -279,4 +279,5 @@ public class OptionManager : MonoBehaviour
 
     public void ChengeHitType() { OptionStatus.SetNotesTouchPos(!OptionStatus.GetNotesTouchPos()); SetHitImage(); }
 
+    public void AutoMode() { InGameStatus.AutoMode(); }
 }

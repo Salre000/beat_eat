@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LongLongNotes
-  m_Shader: {fileID: 4800000, guid: 16c5412d4fa4b384788ec0e54f309709, type: 3}
+  m_Name: Copy
+  m_Shader: {fileID: 4800000, guid: d3f07c38730ced84fbe2a13c8de8b1e9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ALPHABLEND_ON
@@ -76,6 +76,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

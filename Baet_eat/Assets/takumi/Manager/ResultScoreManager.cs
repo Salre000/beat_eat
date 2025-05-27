@@ -11,13 +11,18 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI DifficultyName;
     [SerializeField] Image[] Rank;
     [SerializeField] Image[] circleRank;
+    [SerializeField] GameObject[] RankObject;
+    [SerializeField] GameObject PlusObject;
     [SerializeField] GameObject Plus;
     [SerializeField] TextMeshProUGUI RankText;
     [SerializeField] TextMeshProUGUI RankTextOutLine;
     [SerializeField] TextMeshProUGUI ComboText;
+    [SerializeField] TextMeshProUGUI ScoreText;
     [SerializeField] Image[] Success;
     [SerializeField] Image[] Miss;
-    [SerializeField] RectTransform BinderImage;
+
+    [SerializeField] Image FullConbo;
+    [SerializeField] Image ALLDC;
 
 
     [SerializeField] TextMeshProUGUI FASTALL;
@@ -28,14 +33,13 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] Image FASTY;
     [SerializeField] Image LATED;
     [SerializeField] Image LATEY;
+    [SerializeField] Image Jacket;
     // Start is called before the first frame update
     void Start()
     {
-        TargetPos = new Vector3(0, 271, 0);
-        StartPos = BinderImage.localPosition;
-
+        MusicData musicData = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic];
         //äyã»ÇÃñºëOÇì¸ÇÍÇÈ
-        MusicName.text = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].name;
+        MusicName.text = musicData.name;
 
         DifficultyName.text = ScoreStatus.nowDifficulty.ToString();
 
@@ -43,6 +47,12 @@ public class ResultScoreManager : MonoBehaviour
         SetJudgment();
 
         ComboText.text = InGameStatus.GetCombo().ToString();
+
+        ScoreText.text = ((int)InGameStatus.GetScore()).ToString();
+
+        Jacket.sprite = musicData.jacket;
+
+        SetClearStatus();
 
         //Ç±Ç±Ç≈ÇªÇÃã»ÇÃï€ë∂èÛãµÇì¸ÇÍÇÈ
         ScoreStatus.SetDessertScore(ScoreStatus.nowMusic, ScoreStatus.nowDifficulty, (int)InGameStatus.GetScore());
@@ -55,19 +65,19 @@ public class ResultScoreManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(0) && moveFlag) SetMoveImage();
-        ImageMove();
     }
 
     private void SetRank()
     {
-        publicEnum.ClearRank rank = publicEnum.ClearRank.B;//InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
+        publicEnum.ClearRank rank =InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
         int RankIndex = 0;
         Plus.SetActive(false);
+        PlusObject.SetActive(false);
         for (int i = 0; i < 5; i++)
         {
             circleRank[i].gameObject.SetActive(false);
             Rank[i].gameObject.SetActive(false);
+            RankObject[i].SetActive(false);
 
         }
 
@@ -76,6 +86,7 @@ public class ResultScoreManager : MonoBehaviour
             case publicEnum.ClearRank.SPlus:
                 RankIndex = 4;
                 RankTextOutLine.text = RankText.text = "S";
+                PlusObject.SetActive(true);
                 Plus.SetActive(true);
                 break;
             case publicEnum.ClearRank.S:
@@ -101,6 +112,29 @@ public class ResultScoreManager : MonoBehaviour
         }
         circleRank[RankIndex].gameObject.SetActive(true);
         Rank[RankIndex].gameObject.SetActive(true);
+        RankObject[RankIndex].SetActive(true);
+    }
+
+    private void SetClearStatus() 
+    {
+        publicEnum.ClearStates clearStates = InGameStatus.CheckEnd();
+        FullConbo.gameObject.SetActive(false);
+        ALLDC.gameObject.SetActive(false);
+
+        switch (clearStates)
+        {
+            case publicEnum.ClearStates.FullCombo:
+                ALLDC.gameObject.SetActive(true);
+
+                break;
+            case publicEnum.ClearStates.ALLDC:
+                FullConbo.gameObject.SetActive(true);
+
+                break;
+        }
+
+
+
     }
 
     private void SetJudgment()
@@ -163,27 +197,7 @@ public class ResultScoreManager : MonoBehaviour
     Vector3 TargetSize = new Vector3(1400, 1400, 0);
     Vector3 StartSize = new Vector3(1400, 1400, 0);
 
-    private void SetMoveImage()
-    {
-        ImageMoveCount = 0;
-        StartPos = BinderImage.localPosition;
-        moveFlag = false;
-    }
 
 
-
-    private void ImageMove()
-    {
-        if (moveFlag|| BinderImage.localPosition.x<=-500) return;
-        ImageMoveCount++;
-
-        BinderImage.localPosition = Vector3.Lerp(StartPos, TargetPos, ImageMoveCount / 100.0f);
-        BinderImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Vector3.Lerp(StartSize, TargetSize, ImageMoveCount / 100.0f).x);
-        BinderImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Vector3.Lerp(StartSize, TargetSize, ImageMoveCount / 100.0f).y);
-        if (ImageMoveCount < 100) return;
-        moveFlag = true;
-        TargetPos = new Vector3(-500, 0, 0);
-        TargetSize = new Vector3(500, 680, 0);
-    }
 
 }

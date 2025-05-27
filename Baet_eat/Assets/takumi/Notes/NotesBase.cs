@@ -83,6 +83,7 @@ public class NotesBase : MonoBehaviour
         
 
     }
+
     public virtual void Hit(bool flag) 
     {
         //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
@@ -96,6 +97,25 @@ public class NotesBase : MonoBehaviour
         InGameStatus.AddNoesTypeSuccess(NotesType);
 
     }
+    public void DebagHit() 
+    {
+        NotesType = 1;
+        InGameStatus.SetJudgments(0, 0);
+
+        SoundUtility.NotesHitSoundPlay();
+
+        //©g‚ğactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
+        LineUtility.SbuActiveObject(this);
+        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
+
+        InGameStatus.AddNoesTypeSuccess(NotesType);
+        //©•ª‚ğŒ©‚¦‚È‚­‚·‚é
+        this.gameObject.SetActive(false);
+
+        showTime = -100;
+
+
+    }
 
     protected int NotesType=0;
     public void FixedUpdate()
@@ -103,6 +123,12 @@ public class NotesBase : MonoBehaviour
         //this.transform.position -= Vec;
 
         Action();
+
+        if (InGameStatus.GetAuto()) 
+        {
+            touchID = 0;
+            if(this.transform.position.z<= GetDestryDecision()+ (int)JudgmentType.Miss) Hit();
+        }
 
         if (this.transform.position.z > GetDestryDecision()) return;
 
@@ -166,8 +192,8 @@ public class NotesBase : MonoBehaviour
 
     public virtual bool CheckHitlane(int index)
     {
-        JudgmentType judgmentType = (JudgmentType)(int)LineUtility.RangeToDecision(this.transform.position);
-
+        JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position));
+        
         bool flag = laneIndex.Exists(number => number == index) && judgmentType <= JudgmentType.Miss && (int)judgmentType >= -(int)JudgmentType.Miss;
         return flag;
     }

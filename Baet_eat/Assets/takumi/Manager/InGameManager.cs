@@ -14,6 +14,11 @@ public class InGameManager : MonoBehaviour
     [SerializeField] Image ScoreGage;
     [SerializeField] TextMeshProUGUI scoreUI;
 
+    [SerializeField]  Material invisible;
+    [SerializeField]  Material NotInvisible;
+    public Material GetNoeInvisible() { return NotInvisible; }
+    public Material Getinvisible() { return invisible; }
+
     [SerializeField] GameObject[] Ranks;
     private GameObject Plus;
 
@@ -88,7 +93,7 @@ public class InGameManager : MonoBehaviour
 
             if (!notes.CheckHitlane(index)) continue;
 
-            notes.Hit();
+                notes.Hit();
 
             return;
 
