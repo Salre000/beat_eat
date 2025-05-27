@@ -9240,8 +9240,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1325062684}
-  - component: {fileID: 1325062683}
   - component: {fileID: 1325062685}
+  - component: {fileID: 1325062683}
   - component: {fileID: 1325062687}
   - component: {fileID: 1325062688}
   - component: {fileID: 1325062689}
@@ -9274,6 +9274,7 @@ MonoBehaviour:
   noteObj: {fileID: 1701094039627799809, guid: 81b38653308feca4299d646110128310, type: 3}
   noteObjLong: {fileID: 1701094039627799809, guid: c001ed5aa1f72864493b6031ca7df4fd, type: 3}
   noteObjFlick: {fileID: 1701094039627799809, guid: 824731cdfe4edd445bb2cbb6c6840fa9, type: 3}
+  notesParent: {fileID: 1586337930}
   noteLineObject: {fileID: 2246287542641351205, guid: 54c15c5a85990c946854b5282012448b, type: 3}
 --- !u!4 &1325062684
 Transform:
@@ -9288,7 +9289,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1325062685
 MonoBehaviour:
@@ -11144,6 +11145,37 @@ RectTransform:
   m_AnchoredPosition: {x: -750, y: 310}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1586337930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1586337931}
+  m_Layer: 0
+  m_Name: Notes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1586337931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586337930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1587399806
 GameObject:
   m_ObjectHideFlags: 0
@@ -12375,6 +12407,7 @@ MonoBehaviour:
   time: 0
   _BGMSoundSource: {fileID: 1297515989}
   _sound: {fileID: 1313299959}
+  createNotes: {fileID: 1325062683}
 --- !u!4 &1846545984
 Transform:
   m_ObjectHideFlags: 0
@@ -12389,7 +12422,7 @@ Transform:
   m_Children:
   - {fileID: 1297515990}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1846545985
 AudioSource:
