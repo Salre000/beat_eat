@@ -84,9 +84,19 @@ public class TransitionEffect : MonoBehaviour
     // ‰Eã‚©‚ç‰æ–Ê‚ğŠJ‚¢‚Ä‚¢‚­
     IEnumerator AnimationUpperRightToBottomLeft()
     {
+        float time = 0;
+        while (time<1.5f) 
+        {
+            time += Time.deltaTime;
+        }
+   
         unLoadAsync = SceneManager.UnloadSceneAsync(GameSceneManager.selectScene);
-        Scene activeScene=SceneManager.GetActiveScene();
-        while (!unLoadAsync.isDone)
+        Scene activeScene = SceneManager.GetActiveScene();
+        while (unLoadAsync.isDone)
+        {
+            yield return null;
+        }
+        while (async.progress<0.9f)
         {
             yield return null;
         }
