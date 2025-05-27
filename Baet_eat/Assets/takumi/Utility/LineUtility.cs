@@ -21,5 +21,7 @@ public static class LineUtility
     public static void AddCount() {  gameManager.AddCount(); }
 
     public static void SetScoreGage() {  gameManager.SetScore(); }
+    public static Material GetInbisible() {return  gameManager.Getinvisible(); }
+    public static Material GetNOtInbisible() { return gameManager.GetNoeInvisible(); }
 
 }

@@ -138,8 +138,6 @@ public class LongNotes : NotesBase
     {
         base.Action();
 
-
-
     }
 
     private bool count = false;
@@ -215,7 +213,12 @@ public class LongNotes : NotesBase
     {
         return base.GetDestryDecision() - Allrange(_distanceNum)*2.8;
     }
+    public override void Hit()
+    {
+        Hit(endNotes);
+        DebagHit();
 
+    }
     private void SetTouchIDs(int ID)
     {
         touchID = ID;

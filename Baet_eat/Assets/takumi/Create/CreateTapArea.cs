@@ -67,8 +67,10 @@ public class CreateTapArea
 
     public void GetClickPoint(Vector2 clickPoint, System.Action<int,int> action, int id)
     {
+        
         for (int i = 0; i < tapPoint.Count; i++)
         {
+
             Vector2[] vecs = new Vector2[4];
 
             for (int j = 0; j < 4; j++)

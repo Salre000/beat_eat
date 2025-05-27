@@ -6123,6 +6123,7 @@ MonoBehaviour:
   FASTY: {fileID: 2074266857}
   LATED: {fileID: 2134347146}
   LATEY: {fileID: 175069628}
+  Jacket: {fileID: 2092560827}
 --- !u!4 &651125368
 Transform:
   m_ObjectHideFlags: 0

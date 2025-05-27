@@ -33,12 +33,13 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] Image FASTY;
     [SerializeField] Image LATED;
     [SerializeField] Image LATEY;
+    [SerializeField] Image Jacket;
     // Start is called before the first frame update
     void Start()
     {
-
+        MusicData musicData = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic];
         //Šy‹È‚Ì–¼‘O‚ð“ü‚ê‚é
-        MusicName.text = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].name;
+        MusicName.text = musicData.name;
 
         DifficultyName.text = ScoreStatus.nowDifficulty.ToString();
 
@@ -47,7 +48,9 @@ public class ResultScoreManager : MonoBehaviour
 
         ComboText.text = InGameStatus.GetCombo().ToString();
 
-        ScoreText.text = InGameStatus.GetScore().ToString();
+        ScoreText.text = ((int)InGameStatus.GetScore()).ToString();
+
+        Jacket.sprite = musicData.jacket;
 
         SetClearStatus();
 
