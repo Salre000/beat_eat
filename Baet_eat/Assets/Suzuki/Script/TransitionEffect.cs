@@ -21,11 +21,14 @@ public class TransitionEffect : MonoBehaviour
     private AsyncOperation async;
     private AsyncOperation unLoadAsync;
 
+    private string nextSceneName = "";
+    private string nowSceneName = "";
+
     void Start()
     {
 
-        tilesX = Mathf.CeilToInt(/*1600f*/canvas.rect.width / tileSize);
-        tilesY = Mathf.CeilToInt(/*720f*/canvas.rect.height / tileSize);
+        tilesX = Mathf.CeilToInt(canvas.rect.width / tileSize);
+        tilesY = Mathf.CeilToInt(canvas.rect.height / tileSize);
 
         Initialize();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(GameSceneManager.changeScene));
@@ -38,6 +41,9 @@ public class TransitionEffect : MonoBehaviour
         int index = 0;
         objects.Add(tile);
         rectTransforms.Add(tile.GetComponent<RectTransform>());
+
+        SetNextScene();
+
         // タイルの生成と非アクティブ化させる
         for (int sum = 0; sum <= tilesX + tilesY - 2; sum++)
         {
@@ -62,7 +68,8 @@ public class TransitionEffect : MonoBehaviour
     IEnumerator AnimationBottomLeftToUpperRight()
     {
         int index = 0;
-        async = SceneManager.LoadSceneAsync(GameSceneManager.loadScene, LoadSceneMode.Additive);
+        //第一引数　が行き先
+        async = SceneManager.LoadSceneAsync(nextSceneName, LoadSceneMode.Additive);
         async.allowSceneActivation = false;
         for (int sum = 0; sum <= tilesX + tilesY - 2; sum++)
         {
@@ -84,13 +91,8 @@ public class TransitionEffect : MonoBehaviour
     // 右上から画面を開いていく
     IEnumerator AnimationUpperRightToBottomLeft()
     {
-        float time = 0;
-        while (time<1.5f) 
-        {
-            time += Time.deltaTime;
-        }
-   
-        unLoadAsync = SceneManager.UnloadSceneAsync(GameSceneManager.selectScene);
+        //第一引数が現在のシーン
+        unLoadAsync = SceneManager.UnloadSceneAsync(nowSceneName);
         Scene activeScene = SceneManager.GetActiveScene();
         while (unLoadAsync.isDone)
         {
@@ -116,7 +118,8 @@ public class TransitionEffect : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
         objects[0].SetActive(false);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(GameSceneManager.loadScene));
+        //第一引数が移動先
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextSceneName));
         SceneManager.UnloadSceneAsync(GameSceneManager.changeScene);
     }
 
@@ -144,5 +147,19 @@ public class TransitionEffect : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void SetNextScene() 
+    {
+        nowSceneName = SceneManager.GetActiveScene().name;
+
+        switch (nowSceneName) 
+        {
+            case GameSceneManager.selectScene:nextSceneName = GameSceneManager.loadScene; break;
+            case GameSceneManager.resultScene:nextSceneName = GameSceneManager.selectScene; break;
+            case GameSceneManager.mainScene:nextSceneName = GameSceneManager.resultScene; break;
+            case GameSceneManager.loadScene:nextSceneName = GameSceneManager.mainScene; break;
+
+        } 
     }
 }

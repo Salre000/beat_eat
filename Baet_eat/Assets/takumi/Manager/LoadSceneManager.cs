@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoadSceneManager : MonoBehaviour
@@ -40,14 +41,15 @@ public class LoadSceneManager : MonoBehaviour
     }    // Update is called once per frame
 
     float time =0;
+    bool flag = false;  
     private void FixedUpdate()
     {
         time += Time.deltaTime;
 
-        if (time < 2.5f || CheckLoad()) return;
+        if (time < 2.5f || CheckLoad()|| flag) return;
 
-        GameSceneManager.LoadScene(GameSceneManager.mainScene);
-
+        GameSceneManager.LoadScene(GameSceneManager.changeScene,LoadSceneMode.Additive);
+        flag = true;
 
 
     }

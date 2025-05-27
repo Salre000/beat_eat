@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static CreateTapArea;
 
 public class CreateNotes : MonoBehaviour
@@ -11,6 +12,8 @@ public class CreateNotes : MonoBehaviour
     [SerializeField] float offset;
     
     private float StartPosition = 50;
+
+    public static GameObject parent;
 
     private int NotesCount = 0;
 
@@ -55,11 +58,17 @@ public class CreateNotes : MonoBehaviour
     [SerializeField, Header("ホールドノーツのプレハブのオリジナル")] GameObject noteObjLong;
     [SerializeField, Header("フリックノーツのプレハブのオリジナル")] GameObject noteObjFlick;
 
+    [SerializeField] GameObject notesParent;
 
     readonly float lineRenge = 1.1f;
     [SerializeField] private GameObject noteLineObject;
 
-    void Start()
+    private void Awake()
+    {
+
+
+    }
+    public void Start()
     {
         noteNum = 0;
 
@@ -68,13 +77,19 @@ public class CreateNotes : MonoBehaviour
         stringBuilder.Append(FilePass);
         stringBuilder.Append(Difficulty[(int)ScoreStatus.nowDifficulty]);
 
-        songName=Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].musicName;
+        songName = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].musicName;
         stringBuilder.Append(songName);
 
         Load(stringBuilder.ToString());
 
+        Debug.Log(SceneManager.GetActiveScene().name);
 
     }
+    void OnEnable()
+    {
+
+    }
+
 
     int preNum = -1;
     int preID = -1;
@@ -86,6 +101,11 @@ public class CreateNotes : MonoBehaviour
     private void Load(string SongName)
     {
         GameObject NotesParent = new GameObject(SongName);
+
+        NotesParent.transform.parent= notesParent.transform;
+        
+
+        parent = NotesParent;
 
         NotesParent.transform.position = Vector3.zero;
 

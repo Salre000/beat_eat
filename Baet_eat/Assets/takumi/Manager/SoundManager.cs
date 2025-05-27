@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
@@ -17,6 +18,15 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource _BGMSoundSource;
 
     public GameObject _sound;
+
+    [SerializeField] CreateNotes createNotes;
+
+    void OnEnable()
+    {
+
+
+    }
+
     public void Awake()
     {
         SoundUtility.soundManager = this;
@@ -53,7 +63,7 @@ public class SoundManager : MonoBehaviour
         if (afterTime <= 1) return;
 
         Debug.Log("ƒV[ƒ“ˆÚs");
-        GameSceneManager.LoadScene(GameSceneManager.resultScene);
+        GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
     }
 
     private bool OneFlag = false;
@@ -72,7 +82,7 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public static void DebagClear() { GameSceneManager.LoadScene(GameSceneManager.resultScene); }
+    public static void DebagClear() { GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive); }
 
     public void SetNotesHitSound(AudioClip clip) { _notesHitSound = clip; }
     public void StartNotesHitSound() { _BGMSoundSource.PlayOneShot(_notesHitSound); }
