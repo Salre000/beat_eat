@@ -71,6 +71,7 @@ public class LongLongNotes : NotesBase
 
     public override void Hit()
     {
+        if (DamegeFlag) return;
         NotesType = 3;
 
         //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
@@ -86,7 +87,9 @@ public class LongLongNotes : NotesBase
         InGameStatus.AddNoesTypeSuccess(NotesType);
 
         //©•ª‚ğŒ©‚¦‚È‚­‚·‚é
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+
+        DamegeFlag = true;
 
         showTime = -100;
 
