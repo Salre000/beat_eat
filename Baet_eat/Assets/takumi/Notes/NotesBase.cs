@@ -19,12 +19,12 @@ public class NotesBase : MonoBehaviour
     public void SetShowTime(float time) {  showTime = time; }
     public float GetShowTime() { return showTime; }
     
-    private float SpeedTime() {return 50.0f/( InGameStatus.GetSpeed()* BaseSpeed); }
+    private float SpeedTime() {return 50.0f/( OptionStatus.GetNotesSpeed()* BaseSpeed); }
 
     public void SetTouchID(int ID) { if (touchID != -1) return; touchID = ID; }
     public void ResetTouchID() { touchID = -1; }
 
-    protected Vector3 Vec = new Vector3(0, 0, (BaseSpeed * InGameStatus.GetSpeed()) / 50.0f);
+    protected Vector3 Vec = new Vector3(0, 0, (BaseSpeed * OptionStatus.GetNotesSpeed()) / 50.0f);
 
     //”»’èƒ^ƒCƒv
     public enum JudgmentType

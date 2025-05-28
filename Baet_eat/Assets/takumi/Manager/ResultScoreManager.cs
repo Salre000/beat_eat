@@ -2,6 +2,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ResultScoreManager : MonoBehaviour
@@ -9,6 +10,10 @@ public class ResultScoreManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI MusicName;
     [SerializeField] TextMeshProUGUI DifficultyName;
+    [SerializeField] TextMeshProUGUI DifficultyNameJukcet;
+    [SerializeField] Image JukcetColor;
+    [SerializeField]
+    Color[] Diffcolor=new Color[5];
     [SerializeField] Image[] Rank;
     [SerializeField] Image[] circleRank;
     [SerializeField] GameObject[] RankObject;
@@ -42,7 +47,8 @@ public class ResultScoreManager : MonoBehaviour
         MusicName.text = musicData.name;
 
         DifficultyName.text = ScoreStatus.nowDifficulty.ToString();
-
+        DifficultyNameJukcet.text = ScoreStatus.nowDifficulty.ToString();
+        JukcetColor.color = Diffcolor[(int)ScoreStatus.nowDifficulty];
         SetRank();
         SetJudgment();
 
@@ -188,16 +194,11 @@ public class ResultScoreManager : MonoBehaviour
 
     }
 
+    public void SelectSceneChenge() 
+    {
+        GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
 
-    int ImageMoveCount = 0;
-    bool moveFlag = true;
-
-    Vector3 TargetPos = Vector3.zero;
-    Vector3 StartPos = Vector3.zero;
-    Vector3 TargetSize = new Vector3(1400, 1400, 0);
-    Vector3 StartSize = new Vector3(1400, 1400, 0);
-
-
+    }
 
 
 }

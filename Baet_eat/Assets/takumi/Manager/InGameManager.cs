@@ -74,14 +74,18 @@ public class InGameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.T)) SoundUtility.MainBGMStop();
         if (Input.GetKey(KeyCode.R)) SoundUtility.MainBGMStart();
 
+        for(int i = 0; i < 12; i++) { tapFlag.Add(false); }
+
         _lineFlash.SbuAlpha();
         _tapArea.CheckTime();
 
     }
 
-
+    List<bool> tapFlag= new List<bool>(12);
     public void Click(int index,int id) 
     {
+        if (tapFlag[id]) return;
+
         _lineFlash.AddAlpha(index);
 
         for(int i=0;i< activeObject.Count; i++) 
@@ -95,6 +99,8 @@ public class InGameManager : MonoBehaviour
             if (!notes.CheckHitlane(index)) continue;
 
                 notes.Hit();
+            HandUtility.AddEndAction(() => { tapFlag[id] = false; }, id);
+            tapFlag[id] = true;
 
             return;
 

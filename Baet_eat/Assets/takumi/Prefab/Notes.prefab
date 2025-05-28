@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a222de27588794445a33f80c1e60faff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laneIndex: 
 --- !u!1 &6349937073034130827
 GameObject:
   m_ObjectHideFlags: 0
