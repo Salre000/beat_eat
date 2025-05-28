@@ -50,6 +50,7 @@ public class SoundManager : MonoBehaviour
     }
 
     float afterTime = 0;
+    bool oneFlag = false;
     public void FixedUpdate()
     {
 
@@ -61,9 +62,11 @@ public class SoundManager : MonoBehaviour
         afterTime += Time.deltaTime;
 
         if (afterTime <= 1) return;
+        if (oneFlag) return;
 
         Debug.Log("ƒV[ƒ“ˆÚs");
         GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
+        oneFlag = true;
     }
 
     private bool OneFlag = false;
