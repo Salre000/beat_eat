@@ -50,21 +50,20 @@ public class LongNotes : NotesBase
 
         NotesType = 3;
         endNotes = transform.GetChild(0).gameObject;
-        startNotes=transform.GetChild(1).gameObject;
+        startNotes = transform.GetChild(1).gameObject;
 
-        float posx = (0.5f * (renge + 1))-(0.5f * (_renge[_renge.Count - 1] + 1));
+        float posx = (0.5f * (renge + 1)) - (0.5f * (_renge[_renge.Count - 1] + 1));
 
-        endNotes.transform.position = transform.position + new Vector3((Allrange(_block))- posx, 0, (Allrange(_distanceNum)) * (InGameStatus.GetSpeed()*20* CreateNotes.Kankaku));
-        float sizeX = Mathf.Min(renge, _renge[_renge.Count - 1])- Mathf.Max(renge, _renge[_renge.Count - 1]);
-        Debug.Log(Allrange(_distanceNum)+"FFF");
-
-        if (sizeX < 0) sizeX = 1.0f / 2*(float)Mathf.Abs(sizeX);
+        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) - posx, 0, (Allrange(_distanceNum)) * (InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku));
+        float sizeX = renge - _renge[_renge.Count - 1];
+        if (sizeX != 0) sizeX = (float)(_renge[_renge.Count - 1] + 1) / (float)(renge + 1);
         else sizeX += 1.0f;
+
         endNotes.transform.localScale = new Vector3(sizeX, 1, 1);
 
         float num = (Range(1, _block) + block + _renge[0]) - ((float)block + (float)renge);
-        float vecRight =((float)_block[0]) / (float)_distanceNum[0];
-        float vecLeft = num / (float)_distanceNum[0]; ;
+        float vecRight = num / (float)_distanceNum[0];
+        float vecLeft = ((float)_block[0]) / (float)_distanceNum[0];
         float renges = renge + 1;
 
         float vec = 0;
@@ -85,12 +84,14 @@ public class LongNotes : NotesBase
 
 
                 BoxArea boxarea = new BoxArea();
+
+
                 //ƒƒbƒVƒ…‚ÌÀ•W‚ðÝ’è
-                boxarea.leftTop = new Vector3((Range(j, _block) - renges/2) +vec + vecLeft * (i + 1), 0.01f, InGameStatus.GetSpeed()*20*CreateNotes.Kankaku);
+                boxarea.leftTop = new Vector3((Range(j, _block) - renges / 2) + vec + vecLeft * (i + 1), 0.01f, InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku);
                 boxarea.bottomLeft = new Vector3((Range(j, _block) - renges / 2) + vec + vecLeft * i, 0.01f, 0);
 
-                boxarea.rightTop = new Vector3((Range(j, _block)) + vec + renges/2 + vecRight * (i + 1), 0.01f, InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku);
-                boxarea.bottomRight = new Vector3((Range(j, _block)) + vec + renges/2 + vecRight * i, 0.01f, 0);
+                boxarea.rightTop = new Vector3((Range(j, _block)) + vec + renges / 2 + vecRight * (i + 1), 0.01f, InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku);
+                boxarea.bottomRight = new Vector3((Range(j, _block)) + vec + renges / 2 + vecRight * i, 0.01f, 0);
 
                 longNotes.SetBoxArea(boxarea);
                 longNotes.Set_SetTouchID(SetTouchIDs);
@@ -116,19 +117,20 @@ public class LongNotes : NotesBase
             {
                 return;
             }
-            if (j == 0) 
+            if (j == 0)
             {
-                vec = (float)renge / 2.0f - (_renge[0]*0.5f);
+                vec = -((renge+1)/2)+(_renge[0]+1)*0.5f;
             }
-            else 
+            else
             {
                 vec = 0;// Range(j, _renge) / 2.0f - (_renge[j+1] * 0.5f);
             }
 
             num = (Range(j + 2, _block) + _renge[j + 1]) - (Range(j + 1, _block) + (float)_renge[j]);
-            vecRight = ((float)_block[j + 1]) / (float)_distanceNum[j + 1];
+            vecRight = num / (float)_distanceNum[j + 1];
+
             //vecRight *= -1;
-            vecLeft = num / (float)_distanceNum[j + 1];
+            vecLeft = ((float)_block[j + 1]) / (float)_distanceNum[j + 1];
             renges = _renge[j] + 1;
 
         }
@@ -211,7 +213,7 @@ public class LongNotes : NotesBase
 
     protected override double GetDestryDecision()
     {
-        return base.GetDestryDecision() - Allrange(_distanceNum)*2.8;
+        return base.GetDestryDecision() - Allrange(_distanceNum) * 2.8;
     }
     public override void Hit()
     {
