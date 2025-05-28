@@ -26,7 +26,6 @@ public class InGameStatus
     public static int GetMAXHP() { return MAX_HP; }
     private static int damege = 50;
 
-    private static int speed = 1;
 
     private static int[][] judgments = new int[5][];
     private static int[] NoesTypeSuccess = { 0, 0, 0, 0 };
@@ -107,8 +106,6 @@ public class InGameStatus
         }
         HP += heel;
     }
-
-    public static int GetSpeed() { return speed; }
 
     private static bool heelFlag = false;
     //”»’è‚ÌŒvZ‚ğ‚·‚éŠÖ”

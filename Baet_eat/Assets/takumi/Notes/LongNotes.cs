@@ -58,7 +58,7 @@ public class LongNotes : NotesBase
 
         float posx = (0.5f * (renge + 1)) - (0.5f * (_renge[_renge.Count - 1] + 1));
 
-        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) - posx, 0, (Allrange(_distanceNum)) * (InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku));
+        endNotes.transform.position = transform.position + new Vector3((Allrange(_block)) - posx, 0, (Allrange(_distanceNum)) * (OptionStatus.GetNotesSpeed() * 20 * CreateNotes.Kankaku));
         float sizeX = renge - _renge[_renge.Count - 1];
         if (sizeX != 0) sizeX = (float)(_renge[_renge.Count - 1] + 1) / (float)(renge + 1);
         else sizeX += 1.0f;
@@ -84,17 +84,17 @@ public class LongNotes : NotesBase
 
 
                 longLongNotes.transform.parent = transform;
-                longLongNotes.transform.position = this.transform.position + new Vector3(0, 0, (i * InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku) + (Range(j, _distanceNum) * InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku));
+                longLongNotes.transform.position = this.transform.position + new Vector3(0, 0, (i * OptionStatus.GetNotesSpeed() * 20 * CreateNotes.Kankaku) + (Range(j, _distanceNum) * OptionStatus.GetNotesSpeed() * 20 * CreateNotes.Kankaku));
 
 
                 BoxArea boxarea = new BoxArea();
 
 
                 //ÉÅÉbÉVÉÖÇÃç¿ïWÇê›íË
-                boxarea.leftTop = new Vector3((Range(j, _block) - renges / 2) + vec + vecLeft * (i + 1), 0.01f, InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku);
+                boxarea.leftTop = new Vector3((Range(j, _block) - renges / 2) + vec + vecLeft * (i + 1), 0.01f, OptionStatus.GetNotesSpeed() * 20 * CreateNotes.Kankaku);
                 boxarea.bottomLeft = new Vector3((Range(j, _block) - renges / 2) + vec + vecLeft * i, 0.01f, 0);
 
-                boxarea.rightTop = new Vector3((Range(j, _block)) + vec + renges / 2 + vecRight * (i + 1), 0.01f, InGameStatus.GetSpeed() * 20 * CreateNotes.Kankaku);
+                boxarea.rightTop = new Vector3((Range(j, _block)) + vec + renges / 2 + vecRight * (i + 1), 0.01f, OptionStatus.GetNotesSpeed() * 20 * CreateNotes.Kankaku);
                 boxarea.bottomRight = new Vector3((Range(j, _block)) + vec + renges / 2 + vecRight * i, 0.01f, 0);
 
                 longNotes.SetBoxArea(boxarea);
@@ -169,10 +169,10 @@ public class LongNotes : NotesBase
     private void MoveStartNotes() 
     {
 
-        if (endNotes.transform.position.z < -6.25f) return;
+        if (endNotes.transform.position.z < -6.25f) {if(InGameStatus.GetAuto()) Hit(endNotes);this.gameObject.SetActive(false); return; }
         if (startNotes.transform.position.z > -6.25f) return;
 
-        rate += ((float)(InGameStatus.GetSpeed() * 20)/50.0f) / (float)(CreateNotes.Kankaku * _distanceNum[posIndex] * InGameStatus.GetSpeed() * 20);
+        rate += ((float)(OptionStatus.GetNotesSpeed() * 20)/50.0f) / (float)(CreateNotes.Kankaku * _distanceNum[posIndex] * OptionStatus.GetNotesSpeed() * 20);
 
         Vector3 scale = Vector3.one;
 
@@ -266,7 +266,7 @@ public class LongNotes : NotesBase
 
     protected override double GetDestryDecision()
     {
-        return base.GetDestryDecision() - Allrange(_distanceNum) * 2.8;
+        return base.GetDestryDecision() - Allrange(_distanceNum) * 2.8*OptionStatus.GetNotesSpeed();
     }
     public override void Hit()
     {
