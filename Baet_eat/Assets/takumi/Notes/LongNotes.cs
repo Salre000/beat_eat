@@ -115,6 +115,7 @@ public class LongNotes : NotesBase
 
             if (j >= _distanceNum.Count - 1)
             {
+
                 return;
             }
             if (j == 0)
@@ -134,13 +135,36 @@ public class LongNotes : NotesBase
             renges = _renge[j] + 1;
 
         }
+
     }
 
     protected override void Action()
     {
         base.Action();
+        MoveStartNotes();
+    }
+
+    Vector3 startPos;
+    List<Vector3> nextPos=new List<Vector3>();
+    float rate = 0;
+    int posIndex =0;
+    private void MoveStartNotes() 
+    {
+
+        //if (endNotes.transform.position.z < -6.25f) return;
+        //if (startNotes.transform.position.z > -6.25f) return;
+
+        ////rate+=
+
+        //startNotes.transform.position = Vector3.Lerp(startPos, nextPos[posIndex],rate);
+
+        //if (rate < 1) return;
+        //rate = 0;
+        //startPos=nextPos[posIndex];
+        //posIndex++;
 
     }
+
 
     private bool count = false;
 

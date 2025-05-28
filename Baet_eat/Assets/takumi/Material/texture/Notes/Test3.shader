@@ -1,4 +1,4 @@
-Shader "Custom/textureLong"
+Shader "Unlit/Test3"
 {
     Properties
     {
@@ -6,7 +6,7 @@ Shader "Custom/textureLong"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent""Queue"="Geometry-1"}
+        Tags { "RenderType"="Transparent""Queue"="Geometry-2"}
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
  

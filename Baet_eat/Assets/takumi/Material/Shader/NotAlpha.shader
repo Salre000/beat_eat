@@ -12,7 +12,7 @@ Shader "Custom/NotAlpha"
     }
     SubShader
     {
-        Tags { "Queue"="Geometry-2" }
+        Tags { "Queue"="Geometry-3" }
         LOD 200
 
         CGPROGRAM
