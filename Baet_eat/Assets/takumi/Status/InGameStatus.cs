@@ -41,7 +41,7 @@ public class InGameStatus
     private static System.Action ChengeHpAction;
     public static void SetChengeHPUIAction(System.Action damegeUIAction) { ChengeHpAction = damegeUIAction; }
 
-    private static bool Auto = true;
+    private static bool Auto = false;
     public  static bool GetAuto() {  return Auto; }
     public static void AutoMode() {  Auto = true; }
     public InGameStatus()
