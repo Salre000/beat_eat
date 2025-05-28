@@ -6,7 +6,7 @@ Shader "Unlit/Test2"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent""Queue"="Geometry-2"}
+        Tags { "RenderType"="Transparent""Queue"="Geometry-3"}
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
  

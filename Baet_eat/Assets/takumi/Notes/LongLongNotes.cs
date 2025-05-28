@@ -12,6 +12,9 @@ public class LongLongNotes : NotesBase
     private System.Action<int> SetTouchIDS;
     public void Set_SetTouchID(System.Action<int> action) { SetTouchIDS = action; }
 
+    private System.Action<Vector3> SetNextPos;
+    public void SetSetNextPos(System.Action<Vector3> action) { SetNextPos = action; }
+
     bool DamegeFlag = false;
     private MeshRenderer mesh;
     //•K—v
@@ -33,6 +36,7 @@ public class LongLongNotes : NotesBase
 
         if (renge >= 1) return;
 
+        if (SetNextPos !=null) SetNextPos(this.transform.position);
 
         if (InGameStatus.GetAuto()) { Hit();return; }
 

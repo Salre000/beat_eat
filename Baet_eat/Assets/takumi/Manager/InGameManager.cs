@@ -10,6 +10,7 @@ public class InGameManager : MonoBehaviour
 {
     [SerializeField] Material tapareaMaterial;
     [SerializeField] Material tapareaMaterial2;
+    [SerializeField] Material lineMaterial;
     [SerializeField] Material flashMaterial;
     [SerializeField] Image ScoreGage;
     [SerializeField] TextMeshProUGUI scoreUI;
@@ -58,7 +59,7 @@ public class InGameManager : MonoBehaviour
         _tapArea.CreateMesh(_divisionCount);
         _lineFlash.SetMaterial(flashMaterial);
         _lineFlash.SetFlashLine(_divisionCount);
-        _line.SetLine(_divisionCount,areaObject,tapareaMaterial);
+        _line.SetLine(_divisionCount,areaObject, lineMaterial);
         Plus = Ranks[0].transform.GetChild(1).gameObject;
 
         RankNotShow();
