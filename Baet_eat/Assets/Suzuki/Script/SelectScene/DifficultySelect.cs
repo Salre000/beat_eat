@@ -104,7 +104,8 @@ public class DifficultySelect : MonoBehaviour
     // 全難易度ボタン共通アクション
     private void OnButtons()
     {
-        if (_diffiNumber == MusicManager.instance.GetDifficultyNumber()) return;
+        if (_diffiNumber == MusicManager.instance.GetDifficultyNumber()) 
+            return;
 
         MusicManager.instance.SetDifficultyNumber(_diffiNumber);
 

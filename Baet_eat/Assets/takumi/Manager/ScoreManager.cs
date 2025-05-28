@@ -102,11 +102,13 @@ public class ScoreManager : MonoBehaviour
 
         for (int i = 0; i < MusicManager.CAPACITY; i++)
         {
-            SwitchRank(i, ScoreStatus.GetDessertClearRanks(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
 
-            scoreTexts[i].text = ScoreStatus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
+            //‚±‚±‚ªd‚¢‚ç‚µ‚¢
+            //SwitchRank(i, ScoreStatus.GetDessertClearRanks(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
 
-            SetLevel(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber());
+            //scoreTexts[i].text = ScoreStatus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
+
+            //SetLevel(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber());
 
         }
 
