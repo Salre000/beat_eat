@@ -242,13 +242,13 @@ public class OptionManager : MonoBehaviour
     {
         if (OptionStatus.GetNotesSpeed() >= 5) return;
         OptionStatus.SetNotesSpeed(OptionStatus.GetNotesSpeed() + 0.2f);
-        SppedText.text = OptionStatus.GetNotesSpeed().ToString();
+        SppedText.text = OptionStatus.GetNotesSpeed().ToString("f1");
     }
     public void SbuNotesSpeed()
     {
         if (OptionStatus.GetNotesSpeed() <= 1) return;
         OptionStatus.SetNotesSpeed(OptionStatus.GetNotesSpeed() - 0.2f);
-        SppedText.text = OptionStatus.GetNotesSpeed().ToString();
+        SppedText.text = OptionStatus.GetNotesSpeed().ToString("f1");
     }
     public void AddNotesPos()
     {

@@ -1,11 +1,14 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AchievementsManager : MonoBehaviour
 {
     private AchievementsAll _achievements;
+
+    private AchievementsBase select;
 
     private List<int> _activeCount;
 
@@ -14,6 +17,14 @@ public class AchievementsManager : MonoBehaviour
     [SerializeField]Canvas achievementCanvas;
     private GameObject objectRoot;
     private List<GameObject> achievementObjects;
+
+
+
+    private TextMeshProUGUI name;
+
+    private TextMeshProUGUI explanation;
+    private TextMeshProUGUI Condition;
+
     public void Awake()
     {
         _achievements = Resources.Load<AchievementsAll>("Achievements/AchievementsAll");
@@ -27,13 +38,17 @@ public class AchievementsManager : MonoBehaviour
 
             Vector3 Addpos = Vector3.zero;
 
-            Addpos.y = -i * 30;
+            Addpos.y = -i * 120;
 
             achievement.transform.localPosition = Addpos;
 
             achievementObjects.Add(achievement);
         }
 
+        name= achievementCanvas.transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        explanation= achievementCanvas.transform.GetChild(3).transform.GetChild(4).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        Condition= achievementCanvas.transform.GetChild(3).transform.GetChild(6).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        Condition.text= _achievements.achievements[0].ConditionExplanation;
     }
     private void FixedUpdate()
     {
@@ -47,6 +62,15 @@ public class AchievementsManager : MonoBehaviour
         if (_activeCount[ID] < _achievements.achievements[ID].AchievementsMAXCount) return;
 
         _activeFlags[ID] = true;
+    }
+
+    void ShowAchievement() 
+    {
+        if (select == null) return;
+        name.text = select.AchievementsName;
+
+        explanation.text = select.AchievementsExplanation;
+        Condition.text = select.ConditionExplanation;
     }
 
     //ŽÀÑ–¼ˆË‘¶‚Ì”Ô†Žæ“¾
