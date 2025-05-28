@@ -120,7 +120,7 @@ public class LongNotes : NotesBase
                     vecPos.z = -6.25f;
 
                     
-                    vecPos.x +=  (Range(j+1, _block)) + ((_renge[j])/2) - (block+(renge)/2);
+                    vecPos.x +=  (Range(j+1, _block)) + ((_renge[j])/2-(renge/2));
                     if (renge == 0) vecPos.x += 0.5f;
                     if (_renge[j] == 0) vecPos.x -= 0.5f;
 
