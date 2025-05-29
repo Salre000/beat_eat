@@ -87,7 +87,7 @@ public class LongLongNotes : NotesBase
         //パーフェクトな判定
         InGameStatus.SetJudgments(0, 0);
 
-        SoundUtility.NotesHitSoundPlay();
+        //SoundUtility.NotesHitSoundPlay();
 
         //自身をactiveじゃない状態に変更
         LineUtility.SbuActiveObject(this);
