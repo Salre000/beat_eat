@@ -9268,7 +9268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d329a15a34b61a84f8e6d11b3ea30def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: -3.8
+  offset: -6
   noteNum: 0
   noteObjSkill: {fileID: 1701094039627799809, guid: a5199b564a787934999b9e40d07ddd81, type: 3}
   noteObj: {fileID: 1701094039627799809, guid: 81b38653308feca4299d646110128310, type: 3}
@@ -12406,7 +12406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242e0ebf1f7021649b4c5b16a2098973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _notesHitSound: {fileID: 8300000, guid: b97a046e3e6f5654e9a36cbe8defbef3, type: 3}
+  _notesHitSound: {fileID: 8300000, guid: aa667abe26ae3b041b2406bddc7d8c20, type: 3}
   time: 0
   _BGMSoundSource: {fileID: 1297515989}
   _sound: {fileID: 1313299959}
