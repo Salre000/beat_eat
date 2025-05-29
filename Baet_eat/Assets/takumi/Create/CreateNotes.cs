@@ -246,6 +246,8 @@ public class CreateNotes : MonoBehaviour
 
 
             }
+            LineUtility.AddActiveObject(notesBase);
+
 
 
         }

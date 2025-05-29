@@ -37,12 +37,6 @@ public class NotesBase : MonoBehaviour
         None
 
     }
-
-    public void OnEnable()
-    {
-        LineUtility.AddActiveObject(this);
-
-    }
     //ƒm[ƒc‚ÉG‚ê‚½‚Æ‚«‚É“®‚­ŠÖ”
     public void Hit(GameObject gameObject)
     {

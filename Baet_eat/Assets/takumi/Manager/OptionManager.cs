@@ -88,7 +88,6 @@ public class OptionManager : MonoBehaviour
         _sliderVolume.SetSE(OptionStatus.GetSE_Volume());
 
 
-
     }
     //描画するページだけをアクティブに変更する関数
     private void NowPageShow()

@@ -98,7 +98,7 @@ public class InGameManager : MonoBehaviour
 
             if (!notes.CheckHitlane(index)) continue;
 
-                notes.Hit();
+             notes.Hit();
             HandUtility.AddEndAction(() => { tapFlag[id] = false; }, id);
             tapFlag[id] = true;
 
