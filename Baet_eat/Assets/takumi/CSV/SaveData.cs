@@ -55,7 +55,7 @@ public static class SaveData
         MusicDataBase dataBase = Resources.Load<MusicDataBase>(MusicDataName);
         StreamWriter sw;
 
-        sw = new StreamWriter(Application.dataPath + FILE_PASS + FoundationFileName + FILR_EXTENSION, false);
+        sw = new StreamWriter(Application.dataPath+ FoundationFileName + FILR_EXTENSION, false);
 
         //ç°ÇÃlineÇÃî‘çÜ
         int LineCount = 0;

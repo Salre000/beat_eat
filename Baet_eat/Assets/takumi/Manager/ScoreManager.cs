@@ -38,11 +38,13 @@ public class ScoreManager : MonoBehaviour
         //initializeÇÃà¯êîÇÕã»ÇÃêî
         ScoreStatus.Initialize(Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData.Count);
 
-        MusicManager.instance.GetMusicCards();
+
+
+    }
+
+    public void Start()
+    {
         List<GameObject> card = MusicManager.instance.GetMusicCards();
-
-
-
 
 
         for (int i = 0; i < MusicManager.CAPACITY; i++)
@@ -57,11 +59,17 @@ public class ScoreManager : MonoBehaviour
             ClearRank.Add(card[i].transform.GetChild(6).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
             ClearRankOutLine.Add(card[i].transform.GetChild(6).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
 
-            S.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(4).gameObject);
-            A.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(3).gameObject);
-            B.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(2).gameObject);
-            C.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(1).gameObject);
-            D.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(0).gameObject);
+            S.Add(ClearRank[ClearRank.Count - 1].transform.Find("DRankColor").gameObject);
+            A.Add(ClearRank[ClearRank.Count - 1].transform.Find("CRankColor").gameObject);
+            B.Add(ClearRank[ClearRank.Count - 1].transform.Find("BRankColor").gameObject);
+            C.Add(ClearRank[ClearRank.Count - 1].transform.Find("ARankColor").gameObject);
+            D.Add(ClearRank[ClearRank.Count - 1].transform.Find("SRankColor").gameObject);
+
+            //S.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(4).gameObject);
+            //A.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(3).gameObject);
+            //B.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(2).gameObject);
+            //C.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(1).gameObject);
+            //D.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(0).gameObject);
 
             Level.Add(card[i].transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
 
@@ -82,12 +90,6 @@ public class ScoreManager : MonoBehaviour
         }
 
 
-
-
-    }
-
-    public void Start()
-    {
     }
 
     public void FixedUpdate()
@@ -106,9 +108,9 @@ public class ScoreManager : MonoBehaviour
             //Ç±Ç±Ç™èdÇ¢ÇÁÇµÇ¢
             SwitchRank(i, ScoreStatus.GetDessertClearRanks(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
 
-            //scoreTexts[i].text = ScoreStatus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
+            scoreTexts[i].text = ScoreStatus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
 
-            //SetLevel(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber());
+            SetLevel(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber());
 
         }
 
@@ -117,54 +119,53 @@ public class ScoreManager : MonoBehaviour
 
     private void SwitchRank(int ID, publicEnum.ClearRank clearRank)
     {
-        //Plus[ID].gameObject.SetActive(false);
+        Plus[ID].gameObject.SetActive(false);
 
-        //S[ID].gameObject.SetActive(false);
-        //A[ID].gameObject.SetActive(false);
-        //B[ID].gameObject.SetActive(false);
-        //C[ID].gameObject.SetActive(false);
-        D[ID].gameObject.SetActive(false);
-        
+        S[ID].gameObject.SetActive(false);
+        A[ID].gameObject.SetActive(false);
+        B[ID].gameObject.SetActive(false);
+        C[ID].gameObject.SetActive(false);
 
 
-        //switch (clearRank)
-        //{
-        //    case publicEnum.ClearRank.None:
-        //        ClearRankOutLine[ID].text = ClearRank[ID].text = "Å[";
-        //        break;
-        //    case publicEnum.ClearRank.SPlus:
-        //        ClearRankOutLine[ID].text = ClearRank[ID].text = "S";
-        //        Plus[ID].gameObject.SetActive(true);
-        //        S[ID].gameObject.SetActive(true);
 
-        //        break;
-        //    case publicEnum.ClearRank.S:
-        //        ClearRankOutLine[ID].text = ClearRank[ID].text = "S";
-        //        S[ID].gameObject.SetActive(true);
+        switch (clearRank)
+        {
+            case publicEnum.ClearRank.None:
+                ClearRankOutLine[ID].text = ClearRank[ID].text = "Å[";
+                break;
+            case publicEnum.ClearRank.SPlus:
+                ClearRankOutLine[ID].text = ClearRank[ID].text = "S";
+                Plus[ID].gameObject.SetActive(true);
+                S[ID].gameObject.SetActive(true);
 
-        //        break;
-        //    case publicEnum.ClearRank.A:
-        //        ClearRankOutLine[ID].text = ClearRank[ID].text = "A";
-        //        A[ID].gameObject.SetActive(true);
+                break;
+            case publicEnum.ClearRank.S:
+                ClearRankOutLine[ID].text = ClearRank[ID].text = "S";
+                S[ID].gameObject.SetActive(true);
+
+                break;
+            case publicEnum.ClearRank.A:
+                ClearRankOutLine[ID].text = ClearRank[ID].text = "A";
+                A[ID].gameObject.SetActive(true);
 
 
-        //        break;
-        //    case publicEnum.ClearRank.B:
-        //        ClearRankOutLine[ID].text = ClearRank[ID].text = "B";
-        //        B[ID].gameObject.SetActive(true);
+                break;
+            case publicEnum.ClearRank.B:
+                ClearRankOutLine[ID].text = ClearRank[ID].text = "B";
+                B[ID].gameObject.SetActive(true);
 
-        //        break;
-        //    case publicEnum.ClearRank.C:
-        //        ClearRankOutLine[ID].text = ClearRank[ID].text = "C";
-        //        C[ID].gameObject.SetActive(true);
+                break;
+            case publicEnum.ClearRank.C:
+                ClearRankOutLine[ID].text = ClearRank[ID].text = "C";
+                C[ID].gameObject.SetActive(true);
 
-        //        break;
-        //    case publicEnum.ClearRank.D:
-        //        ClearRankOutLine[ID].text = ClearRank[ID].text = "D";
-        //        D[ID].gameObject.SetActive(true);
+                break;
+            case publicEnum.ClearRank.D:
+                ClearRankOutLine[ID].text = ClearRank[ID].text = "D";
+                D[ID].gameObject.SetActive(true);
 
-        //        break;
-        //}
+                break;
+        }
 
 
     }

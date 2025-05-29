@@ -25,6 +25,8 @@ public static class LoadData
 
         //繋げたファイルパスを使いファイルのロードを行う
         TextAsset textAsset = Resources.Load<TextAsset>(builder.ToString());
+        //string test = Path.Combine(Application.dataPath+SaveData.FoundationFileName, SaveData.FoundationFileName + SaveData.FILR_EXTENSION);
+
 
         //読み込んだテキストをString型にして格納
         StringReader reader = new StringReader(textAsset.text);
@@ -267,6 +269,7 @@ public static class LoadData
 
         //繋げたファイルパスを使いファイルのロードを行う
         TextAsset textAsset = Resources.Load<TextAsset>(builder.ToString());
+
 
         //読み込んだテキストをString型にして格納
         StringReader reader = new StringReader(textAsset.text);

@@ -110,7 +110,6 @@ public static class ScoreStatus
 
         }
 
-        SaveData.SaveFoundation();
         //ƒXƒRƒA‚Ìó‹µ‚ğŠl“¾
         LoadData.LoadFoundation();
         LoadData.LoadMusicLevel();
