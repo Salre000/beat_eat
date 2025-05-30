@@ -1,4 +1,5 @@
 using TMPro;
+using UniRx;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -39,6 +40,8 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] Image LATED;
     [SerializeField] Image LATEY;
     [SerializeField] Image Jacket;
+
+    [SerializeField] GameObject rankObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,11 +74,12 @@ public class ResultScoreManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        RotetoRank();
     }
 
     private void SetRank()
     {
-        publicEnum.ClearRank rank =InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
+        publicEnum.ClearRank rank = InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
         int RankIndex = 0;
         Plus.SetActive(false);
         PlusObject.SetActive(false);
@@ -119,6 +123,25 @@ public class ResultScoreManager : MonoBehaviour
         circleRank[RankIndex].gameObject.SetActive(true);
         Rank[RankIndex].gameObject.SetActive(true);
         RankObject[RankIndex].SetActive(true);
+        RankObject[RankIndex].transform.parent=rankObject.transform;
+        RankObject[RankIndex].transform.localPosition = Vector3.zero;
+        
+    }
+
+    private float rotetoSpeed = 1;
+    private float roteto = 0;
+    private void RotetoRank() 
+    {
+        rankObject.transform.GetChild(0).Rotate(0, rotetoSpeed, 0);
+        roteto += rotetoSpeed;
+        if (roteto < 120) return;
+        rotetoSpeed = 4;
+
+        if (roteto < 360) return;
+        rotetoSpeed = 1;
+        roteto = 0;
+
+
     }
 
     private void SetClearStatus() 
