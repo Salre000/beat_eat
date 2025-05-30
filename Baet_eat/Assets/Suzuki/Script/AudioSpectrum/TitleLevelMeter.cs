@@ -23,6 +23,7 @@ public class TitleLevelMeter : MonoBehaviour
     private byte _colorR = 255;
     private byte _colorG = 0;
     private byte _colorB = 0;
+    private byte _colorA = 125;
     private const int _num = 5;
     private Color32 _color = new();
     private int _valueR = 0;
@@ -31,7 +32,7 @@ public class TitleLevelMeter : MonoBehaviour
 
     private void Awake()
     {
-        _color.a=_UP_REMIT;
+        _color.a= _colorA;
         _color.r = _colorR;
         _color.g = _colorG;
         _color.b = _colorB;
