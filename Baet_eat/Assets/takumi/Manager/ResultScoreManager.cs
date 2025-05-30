@@ -1,4 +1,5 @@
 using TMPro;
+using UniRx;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -39,6 +40,10 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] Image LATED;
     [SerializeField] Image LATEY;
     [SerializeField] Image Jacket;
+
+    [SerializeField] GameObject rankObject;
+
+    [SerializeField] RectTransform[]ConboAnime=new RectTransform[2];
     // Start is called before the first frame update
     void Start()
     {
@@ -71,11 +76,13 @@ public class ResultScoreManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        ClearStatusAnime();
+        RotetoRank();
     }
 
     private void SetRank()
     {
-        publicEnum.ClearRank rank =InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
+        publicEnum.ClearRank rank = publicEnum.ClearRank.SPlus; //InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
         int RankIndex = 0;
         Plus.SetActive(false);
         PlusObject.SetActive(false);
@@ -119,26 +126,67 @@ public class ResultScoreManager : MonoBehaviour
         circleRank[RankIndex].gameObject.SetActive(true);
         Rank[RankIndex].gameObject.SetActive(true);
         RankObject[RankIndex].SetActive(true);
+        RankObject[RankIndex].transform.parent=rankObject.transform;
+        RankObject[RankIndex].transform.localPosition = Vector3.zero;
+        
+    }
+
+    private float rotetoSpeed = 1;
+    private float roteto = 0;
+    private void RotetoRank() 
+    {
+        rankObject.transform.Rotate(0, rotetoSpeed, 0);
+        roteto += rotetoSpeed;
+        if (roteto < 120) return;
+        rotetoSpeed = 4;
+
+        if (roteto < 360) return;
+        rotetoSpeed = 1;
+        roteto = 0;
+
+
     }
 
     private void SetClearStatus() 
     {
         publicEnum.ClearStates clearStates = InGameStatus.CheckEnd();
+        Debug.Log(clearStates+"FF");
         FullConbo.gameObject.SetActive(false);
         ALLDC.gameObject.SetActive(false);
 
         switch (clearStates)
         {
-            case publicEnum.ClearStates.FullCombo:
+            case publicEnum.ClearStates.ALLDC:
                 ALLDC.gameObject.SetActive(true);
 
                 break;
-            case publicEnum.ClearStates.ALLDC:
+            case publicEnum.ClearStates.FullCombo:
                 FullConbo.gameObject.SetActive(true);
 
                 break;
         }
 
+
+
+    }
+    float clearStatusAnimeCount =0;
+    float clearStatusAnimeSpeed =10;
+    private void ClearStatusAnime() 
+    {
+        clearStatusAnimeCount++;
+
+        if (clearStatusAnimeCount < 200) return;
+
+
+        for (int i = 0; i < 2; i++) ConboAnime[i].transform.position += new Vector3(clearStatusAnimeSpeed, -clearStatusAnimeSpeed);
+
+
+        if (clearStatusAnimeCount < 300) return;
+
+        clearStatusAnimeCount=Random.Range(-200, -100);
+
+
+        for (int i = 0; i < 2; i++) ConboAnime[i].transform.localPosition = new Vector3(1,-1);
 
 
     }
@@ -199,6 +247,8 @@ public class ResultScoreManager : MonoBehaviour
         GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
 
     }
+
+
 
 
 }

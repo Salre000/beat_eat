@@ -19,23 +19,26 @@ public static class LoadData
         int height = 0;
 
         //ファイルパスとファイルの名前を繋げる
-        StringBuilder builder = new StringBuilder();
-        builder.Clear();
-        builder.Append(SaveData.FoundationFileName);
+        //StringBuilder builder = new StringBuilder();
+        //builder.Clear();
+        //builder.Append(SaveData.FoundationFileName);
 
         //繋げたファイルパスを使いファイルのロードを行う
-        TextAsset textAsset = Resources.Load<TextAsset>(builder.ToString());
+        //TextAsset textAsset = Resources.Load<TextAsset>(builder.ToString());
         //string test = Path.Combine(Application.dataPath+SaveData.FoundationFileName, SaveData.FoundationFileName + SaveData.FILR_EXTENSION);
 
+        string filePath = Path.Combine(Application.persistentDataPath, SaveData.FoundationFileName+SaveData.FILR_EXTENSION);
+
+        Debug.Log(filePath);
+        string[] lines = File.ReadAllLines(filePath);
 
         //読み込んだテキストをString型にして格納
-        StringReader reader = new StringReader(textAsset.text);
+        //StringReader reader = new StringReader(textAsset.text);
 
-        while (reader.Peek() > -1)
+        for(int i=0;i< lines.Length;i++)
         {
-            string line = reader.ReadLine();
             // ,で区切ってCSVに格納
-            csvDatas.Add(line.Split(','));
+            csvDatas.Add(lines[i].Split(','));
             height++; // 行数加算
         }
 
@@ -205,18 +208,21 @@ public static class LoadData
         builder.Append(SaveData.OpstionFileName);
 
         //繋げたファイルパスを使いファイルのロードを行う
-        TextAsset textAsset = Resources.Load<TextAsset>(builder.ToString());
+        string filePath = Path.Combine(Application.persistentDataPath, SaveData.OpstionFileName + SaveData.FILR_EXTENSION);
+
+        Debug.Log(filePath);
+        string[] lines = File.ReadAllLines(filePath);
 
         //読み込んだテキストをString型にして格納
-        StringReader reader = new StringReader(textAsset.text);
+        //StringReader reader = new StringReader(textAsset.text);
 
-        while (reader.Peek() > -1)
+        for (int i = 0; i < lines.Length; i++)
         {
-            string line = reader.ReadLine();
             // ,で区切ってCSVに格納
-            csvDatas.Add(line.Split(','));
+            csvDatas.Add(lines[i].Split(','));
             height++; // 行数加算
         }
+
         /// 最後に選んでいたスキル　int 
         /// ノーツの速さ　float 
         /// ノーツの判定位置　float
@@ -230,9 +236,9 @@ public static class LoadData
 
         int LineCount = 0;
         LineCount++;
-        OptionStatus.SetNotesSpeed(float.Parse(csvDatas[LineCount][0]));LineCount++;
+        OptionStatus.SetNotesSpeed(float.Parse(csvDatas[LineCount][0])); LineCount++;
         OptionStatus.SetNotesHitLinePos(float.Parse(csvDatas[LineCount][0])); LineCount++;
-        OptionStatus.SetNotesTouchPos(bool.Parse(csvDatas[LineCount][0]));LineCount++;
+        OptionStatus.SetNotesTouchPos(bool.Parse(csvDatas[LineCount][0])); LineCount++;
         OptionStatus.SetNotesTouchOffset(float.Parse(csvDatas[LineCount][0])); LineCount++;
         OptionStatus.SetNotesToNotesLineFlag(bool.Parse(csvDatas[LineCount][0])); LineCount++;
         OptionStatus.SetBGM_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
@@ -294,7 +300,7 @@ public static class LoadData
 
             for (int j = 0; j < 5; j++)
             {
-                list.Add(int.Parse(csvDatas[i][j+1]));
+                list.Add(int.Parse(csvDatas[i][j + 1]));
 
             }
 

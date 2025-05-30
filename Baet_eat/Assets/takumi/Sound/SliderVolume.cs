@@ -10,29 +10,32 @@ public class SliderVolume : MonoBehaviour
     public Slider bGMSlider;
     public Slider sESlider;
 
-    public static float bgmVolume=0;
+    public  float bgmVolume=0;
     public  float seVolume=0;
-
     private void Start()
     {
+
+        audioMixer.GetFloat("BGM_Volume", out float bgmVolume);
         bGMSlider.value = bgmVolume;
+        audioMixer.GetFloat("SE_Volume", out float seVolume);
         sESlider.value = seVolume;
-
-        audioMixer.SetFloat("BGM_Volume",bgmVolume);
-
-        audioMixer.SetFloat("SE_Volume",seVolume);
     }
 
     public void SetBGM(float volume)
     {
+        bGMSlider.value = volume;
         audioMixer.SetFloat("BGM_Volume", volume);
-
-        bGMSlider.value = bgmVolume;
     }
 
     public void SetSE(float volume)
     {
+        sESlider.value = volume;
         audioMixer.SetFloat("SE_Volume", volume);
-        sESlider.value = seVolume;
+    }
+
+    public void SaveVolume() 
+    {
+        OptionStatus.SetBGM_Volume(bGMSlider.value);
+        OptionStatus.SetSE_Volume(sESlider.value);
     }
 }

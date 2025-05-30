@@ -9,7 +9,10 @@ using UnityEngine.UI;
 public class SoundManager : MonoBehaviour
 {
 
-    [SerializeField] AudioClip _notesHitSound;
+    [SerializeField] AudioClip _notesNormalHitSound;
+    [SerializeField] AudioClip _notesLongHitSound;
+    [SerializeField] AudioClip _notesFlickHitSound;
+    [SerializeField] AudioClip _notesSkilllHitSound;
 
 
     [SerializeField] private float time = 0;
@@ -21,11 +24,9 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] CreateNotes createNotes;
 
-    void OnEnable()
-    {
+    [SerializeField] GameObject poseImage;
+    [SerializeField] TextMeshProUGUI poseCount;
 
-
-    }
 
     public void Awake()
     {
@@ -46,6 +47,8 @@ public class SoundManager : MonoBehaviour
         //ジャケット分だけ後ろに戻す
         _sound.transform.position += new Vector3(0, 0, StartOffset);
 
+        poseImage.SetActive(false);
+        poseCount.gameObject.SetActive(false);
 
     }
 
@@ -53,6 +56,7 @@ public class SoundManager : MonoBehaviour
     bool oneFlag = false;
     public void FixedUpdate()
     {
+        SbuPoseCount();
 
         if (DelayStart()) return; ;
 
@@ -73,6 +77,7 @@ public class SoundManager : MonoBehaviour
     private float DelayTime = 0;
     private bool DelayStart()
     {
+        if (NotesMove.Instance.stopFlag) return true;
         if (OneFlag) return false;
         DelayTime += Time.deltaTime;
 
@@ -85,10 +90,65 @@ public class SoundManager : MonoBehaviour
 
     }
 
+    public void OpenPose() 
+    {
+        poseImage.SetActive(true);
+        NotesMove.Instance.stopFlag = true;
+        MainBGMStop();
+    }
+
+    private float poseCountDown = 0;
+    public void ClosePose() 
+    {
+        poseImage.SetActive(false);
+        poseCount.gameObject.SetActive(true);
+        poseCountDown = 3;
+        poseCount.text = poseCountDown.ToString("F2");
+
+    }
+
+    private void SbuPoseCount() 
+    {
+        if (!poseCount.gameObject.activeSelf) return;
+
+
+        poseCountDown -= Time.deltaTime;
+
+        poseCount.text = poseCountDown.ToString("F2");
+        if (poseCountDown > 0) return;
+
+
+
+        MainBGMStart();
+        NotesMove.Instance.stopFlag = false;
+        poseCount.gameObject.SetActive(false);
+
+    }
+
     public static void DebagClear() { GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive); }
 
-    public void SetNotesHitSound(AudioClip clip) { _notesHitSound = clip; }
-    public void StartNotesHitSound() { _BGMSoundSource.PlayOneShot(_notesHitSound); }
+    public void Restart() 
+    {
+        TransitionEffect.nextSceneNameSystem = GameSceneManager.mainScene;
+
+        GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
+
+    }
+
+    public void ChangeSelect() 
+    {
+        TransitionEffect.nextSceneNameSystem = GameSceneManager.selectScene;
+
+        GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
+
+
+    }
+
+    public void SetNotesHitSound(AudioClip clip) { _notesNormalHitSound = clip; }
+    public void StartNotesNormalHitSound() { _BGMSoundSource.PlayOneShot(_notesNormalHitSound); }
+    public void StartNotesFlickHitSound() { _BGMSoundSource.PlayOneShot(_notesFlickHitSound); }
+    public void StartNotesLongHitSound() { _BGMSoundSource.PlayOneShot(_notesLongHitSound); }
+    public void StartNotesSkillHitSound() { _BGMSoundSource.PlayOneShot(_notesSkilllHitSound); }
 
     public void MainBGMStop() { if (time != 0) return; time = _soundSource.time; _soundSource.Stop(); }
     public void MainBGMStart() { if (time == 0) return; _soundSource.time = time; _soundSource.Play(); time = 0; }

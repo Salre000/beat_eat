@@ -168,7 +168,8 @@ public class LongNotes : NotesBase
     int posIndex =0;
     private void MoveStartNotes() 
     {
-
+        if (NotesMove.Instance.stopFlag) return;
+        
         if (endNotes.transform.position.z < -6.25f) {if(InGameStatus.GetAuto()) Hit(endNotes);this.gameObject.SetActive(false); return; }
         if (startNotes.transform.position.z > -6.25f) return;
 
@@ -185,7 +186,6 @@ public class LongNotes : NotesBase
         startNotes.transform.localScale = Vector3.Lerp(nowScale, scale, rate);
         startNotes.transform.position = Vector3.Lerp(startPos, nextPos[posIndex], rate);
 
-        Debug.Log(rate + "Rate");
         if (rate < 1) return;
         rate = 0;
         startPos = nextPos[posIndex];
@@ -271,7 +271,6 @@ public class LongNotes : NotesBase
     public override void Hit()
     {
         Hit(endNotes);
-        DebagHit();
 
     }
     private void SetTouchIDs(int ID)
@@ -289,6 +288,25 @@ public class LongNotes : NotesBase
         }
         , ID);
 
+
+    }
+    public void Hit(GameObject gameObject)
+    {
+        //”»’è‚Ì‰ÁŽZ‚ð‚·‚éŠÖ”
+        SetJudgment(gameObject);
+
+        SoundUtility.NotesLongHitSoundPlay();
+
+        //Ž©g‚ðactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
+        LineUtility.SbuActiveObject(this);
+
+        showTime = -100;
+        //Ž©•ª‚ðŒ©‚¦‚È‚­‚·‚é
+        this.gameObject.SetActive(false);
+
+        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
+
+        InGameStatus.AddNoesTypeSuccess(NotesType);
 
     }
 

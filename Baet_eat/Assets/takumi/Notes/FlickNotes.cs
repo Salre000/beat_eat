@@ -30,6 +30,24 @@ public class FlickNotes : NotesBase
         FlickDecision();
     }
 
+    public override void Hit()
+    {
+        //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
+        SetJudgment(this.gameObject);
+
+        SoundUtility.NotesFlickHitSoundPlay();
+
+        //©g‚ğactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
+        LineUtility.SbuActiveObject(this);
+        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
+
+        showTime = -100;
+        //©•ª‚ğŒ©‚¦‚È‚­‚·‚é
+        this.gameObject.SetActive(false);
+
+        InGameStatus.AddNoesTypeSuccess(NotesType);
+
+    }
     private void FlickImageMove()
     {
         Vector3 pos = FilickUp.transform.position;

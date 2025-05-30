@@ -166,7 +166,7 @@ public class InGameStatus
 
     public static publicEnum.ClearStates CheckEnd() 
     {
-        if (combo >= judgments[0][0])return publicEnum.ClearStates.ALLDC;
+        if (NotesCount == judgments[0][0])return publicEnum.ClearStates.ALLDC;
         else if(combo>=NotesCount)return publicEnum.ClearStates.FullCombo;
         else return publicEnum.ClearStates.Clear;
     }
