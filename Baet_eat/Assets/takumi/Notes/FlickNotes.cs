@@ -83,20 +83,15 @@ public class FlickNotes : NotesBase
 
     }
 
-    float time = 0;
-    readonly float MaxTime = 2;
-
     Vector2 flickStartPos = Vector2.zero;
 
     readonly float renge = 10;
 
     private void FlickDecision()
     {
-        if (!count || time > MaxTime) return;
 
-        time += Time.deltaTime;
+        if (!count) return;
 
-        //LineUtility.ShowText(Vector2.Distance(flickStartPos, Input.GetTouch(touchID).position).ToString());
         if (Vector2.Distance(flickStartPos, HandUtility.handPosition(touchID)) < renge) return;
 
 

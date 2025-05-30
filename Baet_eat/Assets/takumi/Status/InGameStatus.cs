@@ -42,7 +42,7 @@ public class InGameStatus
 
     private static bool Auto = false;
     public  static bool GetAuto() {  return Auto; }
-    public static void AutoMode() {  Auto = true; }
+    public static void AutoMode(bool flag=true) {  Auto = flag; }
     public InGameStatus()
     {
         HP = 1000;

@@ -115,6 +115,8 @@ public class InGameManager : MonoBehaviour
     public void AddActiveObject(NotesBase gameObject) { activeObject.Add(gameObject); }
     public void SbuActiveObject(NotesBase gameObject) { activeObject.Remove(gameObject); }
 
+    public List<NotesBase> GetActiveObject() { return activeObject; }
+
     public CreateTapArea GetTapArea() { return _tapArea; }
 
     public void ShowText(string text) {}

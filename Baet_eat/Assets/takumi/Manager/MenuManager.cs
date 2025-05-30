@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -15,5 +16,20 @@ public class MenuManager : MonoBehaviour
     public void ChengeMenu() 
     {
         _canvas.gameObject.SetActive(!_canvas.gameObject.activeSelf);
+    }
+
+    public void TutorialStart() 
+    {
+
+        ScoreStatus.nowDifficulty = 0;
+        ScoreStatus.nowMusic = 3;
+
+        new GameObject().AddComponent<TutorialManager>();
+
+        TransitionEffect.nextSceneNameSystem = GameSceneManager.mainScene;
+
+        GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
+
+
     }
 }

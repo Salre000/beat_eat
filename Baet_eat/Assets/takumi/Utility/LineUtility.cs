@@ -12,6 +12,7 @@ public static class LineUtility
     public static void AddActiveObject(NotesBase gameObject) { gameManager.AddActiveObject(gameObject); }
     public static void SbuActiveObject(NotesBase gameObject) { gameManager.SbuActiveObject(gameObject); }
 
+    public static List<NotesBase> GetNotesBases() { return gameManager.GetActiveObject(); }
     public static CreateTapArea GetTapArea() { return gameManager.GetTapArea(); }
 
     public static void Click(int index, int id) {  gameManager.Click(index,id); }

@@ -9,6 +9,7 @@ public class NotesManager : MonoBehaviour
 
     private List<NotesBase> AllNotes=new List<NotesBase>();
     public void AddNotes(NotesBase notesBase) {  AllNotes.Add(notesBase); }
+    public List<NotesBase> GetALLNotes() {  return AllNotes; }
 
 
     public void Awake()

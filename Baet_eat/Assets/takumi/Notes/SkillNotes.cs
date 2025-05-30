@@ -8,6 +8,7 @@ public class SkillNotes : NotesBase
     {
         NotesType = 1;
         InGameStatus.SetJudgments(0, 0);
+        InGameStatus.AddScore(1);
 
         SoundUtility.NotesSkillHitSoundPlay();
 
