@@ -42,6 +42,8 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] Image Jacket;
 
     [SerializeField] GameObject rankObject;
+
+    [SerializeField] RectTransform[]ConboAnime=new RectTransform[2];
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +76,7 @@ public class ResultScoreManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        ClearStatusAnime();
         RotetoRank();
     }
 
@@ -166,6 +169,27 @@ public class ResultScoreManager : MonoBehaviour
 
 
     }
+    float clearStatusAnimeCount =0;
+    float clearStatusAnimeSpeed =10;
+    private void ClearStatusAnime() 
+    {
+        clearStatusAnimeCount++;
+
+        if (clearStatusAnimeCount < 200) return;
+
+
+        for (int i = 0; i < 2; i++) ConboAnime[i].transform.position += new Vector3(clearStatusAnimeSpeed, -clearStatusAnimeSpeed);
+
+
+        if (clearStatusAnimeCount < 300) return;
+
+        clearStatusAnimeCount=Random.Range(-200, -100);
+
+
+        for (int i = 0; i < 2; i++) ConboAnime[i].transform.localPosition = new Vector3(1,-1);
+
+
+    }
 
     private void SetJudgment()
     {
@@ -223,6 +247,8 @@ public class ResultScoreManager : MonoBehaviour
         GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
 
     }
+
+
 
 
 }
