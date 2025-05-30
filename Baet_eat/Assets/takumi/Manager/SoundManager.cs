@@ -9,7 +9,10 @@ using UnityEngine.UI;
 public class SoundManager : MonoBehaviour
 {
 
-    [SerializeField] AudioClip _notesHitSound;
+    [SerializeField] AudioClip _notesNormalHitSound;
+    [SerializeField] AudioClip _notesLongHitSound;
+    [SerializeField] AudioClip _notesFlickHitSound;
+    [SerializeField] AudioClip _notesSkilllHitSound;
 
 
     [SerializeField] private float time = 0;
@@ -87,8 +90,11 @@ public class SoundManager : MonoBehaviour
 
     public static void DebagClear() { GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive); }
 
-    public void SetNotesHitSound(AudioClip clip) { _notesHitSound = clip; }
-    public void StartNotesHitSound() { _BGMSoundSource.PlayOneShot(_notesHitSound); }
+    public void SetNotesHitSound(AudioClip clip) { _notesNormalHitSound = clip; }
+    public void StartNotesNormalHitSound() { _BGMSoundSource.PlayOneShot(_notesNormalHitSound); }
+    public void StartNotesFlickHitSound() { _BGMSoundSource.PlayOneShot(_notesFlickHitSound); }
+    public void StartNotesLongHitSound() { _BGMSoundSource.PlayOneShot(_notesLongHitSound); }
+    public void StartNotesSkillHitSound() { _BGMSoundSource.PlayOneShot(_notesSkilllHitSound); }
 
     public void MainBGMStop() { if (time != 0) return; time = _soundSource.time; _soundSource.Stop(); }
     public void MainBGMStart() { if (time == 0) return; _soundSource.time = time; _soundSource.Play(); time = 0; }

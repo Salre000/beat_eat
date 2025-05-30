@@ -38,31 +38,12 @@ public class NotesBase : MonoBehaviour
 
     }
     //ノーツに触れたときに動く関数
-    public void Hit(GameObject gameObject)
-    {
-        //判定の加算をする関数
-        SetJudgment(gameObject);
-
-        SoundUtility.NotesHitSoundPlay();
-
-        //自身をactiveじゃない状態に変更
-        LineUtility.SbuActiveObject(this);
-
-        showTime = -100;
-        //自分を見えなくする
-        this.gameObject.SetActive(false);
-
-        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
-
-        InGameStatus.AddNoesTypeSuccess(NotesType);
-
-    }
     public virtual void Hit()
     {
         //判定の加算をする関数
         SetJudgment(this.gameObject);
 
-        SoundUtility.NotesHitSoundPlay();
+        SoundUtility.NotesNormalHitSoundPlay();
 
         //自身をactiveじゃない状態に変更
         LineUtility.SbuActiveObject(this);
@@ -83,31 +64,12 @@ public class NotesBase : MonoBehaviour
         //判定の加算をする関数
         SetJudgment(this.gameObject);
 
-        SoundUtility.NotesHitSoundPlay();
+        SoundUtility.NotesLongHitSoundPlay();
 
         showTime = -100;
 
         JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
         InGameStatus.AddNoesTypeSuccess(NotesType);
-
-    }
-    public void DebagHit() 
-    {
-        NotesType = 1;
-        InGameStatus.SetJudgments(0, 0);
-
-        SoundUtility.NotesHitSoundPlay();
-
-        //自身をactiveじゃない状態に変更
-        LineUtility.SbuActiveObject(this);
-        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
-
-        InGameStatus.AddNoesTypeSuccess(NotesType);
-        //自分を見えなくする
-        this.gameObject.SetActive(false);
-
-        showTime = -100;
-
 
     }
 
@@ -143,7 +105,7 @@ public class NotesBase : MonoBehaviour
 
     protected virtual void Action() { }
 
-    private void SetJudgment(GameObject gameObject)
+    protected void SetJudgment(GameObject gameObject)
     {
         int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position);
         renge = Mathf.Abs(renge);

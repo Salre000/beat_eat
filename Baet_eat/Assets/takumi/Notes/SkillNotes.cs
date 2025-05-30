@@ -9,7 +9,7 @@ public class SkillNotes : NotesBase
         NotesType = 1;
         InGameStatus.SetJudgments(0, 0);
 
-        SoundUtility.NotesHitSoundPlay();
+        SoundUtility.NotesSkillHitSoundPlay();
 
         //©g‚ğactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
         LineUtility.SbuActiveObject(this);

@@ -271,7 +271,6 @@ public class LongNotes : NotesBase
     public override void Hit()
     {
         Hit(endNotes);
-        DebagHit();
 
     }
     private void SetTouchIDs(int ID)
@@ -289,6 +288,25 @@ public class LongNotes : NotesBase
         }
         , ID);
 
+
+    }
+    public void Hit(GameObject gameObject)
+    {
+        //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
+        SetJudgment(gameObject);
+
+        SoundUtility.NotesLongHitSoundPlay();
+
+        //©g‚ğactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
+        LineUtility.SbuActiveObject(this);
+
+        showTime = -100;
+        //©•ª‚ğŒ©‚¦‚È‚­‚·‚é
+        this.gameObject.SetActive(false);
+
+        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
+
+        InGameStatus.AddNoesTypeSuccess(NotesType);
 
     }
 
