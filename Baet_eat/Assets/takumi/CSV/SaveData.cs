@@ -55,7 +55,7 @@ public static class SaveData
         MusicDataBase dataBase = Resources.Load<MusicDataBase>(MusicDataName);
         StreamWriter sw;
 
-        sw = new StreamWriter(Application.dataPath+ FoundationFileName + FILR_EXTENSION, false);
+        sw = new StreamWriter(Application.persistentDataPath+ "/" + FoundationFileName + FILR_EXTENSION, false);
 
         //今のlineの番号
         int LineCount = 0;
@@ -214,7 +214,7 @@ public static class SaveData
     {
         StreamWriter sw;
 
-        sw = new StreamWriter(Application.dataPath + FILE_PASS + OpstionFileName + FILR_EXTENSION, false);
+        sw = new StreamWriter(Application.persistentDataPath + "/" + OpstionFileName + FILR_EXTENSION, false);
 
         /// 最後に選んでいたスキル　int 
         /// ノーツの速さ　float 
@@ -235,7 +235,7 @@ public static class SaveData
         sw.WriteLine(OptionStatus.GetSE_Volume().ToString());
         sw.WriteLine(OptionStatus.GetNotesID().ToString());
         sw.WriteLine(OptionStatus.GetSEID().ToString());
-
+        Debug.Log(OptionStatus.GetBGM_Volume()+"SS");
 
 
 

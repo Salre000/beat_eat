@@ -78,7 +78,7 @@ public class OptionManager : MonoBehaviour
     {
         _sliderVolume.gameObject.SetActive(!_sliderVolume.gameObject.activeSelf);
 
-        if (!_sliderVolume.gameObject.activeSelf) SaveData.SaveOption();
+        if (!_sliderVolume.gameObject.activeSelf) { _sliderVolume.SaveVolume(); SaveData.SaveOption();  }
     }
 
     //ƒVƒXƒeƒ€“G‚É‰¹—Ê‚ğİ’è‚·‚éŠÖ”
