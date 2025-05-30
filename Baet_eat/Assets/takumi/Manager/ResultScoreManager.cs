@@ -132,7 +132,7 @@ public class ResultScoreManager : MonoBehaviour
     private float roteto = 0;
     private void RotetoRank() 
     {
-        rankObject.transform.GetChild(0).Rotate(0, rotetoSpeed, 0);
+        rankObject.transform.Rotate(0, rotetoSpeed, 0);
         roteto += rotetoSpeed;
         if (roteto < 120) return;
         rotetoSpeed = 4;
@@ -147,16 +147,17 @@ public class ResultScoreManager : MonoBehaviour
     private void SetClearStatus() 
     {
         publicEnum.ClearStates clearStates = InGameStatus.CheckEnd();
+        Debug.Log(clearStates+"FF");
         FullConbo.gameObject.SetActive(false);
         ALLDC.gameObject.SetActive(false);
 
         switch (clearStates)
         {
-            case publicEnum.ClearStates.FullCombo:
+            case publicEnum.ClearStates.ALLDC:
                 ALLDC.gameObject.SetActive(true);
 
                 break;
-            case publicEnum.ClearStates.ALLDC:
+            case publicEnum.ClearStates.FullCombo:
                 FullConbo.gameObject.SetActive(true);
 
                 break;
