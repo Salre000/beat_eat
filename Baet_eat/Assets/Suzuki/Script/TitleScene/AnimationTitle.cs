@@ -25,7 +25,7 @@ public class AnimationTitle : MonoBehaviour
     private const float _START_TIME = 1.0f;
     private float _time = 0.0f;
     private float _speed = 20;
-    private const float _BPM = 131;
+    private const float _BPM = 132;
     private const float _BPM_START_TIME = 2.8f;
     private float _bpmTime = 0.0f;
     private float _rhythmTime = 0.0f;
@@ -61,7 +61,7 @@ public class AnimationTitle : MonoBehaviour
             _beatScale = _beatTargetScale;
             _isScale=true;
         }
-        if (_rhythm >= _rhythmTime / 2)
+        if (_rhythm >= _rhythmTime / 3)
         {
             _beatScale = _beatReaetScale;
         }
