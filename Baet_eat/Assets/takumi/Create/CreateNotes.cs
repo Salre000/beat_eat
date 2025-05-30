@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -82,8 +83,7 @@ public class CreateNotes : MonoBehaviour
 
         Load(stringBuilder.ToString());
 
-        Debug.Log(SceneManager.GetActiveScene().name);
-
+       
     }
     void OnEnable()
     {
@@ -110,7 +110,7 @@ public class CreateNotes : MonoBehaviour
         NotesParent.transform.position = Vector3.zero;
 
         NotesParent.AddComponent<NotesMove>();
-
+        
         string inputString = Resources.Load<TextAsset>(SongName).ToString();
         Data inputJson = JsonUtility.FromJson<Data>(inputString);
         SoundUtility.SetObject(NotesParent);

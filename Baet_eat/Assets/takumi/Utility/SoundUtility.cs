@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class SoundUtility 
 {
-    public static SoundManager soundManager { set; private get; }
+    public static SoundManager soundManager { set;  get; }
     public static void MainBGMStop() { soundManager.MainBGMStop(); }
     public static void MainBGMStart() { soundManager.MainBGMStart(); }
 
