@@ -6430,6 +6430,9 @@ MonoBehaviour:
   LATEY: {fileID: 175069628}
   Jacket: {fileID: 2092560827}
   rankObject: {fileID: 1863238085}
+  ConboAnime:
+  - {fileID: 1475170235}
+  - {fileID: 1854179202}
 --- !u!4 &651125368
 Transform:
   m_ObjectHideFlags: 0
@@ -21582,7 +21585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135409353}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.88, y: 3.41, z: -0.02477789}
+  m_LocalPosition: {x: 1.85, y: 2.83, z: -0.02477789}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
