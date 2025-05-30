@@ -21,6 +21,7 @@ public class TransitionEffect : MonoBehaviour
     private AsyncOperation async;
     private AsyncOperation unLoadAsync;
 
+    public static string nextSceneNameSystem = "None";
     private string nextSceneName = "";
     private string nowSceneName = "";
 
@@ -160,6 +161,11 @@ public class TransitionEffect : MonoBehaviour
             case GameSceneManager.mainScene:nextSceneName = GameSceneManager.resultScene; break;
             case GameSceneManager.loadScene:nextSceneName = GameSceneManager.mainScene; break;
 
-        } 
+        }
+
+        if (nextSceneNameSystem == "None") return;
+        nextSceneName = nextSceneNameSystem;
+        nextSceneNameSystem = "None";
+
     }
 }
