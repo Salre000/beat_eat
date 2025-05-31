@@ -8032,6 +8032,7 @@ MonoBehaviour:
   LATED: {fileID: 2134347146}
   LATEY: {fileID: 175069628}
   Jacket: {fileID: 2092560827}
+  BackJacket: {fileID: 1891693904}
   rankObject: {fileID: 1863238085}
   ConboAnime:
   - {fileID: 1475170235}

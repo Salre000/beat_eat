@@ -40,6 +40,7 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] Image LATED;
     [SerializeField] Image LATEY;
     [SerializeField] Image Jacket;
+    [SerializeField] Image BackJacket;
 
     [SerializeField] GameObject rankObject;
 
@@ -62,6 +63,7 @@ public class ResultScoreManager : MonoBehaviour
         ScoreText.text = ((int)InGameStatus.GetScore()).ToString();
 
         Jacket.sprite = musicData.jacket;
+        BackJacket.sprite = musicData.jacket;
 
         SetClearStatus();
 
