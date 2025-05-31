@@ -49,13 +49,13 @@ public static class SaveData
     /// 
 
     //基礎情報
-    public static void SaveFoundation()
+    public static void SaveFoundation(int Startnumber = 0)
     {
 
         MusicDataBase dataBase = Resources.Load<MusicDataBase>(MusicDataName);
         StreamWriter sw;
 
-        sw = new StreamWriter(Application.persistentDataPath+ "/" + FoundationFileName + FILR_EXTENSION, false);
+        sw = new StreamWriter(Application.persistentDataPath + "/" + FoundationFileName + FILR_EXTENSION, false);
 
         //今のlineの番号
         int LineCount = 0;
@@ -72,7 +72,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append(ScoreStatus.GetDessertScore(soundNumber,(publicEnum.Difficulty)i));
+                sb.Append(Startnumber == 0 ? ScoreStatus.GetDessertScore(soundNumber, (publicEnum.Difficulty)i) : Startnumber);
                 sb.Append(Spece);
 
             }
@@ -89,7 +89,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append(ScoreStatus.GetMainDeshScore(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(Startnumber == 0 ? ScoreStatus.GetMainDeshScore(soundNumber, (publicEnum.Difficulty)i) : Startnumber);
                 sb.Append(Spece);
 
             }
@@ -105,7 +105,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append(ScoreStatus.GetDessertOverScore(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(Startnumber == 0 ? ScoreStatus.GetDessertOverScore(soundNumber, (publicEnum.Difficulty)i) : Startnumber);
                 sb.Append(Spece);
 
             }
@@ -122,7 +122,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append(ScoreStatus.GetMainDeshOverScore(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(Startnumber == 0 ? ScoreStatus.GetMainDeshOverScore(soundNumber, (publicEnum.Difficulty)i) : Startnumber);
                 sb.Append(Spece);
 
             }
@@ -139,7 +139,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append((int)ScoreStatus.GetDessertClearRanks(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(Startnumber == 0 ? (int)ScoreStatus.GetDessertClearRanks(soundNumber, (publicEnum.Difficulty)i) : -1);
                 sb.Append(Spece);
 
             }
@@ -155,7 +155,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append((int)ScoreStatus.GetMainDeshClearRanks(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(Startnumber == 0 ? (int)ScoreStatus.GetMainDeshClearRanks(soundNumber, (publicEnum.Difficulty)i) : -1);
                 sb.Append(Spece);
 
             }
@@ -172,7 +172,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append((int)ScoreStatus.GetDessertDifficulty(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(Startnumber == 0 ? (int)ScoreStatus.GetDessertDifficulty(soundNumber, (publicEnum.Difficulty)i) : 0);
                 sb.Append(Spece);
 
             }
@@ -188,7 +188,7 @@ public static class SaveData
             for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
             {
                 //ここにそれぞれのスコアを入れる
-                sb.Append((int)ScoreStatus.GetMainDeshDifficulty(soundNumber, (publicEnum.Difficulty)i));
+                sb.Append(Startnumber == 0 ? (int)ScoreStatus.GetMainDeshDifficulty(soundNumber, (publicEnum.Difficulty)i) : 0);
                 sb.Append(Spece);
 
             }
@@ -201,8 +201,6 @@ public static class SaveData
 
 
 
-
-
         sw.Flush();
         sw.Close();
 
@@ -210,7 +208,7 @@ public static class SaveData
 
     }
     //オプション情報
-    public static void SaveOption()
+    public static void SaveOption(int Startnumber = 0)
     {
         StreamWriter sw;
 
@@ -225,20 +223,16 @@ public static class SaveData
         /// ノーツの見た目　int
         /// SEの音　int
 
-        sw.WriteLine(OptionStatus.GetSkillIndex().ToString());
-        sw.WriteLine(OptionStatus.GetNotesSpeed().ToString());
-        sw.WriteLine(OptionStatus.GetNotesHitLinePos().ToString());
-        sw.WriteLine(OptionStatus.GetNotesTouchPos().ToString());
-        sw.WriteLine(OptionStatus.GetNotesTouchOffset().ToString());
-        sw.WriteLine(OptionStatus.GetNotesToNotesLineFlag().ToString());
-        sw.WriteLine(OptionStatus.GetBGM_Volume().ToString());
-        sw.WriteLine(OptionStatus.GetSE_Volume().ToString());
-        sw.WriteLine(OptionStatus.GetNotesID().ToString());
-        sw.WriteLine(OptionStatus.GetSEID().ToString());
-        Debug.Log(OptionStatus.GetBGM_Volume()+"SS");
-
-
-
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetSkillIndex().ToString() : 0);
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetNotesSpeed().ToString() : 1);
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetNotesHitLinePos().ToString() : 0);
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetNotesTouchPos().ToString() : "False");
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetNotesTouchOffset().ToString() : 0);
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetNotesToNotesLineFlag().ToString() : "False");
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetBGM_Volume().ToString() : 0);
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetSE_Volume().ToString() : 0);
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetNotesID().ToString() : 0);
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetSEID().ToString() : 0);
 
         sw.Flush();
         sw.Close();
@@ -251,10 +245,6 @@ public static class SaveData
         StreamWriter sw;
 
         sw = new StreamWriter(Application.dataPath + FILE_PASS + OpstionFileName + FILR_EXTENSION, false);
-
-
-
-
 
         sw.Flush();
         sw.Close();
