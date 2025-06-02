@@ -24,6 +24,9 @@ public class MusicManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+
+
         // ‹ÈƒJ[ƒh‚ğ“™ŠÔŠu‚É•À‚×‚é(y²‚É)
         for(int i=0; i < _musicCards.Count; i++)
         {
@@ -32,6 +35,11 @@ public class MusicManager : MonoBehaviour
             vector2.y-= _DISTANCE;
             _musicCards[i].transform.localPosition = vector2;
         }
+    }
+
+    private void Start()
+    {
+        _difficultyNumber = (int)ScoreStatus.nowDifficulty;
     }
 
     public List<GameObject> GetMusicCards()

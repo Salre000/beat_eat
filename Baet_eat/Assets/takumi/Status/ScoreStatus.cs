@@ -53,8 +53,6 @@ public static class ScoreStatus
     private static bool OneFlag = false;
     public static void Initialize(int musicCount)
     {
-        nowMusic = -1;
-        nowDifficulty = publicEnum.Difficulty.None;
 
         if (OneFlag) return;
         _dessertScore = new List<List<int>>();

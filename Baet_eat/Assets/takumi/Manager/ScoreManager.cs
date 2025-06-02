@@ -25,6 +25,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private List<GameObject> C = new List<GameObject>(MusicManager.CAPACITY);
     [SerializeField] private List<GameObject> D = new List<GameObject>(MusicManager.CAPACITY);
 
+    [SerializeField] private RectTransform Content;
+
     //音楽のレベルを見せるテキスト
     [SerializeField] private List<TextMeshProUGUI> Level = new List<TextMeshProUGUI>(MusicManager.CAPACITY);
 
@@ -45,6 +47,12 @@ public class ScoreManager : MonoBehaviour
     public void Start()
     {
         List<GameObject> card = MusicManager.instance.GetMusicCards();
+
+
+        Content.localPosition += new Vector3(0, 125 * ScoreStatus.nowMusic, 0);
+
+
+        ScoreStatus.nowMusic = -1;
 
 
         for (int i = 0; i < MusicManager.CAPACITY; i++)

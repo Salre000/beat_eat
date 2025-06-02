@@ -21688,7 +21688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &562643204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49734,6 +49734,7 @@ MonoBehaviour:
   B: []
   C: []
   D: []
+  Content: {fileID: 73532572}
   Level: []
   DifficultyColor:
   - {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
