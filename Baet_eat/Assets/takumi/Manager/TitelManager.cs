@@ -8,14 +8,25 @@ public class TitelManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI pushTo;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        
+            Debug.Log(Application.persistentDataPath);
+        if(!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.FoundationFileName + SaveData.FILR_EXTENSION)) 
+        {
+            SaveData.SaveFoundation(1);
+            SaveData.SaveOption(1);
+        }
     }
+
+
     private bool oneFlag = false;
     public void FixedUpdate()
     {
-        if (Input.GetMouseButton(0)&&!oneFlag) 
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.FoundationFileName + SaveData.FILR_EXTENSION)) return;
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.OpstionFileName + SaveData.FILR_EXTENSION)) return;
+
+            if (Input.GetMouseButton(0)&&!oneFlag) 
         {
             oneFlag = true;
            ChengeSelect();
