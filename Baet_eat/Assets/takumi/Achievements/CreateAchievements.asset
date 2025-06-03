@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c2d2cdf02996343a7f1c0a839ec9d3, type: 3}
   m_Name: CreateAchievements
   m_EditorClassIdentifier: 
+  AchievementsEnumName: testss
   AchievementsName: Test
   AchievementsExplanation: 
   ConditionExplanation: 

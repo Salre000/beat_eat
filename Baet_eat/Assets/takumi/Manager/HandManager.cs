@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class HandManager : MonoBehaviour
@@ -66,6 +67,45 @@ public class HandManager : MonoBehaviour
         return -1;
     }
 
+    private void AddHand()
+    {
+        List<Vector2> touchPosition = new List<Vector2>();
+
+        if (!commandMouse)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                touchPosition.Add(Input.GetTouch(i).position);
+            }
+        }
+        else
+        {
+            touchPosition.Add(Input.mousePosition);
+        }
+
+        for(int i = 0; i < touchPosition.Count; i++) 
+        {
+            for(int j = 0; j < hand.Count; j++) 
+            {
+                if (!hand[j].flag) continue;
+
+                if (Vector2.Distance(hand[j].HandPosition, touchPosition[i]) > 10) continue;
+
+                i--;
+                touchPosition.RemoveAt(i);
+                break;
+            }
+        }
+
+
+        for (int i = 0; i < touchPosition.Count; i++)
+        {
+        SetHand(Input.GetTouch(i).position);
+
+        }
+
+
+    }
     private void SbuHand()
     {
         List<Vector2> touchPosition = new List<Vector2>();
@@ -77,44 +117,48 @@ public class HandManager : MonoBehaviour
                 touchPosition.Add(Input.GetTouch(i).position);
             }
         }
-        else 
+        else
         {
             touchPosition.Add(Input.mousePosition);
         }
 
-            int sbuID = -1;
+        int sbuID = -1;
         float miniRange = 0;
 
-        for (int i = 0; i < hand.Count; i++)
+        for (int p = 0; p < hand.Count - touchPosition.Count; p++)
         {
-            if (!hand[i].flag) continue;
 
-            float renge = 1000;
-
-            for (int j = 0; j < touchPosition.Count; j++)
+            for (int i = 0; i < hand.Count; i++)
             {
-                if (Vector2.Distance(touchPosition[j], hand[i].HandPosition) >= renge) continue;
+                if (!hand[i].flag) continue;
 
-                renge = Vector2.Distance(touchPosition[j], hand[i].HandPosition);
+                float renge = 1000;
 
+                for (int j = 0; j < touchPosition.Count; j++)
+                {
+                    if (Vector2.Distance(touchPosition[j], hand[i].HandPosition) > renge) continue;
+
+                    renge = Vector2.Distance(touchPosition[j], hand[i].HandPosition);
+
+
+                }
+
+                if (miniRange > renge) continue;
+                miniRange = renge;
+                sbuID = i;
 
             }
 
-            if (miniRange > renge) continue;
-            miniRange = renge;
-            sbuID = i;
+            Hands hands = hand[sbuID];
+            hands.flag = false;
+            hand[sbuID] = hands;
+            for (int i = 0; i < handEndAction[sbuID].Count; i++)
+            {
+                handEndAction[sbuID][i]();
 
+            }
+            handEndAction[sbuID].Clear();
         }
-
-        Hands hands = hand[sbuID];
-        hands.flag = false;
-        hand[sbuID] = hands;
-        for (int i = 0; i < handEndAction[i].Count; i++)
-        {
-            handEndAction[sbuID][i]();
-
-        }
-        handEndAction[sbuID].Clear();
     }
 
     private void PositionUpdata()
@@ -164,7 +208,7 @@ public class HandManager : MonoBehaviour
     public void FixedUpdate()
     {
 
-        if (Input.GetKey(KeyCode.Alpha1)&&!commandMouse)
+        if (Input.GetKey(KeyCode.Alpha1) && !commandMouse)
         {
             commandMouse = !commandMouse;
         }
@@ -172,25 +216,29 @@ public class HandManager : MonoBehaviour
         PositionUpdata();
         _TextMeshProUGUI.text = Input.touchCount.ToString();
 
+        //for (int i = 0; i < Input.touchCount; i++)
+        //{
+        //    m_TextMeshProUGUI[i].text =Input.GetTouch(i).position.ToString();
+        //}
         for (int i = 0; i < hand.Count; i++)
         {
-            m_TextMeshProUGUI[i].text = hand[i].HandPosition.ToString() + hand[i].flag.ToString();
+            m_TextMeshProUGUI[i].text = hand[i].HandPosition.ToString() + hand[i].flag.ToString() + "ID" + i.ToString();
         }
 
         if (Input.GetMouseButton(0) && commandMouse)
         {
             touchPoint = 1;
 
-           Hands hands = hand[0];
+            Hands hands = hand[0];
             hands.flag = true;
             hand[0] = hands;
 
         }
-        else if (commandMouse) 
+        else if (commandMouse)
         {
             touchPoint = 0;
 
-            if (hand[0].flag) 
+            if (hand[0].flag)
             {
                 for (int i = 0; i < handEndAction[i].Count; i++)
                 {
@@ -220,7 +268,7 @@ public class HandManager : MonoBehaviour
         if (touchPoint < Input.touchCount)
         {
             touchPoint++;
-            SetHand(Input.GetTouch(Input.touchCount - 1).position);
+            AddHand();
         }
     }
 
