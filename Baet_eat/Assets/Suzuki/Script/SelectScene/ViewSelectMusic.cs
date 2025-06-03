@@ -18,7 +18,6 @@ public class ViewSelectMusic : MonoBehaviour
     private AudioSource _audioSource;
     private List<AudioClip> _musicList=new(MusicManager.CAPACITY);
     private StringBuilder _stringBuilder;
-    private string _musicName;
     private int _selectNumber;
 
     private void Start()
@@ -52,7 +51,6 @@ public class ViewSelectMusic : MonoBehaviour
     private void SelectedMusic()
     {
         ChangeJacket();
-        _musicName = _stringBuilder.ToString();
         _audioSource.Stop();
         _audioSource.PlayOneShot(_musicList[_selectNumber]);
     }
