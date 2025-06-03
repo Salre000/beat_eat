@@ -65,6 +65,20 @@ public class LongNotes : NotesBase
 
         endNotes.transform.localScale = new Vector3(sizeX, 1, 1);
 
+        GameObject left = endNotes.transform.Find("Left").gameObject;
+        GameObject right = endNotes.transform.Find("Right").gameObject;
+
+        BoxArea boxArea = new BoxArea();
+
+        boxArea.leftTop.x=boxArea.bottomLeft.x=left.transform.position.x;
+        boxArea.rightTop.x=boxArea.bottomRight.x=right.transform.position.x;
+        
+
+        endNotes.AddComponent<LongLongNotes>().SetBoxArea(boxArea);
+
+
+
+
         float num = (Range(1, _block) + block + _renge[0]) - ((float)block + (float)renge);
         float vecRight = num / (float)_distanceNum[0];
         float vecLeft = ((float)_block[0]) / (float)_distanceNum[0];
@@ -208,10 +222,6 @@ public class LongNotes : NotesBase
 
                 LineUtility.ShowText("start");
 
-                startNotes.SetActive(false);
-                //ここが一度だけの場所
-
-                HandUtility.AddEndAction(EndNotes, touchID);
 
 
                 Hit(false);
@@ -221,47 +231,6 @@ public class LongNotes : NotesBase
         }
 
         return false;
-    }
-
-    private void EndNotes()
-    {
-        LineUtility.ShowText("end1");
-
-        count = false;
-
-        int endAreaID = LineUtility.GetTapArea().GetClickPositionID(HandUtility.handPosition(touchID));
-
-        //ノーツ用のIDに変更
-
-        if (endAreaID < 0) return;
-
-        LineUtility.ShowText("end2");
-
-
-        List<int> list = new List<int>();
-
-        for (int i = 0; i < _renge[_renge.Count - 1]; i++)
-        {
-            list.Add((int)Allrange(_block) + i);
-
-
-        }
-        JudgmentType judgmentType = (JudgmentType)(int)LineUtility.RangeToDecision(endNotes.transform.position);
-
-
-        Debug.Log(list.Exists(number => number == endAreaID));
-        Debug.Log(judgmentType <= JudgmentType.Miss);
-        Debug.Log((int)judgmentType >= -(int)JudgmentType.Miss);
-
-        bool flag = list.Exists(number => number == endAreaID) && judgmentType <= JudgmentType.Miss && (int)judgmentType >= -(int)JudgmentType.Miss;
-
-        //LineUtility.ShowText(list[0].ToString() + ":" + list[1].ToString() + " :" + endAreaID.ToString());
-
-        if (!flag) return;
-
-        Hit(endNotes);
-        LineUtility.ShowText("end");
-
     }
 
     protected override double GetDestryDecision()
@@ -275,20 +244,6 @@ public class LongNotes : NotesBase
     }
     private void SetTouchIDs(int ID)
     {
-        touchID = ID;
-        for (int i = 0; i < LongLongNotesList.Count; i++) LongLongNotesList[i].SetTouchID(ID);
-        HandUtility.AddEndAction(EndNotes, touchID);
-
-
-        HandUtility.AddEndAction(() =>
-        {
-            touchID = -1;
-            for (int i = 0; i < LongLongNotesList.Count; i++) LongLongNotesList[i].SetTouchID(-1);
-
-        }
-        , ID);
-
-
     }
     public void Hit(GameObject gameObject)
     {

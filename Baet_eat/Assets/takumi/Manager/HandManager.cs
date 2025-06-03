@@ -50,6 +50,8 @@ public class HandManager : MonoBehaviour
             handEndAction.Add(actions);
 
         }
+
+        CreateTapArea.textMeshProUGUI = _TextMeshProUGUI;
     }
     public int SetHand(Vector2 vector2)
     {
@@ -69,7 +71,9 @@ public class HandManager : MonoBehaviour
 
     private void AddHand()
     {
+
         List<Vector2> touchPosition = new List<Vector2>();
+        touchPoint = Input.touchCount;
 
         if (!commandMouse)
         {
@@ -83,24 +87,25 @@ public class HandManager : MonoBehaviour
             touchPosition.Add(Input.mousePosition);
         }
 
-        for(int i = 0; i < touchPosition.Count; i++) 
+        for (int i = 0; i < touchPosition.Count; i++)
         {
-            for(int j = 0; j < hand.Count; j++) 
+            for (int j = 0; j < hand.Count; j++)
             {
                 if (!hand[j].flag) continue;
 
-                if (Vector2.Distance(hand[j].HandPosition, touchPosition[i]) > 10) continue;
 
-                i--;
+                if (Vector2.Distance(hand[j].HandPosition, touchPosition[i]) > 10) continue;
                 touchPosition.RemoveAt(i);
+                i--;
                 break;
             }
         }
 
+        _TextMeshProUGUI.text = touchPosition.Count.ToString()+touchPosition[0].y.ToString();
 
         for (int i = 0; i < touchPosition.Count; i++)
         {
-        SetHand(Input.GetTouch(i).position);
+            SetHand(touchPosition[i]);
 
         }
 
@@ -109,6 +114,7 @@ public class HandManager : MonoBehaviour
     private void SbuHand()
     {
         List<Vector2> touchPosition = new List<Vector2>();
+        touchPoint = Input.touchCount;
 
         if (!commandMouse)
         {
@@ -214,7 +220,6 @@ public class HandManager : MonoBehaviour
         }
         if (!commandMouse) CheckHand();
         PositionUpdata();
-        _TextMeshProUGUI.text = Input.touchCount.ToString();
 
         //for (int i = 0; i < Input.touchCount; i++)
         //{
@@ -261,13 +266,11 @@ public class HandManager : MonoBehaviour
     {
         if (touchPoint > Input.touchCount)
         {
-            touchPoint--;
             SbuHand();
         }
 
         if (touchPoint < Input.touchCount)
         {
-            touchPoint++;
             AddHand();
         }
     }

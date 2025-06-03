@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static CreateTapArea;
 
@@ -16,6 +17,8 @@ public class CreateTapArea
     private readonly float MaxTime = 1.7f;
     private Material normal;
     private Material click;
+
+    public static TextMeshProUGUI textMeshProUGUI;
 
     public struct BoxArea
     {
@@ -91,12 +94,15 @@ public class CreateTapArea
 
             }
 
+            textMeshProUGUI.text = "-1";
             if (flag) continue;
-
             //範囲内をクリックしたと認める
 
+            textMeshProUGUI.text = "-10";
             action(i,id);
+            textMeshProUGUI.text = "-100";
             timeCount[i] = 1;
+            textMeshProUGUI.text = "-1000";
             tapPoint[i].material = click;
 
             return;
