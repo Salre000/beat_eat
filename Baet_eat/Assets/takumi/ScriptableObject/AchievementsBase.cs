@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AchievementsBase : ScriptableObject 
 {
+    [SerializeField, Header("ÀÑ‚Ì—ñ‹“‘Ì–¼")] public string AchievementsEnumName;
     [SerializeField, Header("ÀÑ‚Ì–¼‘O")] public string AchievementsName;
     [SerializeField, Header("ÀÑ‚Ìà–¾")] public string AchievementsExplanation;
     [SerializeField, Header("ÀÑ‚ÌğŒ‚Ìà–¾")] public string ConditionExplanation;

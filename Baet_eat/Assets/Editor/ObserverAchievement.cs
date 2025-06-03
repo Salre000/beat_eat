@@ -50,8 +50,11 @@ public class ObserverAchievement : AssetPostprocessor
 
         for (int i = 0; i < achievementsAll.achievements.Count; i++)
         {
+            builder.AppendFormat("        /// <summary><see _{0}=\"{1}\"/> </summary>\\r\\n"
+                , achievementsAll.achievements[i].AchievementsEnumName, achievementsAll.achievements[i].AchievementsName);
+            builder.AppendLine();
 
-            builder.AppendFormat("_{0}", achievementsAll.achievements[i].AchievementsName);
+            builder.AppendFormat("_{0}", achievementsAll.achievements[i].AchievementsEnumName);
             builder.Append(",");
             builder.AppendLine();
 

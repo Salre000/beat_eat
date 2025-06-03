@@ -29,7 +29,6 @@ public static class LoadData
 
         string filePath = Path.Combine(Application.persistentDataPath, SaveData.FoundationFileName+SaveData.FILR_EXTENSION);
 
-        Debug.Log(filePath);
         string[] lines = File.ReadAllLines(filePath);
 
         //“Ç‚İ‚ñ‚¾ƒeƒLƒXƒg‚ğStringŒ^‚É‚µ‚ÄŠi”[
