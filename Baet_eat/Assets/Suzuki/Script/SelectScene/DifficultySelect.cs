@@ -29,14 +29,14 @@ public class DifficultySelect : MonoBehaviour
     // ToDo:セレクト画面に来るたび最後に選んでいた難易度に戻す(予定)
     private void Initialize()
     {
-        _diffiNumber = MusicManager.instance.GetDifficultyNumber();
+        _diffiNumber = (int)ScoreStatus.nowDifficulty != 0?(int)ScoreStatus.nowDifficulty :MusicManager.instance.GetDifficultyNumber();
         int forNum = 0;
         foreach (GameObject gameobject in _diffiObject)
         {
             _diffiButton.Add(gameobject.GetComponent<Button>());
             _diffiColor.Add(gameobject.transform.GetChild(0).gameObject);
             _diffiText.Add(gameobject.transform.GetChild(1).GetComponent<TextMeshProUGUI>());
-            if (forNum == 0)
+            if (forNum == _diffiNumber)
             {
                 _diffiText[forNum].color = _whiteColor;
                 _diffiColor[forNum].SetActive(true);
@@ -56,7 +56,7 @@ public class DifficultySelect : MonoBehaviour
                     _diffiButton[forNum].onClick.AddListener(OnHorsDoeuvre);
                     break;
                 case 2:
-                    _diffiButton[forNum].onClick.AddListener(OnSOUP);
+                    _diffiButton[forNum].onClick.AddListener(OnSoup);
                     break;
                 case 3:
                     _diffiButton[forNum].onClick.AddListener(OnMainDish);
@@ -86,7 +86,7 @@ public class DifficultySelect : MonoBehaviour
         _diffiNumber = 1;
         OnButtons();
     }
-    private void OnSOUP()
+    private void OnSoup()
     {
         _diffiNumber = 2;
         OnButtons();
