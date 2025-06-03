@@ -94,15 +94,10 @@ public class CreateTapArea
 
             }
 
-            textMeshProUGUI.text = "-1";
             if (flag) continue;
             //範囲内をクリックしたと認める
-
-            textMeshProUGUI.text = "-10";
             action(i,id);
-            textMeshProUGUI.text = "-100";
             timeCount[i] = 1;
-            textMeshProUGUI.text = "-1000";
             tapPoint[i].material = click;
 
             return;

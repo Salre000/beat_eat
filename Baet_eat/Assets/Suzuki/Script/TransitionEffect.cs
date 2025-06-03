@@ -129,7 +129,7 @@ public class TransitionEffect : MonoBehaviour
     {
         for (int i = 0; i < images.Count; i++)
         {
-            switch (MusicManager.instance!=null?MusicManager.instance.GetDifficultyNumber():0)
+            switch ((int)ScoreStatus.nowDifficulty)
             {
                 case 0:
                     images[i].color = ColorManager.DRINK_COLOR;

@@ -5,10 +5,12 @@ using UnityEngine.UIElements;
 
 public class LongLongNotes : NotesBase
 {
-    CreateTapArea.BoxArea boxArea;
+    [SerializeField]CreateTapArea.BoxArea boxArea;
     public void SetBoxArea(CreateTapArea.BoxArea boxArea) { this.boxArea = boxArea; }
     private readonly float epsilon = 0.3f;
 
+    public float XXX;
+    public float YYY;
     private System.Action<int> SetTouchIDS;
     public void Set_SetTouchID(System.Action<int> action) { SetTouchIDS = action; }
 
@@ -17,9 +19,18 @@ public class LongLongNotes : NotesBase
 
     bool DamegeFlag = false;
     private MeshRenderer mesh;
+
+    public void Start()
+    {
+        XXX = boxArea.leftTop.x;
+        YYY = boxArea.rightTop.x;
+    }
     //•K—v
     public void FixedUpdate()
     {
+        XXX = boxArea.leftTop.x;
+        YYY = boxArea.rightTop.x;
+
         if (this.transform.position.z < GetDestryDecision())
         {
             if (!DamegeFlag)
@@ -57,8 +68,8 @@ public class LongLongNotes : NotesBase
 
         for (int i = 0; i < hands.Count; i++)
         {
-
             if (!hands[i].flag) continue;
+            Debug.Log("DDD"+ hands[i].HandPosition.x.ToString() + ":" + Mathf.Min(leftpos.x, rightpos.x).ToString() + ":" + Mathf.Max(leftpos.x, rightpos.x).ToString());
             if (Mathf.Min(leftpos.x, rightpos.x) - 150 < hands[i].HandPosition.x && Mathf.Max(leftpos.x, rightpos.x) + 150 > hands[i].HandPosition.x) ID = i;
 
         }
@@ -99,8 +110,8 @@ public class LongLongNotes : NotesBase
         DamegeFlag = true;
 
         showTime = -100;
+        mesh = this.GetComponent<MeshRenderer>();
 
-        mesh=this.GetComponent<MeshRenderer>();
         mesh.material = LineUtility.GetInbisible();
 
     }
