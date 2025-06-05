@@ -17,10 +17,10 @@ public class Createline
 
             LineRenderer line = lineObject.AddComponent<LineRenderer>();
 
-            line.startWidth = line.endWidth = 0.05f;
-
-            //���_����ύX
-            line.positionCount = 2;
+            line.startWidth =0.05f;
+            line.endWidth = 0.1f;
+           //���_����ύX
+           line.positionCount = 2;
 
             line.material = material;
 
