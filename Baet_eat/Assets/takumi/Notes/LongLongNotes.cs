@@ -17,6 +17,9 @@ public class LongLongNotes : NotesBase
     private System.Action<Vector3> SetNextPos;
     public void SetSetNextPos(System.Action<Vector3> action) { SetNextPos = action; }
 
+    private System.Action endAction;
+    public void SetEndAction(System.Action _endAction) { endAction = _endAction; }
+
     bool DamegeFlag = false;
     private MeshRenderer mesh;
     Mesh meshLong;
@@ -96,7 +99,7 @@ public class LongLongNotes : NotesBase
         }
         else
         {
-            SetTouchIDS(ID);
+            //SetTouchIDS(ID);
             Hit();
         }
     }
@@ -128,6 +131,7 @@ public class LongLongNotes : NotesBase
 
         mesh.material = LineUtility.GetInbisible();
 
+        if (endAction != null) endAction();
     }
 
 
