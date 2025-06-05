@@ -84,7 +84,7 @@ public class ResultScoreManager : MonoBehaviour
 
     private void SetRank()
     {
-        publicEnum.ClearRank rank = publicEnum.ClearRank.SPlus; //InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
+        publicEnum.ClearRank rank = InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
         int RankIndex = 0;
         Plus.SetActive(false);
         PlusObject.SetActive(false);
