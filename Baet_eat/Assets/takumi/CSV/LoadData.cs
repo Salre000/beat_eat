@@ -1,192 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
 using static publicEnum;
 
 public static class LoadData
 {
-    public static void LoadFoundation()
+    public static void LoadFoundation(System.Action Initialize)
     {
 
         MusicDataBase dataBase = Resources.Load<MusicDataBase>(SaveData.MusicDataName);
 
-        //読み込んだCSVファイルを格納
-        List<string[]> csvDatas = new List<string[]>();
-
-        //CSVファイルの行数を格納
-        int height = 0;
-
-        //ファイルパスとファイルの名前を繋げる
-        //StringBuilder builder = new StringBuilder();
-        //builder.Clear();
-        //builder.Append(SaveData.FoundationFileName);
-
-        //繋げたファイルパスを使いファイルのロードを行う
-        //TextAsset textAsset = Resources.Load<TextAsset>(builder.ToString());
-        //string test = Path.Combine(Application.dataPath+SaveData.FoundationFileName, SaveData.FoundationFileName + SaveData.FILR_EXTENSION);
-
-        string filePath = Path.Combine(Application.persistentDataPath, SaveData.FoundationFileName+SaveData.FILR_EXTENSION);
-
-        string[] lines = File.ReadAllLines(filePath);
-
-        //読み込んだテキストをString型にして格納
-        //StringReader reader = new StringReader(textAsset.text);
-
-        for(int i=0;i< lines.Length;i++)
-        {
-            // ,で区切ってCSVに格納
-            csvDatas.Add(lines[i].Split(','));
-            height++; // 行数加算
-        }
-
-        int nowLine = 0;
-        int musicMax = dataBase.musicData.Count;
-
-        //デザート有のループ　スコアの記録
-        for (int difficulty = 0; difficulty < Difficulty.MAX.ChengeInt(); difficulty++)
+        string filePath = Path.Combine(Application.persistentDataPath, SaveData.FoundationFileName+".txt");
+        if (File.Exists(filePath))
         {
 
-            List<int> clearScore = new List<int>(musicMax);
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(filePath, FileMode.Open);
+            ScoreData data = formatter.Deserialize(stream) as ScoreData;
+            ScoreStatus.SetScoreData(data);
 
-            for (int musicID = 0; musicID < musicMax; musicID++)
+            stream.Close();
+
+            if (dataBase.musicData.Count > ScoreStatus.GetScoreData().dessertScore[0].Count) 
             {
-                int score = int.Parse(csvDatas[nowLine][musicID]);
-
-                ScoreStatus.SetDessertScore(musicID, (Difficulty)difficulty, score);
-
-                clearScore.Add(score);
+                ScoreStatus.AddMusic(dataBase.musicData.Count-ScoreStatus.GetScoreData().dessertScore[0].Count);
             }
-            //インスタンスを経由して情報を渡す
-            clearScore.Clear();
-
-            nowLine++;
 
         }
-        //デザート無しのループ　スコアの記録
-        for (int difficulty = 0; difficulty < Difficulty.dessert.ChengeInt(); difficulty++)
+        else 
         {
-
-            List<int> clearScore = new List<int>(musicMax);
-
-            for (int musicID = 0; musicID < musicMax; musicID++)
-            {
-                int score = int.Parse(csvDatas[nowLine][musicID]);
-
-                ScoreStatus.SetMainDeshScore(musicID, (Difficulty)difficulty, score);
-
-                clearScore.Add(score);
-            }
-            //インスタンスを経由して情報を渡す
-            clearScore.Clear();
-
-            nowLine++;
-        }
-        //デザート有のループ　オーバースコアの記録
-        for (int difficulty = 0; difficulty < Difficulty.MAX.ChengeInt(); difficulty++)
-        {
-
-            List<int> clearScore = new List<int>(musicMax);
-
-            for (int musicID = 0; musicID < musicMax; musicID++)
-            {
-                int score = int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStatus.SetDessertOverScore(musicID, (Difficulty)difficulty, score);
+            Initialize();
 
 
-                clearScore.Add(score);
-            }
-            //インスタンスを経由して情報を渡す
-            clearScore.Clear();
-
-            nowLine++;
-        }
-        //デザート無しのループ　オーバースコアの記録
-        for (int difficulty = 0; difficulty < Difficulty.dessert.ChengeInt(); difficulty++)
-        {
-
-            List<int> clearScore = new List<int>(musicMax);
-
-            for (int musicID = 0; musicID < musicMax; musicID++)
-            {
-                int score = int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStatus.SetMainDeshOverScore(musicID, (Difficulty)difficulty, score);
-
-                clearScore.Add(score);
-            }
-            //インスタンスを経由して情報を渡す
-            clearScore.Clear();
-            nowLine++;
-        }
-        //デザート有のループ　クリアランクの記録
-        for (int difficulty = 0; difficulty < Difficulty.MAX.ChengeInt(); difficulty++)
-        {
-
-            List<ClearRank> clearScore = new List<ClearRank>(musicMax);
-
-            for (int musicID = 0; musicID < musicMax; musicID++)
-            {
-                ClearRank score = (ClearRank)int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStatus.SetDessertClearRanks(musicID, (Difficulty)difficulty, score);
-
-                clearScore.Add(score);
-            }
-            //インスタンスを経由して情報を渡す
-            clearScore.Clear();
-            nowLine++;
-        }
-        //デザート有のループ　クリアランクの記録
-        for (int difficulty = 0; difficulty < Difficulty.dessert.ChengeInt(); difficulty++)
-        {
-
-            List<ClearRank> clearScore = new List<ClearRank>(musicMax);
-
-            for (int musicID = 0; musicID < musicMax; musicID++)
-            {
-                ClearRank score = (ClearRank)int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStatus.SetMainDeshClearRanks(musicID, (Difficulty)difficulty, score);
-
-
-                clearScore.Add(score);
-            }
-            //インスタンスを経由して情報を渡す
-            clearScore.Clear();
-            nowLine++;
-        }
-        //デザート有のループ　クリア状況の記録
-        for (int difficulty = 0; difficulty < Difficulty.MAX.ChengeInt(); difficulty++)
-        {
-
-            List<ClearStates> clearScore = new List<ClearStates>(musicMax);
-
-            for (int musicID = 0; musicID < musicMax; musicID++)
-            {
-                ClearStates score = (ClearStates)int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStatus.SetDessertDifficulty(musicID, (Difficulty)difficulty, score);
-
-                clearScore.Add(score);
-            }
-            //インスタンスを経由して情報を渡す
-            clearScore.Clear();
-            nowLine++;
-        }
-        //デザート有のループ　クリア状況の記録
-        for (int difficulty = 0; difficulty < Difficulty.dessert.ChengeInt(); difficulty++)
-        {
-
-            List<ClearStates> clearScore = new List<ClearStates>(musicMax);
-
-            for (int musicID = 0; musicID < musicMax; musicID++)
-            {
-                ClearStates score = (ClearStates)int.Parse(csvDatas[nowLine][musicID]);
-                ScoreStatus.SetMainDeshDifficulty(musicID, (Difficulty)difficulty, score);
-
-                clearScore.Add(score);
-            }
-            //インスタンスを経由して情報を渡す
-            clearScore.Clear();
-            nowLine++;
         }
     }
 

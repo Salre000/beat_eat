@@ -17,11 +17,16 @@ public class LongLongNotes : NotesBase
     private System.Action<Vector3> SetNextPos;
     public void SetSetNextPos(System.Action<Vector3> action) { SetNextPos = action; }
 
+    private System.Action endAction;
+    public void SetEndAction(System.Action _endAction) { endAction = _endAction; }
+
     bool DamegeFlag = false;
     private MeshRenderer mesh;
-
+    Mesh meshLong;
     public void Start()
     {
+        meshLong = GetComponent<MeshFilter>().mesh;
+
         XXX = boxArea.leftTop.x;
         YYY = boxArea.rightTop.x;
     }
@@ -55,22 +60,34 @@ public class LongLongNotes : NotesBase
 
         List<HandManager.Hands> hands = HandUtility.GetHands();
 
-        float left = Mathf.Min(boxArea.bottomLeft.x, boxArea.leftTop.x);
-        float right = Mathf.Min(boxArea.bottomRight.x, boxArea.rightTop.x);
-
         float z = transform.position.z;
 
         //àÍéûìIÇ…ç¿ïWÇÉ[ÉçÇ…çáÇÌÇπÇÈ
-        transform.position -= new Vector3(0, 0, z);
-        Vector2 leftpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(left, 0, 0));
-        Vector2 rightpos = (Vector2)Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(right, 0, 0));
-        this.transform.position += new Vector3(0, 0, z);
+        transform.position -= new Vector3(0, 0, z+6.25f);
+
+        float MaxPos = 0;
+        float MinPos = 1800;
+
+        for(int i = 0; i < meshLong.vertices.Length; i++) 
+        {
+            float pos=Camera.main.WorldToScreenPoint(meshLong.vertices[i]+transform.position).x;
+
+            new GameObject("TEXT").transform.position = meshLong.vertices[i] + transform.position;
+
+            MaxPos = Mathf.Max(MaxPos, pos);
+            MinPos = Mathf.Min(MinPos, pos);
+
+
+
+        }
+
+        this.transform.position += new Vector3(0, 0, z+6.25f);
 
         for (int i = 0; i < hands.Count; i++)
         {
             if (!hands[i].flag) continue;
-            Debug.Log("DDD"+ hands[i].HandPosition.x.ToString() + ":" + Mathf.Min(leftpos.x, rightpos.x).ToString() + ":" + Mathf.Max(leftpos.x, rightpos.x).ToString());
-            if (Mathf.Min(leftpos.x, rightpos.x) - 150 < hands[i].HandPosition.x && Mathf.Max(leftpos.x, rightpos.x) + 150 > hands[i].HandPosition.x) ID = i;
+            Debug.Log(MaxPos+":"+MinPos+"SSS");
+            if (MinPos < hands[i].HandPosition.x && MaxPos  > hands[i].HandPosition.x) ID = i;
 
         }
 
@@ -82,7 +99,7 @@ public class LongLongNotes : NotesBase
         }
         else
         {
-            SetTouchIDS(ID);
+            //SetTouchIDS(ID);
             Hit();
         }
     }
@@ -114,6 +131,7 @@ public class LongLongNotes : NotesBase
 
         mesh.material = LineUtility.GetInbisible();
 
+        if (endAction != null) endAction();
     }
 
 

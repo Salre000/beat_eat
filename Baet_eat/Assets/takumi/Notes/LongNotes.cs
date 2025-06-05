@@ -72,10 +72,11 @@ public class LongNotes : NotesBase
 
         boxArea.leftTop.x=boxArea.bottomLeft.x=left.transform.position.x;
         boxArea.rightTop.x=boxArea.bottomRight.x=right.transform.position.x;
-        
 
-        endNotes.AddComponent<LongLongNotes>().SetBoxArea(boxArea);
 
+        LongLongNotes longLong = endNotes.AddComponent<LongLongNotes>();
+        longLong.SetBoxArea(boxArea);
+        longLong.SetEndAction(() => SoundUtility.NotesLongHitSoundPlay());
 
 
 
@@ -222,7 +223,7 @@ public class LongNotes : NotesBase
 
                 LineUtility.ShowText("start");
 
-
+                SoundUtility.NotesLongHitSoundPlay();
 
                 Hit(false);
 
