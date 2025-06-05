@@ -170,6 +170,8 @@ public class ResultScoreManager : MonoBehaviour
 
 
 
+        ScoreStatus.SetDessertDifficulty(ScoreStatus.nowMusic, ScoreStatus.nowDifficulty, clearStates);
+
     }
     float clearStatusAnimeCount =0;
     float clearStatusAnimeSpeed =10;
