@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using UnityEngine;
@@ -53,157 +54,17 @@ public static class SaveData
     {
 
         MusicDataBase dataBase = Resources.Load<MusicDataBase>(MusicDataName);
-        StreamWriter sw;
 
-        sw = new StreamWriter(Application.persistentDataPath + "/" + FoundationFileName + FILR_EXTENSION, false);
+        string filePath = Path.Combine(Application.persistentDataPath, FoundationFileName + ".txt");
 
-        //今のlineの番号
-        int LineCount = 0;
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(filePath, FileMode.OpenOrCreate);
 
-        int musicMax = dataBase.musicData.Count;
-
-        StringBuilder sb = new StringBuilder();
-
-        sb.Clear();
-
-        //デザートありの難易度の曲のスコアを記録
-        for (int i = 0; i < 5; i++)
-        {
-            for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
-            {
-                //ここにそれぞれのスコアを入れる
-                sb.Append(Startnumber == 0 ? ScoreStatus.GetDessertScore(soundNumber, (publicEnum.Difficulty)i) : Startnumber);
-                sb.Append(Spece);
-
-            }
-
-            sw.WriteLine(sb.ToString());
-            sb.Clear();
+        ScoreData scoreData = ScoreStatus.GetScoreData();
 
 
-        }
-
-        //デザート無しの難易度の曲のスコアを記録
-        for (int i = 0; i < 4; i++)
-        {
-            for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
-            {
-                //ここにそれぞれのスコアを入れる
-                sb.Append(Startnumber == 0 ? ScoreStatus.GetMainDeshScore(soundNumber, (publicEnum.Difficulty)i) : Startnumber);
-                sb.Append(Spece);
-
-            }
-
-            sw.WriteLine(sb.ToString());
-            sb.Clear();
-
-
-        }
-        //デザートありの難易度の曲のオーバースコアを記録
-        for (int i = 0; i < 5; i++)
-        {
-            for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
-            {
-                //ここにそれぞれのスコアを入れる
-                sb.Append(Startnumber == 0 ? ScoreStatus.GetDessertOverScore(soundNumber, (publicEnum.Difficulty)i) : Startnumber);
-                sb.Append(Spece);
-
-            }
-
-            sw.WriteLine(sb.ToString());
-            sb.Clear();
-
-
-        }
-
-        //デザート無しの難易度の曲のオーバースコアを記録
-        for (int i = 0; i < 4; i++)
-        {
-            for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
-            {
-                //ここにそれぞれのスコアを入れる
-                sb.Append(Startnumber == 0 ? ScoreStatus.GetMainDeshOverScore(soundNumber, (publicEnum.Difficulty)i) : Startnumber);
-                sb.Append(Spece);
-
-            }
-
-            sw.WriteLine(sb.ToString());
-            sb.Clear();
-
-
-        }
-
-        //デザートありの難易度の曲のクリアランクを記録
-        for (int i = 0; i < 5; i++)
-        {
-            for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
-            {
-                //ここにそれぞれのスコアを入れる
-                sb.Append(Startnumber == 0 ? (int)ScoreStatus.GetDessertClearRanks(soundNumber, (publicEnum.Difficulty)i) : -1);
-                sb.Append(Spece);
-
-            }
-
-            sw.WriteLine(sb.ToString());
-            sb.Clear();
-
-
-        }
-        //デザート無しの難易度の曲のクリアランクを記録
-        for (int i = 0; i < 4; i++)
-        {
-            for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
-            {
-                //ここにそれぞれのスコアを入れる
-                sb.Append(Startnumber == 0 ? (int)ScoreStatus.GetMainDeshClearRanks(soundNumber, (publicEnum.Difficulty)i) : -1);
-                sb.Append(Spece);
-
-            }
-
-            sw.WriteLine(sb.ToString());
-            sb.Clear();
-
-
-        }
-
-        //デザートありの難易度の曲のクリア状況を記録
-        for (int i = 0; i < 5; i++)
-        {
-            for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
-            {
-                //ここにそれぞれのスコアを入れる
-                sb.Append(Startnumber == 0 ? (int)ScoreStatus.GetDessertDifficulty(soundNumber, (publicEnum.Difficulty)i) : 0);
-                sb.Append(Spece);
-
-            }
-
-            sw.WriteLine(sb.ToString());
-            sb.Clear();
-
-
-        }
-        //デザート無しの難易度の曲のクリア状況を記録
-        for (int i = 0; i < 4; i++)
-        {
-            for (int soundNumber = 0; soundNumber < musicMax; soundNumber++)
-            {
-                //ここにそれぞれのスコアを入れる
-                sb.Append(Startnumber == 0 ? (int)ScoreStatus.GetMainDeshDifficulty(soundNumber, (publicEnum.Difficulty)i) : 0);
-                sb.Append(Spece);
-
-            }
-
-            sw.WriteLine(sb.ToString());
-            sb.Clear();
-
-
-        }
-
-
-
-        sw.Flush();
-        sw.Close();
-
+        formatter.Serialize(stream,scoreData);
+        stream.Close();
 
 
     }

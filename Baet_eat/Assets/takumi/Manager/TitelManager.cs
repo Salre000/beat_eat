@@ -14,9 +14,11 @@ public class TitelManager : MonoBehaviour
             Debug.Log(Application.persistentDataPath);
         if(!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.FoundationFileName + SaveData.FILR_EXTENSION)) 
         {
-            SaveData.SaveFoundation(1);
             SaveData.SaveOption(1);
+            SaveData.SaveFoundation(1);
         }
+
+
     }
 
 
