@@ -81,7 +81,7 @@ public class LongLongNotes : NotesBase
 
         }
 
-        this.transform.position += new Vector3(0, 0, z);
+        this.transform.position += new Vector3(0, 0, z+6.25f);
 
         for (int i = 0; i < hands.Count; i++)
         {
