@@ -13801,7 +13801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _notesNormalHitSound: {fileID: 8300000, guid: b97a046e3e6f5654e9a36cbe8defbef3, type: 3}
-  _notesLongHitSound: {fileID: 8300000, guid: f416cd829536fda42835a11b6563c9ea, type: 3}
+  _notesLongHitSound: {fileID: 8300000, guid: b97a046e3e6f5654e9a36cbe8defbef3, type: 3}
   _notesFlickHitSound: {fileID: 8300000, guid: aa667abe26ae3b041b2406bddc7d8c20, type: 3}
   _notesSkilllHitSound: {fileID: 8300000, guid: 0d236ced810cfcb4ea878ba25bb9f633, type: 3}
   time: 0
