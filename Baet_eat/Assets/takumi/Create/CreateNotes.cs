@@ -127,8 +127,9 @@ public class CreateNotes : MonoBehaviour
 
             // éûä‘Å@ kankaku * inputJson.notes[i].num 
 
-
-            notes.transform.position = new Vector3((inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,( kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)+ offset);
+            Debug.Log((inputJson.offset / 50000.0f) * OptionStatus.GetNotesSpeed() * 20 + "FFFF");
+            notes.transform.position = new Vector3((inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,( kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)
+                +(inputJson.offset / 50000.0f) * OptionStatus.GetNotesSpeed() * 20);
             //êeÇ…ìZÇﬂÇÈ
             notes.transform.parent = NotesParent.transform;
 
