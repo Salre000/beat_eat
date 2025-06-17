@@ -11,7 +11,9 @@ using static CreateTapArea;
 public class CreateNotes : MonoBehaviour
 {
     [SerializeField] float offset;
-    
+
+    private readonly Vector3 LineOffset= new Vector3(0, 0, -6.25f);
+
     private float StartPosition = 50;
 
     public static GameObject parent;
@@ -20,7 +22,7 @@ public class CreateNotes : MonoBehaviour
 
     private float offsetReta = 50000.0f;
 
-    public int GetCount() {  return NotesCount; }
+    public int GetCount() { return NotesCount; }
     [Serializable]
     public class Data
     {
@@ -85,26 +87,26 @@ public class CreateNotes : MonoBehaviour
 
         Load(stringBuilder.ToString());
 
-       
+
     }
     void OnEnable()
     {
 
     }
-    public static float Kankaku=0;
+    public static float Kankaku = 0;
     private void Load(string SongName)
     {
         GameObject NotesParent = new GameObject(SongName);
 
-        NotesParent.transform.parent= notesParent.transform;
-        
+        NotesParent.transform.parent = notesParent.transform;
+
 
         parent = NotesParent;
 
         NotesParent.transform.position = Vector3.zero;
 
         NotesParent.AddComponent<NotesMove>();
-        
+
         string inputString = Resources.Load<TextAsset>(SongName).ToString();
         Data inputJson = JsonUtility.FromJson<Data>(inputString);
         SoundUtility.SetObject(NotesParent);
@@ -118,7 +120,7 @@ public class CreateNotes : MonoBehaviour
 
             float kankaku = 60 / (inputJson.BPM * (float)inputJson.notes[i].LPB);
 
-            Kankaku=kankaku;
+            Kankaku = kankaku;
 
             float beatSec = kankaku * (float)inputJson.notes[i].LPB;
 
@@ -130,8 +132,9 @@ public class CreateNotes : MonoBehaviour
             // éûä‘Å@ kankaku * inputJson.notes[i].num 
 
             Debug.Log((inputJson.offset / 50000.0f) * OptionStatus.GetNotesSpeed() * 20 + "FFFF");
-            notes.transform.position = new Vector3((inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,( kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)
-                +(inputJson.offset / offsetReta) * OptionStatus.GetNotesSpeed() * 20);
+            notes.transform.position = new Vector3((inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,
+                (kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)
+                + (inputJson.offset / offsetReta) * OptionStatus.GetNotesSpeed() * 20)+ LineOffset;
             //êeÇ…ìZÇﬂÇÈ
             notes.transform.parent = NotesParent.transform;
 

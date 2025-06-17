@@ -83,8 +83,10 @@ public class SoundManager : MonoBehaviour
 
         if (DelayTime < 6f) return true;
 
-        _soundSource.Play();
+
         OneFlag = true;
+
+        _soundSource.Play();
 
         return false;
 
