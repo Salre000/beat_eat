@@ -85,6 +85,9 @@ public class SoundManager : MonoBehaviour
 
 
         OneFlag = true;
+        NotesMove.Instance.stopFlag = true;
+
+        return true;
 
         _soundSource.Play();
 

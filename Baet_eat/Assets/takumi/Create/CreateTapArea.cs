@@ -6,8 +6,8 @@ using static CreateTapArea;
 
 public class CreateTapArea
 {
-    private float offset = -7;
-    private float areaRange = 0.15f*10;
+    private float offset = -6.25f;
+    private float areaRange = 0.4f;
     private float wide = 10;
 
     private List<MeshRenderer> tapPoint = new List<MeshRenderer>();
@@ -134,12 +134,14 @@ public class CreateTapArea
             //メッシュの座標を設定
             boxarea.leftTop = new Vector3(wideDivision * (i - 1) - wide / 2, 0.01f, offset + areaRange);
             boxarea.rightTop = new Vector3(wideDivision * i - wide / 2, 0.01f, offset + areaRange);
-            boxarea.bottomLeft = new Vector3(wideDivision * (i - 1) - wide / 2, 0.01f, offset);
-            boxarea.bottomRight = new Vector3(wideDivision * i - wide / 2, 0.01f, offset);
+            boxarea.bottomLeft = new Vector3(wideDivision * (i - 1) - wide / 2, 0.01f, offset- areaRange);
+            boxarea.bottomRight = new Vector3(wideDivision * i - wide / 2, 0.01f, offset- areaRange);
 
             //メッシュの基本設定
             Mesh mesh = new Mesh();
             mesh.vertices = VerticePosition(boxarea);
+            boxarea.bottomLeft.z -= 2;
+            boxarea.bottomRight.z -= 2;
             mesh.triangles = new[] { 0, 1, 3, 3, 1, 2 };
 
 
@@ -169,8 +171,8 @@ public class CreateTapArea
         line.material = new Material(normal);
         line.material.color = Color.red;
 
-        line.SetPosition(0, new Vector3(wide / 2, 0.02f, offset + areaRange / 2+(OptionStatus.GetNotesHitLinePos() * 0.5f)));
-        line.SetPosition(1, new Vector3(-wide/2, 0.02f, offset+areaRange/2 + (OptionStatus.GetNotesHitLinePos() * 0.5f)));
+        line.SetPosition(0, new Vector3(wide / 2, 0.02f, offset+(OptionStatus.GetNotesHitLinePos() * 0.5f)));
+        line.SetPosition(1, new Vector3(-wide/2, 0.02f, offset+(OptionStatus.GetNotesHitLinePos() * 0.5f)));
         line.startWidth = line.endWidth = 0.1f;
 
 
