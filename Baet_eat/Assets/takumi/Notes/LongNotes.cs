@@ -181,17 +181,17 @@ public class LongNotes : NotesBase
     [SerializeField]List<Vector3> nextPos=new List<Vector3>();
     float rate = 0;
     int posIndex =0;
+    bool One = false;
     private void MoveStartNotes() 
     {
         if (NotesMove.Instance.stopFlag) return;
         
-        if (endNotes.transform.position.z < -6.25f) {if(InGameStatus.GetAuto()) Hit(endNotes);this.gameObject.SetActive(false); return; }
+        if (endNotes.transform.position.z < -6.25f) { if (InGameStatus.GetAuto()) { Hit(endNotes); this.gameObject.SetActive(false); SoundUtility.NotesLongHitSoundPlay(); return; } }
         if (startNotes.transform.position.z > -6.25f) return;
 
         rate += ((float)(OptionStatus.GetNotesSpeed() * 20)/50.0f) / (float)(CreateNotes.Kankaku * _distanceNum[posIndex] * OptionStatus.GetNotesSpeed() * 20);
 
         Vector3 scale = Vector3.one;
-
         float sizeX = renge - _renge[posIndex];
         if (sizeX != 0) sizeX = (float)(_renge[posIndex] + 1) / (float)(renge + 1);
         else sizeX += 1.0f;

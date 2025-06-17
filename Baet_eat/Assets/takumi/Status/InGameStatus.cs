@@ -76,7 +76,9 @@ public class InGameStatus
     {
         float upscore = MAX_SCORE / (float)notesCount;
         NotesCount= notesCount;
+
         upScore = upscore;
+        Debug.Log(upScore + ":" + notesCount);
     }
     public static void AddNoesTypeSuccess(int notesType) { NoesTypeSuccess[notesType]++; }
     public static void AddNoesTypeMIss(int notesType) { NoesTypeMIss[notesType]++; }
