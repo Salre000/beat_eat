@@ -103,7 +103,6 @@ public class CreateTapArea
             return;
         }
 
-
     }
 
     //クリックされた後に時間が経ったら色を戻る関数

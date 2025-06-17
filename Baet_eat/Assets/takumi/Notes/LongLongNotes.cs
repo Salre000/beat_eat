@@ -72,7 +72,6 @@ public class LongLongNotes : NotesBase
         {
             float pos=Camera.main.WorldToScreenPoint(meshLong.vertices[i]+transform.position).x;
 
-            new GameObject("TEXT").transform.position = meshLong.vertices[i] + transform.position;
 
             MaxPos = Mathf.Max(MaxPos, pos);
             MinPos = Mathf.Min(MinPos, pos);

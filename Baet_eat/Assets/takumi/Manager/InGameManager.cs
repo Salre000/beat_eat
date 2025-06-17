@@ -17,6 +17,7 @@ public class InGameManager : MonoBehaviour
 
     [SerializeField]  Material invisible;
     [SerializeField]  Material NotInvisible;
+    [SerializeField] Image jacket;
     public Material GetNoeInvisible() { return NotInvisible; }
     public Material Getinvisible() { return invisible; }
 
@@ -64,6 +65,8 @@ public class InGameManager : MonoBehaviour
 
         RankNotShow();
         Ranks[4].SetActive(true);
+
+        jacket.sprite = Resources.Load<MusicDataBase>("MusicDataBase").musicData[ScoreStatus.nowMusic].jacket;
     }
 
     private void FixedUpdate()
