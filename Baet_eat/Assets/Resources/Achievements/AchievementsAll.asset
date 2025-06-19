@@ -15,4 +15,8 @@ MonoBehaviour:
   achievements:
   - {fileID: 11400000, guid: dbe6e488fc185f8408f9337f9ec76634, type: 2}
   - {fileID: 11400000, guid: f57fa31e170af9f40b52959b5fd1300c, type: 2}
-  - {fileID: 11400000, guid: e7027c3ff2696bd45845d9217dbe770c, type: 2}
+  - {fileID: 11400000, guid: 254791218ee81db4f9031cbba6ff298f, type: 2}
+  - {fileID: 11400000, guid: e106e6ecb95725143a7442b7d1b8f696, type: 2}
+  - {fileID: 11400000, guid: 1062fba8bd9a03141ae3e0dba35a257a, type: 2}
+  - {fileID: 11400000, guid: ec937b20a0ee9cb48a7b18874d1c76db, type: 2}
+  - {fileID: 11400000, guid: 11dbd24008d3df44b8273a696127682b, type: 2}

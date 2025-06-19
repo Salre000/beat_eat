@@ -25,13 +25,15 @@ public class AchievementsManager : MonoBehaviour
     private TextMeshProUGUI explanation;
     private TextMeshProUGUI Condition;
 
+    private int targetID = 0;
+
     public void Awake()
     {
         _achievements = Resources.Load<AchievementsAll>("Achievements/AchievementsAll");
         achievementObjects = new List<GameObject>(_achievements.achievements.Count);
         _activeFlags = new List<bool>(_achievements.achievements.Count);
         _activeCount = new List<int>(_achievements.achievements.Count);
-        objectRoot= achievementCanvas.transform.GetChild(2).transform.GetChild(0).gameObject;
+        objectRoot= achievementCanvas.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).gameObject;
         for (int i=0;i< _achievements.achievements.Count; i++) 
         {
             GameObject achievement = Instantiate(achievementPrefab,objectRoot.transform);
@@ -53,7 +55,8 @@ public class AchievementsManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (!achievementCanvas.gameObject.activeSelf) return;
-        Move(1);
+
+        GetActiveData(targetID);
     }
     public void AddActiveCount(int ID)
     {
@@ -90,17 +93,11 @@ public class AchievementsManager : MonoBehaviour
         achievementCanvas.gameObject.SetActive(!achievementCanvas.gameObject.activeSelf);
     }
 
-    private void Move(float moveAdd) 
+    private void GetActiveData(int ID) 
     {
-        for (int i=0;i< achievementObjects.Count;i++) 
-        {
-
-            Vector3 pos= achievementObjects[i].transform.localPosition;
-
-            pos.y += moveAdd;
-            achievementObjects[i].transform.localPosition = pos;
-        }
-
+        name.text = _achievements.achievements[ID].AchievementsName;
+        explanation.text = _achievements.achievements[ID].AchievementsExplanation;
+        Condition.text = _achievements.achievements[ID].ConditionExplanation;
     }
 
 }
