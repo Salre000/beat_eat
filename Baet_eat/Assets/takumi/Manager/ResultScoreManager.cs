@@ -52,7 +52,7 @@ public class ResultScoreManager : MonoBehaviour
         //Šy‹È‚Ì–¼‘O‚ð“ü‚ê‚é
         MusicName.text = musicData.name;
 
-        DifficultyName.text = ScoreStatus.nowDifficulty.ToString();
+        DifficultyName.text = ScoreStatus.nowDifficulty.GetName();
         DifficultyNameJukcet.text = ScoreStatus.nowDifficulty.ToString();
         JukcetColor.color = Diffcolor[(int)ScoreStatus.nowDifficulty];
         SetRank();
