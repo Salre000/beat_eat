@@ -20,6 +20,9 @@ public class LongLongNotes : NotesBase
     private System.Action endAction;
     public void SetEndAction(System.Action _endAction) { endAction = _endAction; }
 
+    private System.Action hitAction;
+    public void SetHitAction(System.Action action) { hitAction = action; }
+
     bool DamegeFlag = false;
     private MeshRenderer mesh;
     Mesh meshLong;
@@ -42,6 +45,8 @@ public class LongLongNotes : NotesBase
             {
                 DamegeFlag = true;
                 InGameStatus.HPDamege();
+                if (endAction != null) endAction();
+                gameObject.SetActive(false);
 
             }           
         }
@@ -131,6 +136,8 @@ public class LongLongNotes : NotesBase
         mesh.material = LineUtility.GetInbisible();
 
         if (endAction != null) endAction();
+        
+        if (hitAction != null) hitAction();
     }
 
 

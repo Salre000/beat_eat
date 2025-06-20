@@ -73,10 +73,20 @@ public class LongNotes : NotesBase
         boxArea.leftTop.x=boxArea.bottomLeft.x=left.transform.position.x;
         boxArea.rightTop.x=boxArea.bottomRight.x=right.transform.position.x;
 
-
         LongLongNotes longLong = endNotes.AddComponent<LongLongNotes>();
         longLong.SetBoxArea(boxArea);
-        longLong.SetEndAction(() => SoundUtility.NotesLongHitSoundPlay());
+        longLong.SetHitAction(() => SoundUtility.NotesLongHitSoundPlay());
+        longLong.SetEndAction(() => 
+        {
+            gameObject.SetActive(false);
+
+            SetShowTime(-100);
+           
+
+
+        });
+
+
 
 
 
@@ -208,6 +218,7 @@ public class LongNotes : NotesBase
         nowScale = scale;
 
     }
+
 
 
     private bool count = false;

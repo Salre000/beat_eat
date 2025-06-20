@@ -1,9 +1,10 @@
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public class AchievementsManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class AchievementsManager : MonoBehaviour
 
     private List<bool> _activeFlags;
     [SerializeField] GameObject achievementPrefab;
-    [SerializeField]Canvas achievementCanvas;
+    [SerializeField] Canvas achievementCanvas;
     private GameObject objectRoot;
     private List<GameObject> achievementObjects;
 
@@ -26,7 +27,9 @@ public class AchievementsManager : MonoBehaviour
     private TextMeshProUGUI explanation;
     private TextMeshProUGUI Condition;
 
-    [SerializeField]private int targetID = 0;
+    [SerializeField] private int targetID = 0;
+
+
 
     public void Awake()
     {
@@ -34,7 +37,7 @@ public class AchievementsManager : MonoBehaviour
         achievementObjects = new List<GameObject>(_achievements.achievements.Count);
         _activeFlags = new List<bool>(_achievements.achievements.Count);
         _activeCount = new List<int>(_achievements.achievements.Count);
-        objectRoot= achievementCanvas.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).gameObject;
+        objectRoot = achievementCanvas.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).gameObject;
         for (int i = 0; i < _achievements.achievements.Count; i++)
         {
             GameObject achievement = Instantiate(achievementPrefab, objectRoot.transform);
@@ -45,16 +48,33 @@ public class AchievementsManager : MonoBehaviour
 
             achievement.transform.localPosition = Addpos;
 
-            achievement.GetComponent<Button>().onClick.AddListener(() =>{});
+            //アチーブメントの中身を記述していく
+            //画像
+            achievement.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite=
+                _achievements.achievements[i].AchievementsImage;
+            //名前
+            achievement.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text=
+                _achievements.achievements[i].AchievementsName;
+            //状況
+            achievement.transform.GetChild(2).transform.GetChild(0).gameObject.
+                SetActive(false);
 
+
+
+            //これ必須
+            int number = i;
+
+            achievement.GetComponent<Button>().onClick.AddListener(() => { targetID= number; });
             achievementObjects.Add(achievement);
         }
 
-        name= achievementCanvas.transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        explanation= achievementCanvas.transform.GetChild(3).transform.GetChild(4).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        Condition= achievementCanvas.transform.GetChild(3).transform.GetChild(6).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        Condition.text= _achievements.achievements[0].ConditionExplanation;
+        name = achievementCanvas.transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        explanation = achievementCanvas.transform.GetChild(3).transform.GetChild(4).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        Condition = achievementCanvas.transform.GetChild(3).transform.GetChild(6).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        Condition.text = _achievements.achievements[0].ConditionExplanation;
     }
+
+
     private void FixedUpdate()
     {
         if (!achievementCanvas.gameObject.activeSelf) return;
@@ -70,7 +90,7 @@ public class AchievementsManager : MonoBehaviour
         _activeFlags[ID] = true;
     }
 
-    void ShowAchievement() 
+    void ShowAchievement()
     {
         if (select == null) return;
         name.text = select.AchievementsName;
@@ -91,16 +111,30 @@ public class AchievementsManager : MonoBehaviour
         return -1;
     }
 
-    public void ChengeActive() 
+    public void ChengeActive()
     {
         achievementCanvas.gameObject.SetActive(!achievementCanvas.gameObject.activeSelf);
     }
 
-    private void GetActiveData(int ID) 
+    private void GetActiveData(int ID)
     {
         name.text = _achievements.achievements[ID].AchievementsName;
         explanation.text = _achievements.achievements[ID].AchievementsExplanation;
         Condition.text = _achievements.achievements[ID].ConditionExplanation;
     }
+
+
+
+
+}
+
+[Serializable]
+class Achievements
+{
+
+
+
+
+
 
 }
