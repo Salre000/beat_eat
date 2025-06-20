@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AchievementsManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class AchievementsManager : MonoBehaviour
     private TextMeshProUGUI explanation;
     private TextMeshProUGUI Condition;
 
-    private int targetID = 0;
+    [SerializeField]private int targetID = 0;
 
     public void Awake()
     {
@@ -34,15 +35,17 @@ public class AchievementsManager : MonoBehaviour
         _activeFlags = new List<bool>(_achievements.achievements.Count);
         _activeCount = new List<int>(_achievements.achievements.Count);
         objectRoot= achievementCanvas.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).gameObject;
-        for (int i=0;i< _achievements.achievements.Count; i++) 
+        for (int i = 0; i < _achievements.achievements.Count; i++)
         {
-            GameObject achievement = Instantiate(achievementPrefab,objectRoot.transform);
+            GameObject achievement = Instantiate(achievementPrefab, objectRoot.transform);
 
             Vector3 Addpos = Vector3.zero;
 
             Addpos.y = -i * 120;
 
             achievement.transform.localPosition = Addpos;
+
+            achievement.GetComponent<Button>().onClick.AddListener(() =>{});
 
             achievementObjects.Add(achievement);
         }

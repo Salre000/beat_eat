@@ -23987,6 +23987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievementPrefab: {fileID: 8169568279819727761, guid: a7de76346947fbd4e89946ec88143d33, type: 3}
   achievementCanvas: {fileID: 1633577908}
+  targetID: 0
 --- !u!1 &612765151
 GameObject:
   m_ObjectHideFlags: 0

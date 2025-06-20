@@ -12,7 +12,7 @@ public static class EX
             case publicEnum.Difficulty.Drink:
                 return "Drink";
             case publicEnum.Difficulty.Hors_d_oeuvre:
-                return "HorsDoeuvre";
+                return "Hors d'oeuvres";
             case publicEnum.Difficulty.Soup:
                 return "Soup";
             case publicEnum.Difficulty.MainDish:
