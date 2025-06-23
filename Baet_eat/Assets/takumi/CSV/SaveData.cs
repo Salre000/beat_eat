@@ -15,6 +15,7 @@ public static class SaveData
     public static string OpstionFileName = "OpsitonData";
     public static string FoundationFileName = "FoundationData";
     public static string ResultsFileName = "ResultsData";
+    public static string AchiveMentFileName = "AchiveMent";
     public static string FILE_PASS = "/Resources/";
     public static string FILR_EXTENSION = ".csv";
 
@@ -64,6 +65,24 @@ public static class SaveData
 
 
         formatter.Serialize(stream,scoreData);
+        stream.Close();
+
+
+    }
+    //アチーブメントの情報
+    public static void SaveAchiveMent()
+    {
+
+
+        string filePath = Path.Combine(Application.persistentDataPath, AchiveMentFileName + ".txt");
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(filePath, FileMode.OpenOrCreate);
+
+        Achievements Data = AchievementStatus.achievements;
+
+
+        formatter.Serialize(stream,Data);
         stream.Close();
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public static class OptionStatus 
+public static class OptionStatus
 {
     /// 最後に選んでいたスキル　int 
     /// ノーツの速さ　float 
@@ -15,9 +15,9 @@ public static class OptionStatus
     /// SEの音　int
     /// 
 
-    private static int _skillIndex=0;
+    private static int _skillIndex = 0;
     public static int GetSkillIndex() { return _skillIndex; }
-    public static void SetSkillIndex(int index) {  _skillIndex = index; }
+    public static void SetSkillIndex(int index) { _skillIndex = index; }
 
     private static float _notesSpeed = 0;
     public static float GetNotesSpeed() { return _notesSpeed; }
@@ -62,7 +62,7 @@ public static class OptionStatus
 
 
     private static bool OneFlag = false;
-    public static void Initialize() 
+    public static void Initialize()
     {
         //一度しか通らないようにする処理
         if (OneFlag) return;
@@ -70,8 +70,7 @@ public static class OptionStatus
         OneFlag = true;
 
         LoadData.LoadOpsiton();
-
-
+        AchievementStatus.Initialize();
     }
 
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9c2d2cdf02996343a7f1c0a839ec9d3, type: 3}
-  m_Name: Achievements
+  m_Name: DC
   m_EditorClassIdentifier: 
   AchievementsEnumName: NewDC
   AchievementsName: "\u30C7\u30EA\u30B7\u30E3\u30B9\u3067\u30AF\u30EA\u30C6\u30A3\u30AB\u30EB\u306A\u5224\u5B9A"

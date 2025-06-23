@@ -31,13 +31,19 @@ public class AchievementsManager : MonoBehaviour
 
 
 
-    public void Awake()
+    public void Start()
     {
         _achievements = Resources.Load<AchievementsAll>("Achievements/AchievementsAll");
         achievementObjects = new List<GameObject>(_achievements.achievements.Count);
         _activeFlags = new List<bool>(_achievements.achievements.Count);
         _activeCount = new List<int>(_achievements.achievements.Count);
         objectRoot = achievementCanvas.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).gameObject;
+
+        name = achievementCanvas.transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        explanation = achievementCanvas.transform.GetChild(3).transform.GetChild(4).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        Condition = achievementCanvas.transform.GetChild(3).transform.GetChild(6).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        Condition.text = _achievements.achievements[0].ConditionExplanation;
+
         for (int i = 0; i < _achievements.achievements.Count; i++)
         {
             GameObject achievement = Instantiate(achievementPrefab, objectRoot.transform);
@@ -50,28 +56,24 @@ public class AchievementsManager : MonoBehaviour
 
             //アチーブメントの中身を記述していく
             //画像
-            achievement.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite=
+            achievement.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite =
                 _achievements.achievements[i].AchievementsImage;
             //名前
-            achievement.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text=
+            achievement.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text =
                 _achievements.achievements[i].AchievementsName;
             //状況
             achievement.transform.GetChild(2).transform.GetChild(0).gameObject.
-                SetActive(false);
+                SetActive(AchievementStatus.achievements.GetAChiveMentStatus(i));
 
 
 
             //これ必須
             int number = i;
 
-            achievement.GetComponent<Button>().onClick.AddListener(() => { targetID= number; });
+            achievement.GetComponent<Button>().onClick.AddListener(() => { targetID = number; });
             achievementObjects.Add(achievement);
         }
 
-        name = achievementCanvas.transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        explanation = achievementCanvas.transform.GetChild(3).transform.GetChild(4).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        Condition = achievementCanvas.transform.GetChild(3).transform.GetChild(6).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        Condition.text = _achievements.achievements[0].ConditionExplanation;
     }
 
 
@@ -129,12 +131,21 @@ public class AchievementsManager : MonoBehaviour
 }
 
 [Serializable]
-class Achievements
+public class Achievements
 {
 
+    private List<bool> achiveMentesStatus = new List<bool>();
+    private List<int> achiveMentesCount = new List<int>();
 
+    public List<bool> GetAChiveMentStatus() { return achiveMentesStatus; }
 
+    public void AddAchiveMentStatus(bool flag) { achiveMentesStatus.Add(flag); }
 
+    public bool GetAChiveMentStatus(int index) { return achiveMentesStatus[index]; }
+    public void SetAChiveMentStatus(int index) { achiveMentesStatus[index] = true; }
+    public int GetAChiveMentCount(int index) { return achiveMentesCount[index]; }
+    public void AddAChiveMentCount(int index) { achiveMentesCount[index]++; }
+    public void AddAChiveMentCount() { achiveMentesCount.Add(0); }
 
 
 }

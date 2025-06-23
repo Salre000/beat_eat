@@ -13,7 +13,7 @@ public static class LoadData
 
         MusicDataBase dataBase = Resources.Load<MusicDataBase>(SaveData.MusicDataName);
 
-        string filePath = Path.Combine(Application.persistentDataPath, SaveData.FoundationFileName+".txt");
+        string filePath = Path.Combine(Application.persistentDataPath, SaveData.FoundationFileName + ".txt");
         if (File.Exists(filePath))
         {
 
@@ -24,13 +24,45 @@ public static class LoadData
 
             stream.Close();
 
-            if (dataBase.musicData.Count > ScoreStatus.GetScoreData().dessertScore[0].Count) 
+            if (dataBase.musicData.Count > ScoreStatus.GetScoreData().dessertScore[0].Count)
             {
-                ScoreStatus.AddMusic(dataBase.musicData.Count-ScoreStatus.GetScoreData().dessertScore[0].Count);
+                ScoreStatus.AddMusic(dataBase.musicData.Count - ScoreStatus.GetScoreData().dessertScore[0].Count);
             }
 
         }
-        else 
+        else
+        {
+            Initialize();
+
+
+        }
+    }
+    public static void LoadAchiveMent(System.Action Initialize)
+    {
+
+        string filePath = Path.Combine(Application.persistentDataPath, SaveData.AchiveMentFileName + ".txt");
+        if (File.Exists(filePath))
+        {
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(filePath, FileMode.Open);
+            Achievements data = formatter.Deserialize(stream) as Achievements;
+            AchievementStatus.achievements = data;
+
+            stream.Close();
+
+            if (data.GetAChiveMentStatus().Count > (int)AchievementTypeEnum.AchievementType.MAX) return;
+
+            int count = ((int)AchievementTypeEnum.AchievementType.MAX+1) - data.GetAChiveMentStatus().Count;
+            for (int i = 0; i < count; i++)
+            {
+                AchievementStatus.achievements.AddAchiveMentStatus(false);
+                AchievementStatus.achievements.AddAChiveMentCount(0);
+            }
+
+
+        }
+        else
         {
             Initialize();
 
@@ -97,12 +129,6 @@ public static class LoadData
 
     }
 
-    public static void LoadAchievements()
-    {
-
-
-
-    }
 
     private static string MusicLevelPass = "MusicLevel";
 

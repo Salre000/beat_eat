@@ -33,11 +33,11 @@ public class OptionManager : MonoBehaviour
     private void Awake()
     {
         OptisonUility.optionManager = this;
+        OptionStatus.Initialize();
 
     }
     private void Start()
     {
-        OptionStatus.Initialize();
         SetOptionData();
 
         //ページより前のページ以外の子供オブジェクトの数だけ高くスタート
