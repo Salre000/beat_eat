@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicID: 4
   musicName: kawii happy core_2
-  BPM: 0
+  BPM: 12
   musicLevel: 1
   jacket: {fileID: 21300000, guid: a6b57b7f8c05a0849a2b2066037d6eac, type: 3}
   musicAuthorName: "\u3082\u3061\u307E\u3093\u3058\u3085\u3046"

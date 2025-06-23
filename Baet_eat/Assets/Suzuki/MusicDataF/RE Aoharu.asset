@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicID: 5
   musicName: RE Aoharu
-  BPM: 0
+  BPM: 0.77
   musicLevel: 1
   jacket: {fileID: 21300000, guid: 6233457700163b64faf7e726f2e3e5a4, type: 3}
   musicAuthorName: "\u3082\u3061\u307E\u3093\u3058\u3085\u3046"
