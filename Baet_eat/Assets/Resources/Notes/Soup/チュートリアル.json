@@ -1,95 +1,23 @@
 ﻿{
   "name": "チュートリアル",
   "maxBlock": 10,
-  "BPM": 143,
-  "offset": 700,
+  "BPM": 120,
+  "offset": 0,
   "notes": [
     {
-      "LPB": 2,
-      "num": 0,
-      "block": 4,
-      "type": 3,
-      "renge": 1,
+      "LPB": 4,
+      "num": 4,
+      "block": 0,
+      "type": 0,
+      "renge": 3,
       "notes": []
     },
     {
-      "LPB": 2,
-      "num": 1,
-      "block": 4,
-      "type": 3,
-      "renge": 0,
-      "notes": []
-    },
-    {
-      "LPB": 2,
-      "num": 2,
-      "block": 4,
-      "type": 3,
-      "renge": 0,
-      "notes": []
-    },
-    {
-      "LPB": 2,
-      "num": 3,
-      "block": 4,
-      "type": 3,
-      "renge": 0,
-      "notes": []
-    },
-    {
-      "LPB": 2,
+      "LPB": 4,
       "num": 4,
       "block": 4,
-      "type": 3,
-      "renge": 0,
-      "notes": []
-    },
-    {
-      "LPB": 2,
-      "num": 5,
-      "block": 3,
-      "type": 3,
-      "renge": 0,
-      "notes": []
-    },
-    {
-      "LPB": 2,
-      "num": 6,
-      "block": 3,
-      "type": 3,
-      "renge": 0,
-      "notes": []
-    },
-    {
-      "LPB": 2,
-      "num": 7,
-      "block": 3,
-      "type": 3,
-      "renge": 0,
-      "notes": []
-    },
-    {
-      "LPB": 2,
-      "num": 8,
-      "block": 3,
-      "type": 3,
-      "renge": 0,
-      "notes": []
-    },
-    {
-      "LPB": 4,
-      "num": 18,
-      "block": 3,
-      "type": 3,
-      "renge": 0,
-      "notes": []
-    },
-    {
-      "LPB": 4,
-      "num": 20,
-      "block": 3,
-      "type": 3,
-      "renge": 0,
+      "type": 0,
+      "renge": 3,
       "notes": []
     },
     {
