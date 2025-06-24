@@ -14,8 +14,8 @@ _test2,
 _test3,
         /// <summary><see _test4="Test4"/> </summary>\r\n
 _test4,
-        /// <summary><see _test0="Test0"/> </summary>\r\n
-_test0,
+        /// <summary><see _LIVE="かくし"/> </summary>\r\n
+_LIVE,
 MAX
 }
 }
