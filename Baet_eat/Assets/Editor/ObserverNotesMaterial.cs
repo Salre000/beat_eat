@@ -35,7 +35,7 @@ public class ObserverNotesMaterial : AssetPostprocessor
         StringBuilder builder = new StringBuilder();
         builder.Clear();
         builder.Append(Application.dataPath);
-        builder.Append("/Resources/NotesMaterialTypeEnum");
+        builder.Append("/Resources/Enum/NotesMaterialTypeEnum");
         builder.Append(".cs");
 
         StreamWriter sw;

@@ -35,7 +35,7 @@ public class ObserverSoundSE : AssetPostprocessor
         StringBuilder builder = new StringBuilder();
         builder.Clear();
         builder.Append(Application.dataPath);
-        builder.Append("/Resources/SoundSEEnum");
+        builder.Append("/Resources/Enum/SoundSEEnum");
         builder.Append(".cs");
 
         StreamWriter sw;

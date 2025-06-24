@@ -33,7 +33,7 @@ public class ObserverAchievement : AssetPostprocessor
         StringBuilder builder = new StringBuilder();
         builder.Clear();
         builder.Append(Application.dataPath);
-        builder.Append("/Resources/AchievementEnum");
+        builder.Append("/Resources/Enum/AchievementEnum");
         builder.Append(".cs");
 
         StreamWriter sw;
