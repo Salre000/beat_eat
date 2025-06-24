@@ -16,7 +16,7 @@ MonoBehaviour:
   musicName: Betrayal
   BPM: 133
   musicLevel: 1
-  jacket: {fileID: 21300000, guid: 77736ded4272212438282508721d2db5, type: 3}
+  jacket: {fileID: 21300000, guid: 0f7c54e22643dd54081eeb65891c25c3, type: 3}
   musicAuthorName: kuku
   musicComposerName: kuku
   musicArrangerName: kuku

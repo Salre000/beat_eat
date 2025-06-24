@@ -5,7 +5,7 @@ using UnityEngine;
 public class JacketRotation : MonoBehaviour
 {
     private RectTransform _jacket;
-    private float _speed = 15.0f;
+    private float _speed = 10.0f;
     private int _musicNumber = 0;
     [SerializeField] private MusicDataBase _musicDataBase;
     // Start is called before the first frame update
@@ -19,6 +19,6 @@ public class JacketRotation : MonoBehaviour
     void Update()
     {
         _musicNumber=MusicManager.instance.GetSelectMusicNumber();
-        _jacket.Rotate(0f, 0f, Time.deltaTime * (_speed * (60 / _musicDataBase.musicData[_musicNumber].BPM)));
+        _jacket.Rotate(0f, 0f, Time.deltaTime * (_speed * ( _musicDataBase.musicData[_musicNumber].BPM/60)));
     }
 }

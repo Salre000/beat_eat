@@ -16,7 +16,7 @@ MonoBehaviour:
   musicName: EndressDance
   BPM: 153
   musicLevel: 14
-  jacket: {fileID: 21300000, guid: 61b4d6e10cb8ce446bf99e7f4676b39e, type: 3}
+  jacket: {fileID: 21300000, guid: 3d13af9b23f383240a409f11520edc0b, type: 3}
   musicAuthorName: "\u521D\u661F\u5B66\u5712"
   musicComposerName: "\u9996\u85E4\u7FA9\u52DD"
   musicArrangerName: "\u85E4\u6C38\u9F8D\u592A\u90CE"
