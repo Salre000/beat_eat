@@ -24,6 +24,8 @@ public class MenuManager : MonoBehaviour
         ScoreStatus.nowDifficulty = 0;
         ScoreStatus.nowMusic = 3;
 
+        AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._Tutorial);
+
         new GameObject().AddComponent<TutorialManager>();
 
         TransitionEffect.nextSceneNameSystem = GameSceneManager.mainScene;
