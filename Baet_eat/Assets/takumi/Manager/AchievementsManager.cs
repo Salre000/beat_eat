@@ -120,9 +120,12 @@ public class AchievementsManager : MonoBehaviour
 
     private void GetActiveData(int ID)
     {
-        name.text = _achievements.achievements[ID].AchievementsName;
-        explanation.text = _achievements.achievements[ID].AchievementsExplanation;
-        Condition.text = _achievements.achievements[ID].ConditionExplanation;
+        name.text = !_achievements.achievements[ID].HiddenAchievement ?
+            _achievements.achievements[ID].AchievementsName : "???";
+        explanation.text = !_achievements.achievements[ID].HiddenAchievement ?
+            _achievements.achievements[ID].AchievementsExplanation : "???";
+        Condition.text = !_achievements.achievements[ID].HiddenAchievement ?
+            _achievements.achievements[ID].ConditionExplanation : "???";
     }
 
 

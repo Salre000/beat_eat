@@ -1,17 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-public class ObserverAchievement : AssetPostprocessor
+public class ObserverNotesMaterial : AssetPostprocessor
 {
     private static readonly string filePath = "Assets/Resources/";
-    private static readonly string filePath2 = "Achievements/AchievementsAll";
+    private static readonly string filePath2 = "InGame/NotesMaterialObject";
     public static string FILR_EXTENSION = ".asset";
 
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
     {
-        string filename = filePath +filePath2+ FILR_EXTENSION;
+        string filename = filePath + filePath2 + FILR_EXTENSION;
         foreach (string asset in importedAssets)
         {
             if (!filename.Equals(asset))
@@ -28,12 +30,12 @@ public class ObserverAchievement : AssetPostprocessor
     }
     private static void CreateCS()
     {
-        AchievementsAll achievementsAll=Resources.Load<AchievementsAll>(filePath2);
+        NotesMaterialAll achievementsAll = Resources.Load<NotesMaterialAll>(filePath2);
 
         StringBuilder builder = new StringBuilder();
         builder.Clear();
         builder.Append(Application.dataPath);
-        builder.Append("/Resources/Enum/AchievementEnum");
+        builder.Append("/Resources/Enum/NotesMaterialTypeEnum");
         builder.Append(".cs");
 
         StreamWriter sw;
@@ -41,20 +43,20 @@ public class ObserverAchievement : AssetPostprocessor
         string filePass = builder.ToString();
         sw = new StreamWriter(filePass, false);
         builder.Clear();
-        builder.Append("public  static class AchievementTypeEnum {");
+        builder.Append("public  static class NotesMaterialTypeEnum {");
         builder.AppendLine();
 
 
-        builder.Append("public enum AchievementType {");
+        builder.Append("public enum NotesMaterialType {");
         builder.AppendLine();
 
-        for (int i = 0; i < achievementsAll.achievements.Count; i++)
+        for (int i = 0; i < achievementsAll.notesMaterials.Count; i++)
         {
             builder.AppendFormat("        /// <summary><see _{0}=\"{1}\"/> </summary>\\r\\n"
-                , achievementsAll.achievements[i].AchievementsEnumName, achievementsAll.achievements[i].AchievementsName);
+                , achievementsAll.notesMaterials[i].typeName, achievementsAll.notesMaterials[i].typeNameExplanation);
             builder.AppendLine();
 
-            builder.AppendFormat("_{0}", achievementsAll.achievements[i].AchievementsEnumName);
+            builder.AppendFormat("_{0}", achievementsAll.notesMaterials[i].typeName);
             builder.Append(",");
             builder.AppendLine();
 

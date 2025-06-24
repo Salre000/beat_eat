@@ -4,6 +4,42 @@ using UnityEngine;
 
 public class InGameStatus
 {
+    //Œã‚Å‰Â•Ï‚É‚·‚é
+    private static int NotesID = 0;
+    private static int SoundSEID = 0;
+
+    public static void AddNotesID()
+    {
+        NotesID++;
+        if (NotesID >= (int)NotesMaterialTypeEnum.NotesMaterialType.MAX)
+            NotesID = (int)NotesMaterialTypeEnum.NotesMaterialType.MAX - 1;
+    }
+    public static void SbuNotesID()
+    {
+        NotesID--;
+        if (NotesID < 0)
+            NotesID = 0;
+    }
+
+    public static int GetNotesID() {  return NotesID; }
+
+    public static void AddSoundSEID()
+    {
+        SoundSEID++;
+        if (SoundSEID >= (int)SoundSEEnum.SoundSEType.MAX)
+            SoundSEID = (int)SoundSEEnum.SoundSEType.MAX - 1;
+    }
+
+    public static void SbuSoundSEID()
+    {
+        SoundSEID--;
+        if (SoundSEID < 0)
+            SoundSEID = 0;
+    }
+    public static int GetSoundSEID() {  return SoundSEID; }
+
+
+
     private static float score = 0;
     private const float MAX_SCORE = 1010000.0f;
     public static float GetMAXScore() { return MAX_SCORE; }
@@ -20,7 +56,7 @@ public class InGameStatus
     private static AudioClip nowMusic;
     public static void SetNowMusic(AudioClip clip) { nowMusic = clip; }
     public static AudioClip GetNowMusic() { return nowMusic; }
-    private  static MusicData Data;
+    private static MusicData Data;
     public static void SetMusicData(MusicData music) { Data = music; }
     public static MusicData GetMusicData() { return Data; }
     public static int GetMAXHP() { return MAX_HP; }
@@ -35,14 +71,14 @@ public class InGameStatus
     private static int MaxCombo = 0;
 
     private static int NotesCount = 0;
-    public static int GetNotesCount() {  return NotesCount; }
+    public static int GetNotesCount() { return NotesCount; }
 
     private static System.Action ChengeHpAction;
     public static void SetChengeHPUIAction(System.Action damegeUIAction) { ChengeHpAction = damegeUIAction; }
 
     private static bool Auto = false;
-    public  static bool GetAuto() {  return Auto; }
-    public static void AutoMode(bool flag=true) {  Auto = flag; }
+    public static bool GetAuto() { return Auto; }
+    public static void AutoMode(bool flag = true) { Auto = flag; }
     public InGameStatus()
     {
         HP = 1000;
@@ -75,7 +111,7 @@ public class InGameStatus
     public static void SetUpScore(int notesCount)
     {
         float upscore = MAX_SCORE / (float)notesCount;
-        NotesCount= notesCount;
+        NotesCount = notesCount;
 
         upScore = upscore;
         Debug.Log(upScore + ":" + notesCount);
@@ -166,10 +202,10 @@ public class InGameStatus
 
     }
 
-    public static publicEnum.ClearStates CheckEnd() 
+    public static publicEnum.ClearStates CheckEnd()
     {
-        if (NotesCount == judgments[0][0])return publicEnum.ClearStates.ALLDC;
-        else if(combo>=NotesCount)return publicEnum.ClearStates.FullCombo;
+        if (NotesCount == judgments[0][0]) return publicEnum.ClearStates.ALLDC;
+        else if (combo >= NotesCount) return publicEnum.ClearStates.FullCombo;
         else return publicEnum.ClearStates.Clear;
     }
 

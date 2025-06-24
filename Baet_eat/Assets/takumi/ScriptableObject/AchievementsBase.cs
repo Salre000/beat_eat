@@ -11,6 +11,7 @@ public class AchievementsBase : ScriptableObject
     [SerializeField, Header("ÀÑ‚ÌğŒ‚Ìà–¾")] public string ConditionExplanation;
     [SerializeField, Header("ğŒ‚ğ–‚½‚·•K—v‚Ì‚ ‚é‰ñ”")] public int AchievementsMAXCount;
     [SerializeField, Header("‚±‚ÌÀÑ‚Ì‰æ‘œ")] public Sprite AchievementsImage;
+    [SerializeField, Header("‚±‚ÌÀÑ‚ª‰B‚µ—v‘f‚©‚Ç‚¤‚©")] public bool HiddenAchievement=false;
 
 
 

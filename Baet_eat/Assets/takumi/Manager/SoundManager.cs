@@ -8,12 +8,7 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-
-    [SerializeField] AudioClip _notesNormalHitSound;
-    [SerializeField] AudioClip _notesLongHitSound;
-    [SerializeField] AudioClip _notesFlickHitSound;
-    [SerializeField] AudioClip _notesSkilllHitSound;
-
+    [SerializeField] SoundSEObject nowSound;
 
     [SerializeField] private float time = 0;
 
@@ -31,6 +26,8 @@ public class SoundManager : MonoBehaviour
     public void Awake()
     {
         SoundUtility.soundManager = this;
+        nowSound = Resources.Load<SoundSEObjectlAll>("InGame/SoundSEObjectAll").notesMaterials[InGameStatus.GetSoundSEID()];
+
     }
     private readonly string FliePass = "Musics/";
     private float StartOffset = OptionStatus.GetNotesSpeed() * 20 * 6f;
@@ -91,7 +88,7 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void OpenPose() 
+    public void OpenPose()
     {
         poseImage.SetActive(true);
         NotesMove.Instance.stopFlag = true;
@@ -99,7 +96,7 @@ public class SoundManager : MonoBehaviour
     }
 
     private float poseCountDown = 0;
-    public void ClosePose() 
+    public void ClosePose()
     {
         poseImage.SetActive(false);
         poseCount.gameObject.SetActive(true);
@@ -108,7 +105,7 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    private void SbuPoseCount() 
+    private void SbuPoseCount()
     {
         if (!poseCount.gameObject.activeSelf) return;
 
@@ -128,7 +125,7 @@ public class SoundManager : MonoBehaviour
 
     public static void DebagClear() { GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive); }
 
-    public void Restart() 
+    public void Restart()
     {
         TransitionEffect.nextSceneNameSystem = GameSceneManager.mainScene;
 
@@ -136,7 +133,7 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void ChangeSelect() 
+    public void ChangeSelect()
     {
         TransitionEffect.nextSceneNameSystem = GameSceneManager.selectScene;
 
@@ -145,11 +142,10 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void SetNotesHitSound(AudioClip clip) { _notesNormalHitSound = clip; }
-    public void StartNotesNormalHitSound() { _BGMSoundSource.PlayOneShot(_notesNormalHitSound); }
-    public void StartNotesFlickHitSound() { _BGMSoundSource.PlayOneShot(_notesFlickHitSound); }
-    public void StartNotesLongHitSound() { _BGMSoundSource.PlayOneShot(_notesLongHitSound); }
-    public void StartNotesSkillHitSound() { _BGMSoundSource.PlayOneShot(_notesSkilllHitSound); }
+    public void StartNotesNormalHitSound() { _BGMSoundSource.PlayOneShot(nowSound.normal); }
+    public void StartNotesFlickHitSound() { _BGMSoundSource.PlayOneShot(nowSound.flick); }
+    public void StartNotesLongHitSound() { _BGMSoundSource.PlayOneShot(nowSound._long); }
+    public void StartNotesSkillHitSound() { _BGMSoundSource.PlayOneShot(nowSound.skill); }
 
     public void MainBGMStop() { if (time != 0) return; time = _soundSource.time; _soundSource.Stop(); }
     public void MainBGMStart() { if (time == 0) return; _soundSource.time = time; _soundSource.Play(); time = 0; }

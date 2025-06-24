@@ -6,16 +6,16 @@ _StartGame,
 _StartNotes,
         /// <summary><see _NewDC="デリシャスでクリティカルな判定"/> </summary>\r\n
 _NewDC,
-        /// <summary><see _test1="Test1"/> </summary>\r\n
-_test1,
+        /// <summary><see _Tutorial="説明書を読むタイプのきみ"/> </summary>\r\n
+_Tutorial,
         /// <summary><see _test2="Test2"/> </summary>\r\n
 _test2,
         /// <summary><see _test3="Test3"/> </summary>\r\n
 _test3,
         /// <summary><see _test4="Test4"/> </summary>\r\n
 _test4,
-        /// <summary><see _test0="Test0"/> </summary>\r\n
-_test0,
+        /// <summary><see _LIVE="かくし"/> </summary>\r\n
+_LIVE,
 MAX
 }
 }
