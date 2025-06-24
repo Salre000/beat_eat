@@ -48,6 +48,8 @@ public class ResultScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._NewEed);
+
         MusicData musicData = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic];
         //Šy‹È‚Ì–¼‘O‚ð“ü‚ê‚é
         MusicName.text = musicData.name;

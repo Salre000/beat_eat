@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9c2d2cdf02996343a7f1c0a839ec9d3, type: 3}
-  m_Name: Test 4
+  m_Name: Drink
   m_EditorClassIdentifier: 
-  AchievementsEnumName: test4
-  AchievementsName: Test4
-  AchievementsExplanation: 
-  ConditionExplanation: 
-  AchievementsMAXCount: 0
+  AchievementsEnumName: drink
+  AchievementsName: "\u30C9\u30EA\u30F3\u30AF"
+  AchievementsExplanation: "\u30E1\u30ED\u30F3\u30BD\u30FC\u30C0\u3068\u30B8\u30F3\u30B8\u30E3\u30FC\u30A8\u30FC\u30EB"
+  ConditionExplanation: "\u30C9\u30EA\u30F3\u30AF\u3068\u8A00\u3048\u3070\u30E1\u30ED\u30F3\u30BD\u30FC\u30C0"
+  AchievementsMAXCount: 1
   AchievementsImage: {fileID: 0}
+  HiddenAchievement: 0

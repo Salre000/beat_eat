@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AchievementStatus
 {
@@ -9,6 +10,7 @@ public class AchievementStatus
 
     public static List<int> achivementMaxCount = new List<int>();
 
+    public static int achievementNumber = -1;
 
     public static void Initialize()
     {
@@ -51,6 +53,9 @@ public class AchievementStatus
 
         achievements.SetAChiveMentStatus(Index);
 
+        achievementNumber = Index;
+
+        SceneManager.LoadScene("AchievementScene", LoadSceneMode.Additive);
         //アチーブメントのデータを保存
         SaveData.SaveAchiveMent();
 
@@ -58,7 +63,7 @@ public class AchievementStatus
 
 
 
-
+    
 
 
 }

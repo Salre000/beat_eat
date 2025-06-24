@@ -41,7 +41,8 @@ public static class LoadData
     {
 
         string filePath = Path.Combine(Application.persistentDataPath, SaveData.AchiveMentFileName + ".txt");
-        if (File.Exists(filePath))
+        //デバッグ
+        if (false)//File.Exists(filePath))
         {
 
             BinaryFormatter formatter = new BinaryFormatter();

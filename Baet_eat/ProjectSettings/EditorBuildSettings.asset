@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChangeScene.unity
     guid: fe92533070d4e304caf1753265d14895
+  - enabled: 1
+    path: Assets/Scenes/AchievementScene.unity
+    guid: 0322110f4bcce0c4788cb0559caa26a5
   m_configObjects: {}

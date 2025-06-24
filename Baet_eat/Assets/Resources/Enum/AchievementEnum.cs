@@ -8,14 +8,16 @@ _StartNotes,
 _NewDC,
         /// <summary><see _Tutorial="説明書を読むタイプのきみ"/> </summary>\r\n
 _Tutorial,
-        /// <summary><see _test2="Test2"/> </summary>\r\n
-_test2,
-        /// <summary><see _test3="Test3"/> </summary>\r\n
-_test3,
-        /// <summary><see _test4="Test4"/> </summary>\r\n
-_test4,
-        /// <summary><see _LIVE="かくし"/> </summary>\r\n
-_LIVE,
+        /// <summary><see _NewEed="初めての完走"/> </summary>\r\n
+_NewEed,
+        /// <summary><see _drink="ドリンク"/> </summary>\r\n
+_drink,
+        /// <summary><see _HorsDoeuvre="ソーセージとフライドポテト"/> </summary>\r\n
+_HorsDoeuvre,
+        /// <summary><see _Soup="ミソスープ"/> </summary>\r\n
+_Soup,
+        /// <summary><see _mainDish="ステーキと伊勢海老の気分"/> </summary>\r\n
+_mainDish,
 MAX
 }
 }
