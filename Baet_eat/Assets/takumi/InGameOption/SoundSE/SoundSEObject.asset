@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12bcd499e49eea544ab489b7b2da29a4, type: 3}
   m_Name: SoundSEObject
   m_EditorClassIdentifier: 
-  normal: {fileID: 0}
-  skill: {fileID: 0}
-  flick: {fileID: 0}
-  _long: {fileID: 0}
+  normal: {fileID: 8300000, guid: b97a046e3e6f5654e9a36cbe8defbef3, type: 3}
+  skill: {fileID: 8300000, guid: b97a046e3e6f5654e9a36cbe8defbef3, type: 3}
+  flick: {fileID: 8300000, guid: aa667abe26ae3b041b2406bddc7d8c20, type: 3}
+  _long: {fileID: 8300000, guid: 0d236ced810cfcb4ea878ba25bb9f633, type: 3}
   typeName: normal
   typeNameExplanation: "\u3054\u304F\u4E00\u822C\u7684\u306A\u97F3"

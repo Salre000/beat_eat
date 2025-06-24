@@ -11,6 +11,7 @@ public class NotesMaterial : ScriptableObject
     public Material flickup;
     public Material _long;
     public Material _longlong;
+    public Material _longlongCopy;
 
 
     public string typeName = "";

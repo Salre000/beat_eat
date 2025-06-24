@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbbcc62443c8f541b69d9c15ca1a972, type: 3}
   m_Name: CreateNotesMaterial
   m_EditorClassIdentifier: 
-  normal: {fileID: 0}
-  skill: {fileID: 0}
-  flick: {fileID: 0}
-  flickup: {fileID: 0}
-  _long: {fileID: 0}
-  _longlong: {fileID: 0}
+  normal: {fileID: 2100000, guid: a246c445f5afd5c4aba6d3aa272aff12, type: 2}
+  skill: {fileID: 2100000, guid: 804bfc68fbeaa764bb3ecd488ac49141, type: 2}
+  flick: {fileID: 2100000, guid: 515a64defcd4527418375ff78c635bdb, type: 2}
+  flickup: {fileID: 2100000, guid: 4da52aa36f041284ab1305a0a77dca8f, type: 2}
+  _long: {fileID: 2100000, guid: a4bc672a1df2fdf419141517e7197ea4, type: 2}
+  _longlong: {fileID: 2100000, guid: 2c161b736feb72142a7b88902cb54213, type: 2}
+  _longlongCopy: {fileID: 2100000, guid: 23a90fd6bd865da49a6a43ee223d28be, type: 2}
   typeName: normal
   typeNameExplanation: "\u3054\u304F\u4E00\u822C\u7684\u306A\u7269"
