@@ -14487,6 +14487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievementPrefab: {fileID: 8169568279819727761, guid: a7de76346947fbd4e89946ec88143d33, type: 3}
   achievementCanvas: {fileID: 1633577908}
+  sepiaMaterial: {fileID: 2100000, guid: 16374b45f59bbef4eaff1212aa8246c3, type: 2}
   targetID: 0
 --- !u!1 &613245324
 GameObject:
