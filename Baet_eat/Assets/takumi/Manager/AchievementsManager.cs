@@ -71,6 +71,8 @@ public class AchievementsManager : MonoBehaviour
             achievement.transform.GetChild(2).transform.GetChild(0).gameObject.
                 SetActive(AchievementStatus.achievements.GetAChiveMentStatus(i));
 
+            if (!AchievementStatus.achievements.GetAChiveMentStatus(i))
+                achievement.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().material = sepiaMaterial;
 
 
             //Ç±ÇÍïKê{

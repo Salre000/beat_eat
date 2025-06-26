@@ -8,13 +8,15 @@ Properties
 
     SubShader
     {
-        Tags { "Queue" = "Transparent" }
-        Cull Off
-        ZWrite Off
-        Blend SrcAlpha OneMinusSrcAlpha
 
+        Tags {"Queue" = "Geometry+1"}
+        
+    Blend SrcAlpha OneMinusSrcAlpha
+    
         Pass
         {
+
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -68,6 +70,7 @@ Properties
 
                 return col;
             }
+
             ENDCG
         }
     }}
