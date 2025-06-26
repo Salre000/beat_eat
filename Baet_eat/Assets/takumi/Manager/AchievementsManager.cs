@@ -17,15 +17,16 @@ public class AchievementsManager : MonoBehaviour
     private List<bool> _activeFlags;
     [SerializeField] GameObject achievementPrefab;
     [SerializeField] Canvas achievementCanvas;
+    [SerializeField] Material sepiaMaterial;
     private GameObject objectRoot;
     private List<GameObject> achievementObjects;
-
 
 
     private TextMeshProUGUI name;
 
     private TextMeshProUGUI explanation;
     private TextMeshProUGUI Condition;
+    private Image image;
 
     [SerializeField] private int targetID = 0;
 
@@ -39,6 +40,11 @@ public class AchievementsManager : MonoBehaviour
         _activeCount = new List<int>(_achievements.achievements.Count);
         objectRoot = achievementCanvas.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).gameObject;
 
+        image= achievementCanvas.transform.GetChild(3).transform.GetChild(0).GetComponent<Image>();
+
+        if (!AchievementStatus.achievements.GetAChiveMentStatus(0))
+            image.material = sepiaMaterial;
+        
         name = achievementCanvas.transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         explanation = achievementCanvas.transform.GetChild(3).transform.GetChild(4).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         Condition = achievementCanvas.transform.GetChild(3).transform.GetChild(6).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -65,6 +71,8 @@ public class AchievementsManager : MonoBehaviour
             achievement.transform.GetChild(2).transform.GetChild(0).gameObject.
                 SetActive(AchievementStatus.achievements.GetAChiveMentStatus(i));
 
+            if (!AchievementStatus.achievements.GetAChiveMentStatus(i))
+                achievement.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().material = sepiaMaterial;
 
 
             //Ç±ÇÍïKê{
@@ -126,6 +134,15 @@ public class AchievementsManager : MonoBehaviour
             _achievements.achievements[ID].AchievementsExplanation : "???";
         Condition.text = !_achievements.achievements[ID].HiddenAchievement ?
             _achievements.achievements[ID].ConditionExplanation : "???";
+
+        image.sprite =_achievements.achievements[ID].AchievementsImage;
+
+
+        if (!AchievementStatus.achievements.GetAChiveMentStatus(ID))
+            image.material = sepiaMaterial;
+        else image.material = null;
+
+
     }
 
 

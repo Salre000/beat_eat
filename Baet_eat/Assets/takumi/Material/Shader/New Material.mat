@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Back
-  m_Shader: {fileID: 4800000, guid: a4233dd518b655c489cbb6f4cb1a4a10, type: 3}
+  m_Name: New Material
+  m_Shader: {fileID: 4800000, guid: 3a8b83ed0179c4c429a7c7c8833cb095, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -58,7 +58,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Alphass: 0
     - _BumpScale: 1
     - _ColorMask: 15
     - _Cutoff: 0.5
@@ -83,6 +82,6 @@ Material:
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0.7176471}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
