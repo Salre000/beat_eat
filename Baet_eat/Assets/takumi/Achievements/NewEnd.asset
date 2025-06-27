@@ -17,5 +17,5 @@ MonoBehaviour:
   AchievementsExplanation: "\u304A\u3081\u3067\u3068\u3046"
   ConditionExplanation: "\u521D\u3081\u3066\u4E00\u66F2\u30AF\u30EA\u30A2\u3057\u305F"
   AchievementsMAXCount: 1
-  AchievementsImage: {fileID: 21300000, guid: 6233457700163b64faf7e726f2e3e5a4, type: 3}
+  AchievementsImage: {fileID: 21300000, guid: 13f0984a15a7468499627590f28f5460, type: 3}
   HiddenAchievement: 0

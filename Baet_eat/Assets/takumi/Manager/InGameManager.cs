@@ -197,7 +197,7 @@ public class InGameManager : MonoBehaviour
         {
 
             ScoreReteOffset = (InGameStatus.GetScore()) / scoreRate;
-            ScoreReteOffset /= 4f;
+            ScoreReteOffset /= 5f;
 
         }
 
