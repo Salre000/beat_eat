@@ -105,7 +105,7 @@ public class InGameStatus
     //判定による上昇スコアの変動ありの関数
     public static void AddScore(float rete)
     {
-        score += upScore * rete; LineUtility.SetScoreGage(); Debug.Log(rete + "倍率:結果" + score + "ランク" + GetScoreClearRank((int)score).ToString());
+        score += upScore * rete; LineUtility.SetScoreGage();
     }
 
     public static void SetUpScore(int notesCount)

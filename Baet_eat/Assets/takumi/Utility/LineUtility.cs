@@ -7,7 +7,8 @@ public static class LineUtility
     
     public static InGameManager gameManager{ set; private get; } 
 
-    public static float RangeToDecision(Vector3 pos) { return gameManager.RangeToDecision(pos)*2; }
+    //‚±‚±‚Ì‚©‚¯‚½’l‚ª¬‚³‚¢’ö@”»’è‚Ì‘å‚«‚³‚ª‘å‚«‚­‚È‚é
+    public static float RangeToDecision(Vector3 pos) { return gameManager.RangeToDecision(pos)*2f; }
 
     public static void AddActiveObject(NotesBase gameObject) { gameManager.AddActiveObject(gameObject); }
     public static void SbuActiveObject(NotesBase gameObject) { gameManager.SbuActiveObject(gameObject); }
