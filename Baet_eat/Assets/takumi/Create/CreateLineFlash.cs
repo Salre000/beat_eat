@@ -8,7 +8,7 @@ public class CreateLineFlash
     private List<Material> flashMaterial = new List<Material>();
 
     private Material material;
-    private readonly float offset = -5.5f;
+    private readonly float offset = -7.5f;
     private readonly float range = 60.0f;
     private float wide = 10;
     public void SetMaterial(Material material) { this.material = material; }

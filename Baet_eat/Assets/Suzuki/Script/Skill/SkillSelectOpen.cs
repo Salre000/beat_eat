@@ -50,12 +50,14 @@ public class SkillSelectOpen : MonoBehaviour
     {
         _skillMask.localPosition = Vector3.Lerp(_skillMask.localPosition, _skillmaskOpenPosition, Time.deltaTime * 10f);
         _skillMask.sizeDelta = Vector3.Lerp(_skillMask.sizeDelta, _skillmaskOpenSize, Time.deltaTime * 10f);
+        GetComponent<SkillSelectSingle>().OpenJammer();
     }
     // ëIÇ—èIÇÌÇË
     private void CloseSkill()
     {
         _skillMask.localPosition = Vector3.Lerp(_skillMask.localPosition, _skillmaskClosePosition, Time.deltaTime * 10f);
         _skillMask.sizeDelta = Vector3.Lerp(_skillMask.sizeDelta, _skillmaskCloseSize, Time.deltaTime * 10f);
+        GetComponent<SkillSelectSingle>().CloseJammer();
     }
 
     private void IsSelect() { _isSelect = !_isSelect; }

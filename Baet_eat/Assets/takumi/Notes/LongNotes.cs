@@ -161,7 +161,7 @@ public class LongNotes : NotesBase
             }
             if (j == 0)
             {
-                vec = -((renge+1)/2)+(_renge[0]+1)*0.5f;
+                vec = 0;//-((renge+1)/2)+(_renge[0]+1)*0.5f;
             }
             else
             {
