@@ -111,6 +111,10 @@ public class CreateNotes : MonoBehaviour
         Data inputJson = JsonUtility.FromJson<Data>(inputString);
         SoundUtility.SetObject(NotesParent);
 
+        //本来はデザートオンリーの条件が必要だがデバッグ中は無視
+        /*if(ScoreStatus.nowDifficulty==publicEnum.Difficulty.dessert)*/
+        DessertManager.CreateTapAreaDessert();
+
 
         noteNum = inputJson.notes.Length;
 
@@ -184,7 +188,16 @@ public class CreateNotes : MonoBehaviour
 
 
             LineUtility.AddActiveObject(notesBase);
+            if (ScoreStatus.nowDifficulty == publicEnum.Difficulty.dessert) 
+            {
+                DessertNotes dessert= notes.AddComponent<DessertNotes>();
 
+
+                dessert.SetNotesPos(DessertNotes.NotesPos.left);
+
+
+
+            }
 
 
         }

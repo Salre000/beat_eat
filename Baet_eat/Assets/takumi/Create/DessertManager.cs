@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.UIElements;
 using static CreateTapArea;
-public class CreateDessertGame : MonoBehaviour
+public class DessertManager : MonoBehaviour
 {
     public const float TAP_AREA_DESSERT = -4.0f;
 
@@ -16,6 +13,14 @@ public class CreateDessertGame : MonoBehaviour
 
     private static List<GameObject> areaList = new List<GameObject>();
 
+    [SerializeField] private List<DessertNotes> AllNotes = new List<DessertNotes>();
+    public void AddAllNotes(DessertNotes notes) { AllNotes.Add(notes); }
+    public void SbuAllNotes(DessertNotes notes) { AllNotes.Remove(notes); }
+    public List<DessertNotes> GetAllNotes() {return AllNotes; }
+    [SerializeField] private List<DessertNotes> ActiveNotes = new List<DessertNotes>();
+    public void AddActiveNotes(DessertNotes notes) { ActiveNotes.Add(notes); }
+    public void SbuActiveNotes(DessertNotes notes) { ActiveNotes.Remove(notes); }
+
     public static Material normal;
     public static Material click;
     public static void CreateTapAreaDessert()
@@ -24,7 +29,6 @@ public class CreateDessertGame : MonoBehaviour
         box.Clear();
         timeCount.Clear();
         tapPoint.Clear();
-
 
         GameObject area = GameObject.Find("Area");
 
@@ -90,14 +94,17 @@ public class CreateDessertGame : MonoBehaviour
             box.Add(box1);
 
 
+
         }
 
+        areaList[0].transform.parent = area.transform;
+        areaList[1].transform.parent = area.transform;
 
-        area.AddComponent<CreateDessertGame>();
+        area.AddComponent<DessertManager>();
 
     }
 
-    public void GetClickPoint(Vector2 clickPoint,int id)
+    public void GetClickPoint(Vector2 clickPoint, int id)
     {
 
         for (int i = 0; i < tapPoint.Count; i++)
@@ -127,7 +134,7 @@ public class CreateDessertGame : MonoBehaviour
             timeCount[i] = 1;
             Debug.Log("number" + i);
             //範囲内をクリックしたと認める
-            DessertUtility.Click(0,id);
+            DessertUtility.Click(0, id);
 
             return;
 
@@ -162,6 +169,7 @@ public class CreateDessertGame : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        DessertUtility.ALLChenge();
         CheckClick();
     }
 

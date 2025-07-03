@@ -5,7 +5,7 @@ using UnityEngine;
 public static class DessertUtility 
 {
 
-    public static CreateDessertGame dessertGame;
+    public static DessertManager dessertGame;
 
     public static void CheckSideTap(Vector2 vector2,int id) 
     {
@@ -32,6 +32,50 @@ public static class DessertUtility
 
     }
 
+    private const float sidePos = 6.0f;
+    public static Vector3 GetSideVec(DessertNotes notes) 
+    {
+        if(notes.GetNotesPos()==DessertNotes.NotesPos.grand)return Vector3.zero;
+
+        switch (notes.GetNotesPos())
+        {
+            case DessertNotes.NotesPos.left:
+
+                notes.SetNotesPos(DessertNotes.NotesPos.right);
+                return new Vector3(sidePos, 0,0);
+
+            case DessertNotes.NotesPos.right:
+
+                notes.SetNotesPos(DessertNotes.NotesPos.left);
+                return new Vector3(sidePos*-1, 0,0);
+        }
+
+        return Vector3.zero;
+
+    }
+
+
+    public static void AddAllNotes(DessertNotes notes) {dessertGame.AddAllNotes(notes);}
+    public static void SbuAllNotes(DessertNotes notes) {dessertGame.SbuAllNotes(notes);}
+    public static void AddActiveNotes(DessertNotes notes) {dessertGame.AddActiveNotes(notes);}
+    public static void SbuActiveNotes(DessertNotes notes) {dessertGame.SbuActiveNotes(notes);}
+
+    public static void ALLChenge() 
+    {
+
+        //デバッグよう
+        if (!Input.GetKeyUp(KeyCode.P)) return;
+
+        List<DessertNotes> notes = dessertGame.GetAllNotes();
+
+        DessertNotes.t = 0;
+        for(int i = 0; i < notes.Count; i++) 
+        {
+            notes[i].Chenge();
+
+        }
+
+    }
 
 
 }

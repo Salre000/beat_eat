@@ -172,11 +172,9 @@ public class CreateTapArea
             go.transform.parent = tapParent.transform;
         }
 
-        CreateDessertGame.click = click;
-        CreateDessertGame.normal = normal;
+        DessertManager.click = click;
+        DessertManager.normal = normal;
 
-        //本来はデザートオンリーの条件が必要だがデバッグ中は無視
-        if(ScoreStatus.nowDifficulty==publicEnum.Difficulty.dessert)CreateDessertGame.CreateTapAreaDessert();
 
         //デバッグ用
         GameObject judgmentLine = new GameObject("judgment");
