@@ -23,6 +23,8 @@ public class DessertManager : MonoBehaviour
 
     public static Material normal;
     public static Material click;
+
+    private const float size = 5;
     public static void CreateTapAreaDessert()
     {
         areaList.Clear();
@@ -44,22 +46,22 @@ public class DessertManager : MonoBehaviour
 
 
             areaCopy.transform.position = new Vector3(6 * i, 2, 15);
-            areaCopy.transform.eulerAngles = new Vector3(0, 0, 50 * i);
+            areaCopy.transform.eulerAngles = new Vector3(0, 0, 90 * i);
             areaCopy.transform.localScale = new Vector3(0.2f, 1, 8);
 
 
             BoxArea boxarea = new BoxArea();
             //メッシュの座標を設定
-            boxarea.leftTop = new Vector3(-3, 0, areaRange);
-            boxarea.rightTop = new Vector3(3, 0, areaRange);
-            boxarea.bottomLeft = new Vector3(-3, 0, -areaRange);
-            boxarea.bottomRight = new Vector3(3, 0, -areaRange);
+            boxarea.leftTop = new Vector3(-size, 0, areaRange);
+            boxarea.rightTop = new Vector3(size, 0, areaRange);
+            boxarea.bottomLeft = new Vector3(-size, 0, -areaRange);
+            boxarea.bottomRight = new Vector3(size, 0, -areaRange);
 
             GameObject go = new GameObject("デザートタップエリア");
             //ここの値が判定の位置
 
             go.transform.parent = (areaCopy.transform);
-            go.transform.Rotate(0, 0, i * 50);
+            go.transform.Rotate(0, 0, i * 90);
             go.transform.localPosition = Vector3.zero;
             go.transform.position += (go.transform.up / 100f) + new Vector3(0, 0, -go.transform.position.z + TAP_AREA_DESSERT);
 
