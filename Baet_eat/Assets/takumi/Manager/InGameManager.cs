@@ -15,8 +15,8 @@ public class InGameManager : MonoBehaviour
     [SerializeField] Image ScoreGage;
     [SerializeField] TextMeshProUGUI scoreUI;
 
-    [SerializeField]  Material invisible;
-    [SerializeField]  Material NotInvisible;
+    [SerializeField] Material invisible;
+    [SerializeField] Material NotInvisible;
     [SerializeField] Image jacket;
     public Material GetNoeInvisible() { return NotInvisible; }
     public Material Getinvisible() { return invisible; }
@@ -25,7 +25,7 @@ public class InGameManager : MonoBehaviour
     private GameObject Plus;
 
     //現在タップ可能なノーツの配列
-    [SerializeField] List<NotesBase> activeObject=new List<NotesBase>();
+    [SerializeField] List<NotesBase> activeObject = new List<NotesBase>();
 
     //タップをする位置を生成するクラス
     private CreateTapArea _tapArea;
@@ -39,18 +39,23 @@ public class InGameManager : MonoBehaviour
     [SerializeField] GameObject areaObject;
 
     [SerializeField, Header("ラインの分割数")] int _divisionCount = 12;
+    [SerializeField, Header("コンボを描画するキャンバス")] GameObject comboObject;
+
+    //コンボの描画するテキスト
+    private TextMeshProUGUI comboText;
+    private ComboAnime comboAnime;
 
     int LongLongNotesCount = 0;
-    public void AddCount() {  LongLongNotesCount++; }
+    public void AddCount() { LongLongNotesCount++; }
 
-    private bool preStart = false;  
+    private bool preStart = false;
 
     private void Awake()
     {
 
         LineUtility.gameManager = this;
 
-        InGameStatus inGame =new InGameStatus();
+        InGameStatus inGame = new InGameStatus();
 
         _tapArea = new CreateTapArea();
         _lineFlash = new CreateLineFlash();
@@ -60,38 +65,43 @@ public class InGameManager : MonoBehaviour
         _tapArea.CreateMesh(_divisionCount);
         _lineFlash.SetMaterial(flashMaterial);
         _lineFlash.SetFlashLine(_divisionCount);
-        _line.SetLine(_divisionCount,areaObject, lineMaterial);
+        _line.SetLine(_divisionCount, areaObject, lineMaterial);
         Plus = Ranks[0].transform.GetChild(1).gameObject;
 
         RankNotShow();
         Ranks[4].SetActive(true);
 
         jacket.sprite = Resources.Load<MusicDataBase>("MusicDataBase").musicData[ScoreStatus.nowMusic].jacket;
+        comboText = comboObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        comboAnime=comboText.GetComponent<ComboAnime>();
     }
 
     private void FixedUpdate()
     {
+        CheckCombo();
 
-        if (!preStart) { preStart = true;InGameStatus.SetUpScore(GetComponent<CreateNotes>().GetCount()+ LongLongNotesCount);
+        if (!preStart)
+        {
+            preStart = true; InGameStatus.SetUpScore(GetComponent<CreateNotes>().GetCount() + LongLongNotesCount);
         }
         if (Input.GetKey(KeyCode.T)) SoundUtility.MainBGMStop();
         if (Input.GetKey(KeyCode.R)) SoundUtility.MainBGMStart();
 
-        for(int i = 0; i < 12; i++) { tapFlag.Add(false); }
+        for (int i = 0; i < 12; i++) { tapFlag.Add(false); }
 
         _lineFlash.SbuAlpha();
         _tapArea.CheckTime();
 
     }
 
-    List<bool> tapFlag= new List<bool>(12);
-    public void Click(int index,int id) 
+    List<bool> tapFlag = new List<bool>(12);
+    public void Click(int index, int id)
     {
         if (tapFlag[id]) return;
 
         _lineFlash.AddAlpha(index);
 
-        for(int i=0;i< activeObject.Count; i++) 
+        for (int i = 0; i < activeObject.Count; i++)
         {
             NotesBase notes = activeObject[i];
 
@@ -101,7 +111,7 @@ public class InGameManager : MonoBehaviour
 
             if (!notes.CheckHitlane(index)) continue;
 
-             notes.Hit();
+            notes.Hit();
             HandUtility.AddEndAction(() => { tapFlag[id] = false; }, id);
             tapFlag[id] = true;
 
@@ -112,7 +122,7 @@ public class InGameManager : MonoBehaviour
 
     }
 
-    public float RangeToDecision(Vector3 position) { return -6.25f-position.z + (OptionStatus.GetNotesHitLinePos() * 0.5f); }
+    public float RangeToDecision(Vector3 position) { return -6.25f - position.z + (OptionStatus.GetNotesHitLinePos() * 0.5f); }
 
 
     public void AddActiveObject(NotesBase gameObject) { activeObject.Add(gameObject); }
@@ -122,19 +132,19 @@ public class InGameManager : MonoBehaviour
 
     public CreateTapArea GetTapArea() { return _tapArea; }
 
-    public void ShowText(string text) {}
+    public void ShowText(string text) { }
 
-    private void RankNotShow() 
+    private void RankNotShow()
     {
         Plus.SetActive(false);
         for (int i = 0; i < Ranks.Length; i++) { Ranks[i].SetActive(false); }
     }
 
-    public void SetScore() 
+    public void SetScore()
     {
         RankNotShow();
         scoreUI.text = ((int)InGameStatus.GetScore()).ToSafeString();
-        float scoreRate=InGameStatus.GetScoreRate();
+        float scoreRate = InGameStatus.GetScoreRate();
 
         publicEnum.ClearRank clearRank = InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore());
 
@@ -173,7 +183,7 @@ public class InGameManager : MonoBehaviour
 
         float ScoreReteOffset = 0;
 
-        if(clearRank == publicEnum.ClearRank.SPlus) 
+        if (clearRank == publicEnum.ClearRank.SPlus)
         {
             ScoreReteOffset = (InGameStatus.GetScore() % scoreRate) / scoreRate;
             ScoreReteOffset /= 20f;
@@ -189,7 +199,7 @@ public class InGameManager : MonoBehaviour
         {
 
             ScoreReteOffset = (InGameStatus.GetScore() % scoreRate) / scoreRate;
-            ScoreReteOffset /=8f;
+            ScoreReteOffset /= 8f;
 
 
         }
@@ -203,5 +213,30 @@ public class InGameManager : MonoBehaviour
 
 
         ScoreGage.fillAmount = ScoreReteOffset + offset;
+    }
+
+    private void CheckCombo()
+    {
+
+        if (InGameStatus.GetCombo() < 10)
+        {
+            if (comboObject.activeSelf) comboObject.SetActive(false);
+
+            return;
+        }
+        else
+        {
+            if (!comboObject.activeSelf) comboObject.SetActive(true);
+
+            if (comboText.text == InGameStatus.GetCombo().ToString()) return;
+            comboText.text = InGameStatus.GetCombo().ToString();
+            comboAnime.StartAnime();
+
+            return;
+
+        }
+
+
+
     }
 }
