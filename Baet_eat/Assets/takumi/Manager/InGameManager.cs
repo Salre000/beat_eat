@@ -74,6 +74,7 @@ public class InGameManager : MonoBehaviour
         jacket.sprite = Resources.Load<MusicDataBase>("MusicDataBase").musicData[ScoreStatus.nowMusic].jacket;
         comboText = comboObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         comboAnime=comboText.GetComponent<ComboAnime>();
+
     }
 
     private void FixedUpdate()
