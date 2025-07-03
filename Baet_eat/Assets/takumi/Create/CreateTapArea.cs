@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static CreateTapArea;
+using static UnityEngine.GUILayout;
 
 public class CreateTapArea
 {
-    private float offset = -6.25f;
-    private float areaRange = 0.4f;
-    private float wide = 10;
+    public const float offset = -6.25f;
+    public const float areaRange = 0.4f;
+    public const float wide = 10;
 
     private List<MeshRenderer> tapPoint = new List<MeshRenderer>();
     private List<BoxArea> tapPosition = new List<BoxArea>();
     private List<float> timeCount = new List<float>();
 
-    private readonly float MaxTime = 1.7f;
+    public const float MaxTime = 1.7f;
     private Material normal;
     private Material click;
 
@@ -34,7 +36,7 @@ public class CreateTapArea
         return vector3s;
     }
 
-    public int GetClickPositionID(Vector2 clickPosition) 
+    public int GetClickPositionID(Vector2 clickPosition)
     {
         for (int i = 0; i < tapPoint.Count; i++)
         {
@@ -68,9 +70,9 @@ public class CreateTapArea
 
     }
 
-    public void GetClickPoint(Vector2 clickPoint, System.Action<int,int> action, int id)
+    public void GetClickPoint(Vector2 clickPoint, System.Action<int, int> action, int id)
     {
-        
+
         for (int i = 0; i < tapPoint.Count; i++)
         {
 
@@ -79,9 +81,8 @@ public class CreateTapArea
             for (int j = 0; j < 4; j++)
             {
                 //周りの方向ベクトルを取得
-                vecs[j] = (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(tapPosition[i])[(j + 1) % 4]) - (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(tapPosition[i])[j]);
+                vecs[j] = TapAreaPoint(i,j);
             }
-
             bool flag = false;
             for (int j = 0; j < 4; j++)
             {
@@ -95,13 +96,20 @@ public class CreateTapArea
             }
 
             if (flag) continue;
-            //範囲内をクリックしたと認める
-            action(i,id);
-            timeCount[i] = 1;
             tapPoint[i].material = click;
+            timeCount[i] = 1;
+
+            //範囲内をクリックしたと認める
+            action(i, id);
 
             return;
         }
+
+    }
+
+    private Vector2 TapAreaPoint(int i,int j) 
+    {
+        return (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(tapPosition[i])[(j + 1) % 4]) - (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(tapPosition[i])[j]);
 
     }
 
@@ -125,6 +133,8 @@ public class CreateTapArea
         float wideDivision = wide / (divisionCount + 1);
         GameObject tapParent = new GameObject("TapObject");
 
+
+
         for (int i = 1; i < divisionCount + 2; i++)
         {
 
@@ -133,8 +143,8 @@ public class CreateTapArea
             //メッシュの座標を設定
             boxarea.leftTop = new Vector3(wideDivision * (i - 1) - wide / 2, 0.01f, offset + areaRange);
             boxarea.rightTop = new Vector3(wideDivision * i - wide / 2, 0.01f, offset + areaRange);
-            boxarea.bottomLeft = new Vector3(wideDivision * (i - 1) - wide / 2, 0.01f, offset- areaRange);
-            boxarea.bottomRight = new Vector3(wideDivision * i - wide / 2, 0.01f, offset- areaRange);
+            boxarea.bottomLeft = new Vector3(wideDivision * (i - 1) - wide / 2, 0.01f, offset - areaRange);
+            boxarea.bottomRight = new Vector3(wideDivision * i - wide / 2, 0.01f, offset - areaRange);
 
             //メッシュの基本設定
             Mesh mesh = new Mesh();
@@ -144,6 +154,7 @@ public class CreateTapArea
             mesh.triangles = new[] { 0, 1, 3, 3, 1, 2 };
 
 
+            // 領域と法線を自動で再計算する
             // 領域と法線を自動で再計算する
             mesh.RecalculateBounds();
             mesh.RecalculateNormals();
@@ -158,9 +169,14 @@ public class CreateTapArea
             tapPoint.Add(go.GetComponent<MeshRenderer>());
             timeCount.Add(0.0f);
 
-            go.transform.parent=tapParent.transform;
+            go.transform.parent = tapParent.transform;
         }
 
+        CreateDessertGame.click = click;
+        CreateDessertGame.normal = normal;
+
+        //本来はデザートオンリーの条件が必要だがデバッグ中は無視
+        if(ScoreStatus.nowDifficulty==publicEnum.Difficulty.dessert)CreateDessertGame.CreateTapAreaDessert();
 
         //デバッグ用
         GameObject judgmentLine = new GameObject("judgment");
@@ -170,8 +186,8 @@ public class CreateTapArea
         line.material = new Material(normal);
         line.material.color = Color.red;
 
-        line.SetPosition(0, new Vector3(wide / 2, 0.02f, offset+(OptionStatus.GetNotesHitLinePos() * 0.5f)));
-        line.SetPosition(1, new Vector3(-wide/2, 0.02f, offset+(OptionStatus.GetNotesHitLinePos() * 0.5f)));
+        line.SetPosition(0, new Vector3(wide / 2, 0.02f, offset + (OptionStatus.GetNotesHitLinePos() * 0.5f)));
+        line.SetPosition(1, new Vector3(-wide / 2, 0.02f, offset + (OptionStatus.GetNotesHitLinePos() * 0.5f)));
         line.startWidth = line.endWidth = 0.1f;
 
 

@@ -29,6 +29,8 @@ public class NotesManager : MonoBehaviour
 
             LineUtility.GetTapArea().GetClickPoint(hands[i].HandPosition, Click,i);
 
+            DessertUtility.CheckSideTap(hands[i].HandPosition,i);
+
 
         }
 
