@@ -84,6 +84,7 @@ public class InGameStatus
         HP = 1000;
         score = 0;
         combo = 0;
+        MaxCombo = 0;
         for (int i = 0; i < judgments.Length; i++)
         {
             judgments[i] = new int[2];
