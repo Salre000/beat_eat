@@ -276,4 +276,9 @@ public class LongNotes : NotesBase
 
     }
 
+    public void Start()
+    {
+        NotesType = 2;
+    }
+
 }

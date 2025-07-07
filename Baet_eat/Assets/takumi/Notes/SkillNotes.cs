@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class SkillNotes : NotesBase
 {
+    public void Start()
+    {
+        
+        NotesType = 1;
+    }
+
     public override void Hit()
     {
-        NotesType = 1;
         InGameStatus.SetJudgments(0, 0);
         InGameStatus.AddScore(1);
 

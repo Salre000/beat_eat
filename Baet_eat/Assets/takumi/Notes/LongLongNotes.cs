@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class LongLongNotes : NotesBase
 {
-    [SerializeField]CreateTapArea.BoxArea boxArea;
+    [SerializeField] CreateTapArea.BoxArea boxArea;
     public void SetBoxArea(CreateTapArea.BoxArea boxArea) { this.boxArea = boxArea; }
     private readonly float epsilon = 0.3f;
 
@@ -32,6 +32,12 @@ public class LongLongNotes : NotesBase
 
         XXX = boxArea.leftTop.x;
         YYY = boxArea.rightTop.x;
+
+
+
+
+        NotesType = 2;
+
     }
     //必要
     public void FixedUpdate()
@@ -48,7 +54,10 @@ public class LongLongNotes : NotesBase
                 if (endAction != null) endAction();
                 gameObject.SetActive(false);
 
-            }           
+                InGameStatus.AddNoesTypeMIss(NotesType);
+
+
+            }
         }
 
 
@@ -57,9 +66,9 @@ public class LongLongNotes : NotesBase
 
         if (renge >= 1) return;
 
-        if (SetNextPos !=null) SetNextPos(this.transform.position);
+        if (SetNextPos != null) SetNextPos(this.transform.position);
 
-        if (InGameStatus.GetAuto()) { Hit();return; }
+        if (InGameStatus.GetAuto()) { Hit(); return; }
 
         int ID = -1;
 
@@ -68,14 +77,14 @@ public class LongLongNotes : NotesBase
         float z = transform.position.z;
 
         //一時的に座標をゼロに合わせる
-        transform.position -= new Vector3(0, 0, z+6.25f);
+        transform.position -= new Vector3(0, 0, z + 6.25f);
 
         float MaxPos = 0;
         float MinPos = 1800;
 
-        for(int i = 0; i < meshLong.vertices.Length; i++) 
+        for (int i = 0; i < meshLong.vertices.Length; i++)
         {
-            float pos=Camera.main.WorldToScreenPoint(meshLong.vertices[i]+transform.position).x;
+            float pos = Camera.main.WorldToScreenPoint(meshLong.vertices[i] + transform.position).x;
 
 
             MaxPos = Mathf.Max(MaxPos, pos);
@@ -85,13 +94,13 @@ public class LongLongNotes : NotesBase
 
         }
 
-        this.transform.position += new Vector3(0, 0, z+6.25f);
+        this.transform.position += new Vector3(0, 0, z + 6.25f);
 
         for (int i = 0; i < hands.Count; i++)
         {
             if (!hands[i].flag) continue;
-            Debug.Log(MaxPos+":"+MinPos+"SSS");
-            if (MinPos < hands[i].HandPosition.x && MaxPos  > hands[i].HandPosition.x) ID = i;
+            Debug.Log(MaxPos + ":" + MinPos + "SSS");
+            if (MinPos < hands[i].HandPosition.x && MaxPos > hands[i].HandPosition.x) ID = i;
 
         }
 
@@ -136,7 +145,7 @@ public class LongLongNotes : NotesBase
         mesh.material = LineUtility.GetInbisible();
 
         if (endAction != null) endAction();
-        
+
         if (hitAction != null) hitAction();
     }
 

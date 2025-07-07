@@ -95,6 +95,10 @@ public class InGameStatus
 
             }
         }
+        for(int i = 0; i < 4; i++) 
+        {
+            NoesTypeMIss[i] = NoesTypeSuccess[i] = 0;
+        }
         ScoreRate = (float)MAX_SCORE / (float)(publicEnum.ClearRank.MAX + 2);
 
 
