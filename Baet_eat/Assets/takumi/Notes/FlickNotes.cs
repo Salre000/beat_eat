@@ -85,7 +85,7 @@ public class FlickNotes : NotesBase
 
     Vector2 flickStartPos = Vector2.zero;
 
-    readonly float renge = 10;
+    readonly float renge = 1;
 
     private void FlickDecision()
     {

@@ -14,6 +14,7 @@ public class SkillManager : MonoBehaviour
     /// <summary>
     /// (0 = クリティカル判定3割) :
     /// (1 = 体力250以下で500回復) :
+    /// (2 = オート操作):
     /// </summary>
     public static List<bool> isSkillActiveFlags = new(SKILLLIST_CAPACITY);
     [SerializeField, Header("スキルとなるもの全て")]
@@ -21,7 +22,7 @@ public class SkillManager : MonoBehaviour
 
     public readonly CriticalJudgmentExpands criticalJudgmentExpands = new CriticalJudgmentExpands();
     public readonly HeelHp heelHp = new HeelHp();
-
+    public readonly Aoto aoto = new Aoto();
     private void Awake()
     {
         if (instance == null)
@@ -37,6 +38,7 @@ public class SkillManager : MonoBehaviour
             isSkillActiveFlags.Add(false);
         criticalJudgmentExpands.Initialize();
         heelHp.Initialize();
+        aoto.Initialize();
     }
 
     public List<GameObject> GetSkillCards() { return _skillCards; }

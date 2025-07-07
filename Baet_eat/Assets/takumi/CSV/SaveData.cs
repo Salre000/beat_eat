@@ -60,11 +60,13 @@ public static class SaveData
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(filePath, FileMode.OpenOrCreate);
+        ScoreData scoreData;
+        if (Startnumber == 1) ScoreStatus.DataInitialize(dataBase.musicData.Count);
 
-        ScoreData scoreData = ScoreStatus.GetScoreData();
+        scoreData= ScoreStatus.GetScoreData();
 
 
-        formatter.Serialize(stream,scoreData);
+        formatter.Serialize(stream, scoreData);
         stream.Close();
 
 

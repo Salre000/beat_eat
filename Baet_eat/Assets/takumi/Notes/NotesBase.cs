@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static CreateTapArea;
 
 public class NotesBase : MonoBehaviour
 {
@@ -37,6 +39,16 @@ public class NotesBase : MonoBehaviour
         None
 
     }
+
+    public void Awake()
+    {
+
+
+
+
+
+
+    }
     //ƒm[ƒc‚ÉG‚ê‚½‚Æ‚«‚É“®‚­ŠÖ”
     public virtual void Hit()
     {
@@ -54,9 +66,6 @@ public class NotesBase : MonoBehaviour
         this.gameObject.SetActive(false);
 
         InGameStatus.AddNoesTypeSuccess(NotesType);
-
-        
-
     }
 
     public virtual void Hit(bool flag) 
@@ -150,7 +159,7 @@ public class NotesBase : MonoBehaviour
     {
         JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position));
         
-        bool flag = laneIndex.Exists(number => number == index) && judgmentType <= JudgmentType.Miss && (int)judgmentType >= -(int)JudgmentType.Miss;
+        bool flag = laneIndex.Exists(number => number == index) && judgmentType <= JudgmentType.Good && (int)judgmentType >= -(int)JudgmentType.Good;
         return flag;
     }
 

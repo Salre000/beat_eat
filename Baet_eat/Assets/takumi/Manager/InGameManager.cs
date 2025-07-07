@@ -52,6 +52,7 @@ public class InGameManager : MonoBehaviour
 
     private void Awake()
     {
+        //SkillManager.instance.aoto.Execute();
 
         LineUtility.gameManager = this;
 

@@ -14,8 +14,13 @@ public class TitelManager : MonoBehaviour
             Debug.Log(Application.persistentDataPath);
         if(!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.FoundationFileName + SaveData.FILR_EXTENSION)) 
         {
-            SaveData.SaveOption(1);
             SaveData.SaveFoundation(1);
+        }
+
+            Debug.Log(Application.persistentDataPath);
+        if(!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.OpstionFileName + SaveData.FILR_EXTENSION)) 
+        {
+            SaveData.SaveOption(1);
         }
 
 
@@ -25,10 +30,10 @@ public class TitelManager : MonoBehaviour
     private bool oneFlag = false;
     public void FixedUpdate()
     {
-        if (!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.FoundationFileName + SaveData.FILR_EXTENSION)) return;
-        if (!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.OpstionFileName + SaveData.FILR_EXTENSION)) return;
+        //if (!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.FoundationFileName + SaveData.FILR_EXTENSION)) return;
+        //if (!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.OpstionFileName + SaveData.FILR_EXTENSION)) return;
 
-            if (Input.GetMouseButton(0)&&!oneFlag) 
+            if ((Input.GetMouseButton(0)||Input.touchCount>0)&&!oneFlag) 
         {
             oneFlag = true;
            ChengeSelect();

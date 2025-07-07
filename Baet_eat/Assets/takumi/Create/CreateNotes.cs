@@ -112,7 +112,7 @@ public class CreateNotes : MonoBehaviour
         SoundUtility.SetObject(NotesParent);
 
         //本来はデザートオンリーの条件が必要だがデバッグ中は無視
-        /*if(ScoreStatus.nowDifficulty==publicEnum.Difficulty.dessert)*/
+        if(ScoreStatus.nowDifficulty==publicEnum.Difficulty.dessert)
         DessertManager.CreateTapAreaDessert();
 
 

@@ -153,6 +153,8 @@ public class CreateTapArea
             boxarea.bottomRight.z -= 2;
             mesh.triangles = new[] { 0, 1, 3, 3, 1, 2 };
 
+            boxarea.leftTop += new Vector3(0, 1.5f, 0);
+            boxarea.rightTop += new Vector3(0, 1.5f, 0);
 
             // 領域と法線を自動で再計算する
             // 領域と法線を自動で再計算する
