@@ -7,6 +7,6 @@ public class HItTest : MonoBehaviour
 
     private void Awake()
     {
-        transform.localScale = new Vector3(0.5f, 1, 2f* LineUtility.HitTestRate);
+        transform.localScale = new Vector3(0.5f, 1, 0* LineUtility.HitTestRate);
     }
 }

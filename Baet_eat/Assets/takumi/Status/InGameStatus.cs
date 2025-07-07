@@ -95,6 +95,10 @@ public class InGameStatus
 
             }
         }
+        for(int i = 0; i < 4; i++) 
+        {
+            NoesTypeMIss[i] = NoesTypeSuccess[i] = 0;
+        }
         ScoreRate = (float)MAX_SCORE / (float)(publicEnum.ClearRank.MAX + 2);
 
 
@@ -174,7 +178,8 @@ public class InGameStatus
         return judgments[index][index2];
     }
 
-    public static int GetCombo() { return MaxCombo; }
+    public static int GetMAXCombo() { return MaxCombo; }
+    public static int GetCombo() { return combo; }
 
     public static publicEnum.ClearRank GetScoreClearRank(int score)
     {

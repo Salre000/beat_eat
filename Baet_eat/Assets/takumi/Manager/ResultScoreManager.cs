@@ -60,7 +60,7 @@ public class ResultScoreManager : MonoBehaviour
         SetRank();
         SetJudgment();
 
-        ComboText.text = InGameStatus.GetCombo().ToString();
+        ComboText.text = InGameStatus.GetMAXCombo().ToString();
 
         ScoreText.text = ((int)InGameStatus.GetScore()).ToString();
 

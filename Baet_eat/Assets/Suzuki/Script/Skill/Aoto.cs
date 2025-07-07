@@ -9,6 +9,7 @@ public class Aoto : SkillBase
     private const int _HEEL_VOLUME = 500;
     public override void Execute()
     {
+        if (!isSkillActiveFlags[2]) return;
         InGameStatus.AutoMode();
     }
 
