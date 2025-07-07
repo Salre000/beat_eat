@@ -174,7 +174,8 @@ public class InGameStatus
         return judgments[index][index2];
     }
 
-    public static int GetCombo() { return MaxCombo; }
+    public static int GetMAXCombo() { return MaxCombo; }
+    public static int GetCombo() { return combo; }
 
     public static publicEnum.ClearRank GetScoreClearRank(int score)
     {
