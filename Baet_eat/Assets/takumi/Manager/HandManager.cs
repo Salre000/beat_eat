@@ -51,7 +51,7 @@ public class HandManager : MonoBehaviour
 
         }
 
-        CreateTapArea.textMeshProUGUI = _TextMeshProUGUI;
+        //CreateTapArea.textMeshProUGUI = _TextMeshProUGUI;
     }
     public int SetHand(Vector2 vector2)
     {

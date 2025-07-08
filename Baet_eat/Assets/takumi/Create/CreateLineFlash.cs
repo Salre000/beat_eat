@@ -10,7 +10,6 @@ public class CreateLineFlash
     private Material material;
     private readonly float offset = -7.5f;
     private readonly float range = 60.0f;
-    private float wide = 10;
     public void SetMaterial(Material material) { this.material = material; }
     public void SetFlashLine(int divisionCount)
     {
@@ -62,6 +61,8 @@ public class CreateLineFlash
     }
     public void AddAlpha(int index) 
     {
+        if (index == -1 || index == 10) return;
+
         Color color = flashMaterial[index].color;
 
         color.a = 0.2f;

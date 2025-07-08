@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-
+using static CreateTapArea;
 public class Createline
 {
     private readonly int length = 40;
 
-    private readonly int wide = 10;
 
     public void SetLine(int _divisionCount,GameObject gameObject,Material material )
     {

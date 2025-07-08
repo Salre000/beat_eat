@@ -11,6 +11,7 @@ public class CreateTapArea
     public const float offset = -6.25f;
     public const float areaRange = 0.4f;
     public const float wide = 10;
+    private readonly float invisibleBecision = 2.0f;
 
     private List<MeshRenderer> tapPoint = new List<MeshRenderer>();
     private List<BoxArea> tapPosition = new List<BoxArea>();
@@ -19,8 +20,6 @@ public class CreateTapArea
     public const float MaxTime = 1.7f;
     private Material normal;
     private Material click;
-
-    public static TextMeshProUGUI textMeshProUGUI;
 
     public struct BoxArea
     {
@@ -72,7 +71,6 @@ public class CreateTapArea
 
     public void GetClickPoint(Vector2 clickPoint, System.Action<int, int> action, int id)
     {
-
         for (int i = 0; i < tapPoint.Count; i++)
         {
 
@@ -88,13 +86,13 @@ public class CreateTapArea
             {
                 //クリックした方向ベクトルを取得
                 Vector2 vec = clickPoint - (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(tapPosition[i])[j]);
+
                 //外積を取得
                 Vector3 dont = Vector3.Cross(vecs[j], vec);
 
                 if (dont.z > 0) flag = true;
 
             }
-
             if (flag) continue;
             tapPoint[i].material = click;
             timeCount[i] = 1;
@@ -135,7 +133,7 @@ public class CreateTapArea
 
 
 
-        for (int i = 1; i < divisionCount + 2; i++)
+        for (int i = 0; i < divisionCount + 3; i++)
         {
 
 
@@ -153,15 +151,18 @@ public class CreateTapArea
             boxarea.bottomRight.z -= 2;
             mesh.triangles = new[] { 0, 1, 3, 3, 1, 2 };
 
-            boxarea.leftTop += new Vector3(0, 1.5f, 0);
-            boxarea.rightTop += new Vector3(0, 1.5f, 0);
+            boxarea.leftTop += new Vector3(0, 0, invisibleBecision);
+            boxarea.rightTop += new Vector3(0, 0, invisibleBecision);
+
+            boxarea.bottomLeft += new Vector3(0, 0, -invisibleBecision);
+            boxarea.bottomRight += new Vector3(0, 0, -invisibleBecision);
 
             // 領域と法線を自動で再計算する
             // 領域と法線を自動で再計算する
             mesh.RecalculateBounds();
             mesh.RecalculateNormals();
 
-            GameObject go = new GameObject();
+            GameObject go = new GameObject("タップエリア");
 
             // MeshFilterに設定
             go.AddComponent<MeshFilter>().mesh = mesh;

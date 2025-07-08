@@ -38,7 +38,7 @@ public class InGameManager : MonoBehaviour
 
     [SerializeField] GameObject areaObject;
 
-    [SerializeField, Header("ラインの分割数")] int _divisionCount = 12;
+    [SerializeField, Header("ラインの分割数")] int _divisionCount = 12+2;
     [SerializeField, Header("コンボを描画するキャンバス")] GameObject comboObject;
 
     //コンボの描画するテキスト
@@ -89,19 +89,19 @@ public class InGameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.T)) SoundUtility.MainBGMStop();
         if (Input.GetKey(KeyCode.R)) SoundUtility.MainBGMStart();
 
-        for (int i = 0; i < 12; i++) { tapFlag.Add(false); }
+        for (int i = 0; i < 14; i++) { tapFlag.Add(false); }
 
         _lineFlash.SbuAlpha();
         _tapArea.CheckTime();
 
     }
 
-    List<bool> tapFlag = new List<bool>(12);
+    List<bool> tapFlag = new List<bool>(14);
     public void Click(int index, int id)
     {
         if (tapFlag[id]) return;
 
-        _lineFlash.AddAlpha(index);
+        _lineFlash.AddAlpha(index-1);
 
         for (int i = 0; i < activeObject.Count; i++)
         {

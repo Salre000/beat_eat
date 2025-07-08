@@ -148,7 +148,8 @@ public class CreateNotes : MonoBehaviour
 
             notesBase.SetShowTime(kankaku * inputJson.notes[i].num);
 
-            for (int j = 0; j < inputJson.notes[i].renge + 1; j++) notesBase.AddLaneIndex(inputJson.notes[i].block + j);
+            for (int j = 0; j < inputJson.notes[i].renge + 3; j++)
+                notesBase.AddLaneIndex(inputJson.notes[i].block + j);
 
             NotesUtility.AddNotes(notesBase);
 
