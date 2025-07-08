@@ -9,7 +9,6 @@ public class MusicData : ScriptableObject
     [SerializeField] public string musicID;
     [SerializeField] public string musicName;
     [SerializeField] public float BPM;
-    [SerializeField] public int musicLevel;
     [SerializeField] public Sprite jacket;
     [SerializeField] public string musicAuthorName;
     [SerializeField] public string musicComposerName;

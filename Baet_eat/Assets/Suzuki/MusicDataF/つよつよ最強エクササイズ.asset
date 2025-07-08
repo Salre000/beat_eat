@@ -15,7 +15,6 @@ MonoBehaviour:
   musicID: 1
   musicName: "\u3064\u3088\u3064\u3088\u6700\u5F37\u30A8\u30AF\u30B5\u30B5\u30A4\u30BA"
   BPM: 143
-  musicLevel: 14
   jacket: {fileID: 21300000, guid: 8eb113a1034f2fe4bbfe35091ed3efcc, type: 3}
   musicAuthorName: "\u521D\u661F\u5B66\u5712"
   musicComposerName: "\u576A\u4E95\u30EA\u30D2\u30C8\u30FB\u4F50\u85E4\u8CB4\u6587"
