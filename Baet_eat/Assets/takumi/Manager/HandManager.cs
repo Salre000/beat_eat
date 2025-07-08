@@ -187,7 +187,7 @@ public class HandManager : MonoBehaviour
         {
             if (!hand[i].flag) continue;
 
-            float renge = 1000;
+            float renge = 10000;
 
             int chengeID = -1;
 
@@ -211,7 +211,7 @@ public class HandManager : MonoBehaviour
 
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
 
         if (Input.GetKey(KeyCode.Alpha1) && !commandMouse)
