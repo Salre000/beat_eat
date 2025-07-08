@@ -52,7 +52,7 @@ public class LongNotes : NotesBase
         endNotes = transform.GetChild(0).gameObject;
         startNotes = transform.GetChild(1).gameObject;
 
-        startPos=startNotes.transform.position;
+        startPos = startNotes.transform.position;
 
         startPos.z = -6.25f;
 
@@ -70,18 +70,18 @@ public class LongNotes : NotesBase
 
         BoxArea boxArea = new BoxArea();
 
-        boxArea.leftTop.x=boxArea.bottomLeft.x=left.transform.position.x;
-        boxArea.rightTop.x=boxArea.bottomRight.x=right.transform.position.x;
+        boxArea.leftTop.x = boxArea.bottomLeft.x = left.transform.position.x;
+        boxArea.rightTop.x = boxArea.bottomRight.x = right.transform.position.x;
 
         LongLongNotes longLong = endNotes.AddComponent<LongLongNotes>();
         longLong.SetBoxArea(boxArea);
         longLong.SetHitAction(() => SoundUtility.NotesLongHitSoundPlay());
-        longLong.SetEndAction(() => 
+        longLong.SetEndAction(() =>
         {
             gameObject.SetActive(false);
 
             SetShowTime(-100);
-           
+
 
 
         });
@@ -139,13 +139,13 @@ public class LongNotes : NotesBase
                 // MeshFilterÇ…ê›íË
                 longLongNotes.AddComponent<MeshFilter>().mesh = mesh;
                 longLongNotes.AddComponent<MeshRenderer>().material = material;
-                if (i == _distanceNum[j]-1) 
+                if (i == _distanceNum[j] - 1)
                 {
-                    Vector3 vecPos= longLongNotes.transform.position;
+                    Vector3 vecPos = longLongNotes.transform.position;
                     vecPos.z = -6.25f;
 
-                    
-                    vecPos.x +=  (Range(j+1, _block)) + ((_renge[j])/2-(renge/2));
+
+                    vecPos.x += (Range(j + 1, _block)) + ((_renge[j]) / 2 - (renge / 2));
                     if (renge == 0) vecPos.x += 0.5f;
                     if (_renge[j] == 0) vecPos.x -= 0.5f;
 
@@ -161,19 +161,19 @@ public class LongNotes : NotesBase
             }
             if (j == 0)
             {
-                if (renge + _renge[0]!=0)
-                vec = -((renge+1)/2)+(_renge[0]+1)*0.5f;
+                if (renge - _renge[0] != 0)
+                    vec = -((renge + 1) / 2) + (_renge[0] + 1) * 0.5f;
             }
             else
             {
-                if (Range(j, _renge) + Range(j + 1, _renge) != 0)
-                    vec = -((Range(j, _renge)+1) / 2) + Range(j+1,_renge) * 0.5f;
+                if (Range(j, _renge) - Range(j + 1, _renge) != 0)
+                    vec = -((Range(j, _renge) + 1) / 2) + Range(j + 1, _renge) * 0.5f;
             }
 
             num = (Range(j + 2, _block) + _renge[j + 1]) - (Range(j + 1, _block) + (float)_renge[j]);
             vecRight = num / (float)_distanceNum[j + 1];
             vecLeft = ((float)_block[j + 1]) / (float)_distanceNum[j + 1];
-            renges = _renge[j]+1;
+            renges = _renge[j] + 1;
 
         }
 
@@ -186,19 +186,19 @@ public class LongNotes : NotesBase
     }
 
     Vector3 startPos;
-    Vector3 nowScale=Vector3.one;
+    Vector3 nowScale = Vector3.one;
     //Ç±Ç±ÇÇ‚ÇÈ
-    [SerializeField]List<Vector3> nextPos=new List<Vector3>();
+    [SerializeField] List<Vector3> nextPos = new List<Vector3>();
     float rate = 0;
-    int posIndex =0;
+    int posIndex = 0;
     bool One = false;
-    private void MoveStartNotes() 
+    private void MoveStartNotes()
     {
         if (NotesMove.Instance.stopFlag) return;
-        
+
         if (endNotes.transform.position.z <= -6.25f) { if (InGameStatus.GetAuto()) { Hit(endNotes); this.gameObject.SetActive(false); SoundUtility.NotesLongHitSoundPlay(); return; } }
-        if (startNotes.transform.position.z > -6.25f) return;
-        rate += ((float)(OptionStatus.GetNotesSpeed() * 20)/50.0f) / (float)(CreateNotes.Kankaku * _distanceNum[posIndex] * OptionStatus.GetNotesSpeed() * 20);
+        if (startNotes.transform.position.z > (ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ?-6.25f:-4)) return;
+        rate += ((float)(OptionStatus.GetNotesSpeed() * 20) / 50.0f) / (float)(CreateNotes.Kankaku * _distanceNum[posIndex] * OptionStatus.GetNotesSpeed() * 20);
 
         Vector3 scale = Vector3.one;
         float sizeX = renge - _renge[posIndex];
@@ -208,7 +208,20 @@ public class LongNotes : NotesBase
         scale = new Vector3(sizeX, 1, 1);
 
         startNotes.transform.localScale = Vector3.Lerp(nowScale, scale, rate);
-        startNotes.transform.position = Vector3.Lerp(startPos, nextPos[posIndex], rate);
+
+        //äœÇ∏ÇÁÇ¢ÇØÇ«Ç±ÇÍÇµÇ©évÇ¢Ç¬Ç©Ç»Ç©Ç¡ÇΩ
+        startNotes.transform.position = Vector3.Lerp
+            (new Vector3(
+               ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ?
+               startPos.x : startNotes.transform.position.x, startNotes.transform.position.y,
+                ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ? 
+                startPos.z:-4)
+            , new Vector3(
+               ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ?
+               nextPos[posIndex].x : startNotes.transform.position.x, startNotes.transform.position.y,
+                ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ? 
+                nextPos[posIndex].z:-4)
+            , rate);
 
         if (rate < 1) return;
         rate = 0;
@@ -246,7 +259,7 @@ public class LongNotes : NotesBase
 
     protected override double GetDestryDecision()
     {
-        return base.GetDestryDecision() - Allrange(_distanceNum) * 2.8*OptionStatus.GetNotesSpeed();
+        return base.GetDestryDecision() - Allrange(_distanceNum) * 2.8 * OptionStatus.GetNotesSpeed();
     }
     public override void Hit()
     {
