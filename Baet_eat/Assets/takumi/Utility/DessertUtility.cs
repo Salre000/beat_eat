@@ -18,8 +18,9 @@ public static class DessertUtility
     public static void Click(int id)
     {
         //ƒ‰ƒCƒ“‚ğŒõ‚ç‚¹‚é
+        dessertGame.AddAlpha(id);
 
-
+        //ƒm[ƒc‚ğÁ‚·ˆ—
 
     }
 
@@ -62,8 +63,6 @@ public static class DessertUtility
         DessertNotes.t = 0;
         for (int i = 0; i < notes.Count; i++)
         {
-            notes[i].Chenge();
-
         }
 
     }

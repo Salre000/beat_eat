@@ -42,6 +42,12 @@ public class DessertManager : MonoBehaviour
 
         GameObject area = GameObject.Find("Area");
 
+        GameObject dessertArea = new GameObject("DessertObject");
+        dessertArea.transform.parent = area.transform;
+        dessertArea.transform.localPosition = Vector3.zero;
+        dessertArea.AddComponent<TestRotate>();
+
+        //タップするエリアとタップしたら光るエリアを生成
         for (int i = -1; i < 2; i += 2)
         {
             timeCount.Add(0);
@@ -107,8 +113,8 @@ public class DessertManager : MonoBehaviour
             
             boxarea = new BoxArea();
             //メッシュの座標を設定
-            boxarea.leftTop = new Vector3(-size, 0, areaRange * 10);
-            boxarea.rightTop = new Vector3(size, 0, areaRange * 10);
+            boxarea.leftTop = new Vector3(-size, 0, areaRange * 100);
+            boxarea.rightTop = new Vector3(size, 0, areaRange * 100);
             boxarea.bottomLeft = new Vector3(-size, 0, areaRange);
             boxarea.bottomRight = new Vector3(size, 0, areaRange);
 
@@ -143,8 +149,10 @@ public class DessertManager : MonoBehaviour
 
         }
 
-        areaList[0].transform.parent = area.transform;
-        areaList[1].transform.parent = area.transform;
+        Vector3 pos = areaList[0].transform.position + (areaList[1].transform.position - areaList[0].transform.position)/2;
+        dessertArea.transform.position = pos;
+        areaList[0].transform.parent = dessertArea.transform;
+        areaList[1].transform.parent = dessertArea.transform;
 
         area.AddComponent<DessertManager>();
 
@@ -217,6 +225,7 @@ public class DessertManager : MonoBehaviour
     {
         DessertUtility.ALLChenge();
         CheckClick();
+        SbuAlpha();
     }
 
     public void SbuAlpha()
@@ -233,7 +242,6 @@ public class DessertManager : MonoBehaviour
     }
     public void AddAlpha(int index)
     {
-        if (index == -1 || index == 10) return;
 
         Color color = flashMaterial[index].color;
 
