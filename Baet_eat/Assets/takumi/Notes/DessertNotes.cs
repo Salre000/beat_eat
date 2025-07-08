@@ -17,6 +17,7 @@ public class DessertNotes : MonoBehaviour
     public void SetNotesPos(NotesPos notes) {  notesPos = notes; }
     public NotesPos GetNotesPos() { return notesPos; }
 
+    private NotesBase notesBase;
     public static float t = 1;
 
     private Vector3 StartPos=Vector3.zero;
@@ -24,6 +25,7 @@ public class DessertNotes : MonoBehaviour
     public void Awake()
     {
         DessertUtility.AddAllNotes(this);
+        notesBase=GetComponent<NotesBase>();
     }
 
     public void OnEnable()
@@ -35,7 +37,9 @@ public class DessertNotes : MonoBehaviour
     {
         DessertUtility.SbuActiveNotes(this);
     }
-    public void FixedUpdate()
+
+    public void Hit() 
     {
+        notesBase.Hit();
     }
 }

@@ -50,11 +50,11 @@ public class FlickNotes : NotesBase
     }
     private void FlickImageMove()
     {
-        Vector3 pos = FilickUp.transform.position;
+        Vector3 pos = FilickUp.transform.localPosition;
 
         pos.y += speed;
 
-        FilickUp.transform.position = pos;
+        FilickUp.transform.localPosition = pos;
 
         Color color = MeshRenderer.material.color;
 
@@ -71,11 +71,11 @@ public class FlickNotes : NotesBase
 
             alpha = 0.05f;
 
-            pos = FilickUp.transform.position;
+            pos = FilickUp.transform.localPosition;
 
             pos.y = startPos;
 
-            FilickUp.transform.position = pos;
+            FilickUp.transform.localPosition = pos;
 
 
         }

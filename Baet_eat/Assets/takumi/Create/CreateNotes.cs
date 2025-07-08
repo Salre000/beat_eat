@@ -12,7 +12,7 @@ public class CreateNotes : MonoBehaviour
 {
     [SerializeField] float offset;
 
-    private readonly Vector3 LineOffset= new Vector3(0, 0, -6.25f);
+    private readonly Vector3 LineOffset = new Vector3(0, 0, -6.25f);
 
     private float StartPosition = 50;
 
@@ -84,10 +84,17 @@ public class CreateNotes : MonoBehaviour
 
         songName = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].musicName;
         stringBuilder.Append(songName);
-
         Load(stringBuilder.ToString());
 
+        stringBuilder.Clear();
+        stringBuilder.Append(FilePass);
+        stringBuilder.Append(Difficulty[(int)ScoreStatus.nowDifficulty]);
 
+        songName = "_D_" + Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].musicName;
+
+        stringBuilder.Append(songName);
+
+        DessertLoad(stringBuilder.ToString());
     }
     void OnEnable()
     {
@@ -105,15 +112,15 @@ public class CreateNotes : MonoBehaviour
 
         NotesParent.transform.position = Vector3.zero;
 
-        NotesParent.AddComponent<NotesMove>();
+        notesParent.AddComponent<NotesMove>();
 
         string inputString = Resources.Load<TextAsset>(SongName).ToString();
         Data inputJson = JsonUtility.FromJson<Data>(inputString);
-        SoundUtility.SetObject(NotesParent);
+        SoundUtility.SetObject(notesParent);
 
         //本来はデザートオンリーの条件が必要だがデバッグ中は無視
-        if(ScoreStatus.nowDifficulty==publicEnum.Difficulty.dessert)
-        DessertManager.CreateTapAreaDessert();
+        if (ScoreStatus.nowDifficulty == publicEnum.Difficulty.dessert)
+            DessertManager.CreateTapAreaDessert();
 
 
         noteNum = inputJson.notes.Length;
@@ -138,7 +145,7 @@ public class CreateNotes : MonoBehaviour
             Debug.Log((inputJson.offset / 50000.0f) * OptionStatus.GetNotesSpeed() * 20 + "FFFF");
             notes.transform.position = new Vector3((inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,
                 (kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)
-                + (inputJson.offset / offsetReta) * OptionStatus.GetNotesSpeed() * 20)+ LineOffset;
+                + (inputJson.offset / offsetReta) * OptionStatus.GetNotesSpeed() * 20) + LineOffset;
             //親に纏める
             notes.transform.parent = NotesParent.transform;
 
@@ -189,9 +196,9 @@ public class CreateNotes : MonoBehaviour
 
 
             LineUtility.AddActiveObject(notesBase);
-            if (ScoreStatus.nowDifficulty == publicEnum.Difficulty.dessert) 
+            if (ScoreStatus.nowDifficulty == publicEnum.Difficulty.dessert)
             {
-                DessertNotes dessert= notes.AddComponent<DessertNotes>();
+                DessertNotes dessert = notes.AddComponent<DessertNotes>();
 
 
                 dessert.SetNotesPos(DessertNotes.NotesPos.left);
@@ -206,6 +213,113 @@ public class CreateNotes : MonoBehaviour
 
 
     }
+
+    private void DessertLoad(string SongName)
+    {
+        if (ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert) return;
+
+        GameObject NotesParent = new GameObject(SongName);
+
+        NotesParent.transform.parent = notesParent.transform;
+
+
+        string inputString = Resources.Load<TextAsset>(SongName).ToString();
+        Data inputJson = JsonUtility.FromJson<Data>(inputString);
+
+
+        noteNum += inputJson.notes.Length;
+
+        for (int i = 0; i < inputJson.notes.Length; i++)
+        {
+            NotesCount++;
+
+            float kankaku = 60 / (inputJson.BPM * (float)inputJson.notes[i].LPB);
+
+            Kankaku = kankaku;
+
+            float beatSec = kankaku * (float)inputJson.notes[i].LPB;
+
+            float time = (beatSec * inputJson.notes[i].num / (float)inputJson.notes[i].LPB) + inputJson.offset + 0.01f;
+
+            //プレハブを複製して見えないように変更
+            GameObject notes = CreateTypeNotes(inputJson.notes[i].type);
+
+            // 時間　 kankaku * inputJson.notes[i].num 
+
+            notes.transform.position = new Vector3(
+                (inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,
+                (kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)
+                + (inputJson.offset / offsetReta) * OptionStatus.GetNotesSpeed() * 20) + LineOffset;
+            //親に纏める
+            notes.transform.parent = NotesParent.transform;
+
+            NotesBase notesBase = notes.GetComponent<NotesBase>();
+
+            notesBase.SetShowTime(kankaku * inputJson.notes[i].num);
+
+            NotesUtility.AddNotes(notesBase);
+
+
+
+            if (inputJson.notes[i].type == 2)
+            {
+                LongNotes longNotes = notes.GetComponent<LongNotes>();
+                longNotes.Setblock(inputJson.notes[i].block);
+                for (int j = 0; j < inputJson.notes[i].notes.Length; j++)
+                {
+                    NotesCount++;
+                    longNotes.SetRenges(inputJson.notes[i].notes[j].renge);
+                    if (j == 0)
+                    {
+                        longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].num);
+                        longNotes.SetBlock(inputJson.notes[i].notes[j].block - inputJson.notes[i].block);
+                    }
+                    else
+                    {
+                        longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].notes[j - 1].num);
+                        longNotes.SetBlock(inputJson.notes[i].notes[j].block - inputJson.notes[i].notes[j - 1].block);
+                    }
+                }
+
+                longNotes.Initialize();
+
+            }
+
+            notes.transform.localScale = new Vector3(0.2f, 1, 0.075f);
+
+            notes.SetActive(false);
+
+
+
+            LineUtility.AddActiveObject(notesBase);
+            DessertNotes dessert = notes.AddComponent<DessertNotes>();
+
+            if (inputJson.notes[i].block < 5)
+            {
+                dessert.SetNotesPos(DessertNotes.NotesPos.right);
+                notes.transform.eulerAngles += new Vector3(0, 0, 90);
+                notes.transform.position = new Vector3
+                    (DessertManager.GetAreaList(0).transform.up.x / 10,
+                    0,
+                    notes.transform.position.z) + DessertManager.GetAreaList(0).transform.position;
+
+            }
+            else
+            {
+                notes.transform.eulerAngles += new Vector3(0, 0, -90);
+                dessert.SetNotesPos(DessertNotes.NotesPos.left);
+                notes.transform.position = new Vector3
+                    (DessertManager.GetAreaList(1).transform.up.x / 10,
+                     0,
+                     notes.transform.position.z) + DessertManager.GetAreaList(1).transform.position;
+
+            }
+        }
+
+
+
+    }
+
 
     GameObject CreateTypeNotes(int type)
     {

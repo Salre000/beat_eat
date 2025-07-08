@@ -15,7 +15,7 @@ public class DessertManager : MonoBehaviour
     private static List<Material> flashMaterial = new List<Material>();
 
     private static List<GameObject> areaList = new List<GameObject>();
-
+    public static GameObject GetAreaList(int index) {  return areaList[index]; }
     [SerializeField] private List<DessertNotes> AllNotes = new List<DessertNotes>();
     public void AddAllNotes(DessertNotes notes) { AllNotes.Add(notes); }
     public void SbuAllNotes(DessertNotes notes) { AllNotes.Remove(notes); }

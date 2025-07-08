@@ -161,11 +161,13 @@ public class LongNotes : NotesBase
             }
             if (j == 0)
             {
+                if (renge + _renge[0]!=0)
                 vec = -((renge+1)/2)+(_renge[0]+1)*0.5f;
             }
             else
             {
-                vec = -((Range(j, _renge)+1) / 2) + Range(j+1,_renge) * 0.5f;
+                if (Range(j, _renge) + Range(j + 1, _renge) != 0)
+                    vec = -((Range(j, _renge)+1) / 2) + Range(j+1,_renge) * 0.5f;
             }
 
             num = (Range(j + 2, _block) + _renge[j + 1]) - (Range(j + 1, _block) + (float)_renge[j]);
