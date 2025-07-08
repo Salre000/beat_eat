@@ -109,9 +109,10 @@ namespace NoteEditor.Presenter
 
         public void Save()
         {
-            var fileName = Path.ChangeExtension(EditData.Name.Value, "json");
+            var fileName = (ChengeNotes.DessertSide ? "_D_" : "") + Path.ChangeExtension(EditData.Name.Value, "json");
+            Debug.Log(fileName);
             var directoryPath = Path.Combine(Path.GetDirectoryName(MusicSelector.DirectoryPath.Value), "Notes");
-            var filePath = Path.Combine(directoryPath, fileName);
+            var filePath = Path.Combine(directoryPath, fileName) ;
 
             if (!Directory.Exists(directoryPath))
             {
@@ -120,7 +121,7 @@ namespace NoteEditor.Presenter
 
             var json = EditDataSerializer.Serialize();
             File.WriteAllText(filePath, json, System.Text.Encoding.UTF8);
-            messageText.text = filePath + " に保存しました";
+            messageText.text = filePath+ " に保存しました";
         }
     }
 }

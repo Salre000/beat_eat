@@ -45,7 +45,6 @@ public class DessertManager : MonoBehaviour
         GameObject dessertArea = new GameObject("DessertObject");
         dessertArea.transform.parent = area.transform;
         dessertArea.transform.localPosition = Vector3.zero;
-        dessertArea.AddComponent<TestRotate>();
 
         //タップするエリアとタップしたら光るエリアを生成
         for (int i = -1; i < 2; i += 2)
@@ -149,8 +148,10 @@ public class DessertManager : MonoBehaviour
 
         }
 
+        //二つのオブジェクトの中心に配置
         Vector3 pos = areaList[0].transform.position + (areaList[1].transform.position - areaList[0].transform.position)/2;
         dessertArea.transform.position = pos;
+
         areaList[0].transform.parent = dessertArea.transform;
         areaList[1].transform.parent = dessertArea.transform;
 

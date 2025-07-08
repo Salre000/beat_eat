@@ -8,6 +8,7 @@ public class ChengeNotes : MonoBehaviour
 {
     public static NoteTypes NoteTypes = NoteTypes.Flick;
     public static bool flag = false;
+    public static bool DessertSide = false;
     public TextMeshProUGUI text;
     private void FixedUpdate()
     {
@@ -21,8 +22,9 @@ public class ChengeNotes : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) NoteTypes = NoteTypes.Skill;
         if (Input.GetKey(KeyCode.N)) NoteTypes = NoteTypes.Single;
         if (Input.GetKey(KeyCode.L)) NoteTypes = NoteTypes.Long;
+        if (Input.GetKeyDown(KeyCode.M)) DessertSide = !DessertSide;
 
-        text.text = NoteTypes.ToString();
+        text.text = NoteTypes.ToString() + "  デザートなのか" + DessertSide;
 
     }
 
