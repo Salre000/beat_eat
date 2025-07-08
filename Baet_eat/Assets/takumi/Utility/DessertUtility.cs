@@ -7,20 +7,41 @@ public static class DessertUtility
 
     public static DessertManager dessertGame;
 
+    public static void ReSet() 
+    {
+    }
+
     public static void CheckSideTap(Vector2 vector2, int id)
     {
         if (dessertGame == null) return;
 
         dessertGame.GetClickPoint(vector2, id);
     }
-
-    //idは左右どっちをクリックしたのか
-    public static void Click(int id)
+    //indexは左右どっちをクリックしたのか
+    //IDはユビ
+    public static void Click(int index, int id)
     {
         //ラインを光らせる
-        dessertGame.AddAlpha(id);
+        dessertGame.AddAlpha(index);
 
         //ノーツを消す処理
+        for (int i = 0; i < dessertGame.GetActiveNotes().Count; i++)
+        {
+            DessertNotes notes = dessertGame.GetActiveNotes()[i];
+
+            if (!notes.gameObject.activeSelf) continue;
+
+            notes.SetTouchID(id);
+
+            //同じレーンなのかどうか
+            if (!notes.CheckHitlane(index)) continue;
+
+            notes.Hit();
+
+            return;
+
+
+        }
 
     }
 

@@ -61,7 +61,7 @@ public class LongLongNotes : NotesBase
         }
 
 
-        int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position);
+        int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position, endPos);
         renge = Mathf.Abs(renge);
 
         if (renge >= 1) return;

@@ -9,7 +9,7 @@ public static class LineUtility
 
     public static float HitTestRate = 2f;
     //‚±‚±‚Ì‚©‚¯‚½’l‚ª¬‚³‚¢’ö@”»’è‚Ì‘å‚«‚³‚ª‘å‚«‚­‚È‚é
-    public static float RangeToDecision(Vector3 pos) { return gameManager.RangeToDecision(pos)* HitTestRate; }
+    public static float RangeToDecision(Vector3 pos,float endPos= -6.25f) { return gameManager.RangeToDecision(pos, endPos) * HitTestRate; }
 
     public static void AddActiveObject(NotesBase gameObject) { gameManager.AddActiveObject(gameObject); }
     public static void SbuActiveObject(NotesBase gameObject) { gameManager.SbuActiveObject(gameObject); }

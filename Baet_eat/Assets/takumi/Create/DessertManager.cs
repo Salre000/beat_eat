@@ -23,6 +23,7 @@ public class DessertManager : MonoBehaviour
     [SerializeField] private List<DessertNotes> ActiveNotes = new List<DessertNotes>();
     public void AddActiveNotes(DessertNotes notes) { ActiveNotes.Add(notes); }
     public void SbuActiveNotes(DessertNotes notes) { ActiveNotes.Remove(notes); }
+    public List<DessertNotes> GetActiveNotes() { return ActiveNotes; }
 
 
 
@@ -189,7 +190,7 @@ public class DessertManager : MonoBehaviour
             timeCount[i] = 1;
             Debug.Log("number" + i);
             //範囲内をクリックしたと認める
-            DessertUtility.Click(i);
+            DessertUtility.Click(i, id);
 
             return;
 

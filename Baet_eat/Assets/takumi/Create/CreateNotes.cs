@@ -201,7 +201,7 @@ public class CreateNotes : MonoBehaviour
                 DessertNotes dessert = notes.AddComponent<DessertNotes>();
 
 
-                dessert.SetNotesPos(DessertNotes.NotesPos.left);
+                dessert.SetNotesPos(DessertNotes.NotesPos.grand);
 
 
 

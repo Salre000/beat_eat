@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
-
+using static NotesBase;
 public class DessertNotes : MonoBehaviour
 {
     public enum NotesPos 
     {
-        grand,
-        left,
         right,
+        left,
+        grand,
         max
     }
 
@@ -26,6 +26,8 @@ public class DessertNotes : MonoBehaviour
     {
         DessertUtility.AddAllNotes(this);
         notesBase=GetComponent<NotesBase>();
+
+        notesBase.SetEndPos(-4.0f);
     }
 
     public void OnEnable()
@@ -41,5 +43,16 @@ public class DessertNotes : MonoBehaviour
     public void Hit() 
     {
         notesBase.Hit();
+    }
+    public  void SetTouchID(int id) 
+    {
+        notesBase.SetTouchID(id);
+    }
+    public  bool CheckHitlane(int index)
+    {
+        JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position,-4f));
+        Debug.Log("‹——£" + judgmentType);
+        bool flag = ((int)notesPos == index) && judgmentType <= JudgmentType.Good && (int)judgmentType >= -(int)JudgmentType.Good;
+        return flag;
     }
 }

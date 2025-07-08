@@ -124,7 +124,7 @@ public class InGameManager : MonoBehaviour
 
     }
 
-    public float RangeToDecision(Vector3 position) { return -6.25f - position.z + (OptionStatus.GetNotesHitLinePos() * 0.5f); }
+    public float RangeToDecision(Vector3 position,float endPos) { return endPos - position.z + (OptionStatus.GetNotesHitLinePos() * 0.5f); }
 
 
     public void AddActiveObject(NotesBase gameObject) { activeObject.Add(gameObject); }
