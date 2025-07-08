@@ -261,6 +261,13 @@ public class LongNotes : NotesBase
     {
         return base.GetDestryDecision() - Allrange(_distanceNum) * 2.8 * OptionStatus.GetNotesSpeed();
     }
+
+    public void StartHit()
+    {
+        Hit(false);
+        SoundUtility.NotesLongHitSoundPlay();
+
+    }
     public override void Hit()
     {
         Hit(endNotes);

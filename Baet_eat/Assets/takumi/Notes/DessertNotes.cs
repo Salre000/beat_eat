@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 using static NotesBase;
 public class DessertNotes : MonoBehaviour
 {
@@ -20,13 +19,13 @@ public class DessertNotes : MonoBehaviour
     private NotesBase notesBase;
     public static float t = 1;
 
-    private Vector3 StartPos=Vector3.zero;
-    private Vector3 EndPos=Vector3.zero;
+    bool longFlag = false;
+
     public void Awake()
     {
         DessertUtility.AddAllNotes(this);
         notesBase=GetComponent<NotesBase>();
-
+        if (GetComponent<LongNotes>() != null) longFlag = true;
         notesBase.SetEndPos(-4.0f);
     }
 
@@ -42,7 +41,8 @@ public class DessertNotes : MonoBehaviour
 
     public void Hit() 
     {
-        notesBase.Hit();
+        if(!longFlag)notesBase.Hit();
+        else GetComponent<LongNotes>().StartHit();
     }
     public  void SetTouchID(int id) 
     {
