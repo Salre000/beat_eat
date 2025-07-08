@@ -22,7 +22,7 @@ public class SkillManager : MonoBehaviour
 
     public readonly CriticalJudgmentExpands criticalJudgmentExpands = new CriticalJudgmentExpands();
     public readonly HeelHp heelHp = new HeelHp();
-    public readonly Aoto aoto = new Aoto();
+    public readonly Auto aoto = new Auto();
     private void Awake()
     {
         if (instance == null)

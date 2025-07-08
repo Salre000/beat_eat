@@ -6,7 +6,7 @@ using static CreateTapArea;
 
 public class NotesBase : MonoBehaviour
 {
-    [SerializeField]protected List<int> laneIndex = new List<int>();
+    [SerializeField] protected List<int> laneIndex = new List<int>();
     public void AddLaneIndex(int index) { laneIndex.Add(index); }
     public void SetLaneIndex(List<int> lane) { laneIndex = lane; }
 
@@ -16,18 +16,21 @@ public class NotesBase : MonoBehaviour
 
     protected float showTime = -1;
     protected int renge = 0;
-    public void SetRemge(int Renge) {  renge = Renge; }
-    public int GetRemge() { return renge; } 
-    public void SetShowTime(float time) {  showTime = time; }
+    public void SetRemge(int Renge) { renge = Renge; }
+    public int GetRemge() { return renge; }
+    public void SetShowTime(float time) { showTime = time; }
     public float GetShowTime() { return showTime; }
-    
-    private float SpeedTime() {return 50.0f/( OptionStatus.GetNotesSpeed()* BaseSpeed); }
+
+    private float SpeedTime() { return 50.0f / (OptionStatus.GetNotesSpeed() * BaseSpeed); }
 
     public void SetTouchID(int ID) { if (touchID != -1) return; touchID = ID; }
     public void ResetTouchID() { touchID = -1; }
 
     protected Vector3 Vec = new Vector3(0, 0, (BaseSpeed * OptionStatus.GetNotesSpeed()) / 50.0f);
 
+    protected float endPos = -6.25f;
+
+    public void SetEndPos(float _endPOs) { endPos = _endPOs; }
     //îªíËÉ^ÉCÉv
     public enum JudgmentType
     {
@@ -68,7 +71,7 @@ public class NotesBase : MonoBehaviour
         InGameStatus.AddNoesTypeSuccess(NotesType);
     }
 
-    public virtual void Hit(bool flag) 
+    public virtual void Hit(bool flag)
     {
         //îªíËÇÃâ¡éZÇÇ∑ÇÈä÷êî
         SetJudgment(this.gameObject);
@@ -82,17 +85,17 @@ public class NotesBase : MonoBehaviour
 
     }
 
-    protected int NotesType=0;
+    protected int NotesType = 0;
     public void FixedUpdate()
     {
         //this.transform.position -= Vec;
 
         Action();
 
-        if (InGameStatus.GetAuto()) 
+        if (InGameStatus.GetAuto())
         {
             touchID = 0;
-            if(this.transform.position.z<= GetDestryDecision()+ (int)JudgmentType.Miss) Hit();
+            if (this.transform.position.z <= GetDestryDecision() + (int)JudgmentType.Miss) Hit();
         }
 
         if (this.transform.position.z > GetDestryDecision()) return;
@@ -116,7 +119,7 @@ public class NotesBase : MonoBehaviour
 
     protected void SetJudgment(GameObject gameObject)
     {
-        int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position);
+        int renge = (int)LineUtility.RangeToDecision(gameObject.transform.position, endPos);
         renge = Mathf.Abs(renge);
         float rete = 1;
 
@@ -147,7 +150,7 @@ public class NotesBase : MonoBehaviour
                 break;
         }
 
-       
+
 
         InGameStatus.AddScore(rete);
     }
@@ -157,8 +160,8 @@ public class NotesBase : MonoBehaviour
 
     public virtual bool CheckHitlane(int index)
     {
-        JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position));
-        
+        JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position, endPos));
+
         bool flag = laneIndex.Exists(number => number == index) && judgmentType <= JudgmentType.Good && (int)judgmentType >= -(int)JudgmentType.Good;
         return flag;
     }

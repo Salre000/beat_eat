@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
-
+using static NotesBase;
 public class DessertNotes : MonoBehaviour
 {
     public enum NotesPos 
     {
-        grand,
-        left,
         right,
+        left,
+        grand,
         max
     }
 
@@ -17,14 +17,17 @@ public class DessertNotes : MonoBehaviour
     public void SetNotesPos(NotesPos notes) {  notesPos = notes; }
     public NotesPos GetNotesPos() { return notesPos; }
 
+    private NotesBase notesBase;
     public static float t = 1;
 
     private Vector3 StartPos=Vector3.zero;
     private Vector3 EndPos=Vector3.zero;
     public void Awake()
     {
-        StartPos=EndPos = transform.position;
         DessertUtility.AddAllNotes(this);
+        notesBase=GetComponent<NotesBase>();
+
+        notesBase.SetEndPos(-4.0f);
     }
 
     public void OnEnable()
@@ -36,28 +39,20 @@ public class DessertNotes : MonoBehaviour
     {
         DessertUtility.SbuActiveNotes(this);
     }
-    public void FixedUpdate()
+
+    public void Hit() 
     {
-        t += Time.deltaTime;
-        if (t > 1) return;
-        transform.position = Vector3.Slerp(StartPos,EndPos,t);
+        notesBase.Hit();
     }
-
-    public void Chenge()
+    public  void SetTouchID(int id) 
     {
-        //現在位置をスタートポイントに決定
-        StartPos = transform.position;
-
-        //移動を決定
-        EndPos =new Vector3(DessertUtility.GetSideVec(this).x, transform.position.y,transform.position.z );
-
+        notesBase.SetTouchID(id);
     }
-    public void Chenge(Vector3 vector)
+    public  bool CheckHitlane(int index)
     {
-        //瞬間的に移動させる
-        transform.position= vector;
-
+        JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position,-4f));
+        Debug.Log("距離" + judgmentType);
+        bool flag = ((int)notesPos == index) && judgmentType <= JudgmentType.Good && (int)judgmentType >= -(int)JudgmentType.Good;
+        return flag;
     }
-
-
 }
