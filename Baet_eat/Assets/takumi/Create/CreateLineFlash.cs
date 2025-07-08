@@ -10,7 +10,11 @@ public class CreateLineFlash
     private Material material;
     private readonly float offset = -7.5f;
     private readonly float range = 60.0f;
-    public void SetMaterial(Material material) { this.material = material; }
+    public void SetMaterial(Material material)
+    {
+        this.material = material;
+        DessertManager.flash = material;
+    }
     public void SetFlashLine(int divisionCount)
     {
         float wideDivision = wide / (divisionCount + 1);
@@ -20,8 +24,8 @@ public class CreateLineFlash
 
             BoxArea boxarea = new BoxArea();
             //ÉÅÉbÉVÉÖÇÃç¿ïWÇê›íË
-            boxarea.leftTop = new Vector3(wideDivision * (i - 1) - wide / 2, 0.01f, offset+ range);
-            boxarea.rightTop = new Vector3(wideDivision * i - wide / 2, 0.01f, offset+ range);
+            boxarea.leftTop = new Vector3(wideDivision * (i - 1) - wide / 2, 0.01f, offset + range);
+            boxarea.rightTop = new Vector3(wideDivision * i - wide / 2, 0.01f, offset + range);
             boxarea.bottomLeft = new Vector3(wideDivision * (i - 1) - wide / 2, 0.01f, offset);
             boxarea.bottomRight = new Vector3(wideDivision * i - wide / 2, 0.01f, offset);
 
@@ -39,7 +43,7 @@ public class CreateLineFlash
             flashMaterial.Add(new Material(material));
             // MeshFilterÇ…ê›íË
             go.AddComponent<MeshFilter>().mesh = mesh;
-            go.AddComponent<MeshRenderer>().material = flashMaterial[i-1];
+            go.AddComponent<MeshRenderer>().material = flashMaterial[i - 1];
 
             go.transform.parent = ParentObject.transform;
             flashLine.Add(go.GetComponent<MeshRenderer>());
@@ -47,11 +51,11 @@ public class CreateLineFlash
 
 
     }
-    public void SbuAlpha() 
+    public void SbuAlpha()
     {
-        for(int i=0;i< flashLine.Count; i++) 
+        for (int i = 0; i < flashLine.Count; i++)
         {
-            Color color= flashMaterial[i].color;
+            Color color = flashMaterial[i].color;
 
             if (color.a <= 0) continue;
 
@@ -59,7 +63,7 @@ public class CreateLineFlash
             flashMaterial[i].color = color;
         }
     }
-    public void AddAlpha(int index) 
+    public void AddAlpha(int index)
     {
         if (index == -1 || index == 10) return;
 

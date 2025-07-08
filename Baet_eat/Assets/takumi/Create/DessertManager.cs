@@ -11,18 +11,24 @@ public class DessertManager : MonoBehaviour
     private static List<MeshRenderer> tapPoint = new List<MeshRenderer>();
     [SerializeField] private static List<BoxArea> box = new List<BoxArea>();
 
+    private static List<MeshRenderer> flashLine = new List<MeshRenderer>();
+    private static List<Material> flashMaterial = new List<Material>();
+
     private static List<GameObject> areaList = new List<GameObject>();
 
     [SerializeField] private List<DessertNotes> AllNotes = new List<DessertNotes>();
     public void AddAllNotes(DessertNotes notes) { AllNotes.Add(notes); }
     public void SbuAllNotes(DessertNotes notes) { AllNotes.Remove(notes); }
-    public List<DessertNotes> GetAllNotes() {return AllNotes; }
+    public List<DessertNotes> GetAllNotes() { return AllNotes; }
     [SerializeField] private List<DessertNotes> ActiveNotes = new List<DessertNotes>();
     public void AddActiveNotes(DessertNotes notes) { ActiveNotes.Add(notes); }
     public void SbuActiveNotes(DessertNotes notes) { ActiveNotes.Remove(notes); }
 
+
+
     public static Material normal;
     public static Material click;
+    public static Material flash;
 
     private const float size = 5;
     public static void CreateTapAreaDessert()
@@ -31,6 +37,8 @@ public class DessertManager : MonoBehaviour
         box.Clear();
         timeCount.Clear();
         tapPoint.Clear();
+        flashLine.Clear();
+        flashMaterial.Clear();
 
         GameObject area = GameObject.Find("Area");
 
@@ -87,13 +95,49 @@ public class DessertManager : MonoBehaviour
 
             BoxArea box1 = new BoxArea();
 
-            box1.leftTop = -go.transform.right + go.transform.position + go.transform.forward;
-            box1.rightTop = go.transform.right + go.transform.position + go.transform.forward;
-            box1.bottomLeft = -go.transform.right + go.transform.position - go.transform.forward;
-            box1.bottomRight = go.transform.right + go.transform.position - go.transform.forward;
+            box1.leftTop = -go.transform.right + go.transform.position + go.transform.forward * 2;
+            box1.rightTop = go.transform.right + go.transform.position + go.transform.forward * 2;
+            box1.bottomLeft = -go.transform.right + go.transform.position - go.transform.forward * 2;
+            box1.bottomRight = go.transform.right + go.transform.position - go.transform.forward * 2;
 
 
             box.Add(box1);
+
+
+            
+            boxarea = new BoxArea();
+            //メッシュの座標を設定
+            boxarea.leftTop = new Vector3(-size, 0, areaRange * 10);
+            boxarea.rightTop = new Vector3(size, 0, areaRange * 10);
+            boxarea.bottomLeft = new Vector3(-size, 0, areaRange);
+            boxarea.bottomRight = new Vector3(size, 0, areaRange);
+
+            go = new GameObject("デザートフラッシュエリア");
+            //ここの値が判定の位置
+
+            go.transform.parent = (areaCopy.transform);
+            go.transform.Rotate(0, 0, i * 90);
+            go.transform.localPosition = Vector3.zero;
+            go.transform.position += (go.transform.up / 100f) + new Vector3(0, 0, -go.transform.position.z + TAP_AREA_DESSERT);
+
+            //メッシュの基本設定
+            mesh = new Mesh();
+            mesh.vertices = VerticePosition(boxarea);
+            mesh.triangles = new[] { 0, 1, 3, 3, 1, 2 };
+
+
+            // 領域と法線を自動で再計算する
+            mesh.RecalculateBounds();
+            mesh.RecalculateNormals();
+
+            flashMaterial.Add(new Material(flash));
+            // MeshFilterに設定
+            go.AddComponent<MeshFilter>().mesh = mesh;
+            go.AddComponent<MeshRenderer>().material = flashMaterial[i < 0 ? 0 : 1];
+
+            go.transform.parent = areaList[i<0?0:1].transform;
+            flashLine.Add(go.GetComponent<MeshRenderer>());
+
 
 
 
@@ -136,7 +180,7 @@ public class DessertManager : MonoBehaviour
             timeCount[i] = 1;
             Debug.Log("number" + i);
             //範囲内をクリックしたと認める
-            DessertUtility.Click(0, id);
+            DessertUtility.Click(i);
 
             return;
 
@@ -174,5 +218,28 @@ public class DessertManager : MonoBehaviour
         DessertUtility.ALLChenge();
         CheckClick();
     }
+
+    public void SbuAlpha()
+    {
+        for (int i = 0; i < flashLine.Count; i++)
+        {
+            Color color = flashMaterial[i].color;
+
+            if (color.a <= 0) continue;
+
+            color.a -= 0.01f;
+            flashMaterial[i].color = color;
+        }
+    }
+    public void AddAlpha(int index)
+    {
+        if (index == -1 || index == 10) return;
+
+        Color color = flashMaterial[index].color;
+
+        color.a = 0.2f;
+        flashMaterial[index].color = color;
+    }
+
 
 }
