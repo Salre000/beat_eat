@@ -8,11 +8,11 @@ public class FlickNotes : NotesBase
 
     MeshRenderer MeshRenderer;
 
-    private float startPos = 0;
-    private float alpha = 0.01f;
-    private float speed = 0.01f;
+    protected float startPos = 0;
+    protected float alpha = 0.01f;
+    protected float speed = 0.01f;
 
-    private bool count = false;
+    protected bool count = false;
     public void Start()
     {
         FilickUp = this.transform.GetChild(0).gameObject;
@@ -48,7 +48,7 @@ public class FlickNotes : NotesBase
         InGameStatus.AddNoesTypeSuccess(NotesType);
 
     }
-    private void FlickImageMove()
+    virtual public void FlickImageMove()
     {
         Vector3 pos = FilickUp.transform.localPosition;
 
@@ -76,25 +76,20 @@ public class FlickNotes : NotesBase
             pos.y = startPos;
 
             FilickUp.transform.localPosition = pos;
-
-
         }
-
-
     }
 
-    Vector2 flickStartPos = Vector2.zero;
+    protected Vector2 flickStartPos = Vector2.zero;
 
     readonly float renge = 1;
 
-    private void FlickDecision()
+   virtual public  void FlickDecision()
     {
 
         if (!count) return;
 
         if (Vector2.Distance(flickStartPos, HandUtility.handPosition(touchID)) < renge) return;
-
-
+       
         Hit();
 
     }
@@ -106,7 +101,6 @@ public class FlickNotes : NotesBase
         {
             if (!count)
             {
-
                 //HandUtility.handPosition(touchID);
                 flickStartPos = HandUtility.handPosition(touchID); //Input.GetTouch(touchID).position;
 

@@ -243,6 +243,7 @@ public class CreateNotes : MonoBehaviour
 
             //プレハブを複製して見えないように変更
             GameObject notes = CreateTypeNotes(inputJson.notes[i].type);
+            
 
             // 時間　 kankaku * inputJson.notes[i].num 
 
@@ -254,7 +255,12 @@ public class CreateNotes : MonoBehaviour
             notes.transform.parent = NotesParent.transform;
 
             NotesBase notesBase = notes.GetComponent<NotesBase>();
+            if (notesBase is FlickNotes)
+            {
+                Destroy(notesBase);
 
+                notesBase = notes.AddComponent<SpecifiedFlickNotes>();
+            }
             notesBase.SetShowTime(kankaku * inputJson.notes[i].num);
 
             NotesUtility.AddNotes(notesBase);
@@ -314,6 +320,9 @@ public class CreateNotes : MonoBehaviour
                      notes.transform.position.z) + DessertManager.GetAreaList(1).transform.position;
 
             }
+
+            SpecifiedFlickNotes notess = notesBase as SpecifiedFlickNotes;
+            notess?.Initialize();
         }
 
 
