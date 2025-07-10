@@ -103,11 +103,12 @@ public class ScoreManager : MonoBehaviour
 
     public void ChengeDifficulty()
     {
+        List<GameObject> card = MusicManager.instance.GetMusicCards();
 
 
         for (int i = 0; i < MusicManager.CAPACITY; i++)
         {
-
+            if (card.Count <= i) return;
             //‚±‚±‚ªd‚¢‚ç‚µ‚¢
             SwitchRank(i , ScoreStatus.GetDessertClearRanks(i + MusicManager.NOTMUSICNUMBER, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
 

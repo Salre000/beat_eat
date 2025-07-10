@@ -12,6 +12,15 @@ public class LongNotes : NotesBase
     GameObject startNotes;
 
     private int block;
+
+    private DessertNotes dessertNotes;
+    private void Start() 
+    {
+        dessertNotes = GetComponent<DessertNotes>();
+
+        NotesType = 2;
+
+    }
     public void Setblock(int num) { block = num; }
 
     private List<LongLongNotes> LongLongNotesList = new List<LongLongNotes>();
@@ -210,7 +219,8 @@ public class LongNotes : NotesBase
                 return; 
             }
         }
-        if (startNotes.transform.position.z > (ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ?-6.25f:-4)) return;
+        if (startNotes.transform.position.z > 
+            (ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ?-6.25f:-4)) return;
         if(One==true&& InGameStatus.GetAuto() == true) 
         {
             SoundUtility.NotesLongHitSoundPlay();
@@ -319,10 +329,4 @@ public class LongNotes : NotesBase
 
 
     }
-
-    public void Start()
-    {
-        NotesType = 2;
-    }
-
 }

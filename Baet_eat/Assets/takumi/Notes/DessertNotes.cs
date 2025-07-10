@@ -32,6 +32,7 @@ public class DessertNotes : MonoBehaviour
         if (GetComponent<LongNotes>() != null) longFlag = true;
         notesBase.SetEndPos(notesPos == NotesPos .grand?-6.25f:- 4.0f);
        
+        Debug.Log(notesBase.gameObject.name+"–¼‘Os");
     }
 
     public void OnEnable()
@@ -45,6 +46,7 @@ public class DessertNotes : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (notesBase == null) notesBase = GetComponent<NotesBase>();
         if (this.transform.position.z > notesBase.GetEndPos()) return;
         if (!InGameStatus.GetAuto()) return;
 

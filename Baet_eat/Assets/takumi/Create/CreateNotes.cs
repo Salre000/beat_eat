@@ -245,7 +245,7 @@ public class CreateNotes : MonoBehaviour
 
             //プレハブを複製して見えないように変更
             GameObject notes = CreateTypeNotes(inputJson.notes[i].type);
-            
+
 
             // 時間　 kankaku * inputJson.notes[i].num 
 
@@ -259,6 +259,8 @@ public class CreateNotes : MonoBehaviour
             NotesBase notesBase = notes.GetComponent<NotesBase>();
             if (notesBase is FlickNotes)
             {
+                notesBase.transform.name = "横フリック";
+
                 Destroy(notesBase);
 
                 notesBase = notes.AddComponent<SpecifiedFlickNotes>();
@@ -301,7 +303,6 @@ public class CreateNotes : MonoBehaviour
 
             LineUtility.AddActiveObject(notesBase);
             DessertNotes dessert = notes.AddComponent<DessertNotes>();
-            dessert.Initialize();
 
             if (inputJson.notes[i].block < 5)
             {
@@ -311,6 +312,7 @@ public class CreateNotes : MonoBehaviour
                     (DessertManager.GetAreaList(0).transform.up.x / 10,
                     0,
                     notes.transform.position.z) + DessertManager.GetAreaList(0).transform.position;
+                dessert.Initialize();
 
             }
             else
@@ -321,6 +323,7 @@ public class CreateNotes : MonoBehaviour
                     (DessertManager.GetAreaList(1).transform.up.x / 10,
                      0,
                      notes.transform.position.z) + DessertManager.GetAreaList(1).transform.position;
+                dessert.Initialize();
 
             }
 
