@@ -12,8 +12,14 @@ public class SpecifiedFlickNotes : FlickNotes
     // Start is called before the first frame update
     void Start()
     {
-
+        renge = 15;
     }
+    protected override void Action()
+    {
+        FlickImageMove();
+        FlickDecision();
+    }
+
 
     public void Initialize() 
     {
@@ -46,26 +52,11 @@ public class SpecifiedFlickNotes : FlickNotes
         NotesType = 3;
 
     }
-    public override bool CheckHitlane(int index)
-    {
-
-
-        if (!count)
-        {
-            flickStartPos = HandUtility.handPosition(touchID);
-
-        }
-        count = true;
-
-
-
-        return false;
-
-    }
     public override void FlickDecision()
     {
 
         if (!count) return;
+
 
         if (Vector2.Distance(flickStartPos, HandUtility.handPosition(touchID)) < renge) return;
         //’Ç‰Á‚Å•ûŒüŽw’è
@@ -79,9 +70,11 @@ public class SpecifiedFlickNotes : FlickNotes
 
         //Šp“x‚Ì”äŠr‚ð‚·‚é
 
+        if (Vector2.Angle(Vec, targetAngle) > 90) return;
 
+        Debug.Log("Šp“x" + Vector2.Angle(Vec, targetAngle));
 
-        Hit();
+        base.Hit();
 
 
     }
@@ -115,5 +108,12 @@ public class SpecifiedFlickNotes : FlickNotes
             }
 
         }
+    }
+    public override void Hit()
+    {
+        if (count) return;
+        flickStartPos = HandUtility.handPosition(touchID);
+        count = true;
+
     }
 }

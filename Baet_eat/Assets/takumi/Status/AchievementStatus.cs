@@ -12,6 +12,9 @@ public class AchievementStatus
 
     public static int achievementNumber = -1;
 
+
+    public static List<int> achievementNumberList = new List<int>();
+
     public static void Initialize()
     {
         LoadData.LoadAchiveMent(() =>
@@ -53,17 +56,26 @@ public class AchievementStatus
 
         achievements.SetAChiveMentStatus(Index);
 
-        achievementNumber = Index;
-
-        SceneManager.LoadScene("AchievementScene", LoadSceneMode.Additive);
+        //ゲームの途中だったらリストに保存　そうじゃなかったら今すぐに描画
+        if (LineUtility.gameManager == null)
+        {
+            achievementNumber = Index;
+            SceneManager.LoadScene("AchievementScene", LoadSceneMode.Additive);
+        }
+        else
+        {
+            achievementNumberList.Add(Index);
+        }
         //アチーブメントのデータを保存
         SaveData.SaveAchiveMent();
 
     }
 
 
+    public static List<int> GetAchievementNumber() {  return achievementNumberList; }
+    public static void ResetAchievementNumber() {  achievementNumberList.Clear(); }
 
-    
+
 
 
 }

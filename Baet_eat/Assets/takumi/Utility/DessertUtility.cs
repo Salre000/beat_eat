@@ -36,7 +36,7 @@ public static class DessertUtility
             //“¯‚¶ƒŒ[ƒ“‚È‚Ì‚©‚Ç‚¤‚©
             if (!notes.CheckHitlane(index)) continue;
 
-            notes.Hit();
+            notes.Hit(id);
 
             return;
 

@@ -10,7 +10,7 @@ _NewDC,
 _Tutorial,
         /// <summary><see _NewEed="初めての完走"/> </summary>\r\n
 _NewEed,
-        /// <summary><see _drink="ドリンク"/> </summary>\r\n
+        /// <summary><see _drink="たぶんコレジャナイ"/> </summary>\r\n
 _drink,
         /// <summary><see _HorsDoeuvre="ソーセージとフライドポテト"/> </summary>\r\n
 _HorsDoeuvre,
@@ -18,6 +18,8 @@ _HorsDoeuvre,
 _Soup,
         /// <summary><see _mainDish="ステーキと伊勢海老の気分"/> </summary>\r\n
 _mainDish,
+        /// <summary><see _LongNotes="オマエキライ"/> </summary>\r\n
+_LongNotes,
 MAX
 }
 }

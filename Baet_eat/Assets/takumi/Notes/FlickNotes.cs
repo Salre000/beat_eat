@@ -89,7 +89,8 @@ public class FlickNotes : NotesBase
         if (!count) return;
 
         if (Vector2.Distance(flickStartPos, HandUtility.handPosition(touchID)) < renge) return;
-       
+        Debug.Log("‚±‚Á‚¿H");
+
         Hit();
 
     }
