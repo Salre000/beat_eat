@@ -25,7 +25,36 @@ public class DessertManager : MonoBehaviour
     public void SbuActiveNotes(DessertNotes notes) { ActiveNotes.Remove(notes); }
     public List<DessertNotes> GetActiveNotes() { return ActiveNotes; }
 
+    private Vector3 startangle;
+    private GameObject notesParent;
+    public void SetNotesParent(GameObject gameObject) {  notesParent = gameObject; }
+    private GameObject areaParent; 
+    private bool rotetoFlag = false;
 
+    private int rotetoCount = 0;
+    public int GetRotetoCount() {  return rotetoCount; }
+    //回転させる関数
+    public void StartRoteto() 
+    {
+        startangle = notesParent.transform.eulerAngles;
+        rotetoFlag = true;
+        t = 0;
+        rotetoCount++;
+    }
+    private float t = 0;
+    private void Roteto() 
+    {
+        if (!rotetoFlag) return;
+        t += Time.deltaTime;
+
+
+        notesParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f), t);
+        areaParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f), t);
+
+        if (t < 1) return;
+        rotetoFlag = false;    
+
+    }
 
     public static Material normal;
     public static Material click;
@@ -156,7 +185,9 @@ public class DessertManager : MonoBehaviour
         areaList[0].transform.parent = dessertArea.transform;
         areaList[1].transform.parent = dessertArea.transform;
 
-        area.AddComponent<DessertManager>();
+        DessertManager dessertManager= area.AddComponent<DessertManager>();
+
+        dessertManager.areaParent = dessertArea;
 
     }
 
@@ -171,13 +202,13 @@ public class DessertManager : MonoBehaviour
             for (int j = 0; j < 4; j++)
             {
                 //周りの方向ベクトルを取得
-                vecs[j] = TapAreaPoint(i, j);
+                vecs[j] = TapAreaPoint((i+rotetoCount)%2, j);
             }
             bool flag = false;
             for (int j = 0; j < 4; j++)
             {
                 //クリックした方向ベクトルを取得
-                Vector2 vec = clickPoint - (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(box[i])[j]);
+                Vector2 vec = clickPoint - (Vector2)Camera.main.WorldToScreenPoint(VerticePosition(box[(i + rotetoCount) % 2])[j]);
                 //外積を取得
                 Vector3 dont = Vector3.Cross(vecs[j], vec);
 
@@ -204,12 +235,11 @@ public class DessertManager : MonoBehaviour
 
     }
 
-
-    public void Start()
+    public void Awake()
     {
+        
         DessertUtility.dessertGame = this;
     }
-
     public void CheckClick()
     {
         for (int i = 0; i < timeCount.Count; i++)
@@ -225,9 +255,9 @@ public class DessertManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        DessertUtility.ALLChenge();
         CheckClick();
         SbuAlpha();
+        Roteto();
     }
 
     public void SbuAlpha()

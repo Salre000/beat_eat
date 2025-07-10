@@ -88,5 +88,8 @@ public static class DessertUtility
 
     }
 
+    public static void StartRoteto() {dessertGame.StartRoteto();}
+    public static void SetNotesParent(GameObject gameObject) {dessertGame.SetNotesParent(gameObject);}
 
+    public static int GetRotetoCount() {return dessertGame.GetRotetoCount();}
 }

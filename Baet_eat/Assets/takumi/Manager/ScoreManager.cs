@@ -57,6 +57,7 @@ public class ScoreManager : MonoBehaviour
 
         for (int i = 0; i < MusicManager.CAPACITY; i++)
         {
+            if (card.Count <= i) return;
 
             PlusDifficulty.Add(new List<GameObject>());
 
@@ -72,12 +73,6 @@ public class ScoreManager : MonoBehaviour
             B.Add(ClearRank[ClearRank.Count - 1].transform.Find("BRankColor").gameObject);
             C.Add(ClearRank[ClearRank.Count - 1].transform.Find("ARankColor").gameObject);
             D.Add(ClearRank[ClearRank.Count - 1].transform.Find("SRankColor").gameObject);
-
-            //S.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(4).gameObject);
-            //A.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(3).gameObject);
-            //B.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(2).gameObject);
-            //C.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(1).gameObject);
-            //D.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(0).gameObject);
 
             Level.Add(card[i].transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
 
@@ -110,7 +105,7 @@ public class ScoreManager : MonoBehaviour
     {
 
 
-        for (int i = 0; i < MusicManager.CAPACITY; i++)
+        for (int i = 1; i < MusicManager.CAPACITY; i++)
         {
 
             //‚±‚±‚ªd‚¢‚ç‚µ‚¢

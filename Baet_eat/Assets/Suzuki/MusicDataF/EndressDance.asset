@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd0ce4ba15797f4581dcc88d1e1162e, type: 3}
   m_Name: EndressDance
   m_EditorClassIdentifier: 
-  musicID: 0
+  musicID: 1
   musicName: EndressDance
   BPM: 153
-  musicLevel: 14
   jacket: {fileID: 21300000, guid: 3d13af9b23f383240a409f11520edc0b, type: 3}
   musicAuthorName: "\u521D\u661F\u5B66\u5712"
   musicComposerName: "\u9996\u85E4\u7FA9\u52DD"

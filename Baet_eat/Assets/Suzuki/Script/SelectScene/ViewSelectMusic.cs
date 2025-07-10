@@ -72,7 +72,7 @@ public class ViewSelectMusic : MonoBehaviour
 
     private void LoadMusic()
     {
-        for(int i = 0;i<dataBase.musicData.Count;i++)
+        for(int i = 1;i<dataBase.musicData.Count;i++)
         {
             BuildingString(dataBase.musicData[i].musicName, true);
             string musicName = _stringBuilder.ToString();

@@ -202,7 +202,7 @@ public class CreateNotes : MonoBehaviour
 
 
                 dessert.SetNotesPos(DessertNotes.NotesPos.grand);
-
+                dessert.Initialize();
 
 
             }
@@ -220,6 +220,7 @@ public class CreateNotes : MonoBehaviour
 
         GameObject NotesParent = new GameObject(SongName);
 
+        DessertUtility.SetNotesParent(NotesParent);
         NotesParent.transform.parent = notesParent.transform;
         NotesParent.transform.position = new Vector3(0, 2, 0);
 
@@ -300,6 +301,7 @@ public class CreateNotes : MonoBehaviour
 
             LineUtility.AddActiveObject(notesBase);
             DessertNotes dessert = notes.AddComponent<DessertNotes>();
+            dessert.Initialize();
 
             if (inputJson.notes[i].block < 5)
             {

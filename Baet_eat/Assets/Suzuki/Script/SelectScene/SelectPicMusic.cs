@@ -29,7 +29,7 @@ public class SelectPicMusic : MonoBehaviour
 
     private void PicUpMusicCard()
     {
-        int selectNumber = 0;
+        int selectNumber = 1;
         // ‚Ç‚Ì‹È‚©‘I‚Î‚ê‚Ä‚¢‚é‚à‚Ì‚ð“Á’è
         foreach (GameObject musicCard in _musicCard)
         {

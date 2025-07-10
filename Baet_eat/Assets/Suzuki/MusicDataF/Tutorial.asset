@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd0ce4ba15797f4581dcc88d1e1162e, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
-  musicID: 3
+  musicID: "\uFF10"
   musicName: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB"
   BPM: 143
-  musicLevel: 1
   jacket: {fileID: 21300000, guid: 105faac93838a6947a83930e2ac28f88, type: 3}
   musicAuthorName: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB"
   musicComposerName: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB"
