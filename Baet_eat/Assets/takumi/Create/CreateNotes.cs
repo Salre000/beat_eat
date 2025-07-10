@@ -221,6 +221,7 @@ public class CreateNotes : MonoBehaviour
         GameObject NotesParent = new GameObject(SongName);
 
         NotesParent.transform.parent = notesParent.transform;
+        NotesParent.transform.position = new Vector3(0, 2, 0);
 
 
         string inputString = Resources.Load<TextAsset>(SongName).ToString();

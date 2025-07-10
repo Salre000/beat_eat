@@ -7,7 +7,7 @@ public class SpecifiedFlickNotes : FlickNotes
     GameObject[] FlickUps = new GameObject[3];
     Vector3[] StartPoss = new Vector3[3];
     MeshRenderer[] meshs = new MeshRenderer[3];
-    float []alphas= {0.5f,0.5f,0.5f };
+    float[] alphas = { 0.5f, 0.5f, 0.5f };
     bool leftFlag = false;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class SpecifiedFlickNotes : FlickNotes
     }
 
 
-    public void Initialize() 
+    public void Initialize()
     {
         GameObject.Instantiate(this.transform.GetChild(0).gameObject, transform);
         GameObject.Instantiate(this.transform.GetChild(0).gameObject, transform);
@@ -40,14 +40,14 @@ public class SpecifiedFlickNotes : FlickNotes
             FlickUps[i] = this.transform.GetChild(i == 0 ? i : i + 1).gameObject;
             FlickUps[i].transform.eulerAngles += new Vector3(90 * _i, 90, 90 * _i);
             FlickUps[i].transform.localScale = new Vector3(0.05f, 1, 0.3f);
-            FlickUps[i].transform.localPosition -= (-FlickUps[i].transform.right) * (i * 2*_i);
+            FlickUps[i].transform.localPosition -= (-FlickUps[i].transform.right) * (i * 2 * _i);
 
             StartPoss[i] = FlickUps[i].transform.localPosition;
             meshs[i] = FlickUps[i].GetComponent<MeshRenderer>();
             meshs[i].material = new Material(meshs[i].material);
         }
 
-        Debug.Log(-FlickUps[0].transform.right+"進行方向");
+        Debug.Log(-FlickUps[0].transform.right + "進行方向");
 
         NotesType = 3;
 
@@ -84,7 +84,7 @@ public class SpecifiedFlickNotes : FlickNotes
         {
             Vector3 pos = FlickUps[i].transform.localPosition;
 
-            pos += (-FlickUps[i].transform.right*(leftFlag?-1:1))/10.0f;
+            pos += (-FlickUps[i].transform.right * (leftFlag ? -1 : 1)) / 10.0f;
 
             FlickUps[i].transform.localPosition = pos;
 
