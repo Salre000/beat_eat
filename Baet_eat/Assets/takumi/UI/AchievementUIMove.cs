@@ -9,7 +9,7 @@ using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 public class AchievementUIMove : MonoBehaviour
 {
     Vector3 thisPos;
-    Vector3 EndPos = new Vector3(1300,150,0);
+    [SerializeField] Transform EndPos;
     private Image image;
 
     [SerializeField] TextMeshProUGUI achievementname;
@@ -38,7 +38,7 @@ public class AchievementUIMove : MonoBehaviour
         time += Time.deltaTime;
 
 
-        image.rectTransform.position=Vector3.Lerp(thisPos, EndPos, time);
+        image.rectTransform.position=Vector3.Lerp(thisPos, EndPos.position, time);
 
 
         if (time < 2) return;
@@ -47,8 +47,8 @@ public class AchievementUIMove : MonoBehaviour
 
         Vector3 pos = thisPos;
 
-        thisPos = EndPos;
-        EndPos = pos;
+        thisPos = EndPos.position;
+        EndPos.position = pos;
         time = 0;
 
         flag=true;

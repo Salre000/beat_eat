@@ -24,9 +24,14 @@ public class DessertNotes : MonoBehaviour
     public void Awake()
     {
         DessertUtility.AddAllNotes(this);
+    }
+
+    public void Initialize() 
+    {
         notesBase=GetComponent<NotesBase>();
         if (GetComponent<LongNotes>() != null) longFlag = true;
-        notesBase.SetEndPos(-4.0f);
+        notesBase.SetEndPos(notesPos == NotesPos .grand?-6.25f:- 4.0f);
+       
     }
 
     public void OnEnable()
@@ -38,7 +43,16 @@ public class DessertNotes : MonoBehaviour
     {
         DessertUtility.SbuActiveNotes(this);
     }
+    private void FixedUpdate()
+    {
+        if (this.transform.position.z > notesBase.GetEndPos()) return;
+        if (!InGameStatus.GetAuto()) return;
 
+        if (!longFlag) notesBase.Hit();
+        else GetComponent<LongNotes>().StartHit();
+
+
+    }
     public void Hit(int index) 
     {
         if(!longFlag)notesBase.Hit();

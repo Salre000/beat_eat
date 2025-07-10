@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
     {
 
         ScoreStatus.nowDifficulty = 0;
-        ScoreStatus.nowMusic = 3;
+        ScoreStatus.nowMusic = 0;
 
         AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._Tutorial);
 

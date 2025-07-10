@@ -75,6 +75,7 @@ public class SpecifiedFlickNotes : FlickNotes
         Debug.Log("Šp“x" + Vector2.Angle(Vec, targetAngle));
 
         base.Hit();
+        DessertUtility.StartRoteto();
 
 
     }

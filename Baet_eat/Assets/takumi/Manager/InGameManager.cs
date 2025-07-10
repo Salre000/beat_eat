@@ -99,6 +99,8 @@ public class InGameManager : MonoBehaviour
     List<bool> tapFlag = new List<bool>(14);
     public void Click(int index, int id)
     {
+        if (tapFlag.Count <= id || id < 0) return;
+
         if (tapFlag[id]) return;
 
         _lineFlash.AddAlpha(index-1);

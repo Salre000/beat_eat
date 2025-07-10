@@ -57,6 +57,7 @@ public class ScoreManager : MonoBehaviour
 
         for (int i = 0; i < MusicManager.CAPACITY; i++)
         {
+            if (card.Count <= i) return;
 
             PlusDifficulty.Add(new List<GameObject>());
 
@@ -73,25 +74,19 @@ public class ScoreManager : MonoBehaviour
             C.Add(ClearRank[ClearRank.Count - 1].transform.Find("ARankColor").gameObject);
             D.Add(ClearRank[ClearRank.Count - 1].transform.Find("SRankColor").gameObject);
 
-            //S.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(4).gameObject);
-            //A.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(3).gameObject);
-            //B.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(2).gameObject);
-            //C.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(1).gameObject);
-            //D.Add(ClearRank[ClearRank.Count - 1].transform.GetChild(0).gameObject);
-
             Level.Add(card[i].transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
 
-            SetLevel(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber());
+            SetLevel(i , (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber());
 
-            SwitchRank(i, ScoreStatus.GetDessertClearRanks(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
-            scoreTexts[scoreTexts.Count - 1].text = ScoreStatus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
+            SwitchRank(i, ScoreStatus.GetDessertClearRanks(i + MusicManager.NOTMUSICNUMBER, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
+            scoreTexts[scoreTexts.Count - 1].text = ScoreStatus.GetDessertScore(i + MusicManager.NOTMUSICNUMBER, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
 
 
             for (int j = 0; j < 5; j++)
             {
                 PlusDifficulty[i].Add(card[i].transform.GetChild(4).transform.GetChild(j).transform.GetChild(0).gameObject);
 
-                SetDifficulty(i, (publicEnum.Difficulty)j, ScoreStatus.GetDessertDifficulty(i, (publicEnum.Difficulty)j));
+                SetDifficulty(i , (publicEnum.Difficulty)j, ScoreStatus.GetDessertDifficulty(i + MusicManager.NOTMUSICNUMBER, (publicEnum.Difficulty)j));
             }
 
 
@@ -114,9 +109,9 @@ public class ScoreManager : MonoBehaviour
         {
 
             //‚±‚±‚ªd‚¢‚ç‚µ‚¢
-            SwitchRank(i, ScoreStatus.GetDessertClearRanks(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
+            SwitchRank(i , ScoreStatus.GetDessertClearRanks(i + MusicManager.NOTMUSICNUMBER, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()));
 
-            scoreTexts[i].text = ScoreStatus.GetDessertScore(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
+            scoreTexts[i].text = ScoreStatus.GetDessertScore(i + MusicManager.NOTMUSICNUMBER, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber()).ToString();
 
             SetLevel(i, (publicEnum.Difficulty)MusicManager.instance.GetDifficultyNumber());
 
@@ -206,7 +201,7 @@ public class ScoreManager : MonoBehaviour
 
     private void SetLevel(int ID, publicEnum.Difficulty difficulty) 
     {
-        Level[ID].text = ScoreStatus.GetMusicLevel(ID, (int)difficulty).ToString();
+        Level[ID].text = ScoreStatus.GetMusicLevel(ID + MusicManager.NOTMUSICNUMBER, (int)difficulty).ToString();
 
 
     }

@@ -29,7 +29,7 @@ public class NotesBase : MonoBehaviour
     protected Vector3 Vec = new Vector3(0, 0, (BaseSpeed * OptionStatus.GetNotesSpeed()) / 50.0f);
 
     protected float endPos = -6.25f;
-
+    public float GetEndPos() { return endPos; } 
     public void SetEndPos(float _endPOs) { endPos = _endPOs; }
     //”»’èƒ^ƒCƒv
     public enum JudgmentType
