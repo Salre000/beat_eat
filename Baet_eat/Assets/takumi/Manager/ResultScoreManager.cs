@@ -14,7 +14,7 @@ public class ResultScoreManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI DifficultyNameJukcet;
     [SerializeField] Image JukcetColor;
     [SerializeField]
-    Color[] Diffcolor=new Color[5];
+    Color[] Diffcolor = new Color[5];
     [SerializeField] Image[] Rank;
     [SerializeField] Image[] circleRank;
     [SerializeField] GameObject[] RankObject;
@@ -44,11 +44,11 @@ public class ResultScoreManager : MonoBehaviour
 
     [SerializeField] GameObject rankObject;
 
-    [SerializeField] RectTransform[]ConboAnime=new RectTransform[2];
+    [SerializeField] RectTransform[] ConboAnime = new RectTransform[2];
     // Start is called before the first frame update
     void Start()
     {
-        AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._NewEed);
+        //AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._NewEed);
 
         MusicData musicData = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic];
         //楽曲の名前を入れる
@@ -82,6 +82,7 @@ public class ResultScoreManager : MonoBehaviour
     {
         ClearStatusAnime();
         RotetoRank();
+        CheckAchievement();
     }
 
     private void SetRank()
@@ -130,14 +131,14 @@ public class ResultScoreManager : MonoBehaviour
         circleRank[RankIndex].gameObject.SetActive(true);
         Rank[RankIndex].gameObject.SetActive(true);
         RankObject[RankIndex].SetActive(true);
-        RankObject[RankIndex].transform.parent=rankObject.transform;
+        RankObject[RankIndex].transform.parent = rankObject.transform;
         RankObject[RankIndex].transform.localPosition = Vector3.zero;
-        
+
     }
 
     private float rotetoSpeed = 1;
     private float roteto = 0;
-    private void RotetoRank() 
+    private void RotetoRank()
     {
         rankObject.transform.Rotate(0, rotetoSpeed, 0);
         roteto += rotetoSpeed;
@@ -151,10 +152,10 @@ public class ResultScoreManager : MonoBehaviour
 
     }
 
-    private void SetClearStatus() 
+    private void SetClearStatus()
     {
         publicEnum.ClearStates clearStates = InGameStatus.CheckEnd();
-        Debug.Log(clearStates+"FF");
+        Debug.Log(clearStates + "FF");
         FullConbo.gameObject.SetActive(false);
         ALLDC.gameObject.SetActive(false);
 
@@ -175,9 +176,9 @@ public class ResultScoreManager : MonoBehaviour
         ScoreStatus.SetDessertDifficulty(ScoreStatus.nowMusic, ScoreStatus.nowDifficulty, clearStates);
 
     }
-    float clearStatusAnimeCount =0;
-    float clearStatusAnimeSpeed =10;
-    private void ClearStatusAnime() 
+    float clearStatusAnimeCount = 0;
+    float clearStatusAnimeSpeed = 10;
+    private void ClearStatusAnime()
     {
         clearStatusAnimeCount++;
 
@@ -189,29 +190,29 @@ public class ResultScoreManager : MonoBehaviour
 
         if (clearStatusAnimeCount < 300) return;
 
-        clearStatusAnimeCount=Random.Range(-200, -100);
+        clearStatusAnimeCount = Random.Range(-200, -100);
 
 
-        for (int i = 0; i < 2; i++) ConboAnime[i].transform.localPosition = new Vector3(1,-1);
+        for (int i = 0; i < 2; i++) ConboAnime[i].transform.localPosition = new Vector3(1, -1);
 
 
     }
 
     private void SetJudgment()
     {
-        float percentage = (float)InGameStatus.GetJudgments(0, 0)/(float)InGameStatus.GetNotesCount();
+        float percentage = (float)InGameStatus.GetJudgments(0, 0) / (float)InGameStatus.GetNotesCount();
 
         DC.transform.localPosition = Vector2.Lerp(DC.transform.localPosition, Vector2.zero, percentage);
-         percentage = (float)InGameStatus.GetJudgments(1, 0)/(float)InGameStatus.GetNotesCount();
+        percentage = (float)InGameStatus.GetJudgments(1, 0) / (float)InGameStatus.GetNotesCount();
 
         FASTD.transform.localPosition = Vector2.Lerp(FASTD.transform.localPosition, Vector2.zero, percentage);
-         percentage = (float)InGameStatus.GetJudgments(2, 0)/(float)InGameStatus.GetNotesCount();
+        percentage = (float)InGameStatus.GetJudgments(2, 0) / (float)InGameStatus.GetNotesCount();
 
         FASTY.transform.localPosition = Vector2.Lerp(FASTY.transform.localPosition, Vector2.zero, percentage);
-         percentage = (float)InGameStatus.GetJudgments(1, 1)/(float)InGameStatus.GetNotesCount();
+        percentage = (float)InGameStatus.GetJudgments(1, 1) / (float)InGameStatus.GetNotesCount();
 
         LATED.transform.localPosition = Vector2.Lerp(LATED.transform.localPosition, Vector2.zero, percentage);
-         percentage = (float)InGameStatus.GetJudgments(2, 1)/(float)InGameStatus.GetNotesCount();
+        percentage = (float)InGameStatus.GetJudgments(2, 1) / (float)InGameStatus.GetNotesCount();
 
         LATEY.transform.localPosition = Vector2.Lerp(LATEY.transform.localPosition, Vector2.zero, percentage);
 
@@ -227,15 +228,15 @@ public class ResultScoreManager : MonoBehaviour
 
             if (sbu == 0) rete = 0.5f;
 
-            Success[i].transform.localPosition = Vector2.Lerp(Success[i].transform.localPosition, new Vector2(0,-7.5f), Mathf.Abs(rete));
-            Miss[i].transform.localPosition = Vector2.Lerp(Miss[i].transform.localPosition, new Vector2(0, -7.5f), Mathf.Abs(  rete-1));
+            Success[i].transform.localPosition = Vector2.Lerp(Success[i].transform.localPosition, new Vector2(0, -7.5f), Mathf.Abs(rete));
+            Miss[i].transform.localPosition = Vector2.Lerp(Miss[i].transform.localPosition, new Vector2(0, -7.5f), Mathf.Abs(rete - 1));
 
         }
 
-        int fast=0;
-        int late=0;
+        int fast = 0;
+        int late = 0;
 
-        for(int i = 1; i < 3; i++) 
+        for (int i = 1; i < 3; i++)
         {
             fast += InGameStatus.GetJudgments(i, 0);
             late += InGameStatus.GetJudgments(i, 1);
@@ -248,13 +249,29 @@ public class ResultScoreManager : MonoBehaviour
 
     }
 
-    public void SelectSceneChenge() 
+    public void SelectSceneChenge()
     {
         GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
 
     }
 
+    //ゲーム中に達成したアチーブメントを見せる
+    private void CheckAchievement()
+    {
+        if (AchievementStatus.GetAchievementNumber().Count == 0) return;
+        Debug.Log("カウントが０じゃない");
+        if (AchievementStatus.achievementNumber != -1) return;
+        Debug.Log("アチーブメントのナンバーがゼロじゃない");
 
+        AchievementStatus.achievementNumber = AchievementStatus.GetAchievementNumber()[0];
+        Debug.Log("描画する番号"+ AchievementStatus.GetAchievementNumber()[0]);
+        AchievementStatus.GetAchievementNumber().RemoveAt(0);
+
+        SceneManager.LoadScene("AchievementScene", LoadSceneMode.Additive);
+
+
+
+    }
 
 
 }

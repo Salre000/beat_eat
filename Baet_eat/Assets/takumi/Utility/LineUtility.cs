@@ -5,7 +5,7 @@ using UnityEngine;
 public static class LineUtility
 {
     
-    public static InGameManager gameManager{ set; private get; }
+    public static InGameManager gameManager{ set;get; }
 
     public static float HitTestRate = 2f;
     //‚±‚±‚Ì‚©‚¯‚½’l‚ª¬‚³‚¢’ö@”»’è‚Ì‘å‚«‚³‚ª‘å‚«‚­‚È‚é

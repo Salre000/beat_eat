@@ -64,7 +64,7 @@ public class SoundManager : MonoBehaviour
 
         if (afterTime <= 1) return;
         if (oneFlag) return;
-
+        AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._NewEed);
         Debug.Log("ƒV[ƒ“ˆÚs");
         GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
         oneFlag = true;

@@ -39,7 +39,7 @@ public class DessertNotes : MonoBehaviour
         DessertUtility.SbuActiveNotes(this);
     }
 
-    public void Hit() 
+    public void Hit(int index) 
     {
         if(!longFlag)notesBase.Hit();
         else GetComponent<LongNotes>().StartHit();
@@ -51,7 +51,6 @@ public class DessertNotes : MonoBehaviour
     public  bool CheckHitlane(int index)
     {
         JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position,-4f));
-        Debug.Log("‹——£" + judgmentType);
         bool flag = ((int)notesPos == index) && judgmentType <= JudgmentType.Good && (int)judgmentType >= -(int)JudgmentType.Good;
         return flag;
     }

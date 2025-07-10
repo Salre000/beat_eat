@@ -75,7 +75,11 @@ public class LongNotes : NotesBase
 
         LongLongNotes longLong = endNotes.AddComponent<LongLongNotes>();
         longLong.SetBoxArea(boxArea);
-        longLong.SetHitAction(() => SoundUtility.NotesLongHitSoundPlay());
+        longLong.SetHitAction(() =>
+        {
+            SoundUtility.NotesLongHitSoundPlay(); 
+            AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._LongNotes);
+        });
         longLong.SetEndAction(() =>
         {
             gameObject.SetActive(false);
@@ -271,7 +275,6 @@ public class LongNotes : NotesBase
     public override void Hit()
     {
         Hit(endNotes);
-
     }
     private void SetTouchIDs(int ID)
     {
@@ -293,6 +296,7 @@ public class LongNotes : NotesBase
         JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
 
         InGameStatus.AddNoesTypeSuccess(NotesType);
+
 
     }
 

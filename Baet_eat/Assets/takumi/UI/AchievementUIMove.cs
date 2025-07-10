@@ -27,7 +27,10 @@ public class AchievementUIMove : MonoBehaviour
         achievementimage.sprite=achievements.AchievementsImage;
 
     }
-
+    public void OnDisable()
+    {
+        AchievementStatus.achievementNumber = -1;
+    }
     float time = 0;
     bool flag = false;  
     public void FixedUpdate()
