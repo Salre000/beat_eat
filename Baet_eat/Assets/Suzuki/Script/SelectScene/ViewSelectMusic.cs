@@ -52,7 +52,7 @@ public class ViewSelectMusic : MonoBehaviour
     {
         ChangeJacket();
         _audioSource.Stop();
-        _audioSource.PlayOneShot(_musicList[_selectNumber]);
+        _audioSource.PlayOneShot(_musicList[_selectNumber-MusicManager.NOTMUSICNUMBER]);
     }
 
     private void ChangeJacket()
