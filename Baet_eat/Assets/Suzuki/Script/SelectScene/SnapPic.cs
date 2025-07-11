@@ -19,7 +19,7 @@ public class SnapPic : MonoBehaviour
 
     private void Start()
     {
-        SelectPicSnap.MusicSelectCard(targetPic,content);
+        SelectPicSnap.MusicSelectCard(targetPic, content);
     }
 
 
@@ -39,7 +39,7 @@ public class SnapPic : MonoBehaviour
         if (!isDragging && scrollRect.velocity.magnitude < 100f)
         {
 
-        MusicManager.instance.SetClosest(null);
+            MusicManager.instance.SetClosest(null);
             minDist = float.MaxValue;
             // 中心となる指標のY座標を取得
             centerY = targetPic.position.y;
@@ -50,7 +50,7 @@ public class SnapPic : MonoBehaviour
                 if (dist < minDist)
                 {
                     minDist = dist;
-                MusicManager.instance.SetClosest(child);
+                    MusicManager.instance.SetClosest(child);
                 }
             }
             // 見つけた曲を中央にスナップさせる
