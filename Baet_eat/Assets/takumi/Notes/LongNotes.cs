@@ -37,7 +37,8 @@ public class LongNotes : NotesBase
     private List<int> _block = new List<int>();
     public void SetBlock(int num) { _block.Add(num); }
 
-    private List<int> _renge = new List<int>();
+    //デバッグようにフィールドを追加
+    [SerializeField]private List<int> _renge = new List<int>();
     public void SetRenges(int num) { _renge.Add(num); }
 
     private float Allrange(List<int> list)
@@ -181,7 +182,9 @@ public class LongNotes : NotesBase
             }
             if (j == 0)
             {
-                if (renge != _renge[0]) vec = (((renge + 1) / 2) + (renge-_renge[0]) * 0.5f);
+                if (renge != _renge[0])vec = (-(renge-_renge[0]) * 0.5f);
+            
+
             }
             else
             {
