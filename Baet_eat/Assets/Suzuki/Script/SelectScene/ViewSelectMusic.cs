@@ -57,7 +57,7 @@ public class ViewSelectMusic : MonoBehaviour
 
     private void ChangeJacket()
     {
-        _jacket.sprite = dataBase.musicData[_selectNumber].jacket;
+        _jacket.sprite = dataBase.musicData[_selectNumber+MusicManager.NOTMUSICNUMBER].jacket;
         _backJacket.sprite = _jacket.sprite;
     }
 
