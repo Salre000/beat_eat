@@ -50,7 +50,7 @@ public class MusicManager : MonoBehaviour
     }
 
     // 選ばれている曲を返す
-    public int GetSelectMusicNumber() { return _selectMusicNumber; }
+    public int GetSelectMusicNumber() { return _selectMusicNumber+NOTMUSICNUMBER; }
     // 選ばれた曲IDのセット
     public void SetSelectMusicNumer(int selectMusicNumber) { _selectMusicNumber = selectMusicNumber; }
     // 現在の難易度を返す

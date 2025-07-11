@@ -80,7 +80,7 @@ public class SnapPic : MonoBehaviour
         {
             // 距離を正規化
             float dist = Mathf.Abs(centerY - card.position.y);
-            float scale = Mathf.Clamp(1.0f - dist / 50f, 0.7f, 1.0f); // 距離に応じてスケール
+            float scale = Mathf.Clamp(1.0f - dist / 50f, 0.7f, 1.0f); // 距離に応じてスケールチェンジ
             card.localScale = Vector3.Lerp(card.localScale, new Vector3(scale, scale, scale), 10f);
             UpdateCardPosition(card, centerY);
         }
