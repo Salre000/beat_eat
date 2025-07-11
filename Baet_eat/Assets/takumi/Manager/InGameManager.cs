@@ -52,7 +52,7 @@ public class InGameManager : MonoBehaviour
 
     private void Awake()
     {
-        SkillManager.instance.aoto.Execute();
+        SkillManager.instance.auto.Execute();
 
         LineUtility.gameManager = this;
 

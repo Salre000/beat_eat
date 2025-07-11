@@ -14,6 +14,8 @@ public class Auto : SkillBase
     public override void Initialize()
     {
         InGameStatus.AutoMode(false);
+        description = "©“®‚Åƒm[ƒc‚ğ‰ñû‚µ‚Ä‚­‚ê‚é";
+
     }
 
 
