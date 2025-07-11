@@ -181,20 +181,17 @@ public class LongNotes : NotesBase
             }
             if (j == 0)
             {
-                if (renge - _renge[0] != 0)
-                    vec = -((renge + 1) / 2) + (_renge[0] + 1) * 0.5f;
+                if (renge != _renge[0]) vec = (((renge + 1) / 2) + (renge-_renge[0]) * 0.5f);
             }
             else
             {
-                if (Range(j, _renge) - Range(j + 1, _renge) != 0)
-                    vec = -((Range(j, _renge) + 1) / 2) + Range(j + 1, _renge) * 0.5f;
-            }
 
+                if (_renge[j-1] != _renge[j]) vec -= (_renge[j-1] - _renge[j]) / 2f;
+            }
             num = (Range(j + 2, _block) + _renge[j + 1]) - (Range(j + 1, _block) + (float)_renge[j]);
             vecRight = num / (float)_distanceNum[j + 1];
             vecLeft = ((float)_block[j + 1]) / (float)_distanceNum[j + 1];
             renges = _renge[j] + 1;
-
         }
 
     }
@@ -216,7 +213,7 @@ public class LongNotes : NotesBase
     {
         if (NotesMove.Instance.stopFlag) return;
 
-        if (endNotes.transform.position.z <= -destryRenge)
+        if (endNotes.transform.position.z <= destryRenge)
         {
             if (InGameStatus.GetAuto())
             {
