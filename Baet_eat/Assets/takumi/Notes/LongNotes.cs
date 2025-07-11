@@ -175,11 +175,8 @@ public class LongNotes : NotesBase
 
             }
 
-            if (j >= _distanceNum.Count - 1)
-            {
+            if (j >= _distanceNum.Count - 1) return;
 
-                return;
-            }
             if (j == 0)
             {
                 if (renge != _renge[0])vec = (-(renge-_renge[0]) * 0.5f);
