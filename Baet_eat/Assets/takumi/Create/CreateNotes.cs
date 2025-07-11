@@ -85,16 +85,7 @@ public class CreateNotes : MonoBehaviour
         songName = Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].musicName;
         stringBuilder.Append(songName);
         Load(stringBuilder.ToString());
-
-        stringBuilder.Clear();
-        stringBuilder.Append(FilePass);
-        stringBuilder.Append(Difficulty[(int)ScoreStatus.nowDifficulty]);
-
-        songName = "_D_" + Resources.Load<MusicDataBase>(SaveData.MusicDataName).musicData[ScoreStatus.nowMusic].musicName;
-
-        stringBuilder.Append(songName);
-
-        DessertLoad(stringBuilder.ToString());
+        DessertNotes(stringBuilder.ToString());
     }
     void OnEnable()
     {
@@ -127,6 +118,8 @@ public class CreateNotes : MonoBehaviour
 
         for (int i = 0; i < inputJson.notes.Length; i++)
         {
+            if (inputJson.notes[i].block >= 10) continue;
+
             NotesCount++;
 
             float kankaku = 60 / (inputJson.BPM * (float)inputJson.notes[i].LPB);
@@ -201,7 +194,7 @@ public class CreateNotes : MonoBehaviour
                 DessertNotes dessert = notes.AddComponent<DessertNotes>();
 
 
-                dessert.SetNotesPos(DessertNotes.NotesPos.grand);
+                dessert.SetNotesPos(global::DessertNotes.NotesPos.grand);
                 dessert.Initialize();
 
 
@@ -214,11 +207,11 @@ public class CreateNotes : MonoBehaviour
 
     }
 
-    private void DessertLoad(string SongName)
+    private void DessertNotes(string SongName)
     {
         if (ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert) return;
 
-        GameObject NotesParent = new GameObject(SongName);
+        GameObject NotesParent = new GameObject("Dessert"+SongName);
 
         DessertUtility.SetNotesParent(NotesParent);
         NotesParent.transform.parent = notesParent.transform;
@@ -233,6 +226,8 @@ public class CreateNotes : MonoBehaviour
 
         for (int i = 0; i < inputJson.notes.Length; i++)
         {
+            if (inputJson.notes[i].block < 10) continue;
+
             NotesCount++;
 
             float kankaku = 60 / (inputJson.BPM * (float)inputJson.notes[i].LPB);
@@ -304,9 +299,9 @@ public class CreateNotes : MonoBehaviour
             LineUtility.AddActiveObject(notesBase);
             DessertNotes dessert = notes.AddComponent<DessertNotes>();
 
-            if (inputJson.notes[i].block < 5)
+            if (inputJson.notes[i].block==11)
             {
-                dessert.SetNotesPos(DessertNotes.NotesPos.right);
+                dessert.SetNotesPos(global::DessertNotes.NotesPos.right);
                 notes.transform.eulerAngles += new Vector3(0, 0, 90);
                 notes.transform.position = new Vector3
                     (DessertManager.GetAreaList(0).transform.up.x / 10,
@@ -318,7 +313,7 @@ public class CreateNotes : MonoBehaviour
             else
             {
                 notes.transform.eulerAngles += new Vector3(0, 0, -90);
-                dessert.SetNotesPos(DessertNotes.NotesPos.left);
+                dessert.SetNotesPos(global::DessertNotes.NotesPos.left);
                 notes.transform.position = new Vector3
                     (DessertManager.GetAreaList(1).transform.up.x / 10,
                      0,

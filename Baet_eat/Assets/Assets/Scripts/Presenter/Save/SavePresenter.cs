@@ -109,7 +109,7 @@ namespace NoteEditor.Presenter
 
         public void Save()
         {
-            var fileName = (ChengeNotes.DessertSide ? "_D_" : "") + Path.ChangeExtension(EditData.Name.Value, "json");
+            var fileName = Path.ChangeExtension(EditData.Name.Value, "json");
             Debug.Log(fileName);
             var directoryPath = Path.Combine(Path.GetDirectoryName(MusicSelector.DirectoryPath.Value), "Notes");
             var filePath = Path.Combine(directoryPath, fileName) ;

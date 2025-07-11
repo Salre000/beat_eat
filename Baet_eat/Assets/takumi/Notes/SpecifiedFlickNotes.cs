@@ -113,6 +113,13 @@ public class SpecifiedFlickNotes : FlickNotes
     public override void Hit()
     {
         if (count) return;
+
+        if (InGameStatus.GetAuto()) 
+        {
+            base.Hit();
+            DessertUtility.StartRoteto();
+
+        }
         flickStartPos = HandUtility.handPosition(touchID);
         count = true;
 
