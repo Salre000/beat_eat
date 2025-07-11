@@ -97,7 +97,8 @@ namespace NoteEditor.GLDrawing
                     {
                         for (int i = 0; i < EditData.MaxBlock.Value; i++)
                         {
-                            blockLines[i].color = blockLineColor;
+                            if((i==10||i==11)&&ChengeNotes.DessertSide) blockLines[i].color = new Color(200,0, 200);
+                            else blockLines[i].color = blockLineColor;
                         }
                     }
 
