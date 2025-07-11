@@ -48,8 +48,8 @@ public class ScoreManager : MonoBehaviour
     {
         List<GameObject> card = MusicManager.instance.GetMusicCards();
 
-
-        Content.localPosition += new Vector3(0, 125 * ScoreStatus.nowMusic, 0);
+        
+        Content.localPosition += new Vector3(0, 125 * (ScoreStatus.nowMusic-MusicManager.NOTMUSICNUMBER), 0);
 
 
         ScoreStatus.nowMusic = -1;
