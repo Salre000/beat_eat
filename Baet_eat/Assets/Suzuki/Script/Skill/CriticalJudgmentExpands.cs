@@ -12,6 +12,8 @@ public class CriticalJudgmentExpands : SkillBase
     public override void Initialize()
     {
         isSkillActiveFlags[0] = false;
+        description = "”»’è‚ª­‚µ‚¾‚¯—D‚µ‚­‚È‚é";
+
     }
 
     public JudgmentType ExecuteSetJudgment(float renge)

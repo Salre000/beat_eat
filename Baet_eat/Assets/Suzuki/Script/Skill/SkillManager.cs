@@ -40,7 +40,7 @@ public class SkillManager : MonoBehaviour
             if (isSkillActiveFlags.Count <= i) continue;
             if (!isSkillActiveFlags[i]) continue;
             content.transform.localPosition += new Vector3(0, 142 * -i, 0);
-            Debug.Log(142 * -i+"位置");
+            Debug.Log(142 * -i + "位置");
         }
 
 
@@ -67,4 +67,14 @@ public class SkillManager : MonoBehaviour
     public void SetSelectedSkillID(int selectSkillID) { _selectedSkillID = selectSkillID; }
     // スキルのアクティブと非アクティブをセットする
     public void SetIsSkillActiveFlags(int i, bool flag = false) { isSkillActiveFlags[i] = flag; }
+
+    //現在選択中のスキルの説明を返す
+    public string GetDescription()
+    {
+        string description="";
+        if (_selectedSkillID==0) description = criticalJudgmentExpands.GetDescription();
+        if (_selectedSkillID == 1) description = heelHp.GetDescription();
+        if (_selectedSkillID == 2) description = auto.GetDescription();
+        return description;
+    }
 }

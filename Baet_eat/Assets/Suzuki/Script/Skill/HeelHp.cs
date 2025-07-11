@@ -17,6 +17,7 @@ public class HeelHp : SkillBase
     public override void Initialize()
     {
         isSkillActiveFlags[1] = false;
+        description = "HP‚ª300‚ð‰º‰ñ‚é‚Æ‰ñ•œ‚·‚é";
     }
     
 
