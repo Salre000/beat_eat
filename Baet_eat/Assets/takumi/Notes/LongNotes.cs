@@ -14,10 +14,17 @@ public class LongNotes : NotesBase
     private int block;
 
     private DessertNotes dessertNotes;
-    private void Start() 
+    private float destryRenge = -6.25f;
+    private bool sideFlag = false;
+    private void Start()
     {
         dessertNotes = GetComponent<DessertNotes>();
+        if (dessertNotes != null && dessertNotes.GetNotesPos() != DessertNotes.NotesPos.grand)
+        {
+            destryRenge = -4f;
 
+        }
+        else sideFlag = true;
         NotesType = 2;
 
     }
@@ -86,7 +93,7 @@ public class LongNotes : NotesBase
         longLong.SetBoxArea(boxArea);
         longLong.SetHitAction(() =>
         {
-            SoundUtility.NotesLongHitSoundPlay(); 
+            SoundUtility.NotesLongHitSoundPlay();
             AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._LongNotes);
         });
         longLong.SetEndAction(() =>
@@ -209,19 +216,19 @@ public class LongNotes : NotesBase
     {
         if (NotesMove.Instance.stopFlag) return;
 
-        if (endNotes.transform.position.z <= -6.25f) 
+        if (endNotes.transform.position.z <= -destryRenge)
         {
             if (InGameStatus.GetAuto())
             {
-                Hit(endNotes); 
+                Hit(endNotes);
                 this.gameObject.SetActive(false);
                 SoundUtility.NotesLongHitSoundPlay();
-                return; 
+                return;
             }
         }
-        if (startNotes.transform.position.z > 
-            (ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ?-6.25f:-4)) return;
-        if(One==true&& InGameStatus.GetAuto() == true) 
+        if (startNotes.transform.position.z > destryRenge) return;
+
+        if (One == true && InGameStatus.GetAuto() == true)
         {
             SoundUtility.NotesLongHitSoundPlay();
 
@@ -246,15 +253,13 @@ public class LongNotes : NotesBase
         //ŠÏ‚¸‚ç‚¢‚¯‚Ç‚±‚ê‚µ‚©Žv‚¢‚Â‚©‚È‚©‚Á‚½
         startNotes.transform.position = Vector3.Lerp
             (new Vector3(
-               ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ?
+               sideFlag ?
                startPos.x : startNotes.transform.position.x, startNotes.transform.position.y,
-                ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ? 
-                startPos.z:-4)
+                destryRenge)
             , new Vector3(
-               ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ?
+              sideFlag ?
                nextPos[posIndex].x : startNotes.transform.position.x, startNotes.transform.position.y,
-                ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert ? 
-                nextPos[posIndex].z:-4)
+                destryRenge)
             , rate);
 
         if (rate < 1) return;

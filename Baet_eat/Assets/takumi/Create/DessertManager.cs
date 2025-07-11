@@ -50,6 +50,9 @@ public class DessertManager : MonoBehaviour
 
         notesParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f), t);
         areaParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f), t);
+        areaParent.transform.parent.transform.eulerAngles = 
+            Vector3.Lerp(Vector3.zero,new Vector3(0, 0, 30f)
+            , t*2<1?t*2:1f-(t*2-1f));
 
         if (t < 1) return;
         rotetoFlag = false;    
