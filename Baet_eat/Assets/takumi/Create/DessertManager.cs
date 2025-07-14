@@ -224,7 +224,6 @@ public class DessertManager : MonoBehaviour
             if (flag) continue;
             tapPoint[i].material = click;
             timeCount[i] = 1;
-            Debug.Log("number" + i);
             //範囲内をクリックしたと認める
             DessertUtility.Click(i, id);
 

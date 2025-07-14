@@ -165,7 +165,7 @@ public class CreateTapArea
             GameObject go = new GameObject("タップエリア");
 
             // MeshFilterに設定
-            go.AddComponent<MeshFilter>().mesh = mesh;
+            go.AddComponent<MeshFilter>().mesh = i==0||i== divisionCount+2?null: mesh;
             go.AddComponent<MeshRenderer>().material = normal;
 
             tapPosition.Add(boxarea);

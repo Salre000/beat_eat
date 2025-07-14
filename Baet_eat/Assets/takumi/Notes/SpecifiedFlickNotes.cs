@@ -13,6 +13,8 @@ public class SpecifiedFlickNotes : FlickNotes
     void Start()
     {
         renge = 15;
+        SetEndPos(-4.0f);
+
     }
     protected override void Action()
     {
@@ -73,9 +75,6 @@ public class SpecifiedFlickNotes : FlickNotes
         //Šp“x‚Ì”äŠr‚ð‚·‚é
 
         if (Vector2.Angle(Vec, targetAngle) > 90) return;
-
-        Debug.Log("Šp“x" + Vector2.Angle(Vec, targetAngle));
-
         base.Hit();
         DessertUtility.StartRoteto(regular_position?1:-1);
 

@@ -41,11 +41,9 @@ public class NotesManager : MonoBehaviour
         for(int i = 0; i < AllNotes.Count; i++) 
         {
             if (AllNotes[i].transform.position.z>50 || AllNotes[i].gameObject.activeSelf || AllNotes[i].GetShowTime() < -99) continue;
-           // Debug.Log(AllNotes[i].GetShowTime() + ":" + SoundUtility.GetNowTime());
             //ƒm[ƒc‚Ì•`‰æ‚ð‚·‚é
             AllNotes[i].gameObject.SetActive(true);
 
-            Debug.Log(AllNotes[i].name);
 
 
         }

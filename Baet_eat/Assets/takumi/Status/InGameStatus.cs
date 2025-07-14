@@ -119,7 +119,6 @@ public class InGameStatus
         NotesCount = notesCount;
 
         upScore = upscore;
-        Debug.Log(upScore + ":" + notesCount);
     }
     public static void AddNoesTypeSuccess(int notesType) { NoesTypeSuccess[notesType]++; }
     public static void AddNoesTypeMIss(int notesType) { NoesTypeMIss[notesType]++; }
