@@ -276,6 +276,22 @@ public class OptionManager : MonoBehaviour
         OptionStatus.SetNotesTouchOffset(OptionStatus.GetNotesTouchOffset() - 1);
         TouchOffsetText.text= OptionStatus.GetNotesTouchOffset().ToString();
     }
+    public void AddNotesType() 
+    {
+        OptionStatus.SetNotesID((OptionStatus.GetNotesID() + 1)%(int)NotesMaterialTypeEnum.NotesMaterialType.MAX);
+    }
+    public void SbuNotesType() 
+    {
+        OptionStatus.SetNotesID(((OptionStatus.GetNotesID() -1)+ (int)NotesMaterialTypeEnum.NotesMaterialType.MAX) %(int)NotesMaterialTypeEnum.NotesMaterialType.MAX);
+    }
+    public void AddSEType() 
+    {
+        OptionStatus.SetSEID((OptionStatus.GetSEID() + 1)%(int)SoundSEEnum.SoundSEType.MAX);
+    }
+    public void SbuSEType() 
+    {
+        OptionStatus.SetSEID(((OptionStatus.GetSEID() -1)+ (int)SoundSEEnum.SoundSEType.MAX) %(int)SoundSEEnum.SoundSEType.MAX);
+    }
 
     public void ChengeHitType() { OptionStatus.SetNotesTouchPos(!OptionStatus.GetNotesTouchPos()); SetHitImage(); }
 
