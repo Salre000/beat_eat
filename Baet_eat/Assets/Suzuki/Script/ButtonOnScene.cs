@@ -26,6 +26,11 @@ public class ButtonOnScene : MonoBehaviour
 
     private void OnTest()
     {
+        //ƒXƒLƒ‹‚Ì•Û‘¶
+        OptionStatus.SetSkillIndex(SkillManager.instance.GetSelectedSkillID());
+
+        SaveData.SaveOption();
+
         GameSceneManager.LoadScene(GameSceneManager.changeScene,LoadSceneMode.Additive);
     }
 }

@@ -104,6 +104,7 @@ public static class SaveData
         /// SEの音量　float
         /// ノーツの見た目　int
         /// SEの音　int
+        /// 選んでいたスキル　int
 
         sw.WriteLine(Startnumber == 0 ? OptionStatus.GetSkillIndex().ToString() : 0);
         sw.WriteLine(Startnumber == 0 ? OptionStatus.GetNotesSpeed().ToString() : 1);
@@ -115,6 +116,7 @@ public static class SaveData
         sw.WriteLine(Startnumber == 0 ? OptionStatus.GetSE_Volume().ToString() : 0);
         sw.WriteLine(Startnumber == 0 ? OptionStatus.GetNotesID().ToString() : 0);
         sw.WriteLine(Startnumber == 0 ? OptionStatus.GetSEID().ToString() : 0);
+        sw.WriteLine(Startnumber == 0 ? OptionStatus.GetSkillIndex().ToString() : 0);
 
         sw.Flush();
         sw.Close();

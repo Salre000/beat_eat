@@ -35,13 +35,9 @@ public class SkillManager : MonoBehaviour
     }
     private void Initialize()
     {
-        for (int i = 0; i < SKILLLIST_CAPACITY; i++)
-        {
-            if (isSkillActiveFlags.Count <= i) continue;
-            if (!isSkillActiveFlags[i]) continue;
-            content.transform.localPosition += new Vector3(0, 142 * -i, 0);
-            Debug.Log(142 * -i + "位置");
-        }
+        //前回のゲームで選択していたスキルを再選択
+        content.transform.localPosition += new Vector3(0, 142 * -OptionStatus.GetSkillIndex(), 0);
+
 
 
         for (int i = 0; i < SKILLLIST_CAPACITY; i++)
@@ -71,8 +67,8 @@ public class SkillManager : MonoBehaviour
     //現在選択中のスキルの説明を返す
     public string GetDescription()
     {
-        string description="";
-        if (_selectedSkillID==0) description = criticalJudgmentExpands.GetDescription();
+        string description = "";
+        if (_selectedSkillID == 0) description = criticalJudgmentExpands.GetDescription();
         if (_selectedSkillID == 1) description = heelHp.GetDescription();
         if (_selectedSkillID == 2) description = auto.GetDescription();
         return description;

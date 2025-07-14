@@ -202,7 +202,7 @@ public class ScoreManager : MonoBehaviour
 
     private void SetLevel(int ID, publicEnum.Difficulty difficulty) 
     {
-        Level[ID].text = ScoreStatus.GetMusicLevel(ID + MusicManager.NOTMUSICNUMBER, (int)difficulty).ToString();
+        Level[ID].text = ScoreStatus.GetMusicLevel(ID , (int)difficulty).ToString();
 
 
     }

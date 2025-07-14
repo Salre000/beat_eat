@@ -124,6 +124,7 @@ public static class LoadData
         OptionStatus.SetSE_Volume(float.Parse(csvDatas[LineCount][0])); LineCount++;
         OptionStatus.SetNotesID(int.Parse(csvDatas[LineCount][0])); LineCount++;
         OptionStatus.SetSEID(int.Parse(csvDatas[LineCount][0])); LineCount++;
+        OptionStatus.SetSkillIndex(int.Parse(csvDatas[LineCount][0])); LineCount++;
 
 
 
@@ -160,26 +161,21 @@ public static class LoadData
             csvDatas.Add(line.Split(','));
             height++; // çsêîâ¡éZ
         }
-        Debug.Log(csvDatas[0][1]);
-
-        MusicDataBase dataBase = Resources.Load<MusicDataBase>(SaveData.MusicDataName);
-
-
-        List<int> list = new List<int>();
-        for (int i = 0; i < dataBase.musicData.Count; i++)
+        for(int i = 0; i < csvDatas.Count; i++) 
         {
 
-            list.Clear();
-
-            for (int j = 0; j < 5; j++)
+            for(int j = 0; j < csvDatas[i].Length-1; j++) 
             {
-                list.Add(int.Parse(csvDatas[i][j + 1]));
+
+                csvDatas[i][j]=csvDatas[i][j+1];
 
             }
 
-            ScoreStatus.AddSetMusicLevel(list);
 
         }
+        ScoreStatus.AddSetMusicLevel(csvDatas);
+
+
 
     }
 

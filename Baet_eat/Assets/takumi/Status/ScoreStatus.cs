@@ -51,10 +51,10 @@ public static class ScoreStatus
     public static void SetMainDeshDifficulty(int ID, publicEnum.Difficulty difficulty, publicEnum.ClearStates clearStates) { Score.mainDeshClearStates[difficulty.ChengeInt()][ID] = clearStates; }
     public static publicEnum.ClearStates GetMainDeshDifficulty(int ID, publicEnum.Difficulty difficulty) { return Score.mainDeshClearStates[difficulty.ChengeInt()][ID]; }
 
-    private static List<List<int>> _musicLevel = new List<List<int>>(MusicManager.CAPACITY);
-    public static void AddSetMusicLevel(List<int> list) { _musicLevel.Add(list); }
+    private static List<string[]> _musicLevel = new List<string[]>(MusicManager.CAPACITY);
+    public static void AddSetMusicLevel(List<string[]> list) { _musicLevel=(list); }
 
-    public  static int GetMusicLevel(int ID,int Difficulty) { return _musicLevel[ID][Difficulty]; }
+    public  static string GetMusicLevel(int ID,int Difficulty) { return _musicLevel[ID][Difficulty]; }
 
     public static int nowMusic=0;
     public static publicEnum.Difficulty nowDifficulty=publicEnum.Difficulty.Drink;

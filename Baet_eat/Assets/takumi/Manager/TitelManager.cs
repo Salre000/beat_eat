@@ -11,17 +11,16 @@ public class TitelManager : MonoBehaviour
 
     private void Awake()
     {
-            Debug.Log(Application.persistentDataPath);
         if(!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.FoundationFileName + SaveData.FILR_EXTENSION)) 
         {
             SaveData.SaveFoundation(1);
         }
 
-            Debug.Log(Application.persistentDataPath);
         if(!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.OpstionFileName + SaveData.FILR_EXTENSION)) 
         {
             SaveData.SaveOption(1);
         }
+        OptionStatus.Initialize();
 
 
     }
