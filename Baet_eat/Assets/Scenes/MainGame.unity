@@ -10774,6 +10774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: -5.5
+  _area: {fileID: 883365718}
   noteNum: 0
   noteObjSkill: {fileID: 1701094039627799809, guid: a5199b564a787934999b9e40d07ddd81, type: 3}
   noteObj: {fileID: 1701094039627799809, guid: 81b38653308feca4299d646110128310, type: 3}

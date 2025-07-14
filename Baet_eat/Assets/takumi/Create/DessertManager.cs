@@ -66,7 +66,7 @@ public class DessertManager : MonoBehaviour
     public static Material flash;
 
     private const float size = 5;
-    public static void CreateTapAreaDessert()
+    public static void CreateTapAreaDessert(GameObject _area)
     {
         areaList.Clear();
         box.Clear();
@@ -75,7 +75,7 @@ public class DessertManager : MonoBehaviour
         flashLine.Clear();
         flashMaterial.Clear();
 
-        GameObject area = GameObject.Find("Area");
+        GameObject area = _area;
 
         GameObject dessertArea = new GameObject("DessertObject");
         dessertArea.transform.parent = area.transform;

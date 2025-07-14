@@ -21,7 +21,7 @@ public class CreateNotes : MonoBehaviour
     private int NotesCount = 0;
 
     private float offsetReta = 50000.0f;
-
+    [SerializeField] GameObject _area;
     public int GetCount() { return NotesCount; }
     [Serializable]
     public class Data
@@ -109,9 +109,6 @@ public class CreateNotes : MonoBehaviour
         Data inputJson = JsonUtility.FromJson<Data>(inputString);
         SoundUtility.SetObject(notesParent);
 
-        //本来はデザートオンリーの条件が必要だがデバッグ中は無視
-        if (ScoreStatus.nowDifficulty == publicEnum.Difficulty.dessert)
-            DessertManager.CreateTapAreaDessert();
 
 
         noteNum = inputJson.notes.Length;
@@ -210,6 +207,11 @@ public class CreateNotes : MonoBehaviour
     private void DessertNotes(string SongName)
     {
         if (ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert) return;
+
+        //本来はデザートオンリーの条件が必要だがデバッグ中は無視
+        if (ScoreStatus.nowDifficulty == publicEnum.Difficulty.dessert)
+            DessertManager.CreateTapAreaDessert(_area);
+
 
         GameObject NotesParent = new GameObject("Dessert"+SongName);
 
