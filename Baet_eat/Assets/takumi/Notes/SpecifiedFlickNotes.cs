@@ -20,8 +20,9 @@ public class SpecifiedFlickNotes : FlickNotes
         FlickDecision();
     }
 
+    private bool regular_position = true;
 
-    public void Initialize()
+    public void Initialize(int renge = 0)
     {
         GameObject.Instantiate(this.transform.GetChild(0).gameObject, transform);
         GameObject.Instantiate(this.transform.GetChild(0).gameObject, transform);
@@ -34,6 +35,7 @@ public class SpecifiedFlickNotes : FlickNotes
             leftFlag = true;
 
         }
+        if (renge != 0) { _i *= -1;regular_position = false;     }
 
         for (int i = 0; i < 3; i++)
         {
@@ -75,7 +77,7 @@ public class SpecifiedFlickNotes : FlickNotes
         Debug.Log("Šp“x" + Vector2.Angle(Vec, targetAngle));
 
         base.Hit();
-        DessertUtility.StartRoteto();
+        DessertUtility.StartRoteto(regular_position?1:-1);
 
 
     }
@@ -85,7 +87,7 @@ public class SpecifiedFlickNotes : FlickNotes
         {
             Vector3 pos = FlickUps[i].transform.localPosition;
 
-            pos += (-FlickUps[i].transform.right * (leftFlag ? -1 : 1)) / 10.0f;
+            pos += (-FlickUps[i].transform.right * (leftFlag ? 1 : -1)) / 10.0f;
 
             FlickUps[i].transform.localPosition = pos;
 
@@ -117,7 +119,7 @@ public class SpecifiedFlickNotes : FlickNotes
         if (InGameStatus.GetAuto()) 
         {
             base.Hit();
-            DessertUtility.StartRoteto();
+            DessertUtility.StartRoteto(regular_position ? -1 : 1);
 
         }
         flickStartPos = HandUtility.handPosition(touchID);

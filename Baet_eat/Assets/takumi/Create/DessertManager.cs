@@ -33,12 +33,14 @@ public class DessertManager : MonoBehaviour
 
     private int rotetoCount = 0;
     public int GetRotetoCount() {  return rotetoCount; }
+    private int rotetoRate = 1;
     //âÒì]Ç≥ÇπÇÈä÷êî
-    public void StartRoteto() 
+    public void StartRoteto(int rete) 
     {
         startangle = notesParent.transform.eulerAngles;
         rotetoFlag = true;
         t = 0;
+        rotetoRate=rete;
         rotetoCount++;
     }
     private float t = 0;
@@ -48,10 +50,10 @@ public class DessertManager : MonoBehaviour
         t += Time.deltaTime;
 
 
-        notesParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f), t);
-        areaParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f), t);
+        notesParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f* rotetoRate), t);
+        areaParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f * rotetoRate), t);
         areaParent.transform.parent.transform.eulerAngles = 
-            Vector3.Lerp(Vector3.zero,new Vector3(0, 0, 30f)
+            Vector3.Lerp(Vector3.zero,new Vector3(0, 0, 30f * rotetoRate)
             , t*2<1?t*2:1f-(t*2-1f));
 
         if (t < 1) return;

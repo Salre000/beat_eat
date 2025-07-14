@@ -323,7 +323,7 @@ public class CreateNotes : MonoBehaviour
             }
 
             SpecifiedFlickNotes notess = notesBase as SpecifiedFlickNotes;
-            notess?.Initialize();
+            notess?.Initialize(inputJson.notes[i].renge);
         }
 
 
