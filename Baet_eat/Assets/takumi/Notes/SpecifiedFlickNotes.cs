@@ -24,20 +24,20 @@ public class SpecifiedFlickNotes : FlickNotes
 
     private bool regular_position = true;
 
+    private int _i = 1;
     public void Initialize(int renge = 0)
     {
         GameObject.Instantiate(this.transform.GetChild(0).gameObject, transform);
         GameObject.Instantiate(this.transform.GetChild(0).gameObject, transform);
 
 
-        int _i = 1;
         if (GetComponent<DessertNotes>().GetNotesPos() == DessertNotes.NotesPos.left)
         {
             _i = -1;
             leftFlag = true;
 
         }
-        if (renge != 0) { _i *= -1;regular_position = false;     }
+        if (renge != 0) { _i *= -1; regular_position = false; }
 
         for (int i = 0; i < 3; i++)
         {
@@ -50,8 +50,6 @@ public class SpecifiedFlickNotes : FlickNotes
             meshs[i] = FlickUps[i].GetComponent<MeshRenderer>();
             meshs[i].material = new Material(meshs[i].material);
         }
-
-        Debug.Log(-FlickUps[0].transform.right + "is•ûŒü");
 
         NotesType = 3;
 
@@ -76,7 +74,8 @@ public class SpecifiedFlickNotes : FlickNotes
 
         if (Vector2.Angle(Vec, targetAngle) > 90) return;
         base.Hit();
-        DessertUtility.StartRoteto(regular_position?1:-1);
+
+        DessertUtility.StartRoteto(regular_position ? -1 : 1);
 
 
     }
@@ -86,7 +85,7 @@ public class SpecifiedFlickNotes : FlickNotes
         {
             Vector3 pos = FlickUps[i].transform.localPosition;
 
-            pos += (-FlickUps[i].transform.right * (leftFlag ? 1 : -1)) / 10.0f;
+            pos += (-FlickUps[i].transform.right * (leftFlag ? 1 : -1) *(_i*-1)*DessertUtility.RotetoRate) / 10.0f;
 
             FlickUps[i].transform.localPosition = pos;
 
@@ -115,7 +114,7 @@ public class SpecifiedFlickNotes : FlickNotes
     {
         if (count) return;
 
-        if (InGameStatus.GetAuto()) 
+        if (InGameStatus.GetAuto())
         {
             base.Hit();
             DessertUtility.StartRoteto(regular_position ? -1 : 1);
