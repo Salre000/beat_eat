@@ -68,11 +68,11 @@ public class ScoreManager : MonoBehaviour
             ClearRank.Add(card[i].transform.GetChild(6).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
             ClearRankOutLine.Add(card[i].transform.GetChild(6).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
 
-            S.Add(ClearRank[ClearRank.Count - 1].transform.Find("DRankColor").gameObject);
-            A.Add(ClearRank[ClearRank.Count - 1].transform.Find("CRankColor").gameObject);
+            D.Add(ClearRank[ClearRank.Count - 1].transform.Find("DRankColor").gameObject);
+            C.Add(ClearRank[ClearRank.Count - 1].transform.Find("CRankColor").gameObject);
             B.Add(ClearRank[ClearRank.Count - 1].transform.Find("BRankColor").gameObject);
-            C.Add(ClearRank[ClearRank.Count - 1].transform.Find("ARankColor").gameObject);
-            D.Add(ClearRank[ClearRank.Count - 1].transform.Find("SRankColor").gameObject);
+            A.Add(ClearRank[ClearRank.Count - 1].transform.Find("ARankColor").gameObject);
+            S.Add(ClearRank[ClearRank.Count - 1].transform.Find("SRankColor").gameObject);
 
             Level.Add(card[i].transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>());
 
@@ -129,7 +129,7 @@ public class ScoreManager : MonoBehaviour
         A[ID].gameObject.SetActive(false);
         B[ID].gameObject.SetActive(false);
         C[ID].gameObject.SetActive(false);
-
+        D[ID].gameObject.SetActive(false);
 
 
         switch (clearRank)
