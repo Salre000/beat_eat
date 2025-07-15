@@ -26,7 +26,7 @@ public class SoundManager : MonoBehaviour
     public void Awake()
     {
         SoundUtility.soundManager = this;
-        nowSound = Resources.Load<SoundSEObjectlAll>("InGame/SoundSEObjectAll").notesMaterials[InGameStatus.GetSoundSEID()];
+        nowSound = Resources.Load<SoundSEObjectlAll>("InGame/SoundSEObjectAll").notesMaterials[OptionStatus.GetSEID()];
 
     }
     private readonly string FliePass = "Musics/";

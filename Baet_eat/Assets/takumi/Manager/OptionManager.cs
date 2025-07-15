@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,17 +19,23 @@ public class OptionManager : MonoBehaviour
     [SerializeField] private List<RectTransform> PageRoot = new List<RectTransform>();
     [SerializeField] private GameObject DC;
 
-    [SerializeField]private GameObject HitLine;
+    [SerializeField] private GameObject HitLine;
     private RectTransform Bell;
 
     [SerializeField] TextMeshProUGUI SppedText;
     [SerializeField] TextMeshProUGUI LineOffsetText;
     [SerializeField] TextMeshProUGUI TouchOffsetText;
+    [SerializeField] TextMeshProUGUI NotesTypeText;
+    [SerializeField] TextMeshProUGUI SETypeText;
+
 
     [SerializeField] Image HitUIImage;
     [SerializeField] RectTransform HitUIImageFlag;
 
     private Vector2 hitPos = Vector2.zero;
+    [SerializeField] SoundSEObjectlAll soundALL;
+    [SerializeField] NotesMaterialAll notesALL;
+    [SerializeField] AudioSource audioSource;
     private void Awake()
     {
         OptisonUility.optionManager = this;
@@ -77,7 +84,7 @@ public class OptionManager : MonoBehaviour
     {
         _sliderVolume.gameObject.SetActive(!_sliderVolume.gameObject.activeSelf);
 
-        if (!_sliderVolume.gameObject.activeSelf) { _sliderVolume.SaveVolume(); SaveData.SaveOption();  }
+        if (!_sliderVolume.gameObject.activeSelf) { _sliderVolume.SaveVolume(); SaveData.SaveOption(); }
     }
 
     //システム敵に音量を設定する関数
@@ -126,7 +133,7 @@ public class OptionManager : MonoBehaviour
     {
         if (!OptionStatus.GetNotesTouchPos())
         {
-            DC.transform.localPosition = hitPos * 20+new Vector2(0, OptionStatus.GetNotesTouchOffset()*5);
+            DC.transform.localPosition = hitPos * 20 + new Vector2(0, OptionStatus.GetNotesTouchOffset() * 5);
         }
         else
         {
@@ -209,16 +216,16 @@ public class OptionManager : MonoBehaviour
 
     private void SetNotesLineOffset()
     {
-        Vector3 vector= HitLine.transform.position;
-        vector.z = OptionStatus.GetNotesHitLinePos()*0.1f-11;
+        Vector3 vector = HitLine.transform.position;
+        vector.z = OptionStatus.GetNotesHitLinePos() * 0.1f - 11;
         HitLine.transform.position = vector;
 
         LineOffsetText.text = OptionStatus.GetNotesHitLinePos().ToString();
     }
 
-    private  void SetHitImage() 
+    private void SetHitImage()
     {
-        if (OptionStatus.GetNotesTouchPos()) 
+        if (OptionStatus.GetNotesTouchPos())
         {
             HitUIImage.color = Color.grey;
             HitUIImageFlag.localPosition = new Vector2(-70, 0);
@@ -268,32 +275,50 @@ public class OptionManager : MonoBehaviour
     {
         if (OptionStatus.GetNotesTouchOffset() >= 10) return;
         OptionStatus.SetNotesTouchOffset(OptionStatus.GetNotesTouchOffset() + 1);
-        TouchOffsetText.text= OptionStatus.GetNotesTouchOffset().ToString();
+        TouchOffsetText.text = OptionStatus.GetNotesTouchOffset().ToString();
     }
     public void SbuNotesTouchOffset()
     {
         if (OptionStatus.GetNotesTouchOffset() <= 0) return;
         OptionStatus.SetNotesTouchOffset(OptionStatus.GetNotesTouchOffset() - 1);
-        TouchOffsetText.text= OptionStatus.GetNotesTouchOffset().ToString();
+        TouchOffsetText.text = OptionStatus.GetNotesTouchOffset().ToString();
     }
-    public void AddNotesType() 
+    public void AddNotesType()
     {
-        OptionStatus.SetNotesID((OptionStatus.GetNotesID() + 1)%(int)NotesMaterialTypeEnum.NotesMaterialType.MAX);
+        OptionStatus.SetNotesID((OptionStatus.GetNotesID() + 1) % (int)NotesMaterialTypeEnum.NotesMaterialType.MAX);
+        NotesTypeText.text = "現在のノーツタイプ" + OptionStatus.GetNotesID().ToString();
     }
-    public void SbuNotesType() 
+    public void SbuNotesType()
     {
-        OptionStatus.SetNotesID(((OptionStatus.GetNotesID() -1)+ (int)NotesMaterialTypeEnum.NotesMaterialType.MAX) %(int)NotesMaterialTypeEnum.NotesMaterialType.MAX);
+        OptionStatus.SetNotesID(((OptionStatus.GetNotesID() - 1) + (int)NotesMaterialTypeEnum.NotesMaterialType.MAX) % (int)NotesMaterialTypeEnum.NotesMaterialType.MAX);
+        NotesTypeText.text = "現在のノーツタイプ" + OptionStatus.GetNotesID().ToString();
     }
-    public void AddSEType() 
+    public void AddSEType()
     {
-        OptionStatus.SetSEID((OptionStatus.GetSEID() + 1)%(int)SoundSEEnum.SoundSEType.MAX);
+        OptionStatus.SetSEID((OptionStatus.GetSEID() + 1) % (int)SoundSEEnum.SoundSEType.MAX);
+        SETypeText.text = "現在のSEタイプ" + OptionStatus.GetSEID().ToString();
     }
-    public void SbuSEType() 
+    public void SbuSEType()
     {
-        OptionStatus.SetSEID(((OptionStatus.GetSEID() -1)+ (int)SoundSEEnum.SoundSEType.MAX) %(int)SoundSEEnum.SoundSEType.MAX);
+        OptionStatus.SetSEID(((OptionStatus.GetSEID() - 1) + (int)SoundSEEnum.SoundSEType.MAX) % (int)SoundSEEnum.SoundSEType.MAX);
+        SETypeText.text = "現在のSEタイプ" + OptionStatus.GetSEID().ToString();
     }
 
     public void ChengeHitType() { OptionStatus.SetNotesTouchPos(!OptionStatus.GetNotesTouchPos()); SetHitImage(); }
+
+    public void SoundPlay()
+    {
+        int random = UnityEngine.Random.Range(0, 4);
+
+        switch (random)
+        {
+            case 0: audioSource.PlayOneShot(soundALL.notesMaterials[OptionStatus.GetSEID()].flick); break;
+            case 1: audioSource.PlayOneShot(soundALL.notesMaterials[OptionStatus.GetSEID()]._long); break;
+            case 2: audioSource.PlayOneShot(soundALL.notesMaterials[OptionStatus.GetSEID()].normal); break;
+            case 3: audioSource.PlayOneShot(soundALL.notesMaterials[OptionStatus.GetSEID()].skill); break;
+        }
+
+    }
 
     public void AutoMode() { InGameStatus.AutoMode(); }
 }
