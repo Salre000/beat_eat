@@ -94,6 +94,13 @@ public class CreateNotes : MonoBehaviour
     public static float Kankaku = 0;
     private void Load(string SongName)
     {
+
+        NotesMaterial notesMaterial = Resources.Load<NotesMaterialAll>("InGame/NotesMaterialObject").notesMaterials[OptionStatus.GetNotesID()];
+
+        //マテリアルを使って
+        LineUtility.SetInbisible(notesMaterial._longlongCopy);
+
+
         GameObject NotesParent = new GameObject(SongName);
 
         NotesParent.transform.parent = notesParent.transform;
@@ -140,6 +147,8 @@ public class CreateNotes : MonoBehaviour
             notes.transform.parent = NotesParent.transform;
 
             NotesBase notesBase = notes.GetComponent<NotesBase>();
+
+            notesBase.SetMaterial(notesMaterial);
 
             notesBase.SetRemge(inputJson.notes[i].renge);
 
@@ -207,6 +216,7 @@ public class CreateNotes : MonoBehaviour
     private void DessertNotes(string SongName)
     {
         if (ScoreStatus.nowDifficulty != publicEnum.Difficulty.dessert) return;
+        NotesMaterial notesMaterial = Resources.Load<NotesMaterialAll>("InGame/NotesMaterialObject").notesMaterials[OptionStatus.GetNotesID()];
 
         //本来はデザートオンリーの条件が必要だがデバッグ中は無視
         if (ScoreStatus.nowDifficulty == publicEnum.Difficulty.dessert)
@@ -262,6 +272,8 @@ public class CreateNotes : MonoBehaviour
 
                 notesBase = notes.AddComponent<SpecifiedFlickNotes>();
             }
+            notesBase.SetMaterial(notesMaterial);
+
             notesBase.SetShowTime(kankaku * inputJson.notes[i].num);
 
             NotesUtility.AddNotes(notesBase);

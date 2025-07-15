@@ -20,6 +20,7 @@ public class InGameManager : MonoBehaviour
     [SerializeField] Image jacket;
     public Material GetNoeInvisible() { return NotInvisible; }
     public Material Getinvisible() { return invisible; }
+    public void Setinvisible(Material material ) { invisible=material; }
 
     [SerializeField] GameObject[] Ranks;
     private GameObject Plus;

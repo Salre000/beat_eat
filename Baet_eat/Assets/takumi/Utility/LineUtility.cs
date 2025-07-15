@@ -26,5 +26,6 @@ public static class LineUtility
     public static void SetScoreGage() {  gameManager.SetScore(); }
     public static Material GetInbisible() {return  gameManager.Getinvisible(); }
     public static Material GetNOtInbisible() { return gameManager.GetNoeInvisible(); }
+    public static void SetInbisible(Material material) { gameManager.Setinvisible(material); }
 
 }

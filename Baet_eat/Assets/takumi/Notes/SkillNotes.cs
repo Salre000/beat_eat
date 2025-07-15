@@ -28,4 +28,9 @@ public class SkillNotes : NotesBase
         showTime = -100;
 
     }
+    public override void SetMaterial(NotesMaterial material)
+    {
+
+        GetComponent<MeshRenderer>().material = material.skill;
+    }
 }

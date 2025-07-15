@@ -111,4 +111,11 @@ public class FlickNotes : NotesBase
 
         return false;
     }
+    public override void SetMaterial(NotesMaterial material)
+    {
+        GetComponent<MeshRenderer>().material = material.flick;
+        transform.GetChild(0).GetComponent<MeshRenderer>().material = material.flickup;
+
+
+    }
 }

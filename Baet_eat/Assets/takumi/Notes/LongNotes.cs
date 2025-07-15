@@ -333,4 +333,13 @@ public class LongNotes : NotesBase
 
 
     }
+    public override void SetMaterial(NotesMaterial material)
+    {
+
+        transform.GetChild(0).GetComponent<MeshRenderer>().material = material._long;
+        transform.GetChild(1).GetComponent<MeshRenderer>().material = material._long;
+        this.material = material._longlong;
+
+    }
+
 }

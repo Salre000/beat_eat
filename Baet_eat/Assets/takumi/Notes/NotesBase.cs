@@ -166,6 +166,11 @@ public class NotesBase : MonoBehaviour
         bool flag = laneIndex.Exists(number => number == index) && judgmentType <= JudgmentType.Good && (int)judgmentType >= -(int)JudgmentType.Good;
         return flag;
     }
+    public virtual void SetMaterial(NotesMaterial material) 
+    {
 
+        GetComponent<MeshRenderer>().material = material.normal;
+
+    }
 
 }

@@ -36,6 +36,7 @@ public class OptionManager : MonoBehaviour
     [SerializeField] SoundSEObjectlAll soundALL;
     [SerializeField] NotesMaterialAll notesALL;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] GameObject DemoNotesParent;
     private void Awake()
     {
         OptisonUility.optionManager = this;
@@ -45,6 +46,8 @@ public class OptionManager : MonoBehaviour
     private void Start()
     {
         SetOptionData();
+        SetSEType();
+        SetNotesType();
 
         //ページより前のページ以外の子供オブジェクトの数だけ高くスタート
         //ページより後のページ以外の子供オブジェクトの数だけ低く終了
@@ -286,24 +289,38 @@ public class OptionManager : MonoBehaviour
     public void AddNotesType()
     {
         OptionStatus.SetNotesID((OptionStatus.GetNotesID() + 1) % (int)NotesMaterialTypeEnum.NotesMaterialType.MAX);
-        NotesTypeText.text = "現在のノーツタイプ" + OptionStatus.GetNotesID().ToString();
+        SetNotesType();
     }
     public void SbuNotesType()
     {
         OptionStatus.SetNotesID(((OptionStatus.GetNotesID() - 1) + (int)NotesMaterialTypeEnum.NotesMaterialType.MAX) % (int)NotesMaterialTypeEnum.NotesMaterialType.MAX);
-        NotesTypeText.text = "現在のノーツタイプ" + OptionStatus.GetNotesID().ToString();
+        SetNotesType();
     }
     public void AddSEType()
     {
         OptionStatus.SetSEID((OptionStatus.GetSEID() + 1) % (int)SoundSEEnum.SoundSEType.MAX);
-        SETypeText.text = "現在のSEタイプ" + OptionStatus.GetSEID().ToString();
+        SetSEType();
     }
     public void SbuSEType()
     {
         OptionStatus.SetSEID(((OptionStatus.GetSEID() - 1) + (int)SoundSEEnum.SoundSEType.MAX) % (int)SoundSEEnum.SoundSEType.MAX);
-        SETypeText.text = "現在のSEタイプ" + OptionStatus.GetSEID().ToString();
+        SetSEType();
     }
+    private void SetSEType() 
+    {
+        SETypeText.text = soundALL.notesMaterials[OptionStatus.GetSEID()].typeNameExplanation;
 
+    }
+    private void SetNotesType() 
+    {
+        NotesTypeText.text = notesALL.notesMaterials[OptionStatus.GetNotesID()].typeNameExplanation;
+        DemoNotesParent.transform.GetChild(0).GetComponent<MeshRenderer>().material = notesALL.notesMaterials[OptionStatus.GetNotesID()].normal;
+        DemoNotesParent.transform.GetChild(1).GetComponent<MeshRenderer>().material = notesALL.notesMaterials[OptionStatus.GetNotesID()].skill;
+        DemoNotesParent.transform.GetChild(2).GetComponent<MeshRenderer>().material = notesALL.notesMaterials[OptionStatus.GetNotesID()].flick;
+        DemoNotesParent.transform.GetChild(2).transform.GetChild(0).GetComponent<MeshRenderer>().material = notesALL.notesMaterials[OptionStatus.GetNotesID()].flickup;
+        DemoNotesParent.transform.GetChild(3).transform.GetChild(0).GetComponent<MeshRenderer>().material = notesALL.notesMaterials[OptionStatus.GetNotesID()]._long;
+
+    }
     public void ChengeHitType() { OptionStatus.SetNotesTouchPos(!OptionStatus.GetNotesTouchPos()); SetHitImage(); }
 
     public void SoundPlay()
