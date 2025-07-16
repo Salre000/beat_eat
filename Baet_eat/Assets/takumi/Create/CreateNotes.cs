@@ -123,18 +123,6 @@ public class CreateNotes : MonoBehaviour
         for (int i = 0; i < inputJson.notes.Length; i++)
         {
             if (inputJson.notes[i].block >= 10) continue;
-            if (inputJson.notes[i].block + inputJson.notes[i].renge>9)
-            {
-                int errer = 0;
-
-                Debug.Log(
-                    "横" + inputJson.notes[i].block + ":" +
-                    "位置" + inputJson.notes[i].num + ":" +
-                    "幅" + inputJson.notes[i].renge + ":" +
-                    "種類" + inputJson.notes[i].type + ":"
-                    );
-
-            }
 
             NotesCount++;
 
@@ -148,6 +136,19 @@ public class CreateNotes : MonoBehaviour
 
             //プレハブを複製して見えないように変更
             GameObject notes = CreateTypeNotes(inputJson.notes[i].type);
+            if (inputJson.notes[i].block + inputJson.notes[i].renge > 9)
+            {
+                int errer = 0;
+                notes.gameObject.name = "エラーノーツ";
+
+                Debug.Log(
+                    "横" + inputJson.notes[i].block + ":" +
+                    "位置" + inputJson.notes[i].num + ":" +
+                    "幅" + inputJson.notes[i].renge + ":" +
+                    "種類" + inputJson.notes[i].type + ":"
+                    );
+
+            }
 
             // 時間　 kankaku * inputJson.notes[i].num 
 
@@ -198,6 +199,7 @@ public class CreateNotes : MonoBehaviour
                     }
                     if (inputJson.notes[i].notes[j].block + inputJson.notes[i].notes[j].renge > 9)
                     {
+                        longNotes.gameObject.name = "エラーロングノーツ";
                         int errer = 0;
 
                         Debug.Log(
