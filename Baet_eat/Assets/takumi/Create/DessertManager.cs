@@ -15,7 +15,7 @@ public class DessertManager : MonoBehaviour
     private static List<Material> flashMaterial = new List<Material>();
 
     private static List<GameObject> areaList = new List<GameObject>();
-    public static GameObject GetAreaList(int index) {  return areaList[index]; }
+    public static GameObject GetAreaList(int index) { return areaList[index]; }
     [SerializeField] private List<DessertNotes> AllNotes = new List<DessertNotes>();
     public void AddAllNotes(DessertNotes notes) { AllNotes.Add(notes); }
     public void SbuAllNotes(DessertNotes notes) { AllNotes.Remove(notes); }
@@ -27,37 +27,39 @@ public class DessertManager : MonoBehaviour
 
     private Vector3 startangle;
     private GameObject notesParent;
-    public void SetNotesParent(GameObject gameObject) {  notesParent = gameObject; }
-    private GameObject areaParent; 
+    public void SetNotesParent(GameObject gameObject) { notesParent = gameObject; }
+    private GameObject areaParent;
     private bool rotetoFlag = false;
 
     private int rotetoCount = 0;
-    public int GetRotetoCount() {  return rotetoCount; }
+    public int GetRotetoCount() { return rotetoCount; }
     private int rotetoRate = 1;
+
+    public static GameObject mainCamera { private get; set; }
     //回転させる関数
-    public void StartRoteto(int rete) 
+    public void StartRoteto(int rete)
     {
         startangle = notesParent.transform.eulerAngles;
         rotetoFlag = true;
         t = 0;
-        rotetoRate=rete;
+        rotetoRate = rete;
         rotetoCount++;
     }
     private float t = 0;
-    private void Roteto() 
+    private void Roteto()
     {
         if (!rotetoFlag) return;
         t += Time.deltaTime;
 
 
-        notesParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f* rotetoRate), t);
+        notesParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f * rotetoRate), t);
         areaParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f * rotetoRate), t);
-        areaParent.transform.parent.transform.eulerAngles = 
-            Vector3.Lerp(Vector3.zero,new Vector3(0, 0, 30f * rotetoRate)
-            , t*2<1?t*2:1f-(t*2-1f));
+        mainCamera.transform.parent.transform.eulerAngles =
+            Vector3.Lerp(Vector3.zero, new Vector3(0, 0, 30f * rotetoRate)
+            , t * 2 < 1 ? t * 2 : 1f - (t * 2 - 1f));
 
         if (t < 1) return;
-        rotetoFlag = false;    
+        rotetoFlag = false;
 
     }
 
@@ -144,7 +146,7 @@ public class DessertManager : MonoBehaviour
             box.Add(box1);
 
 
-            
+
             boxarea = new BoxArea();
             //メッシュの座標を設定
             boxarea.leftTop = new Vector3(-size, 0, areaRange * 100);
@@ -175,7 +177,7 @@ public class DessertManager : MonoBehaviour
             go.AddComponent<MeshFilter>().mesh = mesh;
             go.AddComponent<MeshRenderer>().material = flashMaterial[i < 0 ? 0 : 1];
 
-            go.transform.parent = areaList[i<0?0:1].transform;
+            go.transform.parent = areaList[i < 0 ? 0 : 1].transform;
             flashLine.Add(go.GetComponent<MeshRenderer>());
 
 
@@ -184,13 +186,13 @@ public class DessertManager : MonoBehaviour
         }
 
         //二つのオブジェクトの中心に配置
-        Vector3 pos = areaList[0].transform.position + (areaList[1].transform.position - areaList[0].transform.position)/2;
+        Vector3 pos = areaList[0].transform.position + (areaList[1].transform.position - areaList[0].transform.position) / 2;
         dessertArea.transform.position = pos;
 
         areaList[0].transform.parent = dessertArea.transform;
         areaList[1].transform.parent = dessertArea.transform;
 
-        DessertManager dessertManager= area.AddComponent<DessertManager>();
+        DessertManager dessertManager = area.AddComponent<DessertManager>();
 
         dessertManager.areaParent = dessertArea;
 
@@ -207,7 +209,7 @@ public class DessertManager : MonoBehaviour
             for (int j = 0; j < 4; j++)
             {
                 //周りの方向ベクトルを取得
-                vecs[j] = TapAreaPoint((i+rotetoCount)%2, j);
+                vecs[j] = TapAreaPoint((i + rotetoCount) % 2, j);
             }
             bool flag = false;
             for (int j = 0; j < 4; j++)
@@ -241,8 +243,9 @@ public class DessertManager : MonoBehaviour
 
     public void Awake()
     {
-        
+
         DessertUtility.dessertGame = this;
+
     }
     public void CheckClick()
     {

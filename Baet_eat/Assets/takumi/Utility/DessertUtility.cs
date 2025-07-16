@@ -76,15 +76,6 @@ public static class DessertUtility
     public static void ALLChenge()
     {
 
-        //デバッグよう
-        if (!Input.GetKeyUp(KeyCode.P)) return;
-
-        List<DessertNotes> notes = dessertGame.GetAllNotes();
-
-        DessertNotes.t = 0;
-        for (int i = 0; i < notes.Count; i++)
-        {
-        }
 
     }
 

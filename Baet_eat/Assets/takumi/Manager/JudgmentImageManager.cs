@@ -11,7 +11,7 @@ public class JudgmentImageManager : MonoBehaviour
 
     private Vector2 ImagePos = Vector2.zero;
 
-    private readonly float UP_SIZE = 0.15f;
+    private readonly float UP_SIZE = 0.25f;
 
     private float time =0;
     private readonly float MAX_TIME = 3.0f;
