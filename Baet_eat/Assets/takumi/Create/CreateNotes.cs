@@ -123,6 +123,18 @@ public class CreateNotes : MonoBehaviour
         for (int i = 0; i < inputJson.notes.Length; i++)
         {
             if (inputJson.notes[i].block >= 10) continue;
+            if (inputJson.notes[i].block + inputJson.notes[i].renge>9)
+            {
+                int errer = 0;
+
+                Debug.Log(
+                    "â°" + inputJson.notes[i].block + ":" +
+                    "à íu" + inputJson.notes[i].num + ":" +
+                    "ïù" + inputJson.notes[i].renge + ":" +
+                    "éÌóﬁ" + inputJson.notes[i].type + ":"
+                    );
+
+            }
 
             NotesCount++;
 
@@ -139,7 +151,6 @@ public class CreateNotes : MonoBehaviour
 
             // éûä‘Å@ kankaku * inputJson.notes[i].num 
 
-            Debug.Log((inputJson.offset / 50000.0f) * OptionStatus.GetNotesSpeed() * 20 + "FFFF");
             notes.transform.position = new Vector3((inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,
                 (kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)
                 + (inputJson.offset / offsetReta) * OptionStatus.GetNotesSpeed() * 20) + LineOffset;
@@ -185,6 +196,19 @@ public class CreateNotes : MonoBehaviour
                         longNotes.SetDistanceNum(inputJson.notes[i].notes[j].num - inputJson.notes[i].notes[j - 1].num);
                         longNotes.SetBlock(inputJson.notes[i].notes[j].block - inputJson.notes[i].notes[j - 1].block);
                     }
+                    if (inputJson.notes[i].notes[j].block + inputJson.notes[i].notes[j].renge > 9)
+                    {
+                        int errer = 0;
+
+                        Debug.Log(
+                            "â°" + inputJson.notes[i].notes[j].block + ":" +
+                            "à íu" + inputJson.notes[i].notes[j].num + ":" +
+                            "ïù" + inputJson.notes[i].notes[j].renge + ":" +
+                            "éÌóﬁ" + inputJson.notes[i].notes[j].type + ":"
+                            );
+
+                    }
+
                 }
 
                 longNotes.Initialize();

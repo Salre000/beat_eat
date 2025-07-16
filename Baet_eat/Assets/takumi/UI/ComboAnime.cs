@@ -14,7 +14,6 @@ public class ComboAnime : MonoBehaviour
     private void Awake()
     {
         _endPos = transform.position;
-        Debug.Log(_endPos + "‰Šú’l");
     }
 
     private void FixedUpdate()

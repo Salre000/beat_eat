@@ -53,7 +53,7 @@ public class JudgmentImageManager : MonoBehaviour
 
 
     }
-    public void SetImagePos(Vector2 pos) { Debug.Log("UI�̏ꏊ"+pos); ImagePos = pos; }
+    public void SetImagePos(Vector2 pos) { ImagePos = pos; }
     public void SetNowJudgmentObject(int index)
     {
         for (int i = 0; i < JudgmentObjects.Length; i++)

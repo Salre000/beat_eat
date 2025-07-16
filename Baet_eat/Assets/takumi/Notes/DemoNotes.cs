@@ -16,7 +16,6 @@ public class DemoNotes : MonoBehaviour
 
         if (transform.position.z < -11+(OptionStatus.GetNotesHitLinePos()*0.1f) && !ActionFlag) 
         {
-        Debug.Log(transform.localPosition);
             //”»’èŒ‹‰Ê‚ðo‚·
             OptisonUility.DCStart();
             OptisonUility.SetHitPos(transform.localPosition);

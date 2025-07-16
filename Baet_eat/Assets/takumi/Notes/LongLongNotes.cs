@@ -140,8 +140,6 @@ public class LongLongNotes : NotesBase
         mesh = this.GetComponent<MeshRenderer>();
 
         mesh.material = LineUtility.GetInbisible();
-        Debug.Log("Œ©‚¦‚È‚­‚·‚é");
-
         if (endAction != null) endAction();
 
         if (hitAction != null) hitAction();
