@@ -56,6 +56,7 @@ public class NotesBase : MonoBehaviour
     //ƒm[ƒc‚ÉG‚ê‚½‚Æ‚«‚É“®‚­ŠÖ”
     public virtual void Hit()
     {
+        JudgmentImageUtility.SetNowJudgmentObjectPos(transform.position);
         //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
         SetJudgment(this.gameObject);
 
@@ -63,7 +64,6 @@ public class NotesBase : MonoBehaviour
 
         //©g‚ğactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
         LineUtility.SbuActiveObject(this);
-        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
 
         showTime = -100;
         //©•ª‚ğŒ©‚¦‚È‚­‚·‚é
@@ -74,6 +74,7 @@ public class NotesBase : MonoBehaviour
 
     public virtual void Hit(bool flag)
     {
+        JudgmentImageUtility.SetNowJudgmentObjectPos(transform.position);
         //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
         SetJudgment(this.gameObject);
 
@@ -81,7 +82,6 @@ public class NotesBase : MonoBehaviour
 
         showTime = -100;
 
-        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
         InGameStatus.AddNoesTypeSuccess(NotesType);
 
     }

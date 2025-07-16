@@ -32,15 +32,15 @@ public class FlickNotes : NotesBase
 
     public override void Hit()
     {
-        //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
-        SetJudgment(this.gameObject);
 
         SoundUtility.NotesFlickHitSoundPlay();
 
         //©g‚ğactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
         LineUtility.SbuActiveObject(this);
-        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
+        JudgmentImageUtility.SetNowJudgmentObjectPos(transform.position);
 
+        //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
+        SetJudgment(this.gameObject);
         showTime = -100;
         //©•ª‚ğŒ©‚¦‚È‚­‚·‚é
         this.gameObject.SetActive(false);

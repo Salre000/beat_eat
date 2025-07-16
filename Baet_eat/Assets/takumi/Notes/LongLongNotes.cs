@@ -99,7 +99,6 @@ public class LongLongNotes : NotesBase
         for (int i = 0; i < hands.Count; i++)
         {
             if (!hands[i].flag) continue;
-            Debug.Log(MaxPos + ":" + MinPos + "SSS");
             if (MinPos < hands[i].HandPosition.x && MaxPos > hands[i].HandPosition.x) ID = i;
 
         }

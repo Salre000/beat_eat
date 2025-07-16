@@ -315,6 +315,7 @@ public class LongNotes : NotesBase
     }
     public void Hit(GameObject gameObject)
     {
+        JudgmentImageUtility.SetNowJudgmentObjectPos(transform.position);
         //”»’è‚Ì‰ÁZ‚ğ‚·‚éŠÖ”
         SetJudgment(gameObject);
 
@@ -327,7 +328,6 @@ public class LongNotes : NotesBase
         //©•ª‚ğŒ©‚¦‚È‚­‚·‚é
         this.gameObject.SetActive(false);
 
-        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
 
         InGameStatus.AddNoesTypeSuccess(NotesType);
 

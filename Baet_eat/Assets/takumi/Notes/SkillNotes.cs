@@ -12,6 +12,7 @@ public class SkillNotes : NotesBase
 
     public override void Hit()
     {
+        JudgmentImageUtility.SetNowJudgmentObjectPos(transform.position);
         InGameStatus.SetJudgments(0, 0);
         InGameStatus.AddScore(1);
 
@@ -19,7 +20,6 @@ public class SkillNotes : NotesBase
 
         //©g‚ğactive‚¶‚á‚È‚¢ó‘Ô‚É•ÏX
         LineUtility.SbuActiveObject(this);
-        JudgmentImageUtility.SetNowJudgmentObjectPos(touchID);
 
         InGameStatus.AddNoesTypeSuccess(NotesType);
         //©•ª‚ğŒ©‚¦‚È‚­‚·‚é
