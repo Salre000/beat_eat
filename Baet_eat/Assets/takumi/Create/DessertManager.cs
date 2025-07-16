@@ -35,7 +35,7 @@ public class DessertManager : MonoBehaviour
     public int GetRotetoCount() { return rotetoCount; }
     private int rotetoRate = 1;
 
-    public static GameObject mainCamera { private get; set; }
+    public static GameObject mainCamera;
     //âÒì]Ç≥ÇπÇÈä÷êî
     public void StartRoteto(int rete)
     {
@@ -49,14 +49,16 @@ public class DessertManager : MonoBehaviour
     private void Roteto()
     {
         if (!rotetoFlag) return;
-        t += Time.deltaTime;
+        t += Time.deltaTime*3.5f;
 
 
         notesParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f * rotetoRate), t);
         areaParent.transform.eulerAngles = Vector3.Lerp(startangle, startangle + new Vector3(0, 0, 180f * rotetoRate), t);
-        mainCamera.transform.parent.transform.eulerAngles =
-            Vector3.Lerp(Vector3.zero, new Vector3(0, 0, 30f * rotetoRate)
-            , t * 2 < 1 ? t * 2 : 1f - (t * 2 - 1f));
+
+        float t2 = t*3<1?t*3:1-t;
+        mainCamera.transform.eulerAngles =
+            Vector3.Lerp(new Vector3(30, 0, 0), new Vector3(30, 0, -2f * rotetoRate)
+            , t2);
 
         if (t < 1) return;
         rotetoFlag = false;

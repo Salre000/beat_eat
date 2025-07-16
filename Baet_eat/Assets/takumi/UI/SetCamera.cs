@@ -7,7 +7,15 @@ public class SetCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (DessertUtility.dessertGame != null) DessertManager.mainCamera = this.gameObject;
+       DessertManager.mainCamera = this.gameObject;
+        
+    }
+
+    private void FixedUpdate()
+    {
+        if (DessertManager.mainCamera != null) return;
+
+        DessertManager.mainCamera = gameObject;
         
     }
 

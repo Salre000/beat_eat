@@ -197,7 +197,10 @@ public class InGameManager : MonoBehaviour
             {
                 offset += 0.05f;
                 if (ScoreReteOffset == 0) ScoreReteOffset = 0.05f;
+
+                
             }
+            if (InGameStatus.GetScore() >= InGameStatus.GetMAXScore()) { ScoreReteOffset = 0;offset = 1; }
 
         }
         else if (clearRank != publicEnum.ClearRank.D)
