@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class SoundManager : MonoBehaviour
     AudioSource _soundSource;
     [SerializeField] AudioSource _BGMSoundSource;
 
+    public bool GetPlayFlag() { return _soundSource.isPlaying; }
+
     public GameObject _sound;
 
     [SerializeField] CreateNotes createNotes;
@@ -22,11 +25,28 @@ public class SoundManager : MonoBehaviour
     [SerializeField] GameObject poseImage;
     [SerializeField] TextMeshProUGUI poseCount;
 
+    [SerializeField] private float pitch = 1;
+
+    private readonly int poolCount = 30;
+    [SerializeField] private List<AudioSource> souresPool = new List<AudioSource>();
+
+    [SerializeField] AudioMixerGroup mixerGroup;
+
 
     public void Awake()
     {
         SoundUtility.soundManager = this;
         nowSound = Resources.Load<SoundSEObjectlAll>("InGame/SoundSEObjectAll").notesMaterials[OptionStatus.GetSEID()];
+        for (int i = 0; i < poolCount; i++)
+        {
+
+            GameObject gameObject = new GameObject("SoundPool" + i.ToString());
+            souresPool.Add(gameObject.AddComponent<AudioSource>());
+            souresPool[i].outputAudioMixerGroup = mixerGroup;
+
+        }
+
+        //pitch=(SoundSEEnum.SoundSEType)
 
     }
     private readonly string FliePass = "Musics/";
@@ -90,6 +110,8 @@ public class SoundManager : MonoBehaviour
 
     public void OpenPose()
     {
+        poseCount.gameObject.SetActive(false);
+
         poseImage.SetActive(true);
         NotesMove.Instance.stopFlag = true;
         MainBGMStop();
@@ -142,10 +164,36 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void StartNotesNormalHitSound() { _BGMSoundSource.PlayOneShot(nowSound.normal); }
-    public void StartNotesFlickHitSound() { _BGMSoundSource.PlayOneShot(nowSound.flick); }
-    public void StartNotesLongHitSound() { _BGMSoundSource.PlayOneShot(nowSound._long); }
-    public void StartNotesSkillHitSound() { _BGMSoundSource.PlayOneShot(nowSound.skill); }
+    private AudioSource GetAudio() 
+    {
+        for(int i = 0; i < souresPool.Count; i++) 
+        {
+
+            if (souresPool[i].isPlaying) continue;
+
+
+            return souresPool[i];
+        }
+
+        return null;
+
+    }
+    private void SetSound(AudioClip clip) 
+    {
+        AudioSource sound = GetAudio();
+
+        sound.clip = clip;
+
+        sound.pitch = pitch;
+
+        sound.Play();
+
+    }
+
+    public void StartNotesNormalHitSound() { SetSound(nowSound.normal); }
+    public void StartNotesFlickHitSound() { SetSound(nowSound.flick); }
+    public void StartNotesLongHitSound() { SetSound(nowSound._long); }
+    public void StartNotesSkillHitSound() { SetSound(nowSound.skill); }
 
     public void MainBGMStop() { if (time != 0) return; time = _soundSource.time; _soundSource.Stop(); }
     public void MainBGMStart() { if (time == 0) return; _soundSource.time = time; _soundSource.Play(); time = 0; }

@@ -17,6 +17,7 @@ public static class SoundUtility
 
     public static void SetObject(GameObject aa) { soundManager._sound = aa; }
 
+    public static bool GetPlaying() { return soundManager.GetPlayFlag(); }
 
 
 }

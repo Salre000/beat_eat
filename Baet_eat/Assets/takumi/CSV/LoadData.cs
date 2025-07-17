@@ -89,7 +89,6 @@ public static class LoadData
         //繋げたファイルパスを使いファイルのロードを行う
         string filePath = Path.Combine(Application.persistentDataPath, SaveData.OpstionFileName + SaveData.FILR_EXTENSION);
 
-        Debug.Log(filePath);
         string[] lines = File.ReadAllLines(filePath);
 
         //読み込んだテキストをString型にして格納

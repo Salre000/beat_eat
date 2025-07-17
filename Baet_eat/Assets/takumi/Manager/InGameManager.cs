@@ -87,8 +87,6 @@ public class InGameManager : MonoBehaviour
         {
             preStart = true; InGameStatus.SetUpScore(GetComponent<CreateNotes>().GetCount() + LongLongNotesCount);
         }
-        if (Input.GetKey(KeyCode.T)) SoundUtility.MainBGMStop();
-        if (Input.GetKey(KeyCode.R)) SoundUtility.MainBGMStart();
 
         for (int i = 0; i < 14; i++) { tapFlag.Add(false); }
 

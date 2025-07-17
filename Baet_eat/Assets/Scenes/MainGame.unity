@@ -13562,6 +13562,9 @@ MonoBehaviour:
   createNotes: {fileID: 1325062683}
   poseImage: {fileID: 1737989418}
   poseCount: {fileID: 126326326}
+  pitch: 1
+  souresPool: []
+  mixerGroup: {fileID: 3099923934492940956, guid: 373bae3b351eed94ebf4e2e4ebf6c59f, type: 2}
 --- !u!4 &1846545984
 Transform:
   m_ObjectHideFlags: 0

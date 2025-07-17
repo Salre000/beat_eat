@@ -70,10 +70,26 @@ public class AchievementStatus
         SaveData.SaveAchiveMent();
 
     }
+    public static void AchieventSystemSet(AchievementTypeEnum.AchievementType type)
+    {
+        int Index = (int)type;
 
+        if (achievements.GetAChiveMentStatus(Index)) return;
 
-    public static List<int> GetAchievementNumber() {  return achievementNumberList; }
-    public static void ResetAchievementNumber() {  achievementNumberList.Clear(); }
+        achievements.AddAChiveMentCount(Index);
+
+        if (achievements.GetAChiveMentCount(Index) < achivementMaxCount[Index]) return;
+
+        achievements.SetAChiveMentStatus(Index);
+
+        achievementNumberList.Add(Index);
+        //アチーブメントのデータを保存
+        SaveData.SaveAchiveMent();
+
+    }
+
+    public static List<int> GetAchievementNumber() { return achievementNumberList; }
+    public static void ResetAchievementNumber() { achievementNumberList.Clear(); }
 
 
 

@@ -74,10 +74,38 @@ public class ResultScoreManager : MonoBehaviour
 
         ScoreStatus.SetDessertClearRanks(ScoreStatus.nowMusic, ScoreStatus.nowDifficulty, InGameStatus.GetScoreClearRank((int)InGameStatus.GetScore()));
 
-
+        SwitchDifficulty();
         SaveData.SaveFoundation();
     }
 
+    private void SwitchDifficulty() 
+    {
+        publicEnum.Difficulty difficulty = ScoreStatus.nowDifficulty;
+        switch (difficulty)
+        {
+            case publicEnum.Difficulty.Drink:
+                AchievementStatus.AchieventSystemSet(AchievementTypeEnum.AchievementType._drink);
+                break;
+            case publicEnum.Difficulty.Hors_d_oeuvre:
+                AchievementStatus.AchieventSystemSet(AchievementTypeEnum.AchievementType._HorsDoeuvre);
+                break;
+            case publicEnum.Difficulty.Soup:
+                AchievementStatus.AchieventSystemSet(AchievementTypeEnum.AchievementType._Soup);
+                break;
+            case publicEnum.Difficulty.MainDish:
+                AchievementStatus.AchieventSystemSet(AchievementTypeEnum.AchievementType._mainDish);
+                break;
+            case publicEnum.Difficulty.dessert:
+                AchievementStatus.AchieventSystemSet(AchievementTypeEnum.AchievementType._drink);
+                break;
+            case publicEnum.Difficulty.MAX:
+                AchievementStatus.AchieventSystemSet(AchievementTypeEnum.AchievementType._drink);
+
+                break;
+        }
+
+
+    }
     private void FixedUpdate()
     {
         ClearStatusAnime();

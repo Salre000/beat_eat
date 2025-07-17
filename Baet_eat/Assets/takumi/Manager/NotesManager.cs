@@ -19,6 +19,8 @@ public class NotesManager : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (!SoundUtility.GetPlaying()) return;
+
         ShowNotes();
 
         List<HandManager.Hands> hands = HandUtility.GetHands();

@@ -18,6 +18,8 @@ _HorsDoeuvre,
 _Soup,
         /// <summary><see _mainDish="ステーキと伊勢海老の気分"/> </summary>\r\n
 _mainDish,
+        /// <summary><see _dessert="甘くない難易度"/> </summary>\r\n
+_dessert,
         /// <summary><see _LongNotes="オマエキライ"/> </summary>\r\n
 _LongNotes,
 MAX

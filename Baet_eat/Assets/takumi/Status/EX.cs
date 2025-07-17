@@ -24,5 +24,17 @@ public static class EX
         return "";
     }
 
+    public static float GetPitch(this SoundSEEnum.SoundSEType soundSE) 
+    {
+        switch (soundSE)
+        {
+            case SoundSEEnum.SoundSEType._piano:
+                return 2.5f;
+        }
+
+        return 1;
+
+    }
+
 
 }
