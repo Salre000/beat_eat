@@ -28,8 +28,7 @@ public static class EX
     {
         switch (soundSE)
         {
-            case SoundSEEnum.SoundSEType._piano:
-                return 2.5f;
+
         }
 
         return 1;

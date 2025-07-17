@@ -46,7 +46,7 @@ public class SoundManager : MonoBehaviour
 
         }
 
-        //pitch=(SoundSEEnum.SoundSEType)
+        pitch=((SoundSEEnum.SoundSEType)OptionStatus.GetSEID()).GetPitch();
 
     }
     private readonly string FliePass = "Musics/";

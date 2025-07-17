@@ -177,12 +177,13 @@ public class OptionManager : MonoBehaviour
 
 
     }
+    private float flipSpeed = 5;
     private void PageFlip()
     {
 
         if (!flipFlag || nextPage == nowPage) return;
 
-        if (PageList[nowPage * 2 + offsetA].activeSelf) PageList[nowPage * 2 + offsetA].transform.Rotate(0, 1, 0);
+        if (PageList[nowPage * 2 + offsetA].activeSelf) PageList[nowPage * 2 + offsetA].transform.Rotate(0, flipSpeed, 0);
 
         if (PageList[nowPage * 2 + offsetA].transform.eulerAngles.y < 90) return;
 
@@ -191,7 +192,7 @@ public class OptionManager : MonoBehaviour
             PageList[nowPage * 2 + offsetA].SetActive(false);
             PageList[nextPage * 2 + offsetB].SetActive(true);
         }
-        if (PageList[nextPage * 2 + offsetB].activeSelf) PageList[nextPage * 2 + offsetB].transform.Rotate(0, -1, 0);
+        if (PageList[nextPage * 2 + offsetB].activeSelf) PageList[nextPage * 2 + offsetB].transform.Rotate(0, -flipSpeed, 0);
 
         if (PageList[nextPage * 2 + offsetB].transform.eulerAngles.y < 91) return;
 

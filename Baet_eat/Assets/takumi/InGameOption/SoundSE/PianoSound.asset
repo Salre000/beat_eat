@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12bcd499e49eea544ab489b7b2da29a4, type: 3}
   m_Name: PianoSound
   m_EditorClassIdentifier: 
-  normal: {fileID: 8300000, guid: e47c3a23b48669a40a8428ba2e13e2dd, type: 3}
-  skill: {fileID: 8300000, guid: c54e244649d1cb149b255a551c0c8acd, type: 3}
-  flick: {fileID: 8300000, guid: babad81f2a8ea2641b7c5aefb03c3ec0, type: 3}
-  _long: {fileID: 8300000, guid: a35abff7b3d647f44814c76e72393b45, type: 3}
+  normal: {fileID: 8300000, guid: efef230e65d231e428edfb79cf9ff427, type: 3}
+  skill: {fileID: 8300000, guid: 8ce45643f94c45d4ea8a2050fd37b9b4, type: 3}
+  flick: {fileID: 8300000, guid: c80ec817dc40e784aab95442d641ce75, type: 3}
+  _long: {fileID: 8300000, guid: 1f1badf1fc4e0d048b7e00d8c19bc65e, type: 3}
   typeName: piano
   typeNameExplanation: "\u30D4\u30A2\u30CE"
