@@ -125,7 +125,7 @@ public class LongLongNotes : NotesBase
         InGameStatus.AddScore(1);
 
         //パーフェクトな判定
-        InGameStatus.SetJudgments(0, 0);
+        InGameStatus.SetJudgments(0, 0,false);
 
         //自身をactiveじゃない状態に変更
         LineUtility.SbuActiveObject(this);

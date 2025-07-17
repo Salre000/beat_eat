@@ -27,6 +27,7 @@ public static class LoadData
             if (dataBase.musicData.Count > ScoreStatus.GetScoreData().dessertScore[0].Count)
             {
                 ScoreStatus.AddMusic(dataBase.musicData.Count - ScoreStatus.GetScoreData().dessertScore[0].Count);
+
             }
 
         }
@@ -41,7 +42,7 @@ public static class LoadData
     {
 
         string filePath = Path.Combine(Application.persistentDataPath, SaveData.AchiveMentFileName + ".txt");
-        if (File.Exists(filePath))
+        if (false)//File.Exists(filePath))
         {
 
             BinaryFormatter formatter = new BinaryFormatter();

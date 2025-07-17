@@ -151,7 +151,7 @@ public class InGameStatus
 
     private static bool heelFlag = false;
     //”»’è‚ÌŒvZ‚ğ‚·‚éŠÖ”
-    public static void SetJudgments(int index, int index2)
+    public static void SetJudgments(int index, int index2,bool flag=true)
     {
 
         //ƒ„ƒ~[ˆÈã‚Ì”»’è‚Ì‚Æ‚«‚É
@@ -170,7 +170,7 @@ public class InGameStatus
             judgments[4][index2]++; return;
         }
         judgments[index][index2]++;
-        JudgmentImageUtility.SetNowJudgmentObject(index);
+        if(flag)JudgmentImageUtility.SetNowJudgmentObject(index);
     }
     public static int GetJudgments(int index, int index2)
     {
