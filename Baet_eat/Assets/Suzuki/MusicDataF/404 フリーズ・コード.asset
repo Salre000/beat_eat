@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd0ce4ba15797f4581dcc88d1e1162e, type: 3}
   m_Name: "404 \u30D5\u30EA\u30FC\u30BA\u30FB\u30B3\u30FC\u30C9"
   m_EditorClassIdentifier: 
-  musicID: 6
+  musicID: 5
   musicName: "404 \u30D5\u30EA\u30FC\u30BA\u30FB\u30B3\u30FC\u30C9"
   BPM: 152
   jacket: {fileID: 21300000, guid: d809349d405086e4bb2f45150293cbc2, type: 3}

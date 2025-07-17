@@ -8,7 +8,7 @@ public class MusicManager : MonoBehaviour
     public static MusicManager instance;
 
     // 全曲分必要、曲を増やしたらCAPACITYを更新すること
-    public const int CAPACITY = 7;
+    public const int CAPACITY = 6;
     public const int  NOTMUSICNUMBER= 1;
     // 全ての曲カードを挿入
     [SerializeField] private List<GameObject> _musicCards = new(CAPACITY);

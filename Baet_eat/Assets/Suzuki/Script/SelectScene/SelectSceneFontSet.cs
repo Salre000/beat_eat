@@ -18,6 +18,7 @@ public class SelectSceneFontSet : MonoBehaviour
         gameObjects = MusicManager.instance.GetMusicCards();
         for (int i = 0; i < MusicManager.CAPACITY; i++)
         {
+            if (i == MusicManager.CAPACITY - 1) return;
             // スコアテキストのマテリアル変更
             GameObject gameObject = gameObjects[i].transform.GetChild(1).gameObject;
             // スコアの数値
