@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class TextShow : MonoBehaviour
 {
+
+
     public static bool showFlag = false;
     public static string showText = "TEST";
 
@@ -14,7 +16,7 @@ public class TextShow : MonoBehaviour
     [SerializeField] RectTransform endPos;
     [SerializeField] RectTransform startPos;
 
-    private static List<System.Action> EndAction;
+    private static List<System.Action> EndAction=new List<System.Action>();
     public static void AddEndAction(System.Action action) {EndAction.Add(action);}
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class TextShow : MonoBehaviour
         transform.position = Vector3.Lerp(startPos.position, endPos.position, t);
         transform.GetChild(0).GetChild(0).transform.position = new Vector2(Screen.width / 2, Screen.height / 2);
         if (t < 1) return;
-        for (int i = 0; i < EndAction.Count; i++) if(EndAction.Count-1>i)EndAction[i]();
+        for (int i = 0; i < EndAction.Count; i++) EndAction[i]();
         EndAction.Clear();
 
         SceneManager.UnloadSceneAsync("TextScene");
