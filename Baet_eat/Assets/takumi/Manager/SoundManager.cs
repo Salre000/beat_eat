@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private float pitch = 1;
 
-    private readonly int poolCount = 30;
+    private readonly int poolCount = 50;
     [SerializeField] private List<AudioSource> souresPool = new List<AudioSource>();
 
     [SerializeField] AudioMixerGroup mixerGroup;
@@ -46,7 +46,7 @@ public class SoundManager : MonoBehaviour
 
         }
 
-        pitch=((SoundSEEnum.SoundSEType)OptionStatus.GetSEID()).GetPitch();
+        pitch = ((SoundSEEnum.SoundSEType)OptionStatus.GetSEID()).GetPitch();
 
     }
     private readonly string FliePass = "Musics/";
@@ -164,9 +164,9 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    private AudioSource GetAudio() 
+    private AudioSource GetAudio()
     {
-        for(int i = 0; i < souresPool.Count; i++) 
+        for (int i = 0; i < souresPool.Count; i++)
         {
 
             if (souresPool[i].isPlaying) continue;
@@ -178,7 +178,7 @@ public class SoundManager : MonoBehaviour
         return null;
 
     }
-    private void SetSound(AudioClip clip) 
+    private void SetSound(AudioClip clip)
     {
         AudioSource sound = GetAudio();
 
