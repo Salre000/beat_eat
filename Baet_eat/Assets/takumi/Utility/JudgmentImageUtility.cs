@@ -6,7 +6,7 @@ public static class JudgmentImageUtility
 {
     public static JudgmentImageManager judgmentImageManager;
 
-    public static void SetNowJudgmentObject(int index) { judgmentImageManager.SetNowJudgmentObject(index); }
+    public static void SetNowJudgmentObject(int index,int index2) { judgmentImageManager.SetNowJudgmentObject(index,index2); }
     public static void SetNowJudgmentObjectPos(Vector3 pos)
     {
         float ENDPos = -6.25f;

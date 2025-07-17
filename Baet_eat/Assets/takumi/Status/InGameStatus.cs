@@ -153,7 +153,6 @@ public class InGameStatus
     //”»’è‚ÌŒvZ‚ğ‚·‚éŠÖ”
     public static void SetJudgments(int index, int index2,bool flag=true)
     {
-
         //ƒ„ƒ~[ˆÈã‚Ì”»’è‚Ì‚Æ‚«‚É
         if (index < 3)
         {
@@ -166,11 +165,11 @@ public class InGameStatus
         }
         if (index > judgments.Length)
         {
-            JudgmentImageUtility.SetNowJudgmentObject(4);
+            JudgmentImageUtility.SetNowJudgmentObject(4,index2);
             judgments[4][index2]++; return;
         }
         judgments[index][index2]++;
-        if(flag)JudgmentImageUtility.SetNowJudgmentObject(index);
+        if(flag)JudgmentImageUtility.SetNowJudgmentObject(index, index2);
     }
     public static int GetJudgments(int index, int index2)
     {

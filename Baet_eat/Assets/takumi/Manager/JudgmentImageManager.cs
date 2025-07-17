@@ -6,23 +6,26 @@ using UnityEngine;
 public class JudgmentImageManager : MonoBehaviour
 {
     [SerializeField, Header("DC,D,Y,G,MÇÃèáî‘")] GameObject[] JudgmentObjects;
+    [SerializeField, Header("fast lestÇÃèáî‘")] GameObject[] JudgmentSpeedObjects;
 
     private GameObject nowJudgmentObject;
 
     private Vector2 ImagePos = Vector2.zero;
 
-    private readonly float UP_SIZE = 0.25f;
+    public readonly float UP_SIZE = 0.25f;
 
     private float time = 0;
     private readonly float MAX_TIME = 3.0f;
 
     private readonly float MAXCOUNT = 50;
+    
     private List<List<GameObject>> judgmentPool = new List<List<GameObject>>();
-
+    private List<List<GameObject>> judgmentSpeedPool = new List<List<GameObject>>();
 
 
     public void Awake()
     {
+        Judgment.parent = gameObject;
         JudgmentImageUtility.judgmentImageManager = this;
         Transform parent = JudgmentObjects[0].transform.parent;
 
@@ -37,6 +40,17 @@ public class JudgmentImageManager : MonoBehaviour
             for (int j = 0; j < MAXCOUNT; j++) judgmentPool[i].Add(GameObject.Instantiate(JudgmentObjects[i], parent));
         }
 
+        judgmentSpeedPool.Add(new List<GameObject>());
+        judgmentSpeedPool.Add(new List<GameObject>());
+        JudgmentSpeedObjects[0].SetActive(false);
+        JudgmentSpeedObjects[1].SetActive(false);
+        for (int i = 0; i < MAXCOUNT; i++) 
+        {
+
+            judgmentSpeedPool[0].Add(GameObject.Instantiate(JudgmentSpeedObjects[1], parent));
+            judgmentSpeedPool[1].Add(GameObject.Instantiate(JudgmentSpeedObjects[0], parent));
+
+        }
 
 
 
@@ -82,8 +96,24 @@ public class JudgmentImageManager : MonoBehaviour
         return null;
 
     }
+    private GameObject GetJudgmentSpeedImage(int index)
+    {
+        List<GameObject> gameObjects = judgmentSpeedPool[index];
+        for (int i = 0; i < gameObjects.Count; i++)
+        {
+
+            if (gameObjects[i].activeSelf) continue;
+
+            gameObjects[i].SetActive(true);
+
+            return gameObjects[i];
+
+        }
+        return null;
+
+    }
     public void SetImagePos(Vector2 pos) { ImagePos = pos; }
-    public void SetNowJudgmentObject(int index)
+    public void SetNowJudgmentObject(int index, int index2)
     {
         nowJudgmentObject = GetJudgmentImage(index);
         nowJudgmentObject.transform.localScale = new Vector3(UP_SIZE, UP_SIZE, 0);
@@ -99,6 +129,19 @@ public class JudgmentImageManager : MonoBehaviour
 
             nowJudgmentObject.transform.localPosition = ImagePos + new Vector2(-Screen.width / 2, OptionStatus.GetNotesTouchOffset() * 30 + 100 - Screen.height / 2);
         }
+
+        if (index <= 0) return;
+
+        GameObject speed= GetJudgmentSpeedImage(index2);
+
+        speed.transform.parent = nowJudgmentObject.transform;
+
+        speed.transform.localPosition = new Vector3 (0, -50, 0);
+        speed.transform.localScale = new Vector3(UP_SIZE*1.5f, UP_SIZE* 1.5f, 0);
+
+        nowJudgmentObject.GetComponent<Judgment>().SetEndAction(() => { speed.transform.parent = gameObject.transform; });
+
+
     }
 
 }
