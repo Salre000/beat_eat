@@ -228,10 +228,7 @@ public class TutorialManager : MonoBehaviour
                 {
 
                     //ノーツと音楽を動き始める
-                    SoundUtility.MainBGMStart();
-                    NotesMove.Instance.stopFlag = false;
                     NextPhase = TutorialPhase.NotesLine; oneFlag = true;
-                    EndMask();
                 });
             });
         });
@@ -240,22 +237,33 @@ public class TutorialManager : MonoBehaviour
     {
         if (!oneFlag) return;
         oneFlag = false;
-        //ノーツと音楽を動き始める
-        SoundUtility.MainBGMStart();
-        NotesMove.Instance.stopFlag = false;
 
         TextShow.OFFSet = 200;
         TextShow.Speed = 3;
-        TextShow.showText = "デモプレイ。＞_＜";
+        TextShow.showText = "デモプレイに切り替え。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
         TextShow.AddEndAction(() =>
         {
 
-            NextPhase = TutorialPhase.NotesDemo; 
-            oneFlag = true;
-            //ノーツと音楽を止める
-            SoundUtility.MainBGMStop();
-            NotesMove.Instance.stopFlag = true;
+            TextShow.OFFSet = 200;
+            TextShow.Speed = 3;
+            TextShow.showText = "デモプレイ中。＞_＜";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+            //ノーツと音楽を動き始める
+            SoundUtility.MainBGMStart();
+            NotesMove.Instance.stopFlag = false;
+            EndMask();
+
+
+            TextShow.AddEndAction(() =>
+            {
+
+                NextPhase = TutorialPhase.NotesDemo;
+                oneFlag = true;
+                //ノーツと音楽を止める
+                SoundUtility.MainBGMStop();
+                NotesMove.Instance.stopFlag = true;
+            });
 
 
         });
@@ -272,7 +280,7 @@ public class TutorialManager : MonoBehaviour
         oneFlag = false;
         TextShow.showText = "スコアゲージの説明。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() => 
+        TextShow.AddEndAction(() =>
         {
             TextShow.showText = "ノーツを取るとスコアとゲージが上がって行く。＞_＜";
             SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
@@ -281,6 +289,8 @@ public class TutorialManager : MonoBehaviour
             {
                 TextShow.showText = "上がったスコアに応じてランクが決まる。＞_＜";
                 SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+                StartMask(new Vector2(-725, 290), new Vector2(100, 100));
 
                 TextShow.AddEndAction(() =>
                 {
@@ -296,44 +306,209 @@ public class TutorialManager : MonoBehaviour
         oneFlag = false;
         TextShow.showText = "実際にノーツをプレイ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() => { NextPhase = TutorialPhase.Playnormal; oneFlag = true; });
+        TextShow.AddEndAction(() =>
+        {
+            EndMask();
+            //ノーツと音楽を動き始める
+            SoundUtility.MainBGMStart();
+            NotesMove.Instance.stopFlag = false;
+            TextShow.OFFSet = 200;
+            TextShow.Speed = 3;
+
+
+            TextShow.showText = "プレイ中。＞_＜";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+            TextShow.AddEndAction(() =>
+            {
+                NotesMove.Instance.stopFlag = false;
+                TextShow.OFFSet = 200;
+                TextShow.Speed = 2;
+
+                TextShow.showText = "プレイ中。＞_＜";
+                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+                TextShow.AddEndAction(() =>
+                {
+                    TextShow.OFFSet = 200;
+                    TextShow.Speed = 3;
+
+                    TextShow.showText = "簡単でしょ。＞_＜";
+                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+                    TextShow.AddEndAction(() =>
+                    {
+
+
+                        NextPhase = TutorialPhase.Playnormal;
+                        oneFlag = true;
+                    });
+                });
+            });
+        });
     }
     private void TutorialPhaseLongDemo()
     {
         if (!oneFlag) return;
+        //ノーツと音楽を止める
+        SoundUtility.MainBGMStop();
+        NotesMove.Instance.stopFlag = true;
+        StartMask(new Vector2(25, 240), new Vector2(100, 120));
+
         oneFlag = false;
-        TextShow.showText = "Longノーツのデモプレイ。＞_＜";
+        TextShow.showText = "このノーツはロングノーツ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() => { NextPhase = TutorialPhase.LongDemo; oneFlag = true; });
+        TextShow.AddEndAction(() =>
+        {
+            TextShow.showText = "ラインに沿って終点までタッチ。＞_＜";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+            TextShow.AddEndAction(() =>
+            {
+                TextShow.OFFSet = 200;
+                TextShow.Speed = 2;
+
+                TextShow.showText = "デモプレイに切り替え。＞_＜";
+                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+                TextShow.AddEndAction(() =>
+                {
+                    SoundUtility.MainBGMStart();
+                    NotesMove.Instance.stopFlag = false;
+                    EndMask();
+                    TextShow.OFFSet = 200;
+                    TextShow.Speed = 2;
+
+                    TextShow.showText = "デモプレイ中。＞_＜";
+                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+                    TextShow.AddEndAction(() =>
+                    {
+                        NextPhase = TutorialPhase.LongDemo; oneFlag = true;
+
+                    });
+
+                });
+
+            });
+
+        });
     }
     private void TutorialPhaseLongPlay()
     {
         if (!oneFlag) return;
+        SoundUtility.MainBGMStop();
+        NotesMove.Instance.stopFlag = true;
+
         oneFlag = false;
-        TextShow.showText = "Longノーツのプレイ。＞_＜";
+        TextShow.showText = "実際にノーツをプレイ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() => { NextPhase = TutorialPhase.PlayLong; oneFlag = true; });
+        TextShow.AddEndAction(() =>
+        {
+
+            SoundUtility.MainBGMStart();
+            NotesMove.Instance.stopFlag = false;
+            TextShow.OFFSet = 200;
+            TextShow.Speed = 2;
+            TextShow.showText = "プレイ中。＞_＜";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+            TextShow.AddEndAction(() =>
+            {
+                TextShow.OFFSet = 200;
+                TextShow.Speed = 2;
+
+                TextShow.showText = "プレイ中。＞_＜";
+                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                TextShow.AddEndAction(() =>
+                {
+                    NextPhase = TutorialPhase.PlayLong; oneFlag = true;
+
+
+                });
+
+
+            });
+        });
     }
     private void TutorialPhaseFlickDemo()
     {
         if (!oneFlag) return;
         oneFlag = false;
-        TextShow.showText = "Flickノーツのデモプレイ。＞_＜";
+
+        SoundUtility.MainBGMStop();
+        NotesMove.Instance.stopFlag = true;
+
+        StartMask(new Vector2(-10, 230), new Vector2(90, 60));
+
+        TextShow.showText = "このノーツはフリックノーツ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() => { NextPhase = TutorialPhase.FlickDemo; oneFlag = true; });
+        TextShow.AddEndAction(() =>
+        {
+            TextShow.showText = "タイミングよくフリック。＞_＜";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+            TextShow.AddEndAction(() =>
+            {
+                TextShow.OFFSet = 200;
+                TextShow.Speed = 2;
+
+                TextShow.showText = "デモプレイに切り替え。＞_＜";
+                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+                TextShow.AddEndAction(() =>
+                {
+                    SoundUtility.MainBGMStart();
+                    NotesMove.Instance.stopFlag = false;
+                    EndMask();
+                    TextShow.OFFSet = 200;
+                    TextShow.Speed = 2;
+
+                    TextShow.showText = "デモプレイ中。＞_＜";
+                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+                    TextShow.AddEndAction(() =>
+                    {
+                        SoundUtility.MainBGMStop();
+                        NotesMove.Instance.stopFlag = true;
+
+                        NextPhase = TutorialPhase.FlickDemo; oneFlag = true;
+
+                    });
+
+                });
+
+            });
+
+        });
     }
     private void TutorialPhaseFlickPlay()
     {
         if (!oneFlag) return;
         oneFlag = false;
-        TextShow.showText = "Flickノーツのプレイ。＞_＜";
+        TextShow.showText = "実際にノーツをプレイ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() => { NextPhase = TutorialPhase.PlayFlick; oneFlag = true; });
+        TextShow.AddEndAction(() =>
+        {
+
+            SoundUtility.MainBGMStart();
+            NotesMove.Instance.stopFlag = false;
+            TextShow.OFFSet = 200;
+            TextShow.Speed = 2;
+            TextShow.showText = "プレイ中。＞_＜";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+            TextShow.AddEndAction(() =>
+            {
+                NextPhase = TutorialPhase.PlayFlick; oneFlag = true;
+            });
+        });
     }
     private void TutorialPhaseSkillDemo()
     {
         if (!oneFlag) return;
         oneFlag = false;
+        SoundUtility.MainBGMStop();
+        NotesMove.Instance.stopFlag = true;
+
         TextShow.showText = "Skillノーツのデモプレイ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
         TextShow.AddEndAction(() => { NextPhase = TutorialPhase.SkillDemo; oneFlag = true; });

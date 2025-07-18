@@ -38,18 +38,21 @@ public class TextShow : MonoBehaviour
         transform.position = Vector3.Lerp(startPos.position + new Vector3(0, OFFSet), endPos.position + new Vector3(0, OFFSet), t);
         transform.GetChild(0).GetChild(0).transform.position = new Vector2(Screen.width / 2, Screen.height / 2);
         if (t < 1) return;
+
+        OFFSet = 0;
+        Speed = 1;
+
+
         int count = EndAction.Count;
         for (int i = 0; i < count; i++) EndAction[i]();
         for (int i = 0; i < count; i++) EndAction.RemoveAt(0);
 
         SceneManager.UnloadSceneAsync("TextScene");
-        OFFSet = 0;
-        Speed = 1;
     }
     private void Skip()
     {
         if (NotesMove.Instance == null) return;
-        if (Input.touchCount == 0||!Input.GetKey(KeyCode.S)) return;
+        if (/*Input.touchCount == 0||*/!Input.GetKey(KeyCode.S)) return;
         if (!NotesMove.Instance.stopFlag) return;
         Speed = 8;
 
