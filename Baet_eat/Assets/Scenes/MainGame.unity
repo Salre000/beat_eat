@@ -5245,7 +5245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Effect: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2, type: 3}
-  effectIndex: 1
 --- !u!4 &695062019
 Transform:
   m_ObjectHideFlags: 0
