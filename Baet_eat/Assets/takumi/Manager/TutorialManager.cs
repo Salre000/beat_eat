@@ -508,15 +508,57 @@ public class TutorialManager : MonoBehaviour
         oneFlag = false;
         SoundUtility.MainBGMStop();
         NotesMove.Instance.stopFlag = true;
+        StartMask(new Vector2(-5, 155), new Vector2(120, 30));
 
-        TextShow.showText = "Skillノーツのデモプレイ。＞_＜";
+
+        TextShow.showText = "このノーツはスキルノーツ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() => { NextPhase = TutorialPhase.SkillDemo; oneFlag = true; });
+        TextShow.AddEndAction(() =>
+        {
+            TextShow.showText = "いつでもデリシャスクリティカル。＞_＜";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+            TextShow.AddEndAction(() =>
+            {
+                TextShow.OFFSet = 200;
+                TextShow.Speed = 2;
+
+                TextShow.showText = "デモプレイに切り替え。＞_＜";
+                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+                TextShow.AddEndAction(() =>
+                {
+                    SoundUtility.MainBGMStart();
+                    NotesMove.Instance.stopFlag = false;
+                    EndMask();
+                    TextShow.OFFSet = 200;
+                    TextShow.Speed = 2;
+
+                    TextShow.showText = "デモプレイ中。＞_＜";
+                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+                    TextShow.AddEndAction(() =>
+                    {
+                        SoundUtility.MainBGMStop();
+                        NotesMove.Instance.stopFlag = true;
+
+                        NextPhase = TutorialPhase.SkillDemo; oneFlag = true;
+
+                    });
+
+                });
+
+            });
+
+        });
     }
     private void TutorialPhaseSkillPlay()
     {
         if (!oneFlag) return;
         oneFlag = false;
+        SoundUtility.MainBGMStop();
+        NotesMove.Instance.stopFlag = true;
+
         TextShow.showText = "Skillノーツのプレイ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
         TextShow.AddEndAction(() => { NextPhase = TutorialPhase.PlaySkill; oneFlag = true; });
