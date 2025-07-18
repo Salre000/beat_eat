@@ -4,7 +4,7 @@ public enum NotesMaterialType {
 _normal2,
         /// <summary><see _circle="円の形"/> </summary>\r\n
 _circle,
-        /// <summary><see _normal="ごく一般的な物"/> </summary>\r\n
+        /// <summary><see _normal="普通"/> </summary>\r\n
 _normal,
 MAX
 }
