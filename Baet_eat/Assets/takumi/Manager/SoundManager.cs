@@ -41,6 +41,7 @@ public class SoundManager : MonoBehaviour
         {
 
             GameObject gameObject = new GameObject("SoundPool" + i.ToString());
+            gameObject.transform.parent = transform;
             souresPool.Add(gameObject.AddComponent<AudioSource>());
             souresPool[i].outputAudioMixerGroup = mixerGroup;
 
