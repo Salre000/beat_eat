@@ -7,9 +7,9 @@
     {
       "LPB": 31,
       "num": 124,
-      "block": 7,
+      "block": 8,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
@@ -17,15 +17,15 @@
       "num": 140,
       "block": 0,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 155,
-      "block": 7,
+      "block": 8,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
@@ -33,15 +33,15 @@
       "num": 171,
       "block": 0,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 186,
-      "block": 7,
+      "block": 8,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
@@ -49,15 +49,15 @@
       "num": 202,
       "block": 0,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 217,
-      "block": 7,
+      "block": 8,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
@@ -65,37 +65,52 @@
       "num": 233,
       "block": 0,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 248,
-      "block": 7,
+      "block": 0,
+      "type": 0,
+      "renge": 4,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 248,
+      "block": 5,
       "type": 3,
-      "renge": 2,
+      "renge": 4,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 279,
       "block": 0,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 310,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 286,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 295,
+      "block": 4,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 303,
       "block": 6,
       "type": 1,
       "renge": 1,
@@ -103,25 +118,40 @@
     },
     {
       "LPB": 31,
-      "num": 318,
-      "block": 6,
-      "type": 2,
+      "num": 310,
+      "block": 8,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 334,
-          "block": 6,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 318,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 326,
+      "block": 4,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 334,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 341,
-      "block": 0,
+      "block": 8,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -144,11 +174,20 @@
     },
     {
       "LPB": 31,
-      "num": 388,
+      "num": 372,
       "block": 6,
-      "type": 1,
-      "renge": 1,
-      "notes": []
+      "type": 2,
+      "renge": 3,
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 403,
+          "block": 6,
+          "type": 2,
+          "renge": 3,
+          "notes": []
+        }
+      ]
     },
     {
       "LPB": 31,
@@ -162,7 +201,7 @@
       "LPB": 31,
       "num": 419,
       "block": 7,
-      "type": 0,
+      "type": 3,
       "renge": 1,
       "notes": []
     },
@@ -172,6 +211,14 @@
       "block": 1,
       "type": 3,
       "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 450,
+      "block": 7,
+      "type": 1,
+      "renge": 2,
       "notes": []
     },
     {
@@ -194,99 +241,94 @@
       "LPB": 31,
       "num": 496,
       "block": 8,
-      "type": 0,
+      "type": 3,
       "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 527,
-      "block": 0,
-      "type": 2,
+      "block": 8,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 542,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 535,
-      "block": 8,
-      "type": 2,
+      "block": 6,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 558,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 542,
+      "block": 4,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 550,
       "block": 2,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 574,
-          "block": 2,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 558,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 567,
       "block": 6,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 589,
-          "block": 6,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 574,
+      "block": 4,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 582,
-      "block": 1,
-      "type": 2,
+      "block": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 605,
-          "block": 1,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 589,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 605,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 620,
-      "block": 7,
+      "block": 0,
       "type": 0,
       "renge": 2,
       "notes": []
@@ -319,9 +361,18 @@
       "LPB": 31,
       "num": 682,
       "block": 8,
-      "type": 1,
+      "type": 2,
       "renge": 1,
-      "notes": []
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 713,
+          "block": 8,
+          "type": 2,
+          "renge": 1,
+          "notes": []
+        }
+      ]
     },
     {
       "LPB": 31,
@@ -333,18 +384,10 @@
     },
     {
       "LPB": 31,
-      "num": 713,
-      "block": 8,
-      "type": 1,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
       "num": 729,
       "block": 0,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
@@ -368,9 +411,18 @@
       "LPB": 31,
       "num": 775,
       "block": 0,
-      "type": 0,
-      "renge": 1,
-      "notes": []
+      "type": 2,
+      "renge": 2,
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 806,
+          "block": 0,
+          "type": 2,
+          "renge": 2,
+          "notes": []
+        }
+      ]
     },
     {
       "LPB": 31,
@@ -388,14 +440,6 @@
           "notes": []
         }
       ]
-    },
-    {
-      "LPB": 31,
-      "num": 806,
-      "block": 0,
-      "type": 0,
-      "renge": 1,
-      "notes": []
     },
     {
       "LPB": 31,
@@ -454,6 +498,14 @@
       "type": 2,
       "renge": 1,
       "notes": [
+        {
+          "LPB": 31,
+          "num": 961,
+          "block": 7,
+          "type": 2,
+          "renge": 1,
+          "notes": []
+        },
         {
           "LPB": 31,
           "num": 977,
@@ -1058,7 +1110,7 @@
     {
       "LPB": 31,
       "num": 1690,
-      "block": 7,
+      "block": 6,
       "type": 1,
       "renge": 0,
       "notes": []
@@ -1105,381 +1157,191 @@
     },
     {
       "LPB": 31,
-      "num": 1737,
+      "num": 1736,
       "block": 8,
-      "type": 2,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1744,
+      "block": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 1767,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 1752,
-      "block": 0,
+      "block": 8,
       "type": 1,
-      "renge": 2,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1760,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 1767,
-      "block": 0,
-      "type": 2,
+      "block": 8,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 1798,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
-      "num": 1782,
-      "block": 7,
+      "num": 1775,
+      "block": 0,
       "type": 1,
-      "renge": 2,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1783,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1792,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 1798,
       "block": 8,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 1829,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1806,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 1814,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1823,
       "block": 0,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 1829,
-      "block": 0,
-      "type": 2,
+      "block": 8,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 1860,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1837,
+      "block": 2,
+      "type": 1,
+      "renge": 0,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 1845,
-      "block": 7,
+      "block": 6,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1853,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 1860,
-      "block": 8,
-      "type": 2,
+      "block": 6,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 1891,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1868,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 1876,
-      "block": 0,
+      "block": 6,
       "type": 1,
-      "renge": 2,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1884,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 1891,
-      "block": 0,
-      "type": 2,
+      "block": 6,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 1922,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1899,
+      "block": 1,
+      "type": 1,
+      "renge": 0,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 1907,
       "block": 7,
       "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 1922,
-      "block": 8,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 1953,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 1938,
-      "block": 0,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 1953,
-      "block": 0,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 1984,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 1969,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 1984,
-      "block": 8,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2015,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 2000,
-      "block": 0,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2015,
-      "block": 0,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2046,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 2031,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2046,
-      "block": 8,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2077,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 2062,
-      "block": 0,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2077,
-      "block": 0,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2108,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 2093,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2108,
-      "block": 8,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2139,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 2124,
-      "block": 0,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2139,
-      "block": 0,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2170,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 2155,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2170,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2186,
-      "block": 0,
-      "type": 1,
       "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
-      "num": 2201,
-      "block": 7,
-      "type": 1,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2217,
+      "num": 1915,
       "block": 1,
       "type": 1,
       "renge": 1,
@@ -1487,15 +1349,319 @@
     },
     {
       "LPB": 31,
-      "num": 2232,
+      "num": 1922,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1930,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1938,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1946,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1953,
+      "block": 7,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1962,
+      "block": 2,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1970,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1978,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1984,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 1992,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2000,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2008,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2015,
+      "block": 6,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2023,
+      "block": 0,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2031,
       "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2039,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2046,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2054,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2062,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2070,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2077,
+      "block": 8,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2085,
+      "block": 1,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2093,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2101,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2108,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2116,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2124,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2132,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2139,
+      "block": 7,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2147,
+      "block": 2,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2155,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2163,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2170,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2178,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2186,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2194,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2201,
+      "block": 6,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2217,
+      "block": 6,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2232,
+      "block": 6,
       "type": 2,
       "renge": 1,
       "notes": [
         {
           "LPB": 31,
           "num": 2263,
-          "block": 8,
+          "block": 7,
           "type": 2,
           "renge": 1,
           "notes": []
@@ -1506,25 +1672,24 @@
       "LPB": 31,
       "num": 2248,
       "block": 0,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2279,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2279,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 2294,
       "block": 7,
-      "type": 3,
-      "renge": 2,
+      "type": 0,
+      "renge": 1,
       "notes": []
     },
     {
@@ -1538,7 +1703,7 @@
     {
       "LPB": 31,
       "num": 2325,
-      "block": 8,
+      "block": 7,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -1546,7 +1711,7 @@
     {
       "LPB": 31,
       "num": 2341,
-      "block": 8,
+      "block": 0,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -1554,16 +1719,16 @@
     {
       "LPB": 31,
       "num": 2356,
-      "block": 0,
+      "block": 7,
       "type": 2,
-      "renge": 2,
+      "renge": 1,
       "notes": [
         {
           "LPB": 31,
           "num": 2387,
-          "block": 0,
+          "block": 6,
           "type": 2,
-          "renge": 2,
+          "renge": 1,
           "notes": []
         }
       ]
@@ -1571,32 +1736,31 @@
     {
       "LPB": 31,
       "num": 2372,
-      "block": 7,
-      "type": 2,
-      "renge": 2,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2403,
-          "block": 7,
-          "type": 2,
-          "renge": 2,
-          "notes": []
-        }
-      ]
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2403,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 2418,
-      "block": 0,
-      "type": 3,
+      "block": 6,
+      "type": 0,
       "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 2434,
-      "block": 8,
+      "block": 0,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -1604,16 +1768,41 @@
     {
       "LPB": 31,
       "num": 2449,
-      "block": 0,
+      "block": 6,
       "type": 2,
-      "renge": 2,
+      "renge": 1,
       "notes": [
         {
           "LPB": 31,
-          "num": 2480,
+          "num": 2465,
+          "block": 7,
+          "type": 2,
+          "renge": 1,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "LPB": 31,
+      "num": 2465,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2480,
+      "block": 0,
+      "type": 2,
+      "renge": 1,
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 2697,
           "block": 0,
           "type": 2,
-          "renge": 2,
+          "renge": 0,
           "notes": []
         }
       ]
@@ -1621,58 +1810,31 @@
     {
       "LPB": 31,
       "num": 2480,
-      "block": 8,
-      "type": 2,
+      "block": 7,
+      "type": 3,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2542,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
-      "num": 2496,
-      "block": 2,
-      "type": 2,
+      "num": 2511,
+      "block": 6,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2511,
-          "block": 2,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
-      "num": 2527,
-      "block": 0,
-      "type": 2,
+      "num": 2542,
+      "block": 6,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2558,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 2573,
-      "block": 8,
+      "block": 6,
       "type": 0,
       "renge": 1,
       "notes": []
@@ -1680,30 +1842,6 @@
     {
       "LPB": 31,
       "num": 2589,
-      "block": 0,
-      "type": 0,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2604,
-      "block": 7,
-      "type": 0,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2620,
-      "block": 1,
-      "type": 0,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2635,
       "block": 8,
       "type": 0,
       "renge": 1,
@@ -1711,8 +1849,32 @@
     },
     {
       "LPB": 31,
+      "num": 2604,
+      "block": 6,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2620,
+      "block": 8,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2635,
+      "block": 6,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 2651,
-      "block": 0,
+      "block": 8,
       "type": 0,
       "renge": 1,
       "notes": []
@@ -1728,14 +1890,6 @@
     {
       "LPB": 31,
       "num": 2682,
-      "block": 2,
-      "type": 0,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 2697,
       "block": 8,
       "type": 0,
       "renge": 1,
@@ -1743,8 +1897,16 @@
     },
     {
       "LPB": 31,
+      "num": 2697,
+      "block": 6,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 2713,
-      "block": 0,
+      "block": 8,
       "type": 0,
       "renge": 1,
       "notes": []
@@ -1753,7 +1915,7 @@
       "LPB": 31,
       "num": 2728,
       "block": 6,
-      "type": 1,
+      "type": 3,
       "renge": 1,
       "notes": []
     },
@@ -1777,24 +1939,39 @@
       "LPB": 31,
       "num": 2752,
       "block": 2,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2775,
-          "block": 2,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 2759,
       "block": 6,
       "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2768,
+      "block": 0,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2775,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2783,
+      "block": 0,
+      "type": 1,
       "renge": 1,
       "notes": []
     },
@@ -1826,24 +2003,39 @@
       "LPB": 31,
       "num": 2814,
       "block": 0,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2837,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 2821,
       "block": 8,
       "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2829,
+      "block": 2,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2837,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2845,
+      "block": 2,
+      "type": 1,
       "renge": 1,
       "notes": []
     },
@@ -1873,26 +2065,41 @@
     },
     {
       "LPB": 31,
-      "num": 2875,
+      "num": 2876,
       "block": 2,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2899,
-          "block": 2,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 2883,
       "block": 6,
       "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2891,
+      "block": 1,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2899,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2907,
+      "block": 1,
+      "type": 1,
       "renge": 1,
       "notes": []
     },
@@ -1924,24 +2131,39 @@
       "LPB": 31,
       "num": 2938,
       "block": 1,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 2961,
-          "block": 1,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 2945,
       "block": 7,
       "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2953,
+      "block": 2,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2961,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 2969,
+      "block": 2,
+      "type": 1,
       "renge": 1,
       "notes": []
     },
@@ -1973,24 +2195,39 @@
       "LPB": 31,
       "num": 3000,
       "block": 2,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 3023,
-          "block": 2,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 3007,
       "block": 6,
       "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3015,
+      "block": 0,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3023,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3031,
+      "block": 0,
+      "type": 1,
       "renge": 1,
       "notes": []
     },
@@ -2022,18 +2259,9 @@
       "LPB": 31,
       "num": 3062,
       "block": 0,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 3085,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
     },
     {
       "LPB": 31,
@@ -2045,8 +2273,32 @@
     },
     {
       "LPB": 31,
+      "num": 3077,
+      "block": 1,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3085,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3093,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 3100,
-      "block": 8,
+      "block": 7,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -2077,6 +2329,22 @@
     },
     {
       "LPB": 31,
+      "num": 3251,
+      "block": 0,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3271,
+      "block": 8,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 3271,
       "block": 0,
       "type": 0,
@@ -2093,9 +2361,33 @@
     },
     {
       "LPB": 31,
+      "num": 3296,
+      "block": 0,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3317,
+      "block": 8,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 3317,
       "block": 0,
       "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3333,
+      "block": 8,
+      "type": 3,
       "renge": 1,
       "notes": []
     },
@@ -2126,8 +2418,24 @@
     {
       "LPB": 31,
       "num": 3375,
+      "block": 8,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3375,
       "block": 0,
       "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3397,
+      "block": 0,
+      "type": 3,
       "renge": 1,
       "notes": []
     },
@@ -2142,6 +2450,14 @@
     {
       "LPB": 31,
       "num": 3421,
+      "block": 8,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3421,
       "block": 0,
       "type": 0,
       "renge": 1,
@@ -2150,8 +2466,24 @@
     {
       "LPB": 31,
       "num": 3441,
+      "block": 0,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3441,
       "block": 8,
       "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3456,
+      "block": 8,
+      "type": 3,
       "renge": 1,
       "notes": []
     },
@@ -2172,234 +2504,26 @@
       "notes": [
         {
           "LPB": 31,
-          "num": 3501,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
           "num": 3503,
           "block": 0,
           "type": 2,
-          "renge": 4,
+          "renge": 3,
           "notes": []
         },
         {
           "LPB": 31,
-          "num": 3505,
-          "block": 0,
+          "num": 3519,
+          "block": 2,
           "type": 2,
-          "renge": 1,
+          "renge": 3,
           "notes": []
         },
         {
           "LPB": 31,
-          "num": 3532,
-          "block": 0,
+          "num": 3704,
+          "block": 2,
           "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3534,
-          "block": 0,
-          "type": 2,
-          "renge": 4,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3536,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3563,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3565,
-          "block": 0,
-          "type": 2,
-          "renge": 4,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3567,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3579,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3581,
-          "block": 0,
-          "type": 2,
-          "renge": 2,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3583,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3594,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3596,
-          "block": 0,
-          "type": 2,
-          "renge": 4,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3598,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3610,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3612,
-          "block": 0,
-          "type": 2,
-          "renge": 2,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3614,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3625,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3627,
-          "block": 0,
-          "type": 2,
-          "renge": 4,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3629,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3656,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3658,
-          "block": 0,
-          "type": 2,
-          "renge": 4,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3660,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3672,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3674,
-          "block": 0,
-          "type": 2,
-          "renge": 2,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3676,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3687,
-          "block": 0,
-          "type": 2,
-          "renge": 0,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 3689,
-          "block": 0,
-          "type": 2,
-          "renge": 4,
+          "renge": 3,
           "notes": []
         }
       ]
@@ -2415,88 +2539,75 @@
     {
       "LPB": 31,
       "num": 3503,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
+      "block": 6,
+      "type": 2,
+      "renge": 3,
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 3534,
+          "block": 6,
+          "type": 2,
+          "renge": 3,
+          "notes": []
+        },
+        {
+          "LPB": 31,
+          "num": 3565,
+          "block": 2,
+          "type": 2,
+          "renge": 3,
+          "notes": []
+        }
+      ]
     },
     {
       "LPB": 31,
-      "num": 3534,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 3565,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 3581,
-      "block": 8,
-      "type": 1,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 3596,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 3612,
-      "block": 8,
-      "type": 1,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 3627,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
+      "num": 3598,
+      "block": 6,
+      "type": 2,
+      "renge": 3,
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 3627,
+          "block": 2,
+          "type": 2,
+          "renge": 3,
+          "notes": []
+        }
+      ]
     },
     {
       "LPB": 31,
       "num": 3658,
       "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 3674,
-      "block": 8,
-      "type": 1,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 3689,
-      "block": 7,
-      "type": 1,
-      "renge": 2,
-      "notes": []
+      "type": 2,
+      "renge": 3,
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 3689,
+          "block": 2,
+          "type": 2,
+          "renge": 3,
+          "notes": []
+        }
+      ]
     },
     {
       "LPB": 31,
       "num": 3720,
       "block": 7,
       "type": 0,
+      "renge": 2,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 3720,
+      "block": 0,
+      "type": 3,
       "renge": 2,
       "notes": []
     },
@@ -4871,39 +4982,6 @@
     },
     {
       "LPB": 31,
-      "num": 7471,
-      "block": 0,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 7502,
-          "block": 3,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 7533,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 7564,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
       "num": 7595,
       "block": 8,
       "type": 0,
@@ -4961,15 +5039,15 @@
     {
       "LPB": 31,
       "num": 7650,
-      "block": 0,
+      "block": 1,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 7657,
-      "block": 8,
+      "block": 7,
       "type": 0,
       "renge": 1,
       "notes": []
@@ -4977,7 +5055,7 @@
     {
       "LPB": 31,
       "num": 7666,
-      "block": 0,
+      "block": 1,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -4985,7 +5063,7 @@
     {
       "LPB": 31,
       "num": 7673,
-      "block": 8,
+      "block": 7,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -4993,7 +5071,7 @@
     {
       "LPB": 31,
       "num": 7681,
-      "block": 0,
+      "block": 1,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5009,7 +5087,7 @@
     {
       "LPB": 31,
       "num": 7704,
-      "block": 0,
+      "block": 8,
       "type": 0,
       "renge": 1,
       "notes": []
@@ -5017,9 +5095,17 @@
     {
       "LPB": 31,
       "num": 7719,
-      "block": 8,
+      "block": 0,
       "type": 1,
       "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 7735,
+      "block": 7,
+      "type": 0,
+      "renge": 2,
       "notes": []
     },
     {
@@ -5040,8 +5126,16 @@
     },
     {
       "LPB": 31,
-      "num": 7781,
-      "block": 8,
+      "num": 7750,
+      "block": 0,
+      "type": 0,
+      "renge": 2,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 7766,
+      "block": 0,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5057,9 +5151,9 @@
     {
       "LPB": 31,
       "num": 7812,
-      "block": 1,
+      "block": 6,
       "type": 0,
-      "renge": 1,
+      "renge": 3,
       "notes": []
     },
     {
@@ -5162,16 +5256,16 @@
       "LPB": 31,
       "num": 7936,
       "block": 7,
-      "type": 0,
-      "renge": 1,
+      "type": 3,
+      "renge": 2,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 7952,
       "block": 0,
-      "type": 0,
-      "renge": 1,
+      "type": 3,
+      "renge": 2,
       "notes": []
     },
     {
@@ -5202,7 +5296,7 @@
       "LPB": 31,
       "num": 7998,
       "block": 0,
-      "type": 0,
+      "type": 3,
       "renge": 1,
       "notes": []
     },
@@ -5217,7 +5311,7 @@
     {
       "LPB": 31,
       "num": 8029,
-      "block": 0,
+      "block": 8,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5529,7 +5623,7 @@
     {
       "LPB": 31,
       "num": 8719,
-      "block": 0,
+      "block": 8,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5537,7 +5631,7 @@
     {
       "LPB": 31,
       "num": 8727,
-      "block": 8,
+      "block": 1,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5545,7 +5639,7 @@
     {
       "LPB": 31,
       "num": 8735,
-      "block": 0,
+      "block": 1,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5553,7 +5647,7 @@
     {
       "LPB": 31,
       "num": 8742,
-      "block": 8,
+      "block": 7,
       "type": 0,
       "renge": 1,
       "notes": []
@@ -5561,7 +5655,7 @@
     {
       "LPB": 31,
       "num": 8750,
-      "block": 0,
+      "block": 7,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5569,7 +5663,7 @@
     {
       "LPB": 31,
       "num": 8758,
-      "block": 8,
+      "block": 2,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5577,7 +5671,7 @@
     {
       "LPB": 31,
       "num": 8766,
-      "block": 0,
+      "block": 2,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5593,7 +5687,7 @@
     {
       "LPB": 31,
       "num": 8781,
-      "block": 0,
+      "block": 6,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5601,7 +5695,7 @@
     {
       "LPB": 31,
       "num": 8789,
-      "block": 8,
+      "block": 4,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5609,8 +5703,16 @@
     {
       "LPB": 31,
       "num": 8796,
-      "block": 0,
+      "block": 2,
       "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 8804,
+      "block": 0,
+      "type": 0,
       "renge": 1,
       "notes": []
     },
@@ -5630,6 +5732,14 @@
           "notes": []
         }
       ]
+    },
+    {
+      "LPB": 31,
+      "num": 8835,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
@@ -5667,6 +5777,22 @@
     },
     {
       "LPB": 31,
+      "num": 8897,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 8928,
+      "block": 8,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 8928,
       "block": 2,
       "type": 2,
@@ -5692,8 +5818,24 @@
     },
     {
       "LPB": 31,
-      "num": 8975,
+      "num": 8966,
       "block": 0,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 8975,
+      "block": 9,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 8983,
+      "block": 2,
       "type": 1,
       "renge": 0,
       "notes": []
@@ -5708,7 +5850,23 @@
     },
     {
       "LPB": 31,
-      "num": 9007,
+      "num": 8998,
+      "block": 0,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 9006,
+      "block": 6,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 9014,
       "block": 1,
       "type": 1,
       "renge": 0,
@@ -5724,7 +5882,7 @@
     },
     {
       "LPB": 31,
-      "num": 9037,
+      "num": 9028,
       "block": 0,
       "type": 1,
       "renge": 0,
@@ -5732,10 +5890,26 @@
     },
     {
       "LPB": 31,
+      "num": 9037,
+      "block": 6,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 9045,
+      "block": 2,
+      "type": 1,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 9052,
-      "block": 8,
+      "block": 9,
       "type": 0,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
@@ -5749,15 +5923,15 @@
     {
       "LPB": 31,
       "num": 9068,
-      "block": 8,
+      "block": 0,
       "type": 1,
       "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
-      "num": 9077,
-      "block": 0,
+      "num": 9076,
+      "block": 8,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5772,8 +5946,8 @@
     },
     {
       "LPB": 31,
-      "num": 9090,
-      "block": 0,
+      "num": 9091,
+      "block": 1,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5781,7 +5955,7 @@
     {
       "LPB": 31,
       "num": 9099,
-      "block": 8,
+      "block": 1,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5789,7 +5963,7 @@
     {
       "LPB": 31,
       "num": 9107,
-      "block": 0,
+      "block": 6,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5797,8 +5971,8 @@
     {
       "LPB": 31,
       "num": 9114,
-      "block": 8,
-      "type": 0,
+      "block": 6,
+      "type": 1,
       "renge": 1,
       "notes": []
     },
@@ -5813,7 +5987,7 @@
     {
       "LPB": 31,
       "num": 9130,
-      "block": 8,
+      "block": 0,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5821,7 +5995,7 @@
     {
       "LPB": 31,
       "num": 9138,
-      "block": 0,
+      "block": 7,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5829,7 +6003,7 @@
     {
       "LPB": 31,
       "num": 9145,
-      "block": 8,
+      "block": 7,
       "type": 0,
       "renge": 1,
       "notes": []
@@ -5837,7 +6011,7 @@
     {
       "LPB": 31,
       "num": 9153,
-      "block": 0,
+      "block": 1,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5845,7 +6019,7 @@
     {
       "LPB": 31,
       "num": 9161,
-      "block": 8,
+      "block": 1,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5853,7 +6027,7 @@
     {
       "LPB": 31,
       "num": 9169,
-      "block": 0,
+      "block": 8,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -5879,32 +6053,31 @@
       "LPB": 31,
       "num": 9185,
       "block": 0,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 9200,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 9200,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 9207,
-      "block": 8,
+      "block": 0,
       "type": 2,
-      "renge": 1,
+      "renge": 2,
       "notes": [
         {
           "LPB": 31,
-          "num": 9224,
-          "block": 8,
+          "num": 9223,
+          "block": 1,
           "type": 2,
-          "renge": 1,
+          "renge": 2,
           "notes": []
         }
       ]
@@ -5912,30 +6085,13 @@
     {
       "LPB": 31,
       "num": 9216,
-      "block": 1,
+      "block": 8,
       "type": 2,
       "renge": 1,
       "notes": [
         {
           "LPB": 31,
-          "num": 9232,
-          "block": 1,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 9238,
-      "block": 7,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 9254,
+          "num": 9238,
           "block": 7,
           "type": 2,
           "renge": 1,
@@ -5945,14 +6101,22 @@
     },
     {
       "LPB": 31,
-      "num": 9246,
+      "num": 9231,
+      "block": 1,
+      "type": 1,
+      "renge": 2,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 9238,
       "block": 0,
       "type": 2,
       "renge": 1,
       "notes": [
         {
           "LPB": 31,
-          "num": 9262,
+          "num": 9254,
           "block": 0,
           "type": 2,
           "renge": 1,
@@ -5962,15 +6126,31 @@
     },
     {
       "LPB": 31,
+      "num": 9247,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 9262,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 9269,
-      "block": 8,
+      "block": 7,
       "type": 2,
       "renge": 1,
       "notes": [
         {
           "LPB": 31,
           "num": 9285,
-          "block": 8,
+          "block": 7,
           "type": 2,
           "renge": 1,
           "notes": []
@@ -5979,15 +6159,15 @@
     },
     {
       "LPB": 31,
-      "num": 9278,
-      "block": 2,
+      "num": 9277,
+      "block": 0,
       "type": 2,
       "renge": 1,
       "notes": [
         {
           "LPB": 31,
-          "num": 9293,
-          "block": 2,
+          "num": 9300,
+          "block": 0,
           "type": 2,
           "renge": 1,
           "notes": []
@@ -5996,266 +6176,258 @@
     },
     {
       "LPB": 31,
-      "num": 9300,
+      "num": 9293,
       "block": 7,
-      "type": 0,
+      "type": 1,
       "renge": 1,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9308,
-      "block": 1,
+      "block": 8,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
-      "num": 9316,
-      "block": 7,
+      "num": 9317,
+      "block": 0,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
-      "num": 9324,
-      "block": 1,
+      "num": 9325,
+      "block": 8,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9331,
-      "block": 7,
+      "block": 1,
       "type": 0,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9339,
-      "block": 1,
+      "block": 7,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9347,
-      "block": 7,
+      "block": 1,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9356,
-      "block": 1,
+      "block": 7,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9362,
-      "block": 7,
-      "type": 0,
-      "renge": 1,
+      "block": 0,
+      "type": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9369,
-      "block": 1,
+      "block": 6,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9378,
-      "block": 7,
+      "block": 1,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9386,
-      "block": 1,
+      "block": 8,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9393,
-      "block": 7,
+      "block": 0,
       "type": 0,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
-      "num": 9401,
-      "block": 1,
+      "num": 9402,
+      "block": 7,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9408,
-      "block": 7,
+      "block": 2,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9417,
-      "block": 1,
+      "block": 9,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9424,
-      "block": 6,
-      "type": 0,
-      "renge": 1,
+      "block": 0,
+      "type": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9432,
-      "block": 2,
+      "block": 9,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9440,
-      "block": 6,
+      "block": 1,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9448,
-      "block": 2,
+      "block": 8,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9455,
-      "block": 6,
+      "block": 1,
       "type": 0,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9464,
-      "block": 2,
+      "block": 7,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9471,
-      "block": 6,
+      "block": 0,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9479,
-      "block": 2,
+      "block": 8,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9486,
-      "block": 6,
-      "type": 0,
-      "renge": 1,
+      "block": 1,
+      "type": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9495,
-      "block": 2,
+      "block": 8,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9502,
-      "block": 6,
+      "block": 0,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9510,
-      "block": 2,
+      "block": 7,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9517,
-      "block": 6,
+      "block": 0,
       "type": 0,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9525,
-      "block": 2,
+      "block": 8,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9533,
-      "block": 6,
+      "block": 1,
       "type": 1,
-      "renge": 1,
+      "renge": 0,
       "notes": []
     },
     {
       "LPB": 31,
       "num": 9541,
-      "block": 2,
-      "type": 1,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 9548,
       "block": 6,
-      "type": 0,
-      "renge": 1,
+      "type": 1,
+      "renge": 0,
       "notes": []
     },
     {
@@ -6318,22 +6490,23 @@
       "LPB": 31,
       "num": 9672,
       "block": 0,
-      "type": 0,
+      "type": 2,
       "renge": 1,
-      "notes": []
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 9703,
+          "block": 0,
+          "type": 2,
+          "renge": 2,
+          "notes": []
+        }
+      ]
     },
     {
       "LPB": 31,
       "num": 9689,
       "block": 8,
-      "type": 1,
-      "renge": 1,
-      "notes": []
-    },
-    {
-      "LPB": 31,
-      "num": 9703,
-      "block": 0,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -6381,6 +6554,22 @@
     },
     {
       "LPB": 31,
+      "num": 9781,
+      "block": 7,
+      "type": 1,
+      "renge": 2,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 9796,
+      "block": 0,
+      "type": 3,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 9796,
       "block": 7,
       "type": 2,
@@ -6398,6 +6587,14 @@
     },
     {
       "LPB": 31,
+      "num": 9812,
+      "block": 0,
+      "type": 0,
+      "renge": 0,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 9827,
       "block": 1,
       "type": 0,
@@ -6406,8 +6603,24 @@
     },
     {
       "LPB": 31,
+      "num": 9843,
+      "block": 0,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 9858,
       "block": 1,
+      "type": 0,
+      "renge": 2,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 9874,
+      "block": 0,
       "type": 0,
       "renge": 2,
       "notes": []
@@ -6576,25 +6789,48 @@
       "LPB": 31,
       "num": 10044,
       "block": 1,
-      "type": 2,
-      "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10075,
-          "block": 1,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "type": 0,
+      "renge": 2,
+      "notes": []
     },
     {
       "LPB": 31,
-      "num": 10061,
+      "num": 10053,
       "block": 8,
       "type": 1,
       "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10060,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10069,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10075,
+      "block": 0,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10084,
+      "block": 7,
+      "type": 1,
+      "renge": 0,
       "notes": []
     },
     {
@@ -6607,8 +6843,40 @@
     },
     {
       "LPB": 31,
+      "num": 10099,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10106,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10114,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 10122,
-      "block": 6,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10130,
+      "block": 7,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -6616,19 +6884,18 @@
     {
       "LPB": 31,
       "num": 10137,
-      "block": 7,
-      "type": 2,
+      "block": 1,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10168,
-          "block": 7,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10146,
+      "block": 8,
+      "type": 1,
+      "renge": 0,
+      "notes": []
     },
     {
       "LPB": 31,
@@ -6640,24 +6907,39 @@
     },
     {
       "LPB": 31,
+      "num": 10161,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 10168,
       "block": 0,
-      "type": 2,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10199,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10177,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 10184,
+      "block": 0,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10193,
       "block": 8,
       "type": 1,
       "renge": 1,
@@ -6666,19 +6948,18 @@
     {
       "LPB": 31,
       "num": 10199,
-      "block": 8,
-      "type": 2,
+      "block": 0,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10230,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10207,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
@@ -6690,24 +6971,39 @@
     },
     {
       "LPB": 31,
-      "num": 10230,
-      "block": 1,
-      "type": 2,
+      "num": 10223,
+      "block": 6,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10261,
-          "block": 1,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10230,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10239,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 10246,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10254,
       "block": 6,
       "type": 1,
       "renge": 1,
@@ -6716,19 +7012,18 @@
     {
       "LPB": 31,
       "num": 10261,
-      "block": 6,
-      "type": 2,
+      "block": 2,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10292,
-          "block": 6,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10269,
+      "block": 7,
+      "type": 1,
+      "renge": 0,
+      "notes": []
     },
     {
       "LPB": 31,
@@ -6740,24 +7035,39 @@
     },
     {
       "LPB": 31,
-      "num": 10292,
-      "block": 0,
-      "type": 2,
+      "num": 10285,
+      "block": 7,
+      "type": 1,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10323,
-          "block": 0,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10292,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10300,
+      "block": 7,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 10308,
+      "block": 1,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10316,
       "block": 7,
       "type": 1,
       "renge": 1,
@@ -6766,19 +7076,18 @@
     {
       "LPB": 31,
       "num": 10323,
-      "block": 8,
-      "type": 2,
+      "block": 1,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10354,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10331,
+      "block": 6,
+      "type": 1,
+      "renge": 0,
+      "notes": []
     },
     {
       "LPB": 31,
@@ -6790,8 +7099,40 @@
     },
     {
       "LPB": 31,
+      "num": 10347,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10354,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10362,
+      "block": 6,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 10370,
-      "block": 7,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10378,
+      "block": 6,
       "type": 1,
       "renge": 1,
       "notes": []
@@ -6799,25 +7140,48 @@
     {
       "LPB": 31,
       "num": 10385,
-      "block": 7,
-      "type": 2,
+      "block": 2,
+      "type": 0,
       "renge": 1,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10416,
-          "block": 7,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        }
-      ]
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10393,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
     },
     {
       "LPB": 31,
       "num": 10401,
       "block": 2,
       "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10409,
+      "block": 8,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10416,
+      "block": 2,
+      "type": 1,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10540,
+      "block": 0,
+      "type": 0,
       "renge": 1,
       "notes": []
     },
@@ -6832,8 +7196,24 @@
     {
       "LPB": 31,
       "num": 10566,
+      "block": 8,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10566,
       "block": 0,
       "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10587,
+      "block": 0,
+      "type": 0,
       "renge": 1,
       "notes": []
     },
@@ -6848,6 +7228,22 @@
     {
       "LPB": 31,
       "num": 10612,
+      "block": 8,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10612,
+      "block": 0,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10633,
       "block": 0,
       "type": 0,
       "renge": 1,
@@ -6865,6 +7261,14 @@
       "LPB": 31,
       "num": 10649,
       "block": 0,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10649,
+      "block": 8,
       "type": 3,
       "renge": 1,
       "notes": []
@@ -6873,6 +7277,22 @@
       "LPB": 31,
       "num": 10664,
       "block": 8,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10664,
+      "block": 0,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10691,
+      "block": 0,
       "type": 0,
       "renge": 1,
       "notes": []
@@ -6888,8 +7308,24 @@
     {
       "LPB": 31,
       "num": 10712,
+      "block": 8,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10712,
       "block": 0,
       "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10736,
+      "block": 0,
+      "type": 0,
       "renge": 1,
       "notes": []
     },
@@ -6911,6 +7347,14 @@
     },
     {
       "LPB": 31,
+      "num": 10757,
+      "block": 0,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 10773,
       "block": 0,
       "type": 0,
@@ -6919,7 +7363,7 @@
     },
     {
       "LPB": 31,
-      "num": 10788,
+      "num": 10773,
       "block": 8,
       "type": 3,
       "renge": 1,
@@ -6928,47 +7372,30 @@
     {
       "LPB": 31,
       "num": 10788,
-      "block": 0,
+      "block": 8,
       "type": 2,
       "renge": 1,
       "notes": [
         {
           "LPB": 31,
-          "num": 10804,
-          "block": 0,
-          "type": 2,
-          "renge": 3,
-          "notes": []
-        },
-        {
-          "LPB": 31,
           "num": 10819,
-          "block": 0,
+          "block": 7,
           "type": 2,
-          "renge": 3,
+          "renge": 2,
           "notes": []
         },
         {
           "LPB": 31,
-          "num": 10836,
-          "block": 2,
+          "num": 10835,
+          "block": 0,
           "type": 2,
-          "renge": 3,
+          "renge": 2,
           "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 10819,
-      "block": 6,
-      "type": 2,
-      "renge": 2,
-      "notes": [
+        },
         {
           "LPB": 31,
           "num": 10850,
-          "block": 6,
+          "block": 7,
           "type": 2,
           "renge": 2,
           "notes": []
@@ -6978,31 +7405,23 @@
           "num": 10881,
           "block": 0,
           "type": 2,
-          "renge": 9,
+          "renge": 2,
           "notes": []
         },
         {
           "LPB": 31,
           "num": 10912,
-          "block": 0,
+          "block": 7,
           "type": 2,
-          "renge": 3,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 10928,
-          "block": 3,
-          "type": 2,
-          "renge": 3,
+          "renge": 2,
           "notes": []
         },
         {
           "LPB": 31,
           "num": 10943,
-          "block": 0,
+          "block": 7,
           "type": 2,
-          "renge": 3,
+          "renge": 2,
           "notes": []
         },
         {
@@ -7010,64 +7429,15 @@
           "num": 10974,
           "block": 0,
           "type": 2,
-          "renge": 3,
-          "notes": []
-        }
-      ]
-    },
-    {
-      "LPB": 31,
-      "num": 10881,
-      "block": 6,
-      "type": 2,
-      "renge": 3,
-      "notes": [
-        {
-          "LPB": 31,
-          "num": 10897,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 10912,
-          "block": 6,
-          "type": 2,
-          "renge": 3,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 10943,
-          "block": 6,
-          "type": 2,
-          "renge": 3,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 10960,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
-          "notes": []
-        },
-        {
-          "LPB": 31,
-          "num": 10990,
-          "block": 8,
-          "type": 2,
-          "renge": 1,
+          "renge": 2,
           "notes": []
         },
         {
           "LPB": 31,
           "num": 11005,
-          "block": 6,
+          "block": 7,
           "type": 2,
-          "renge": 3,
+          "renge": 2,
           "notes": []
         },
         {
@@ -7076,6 +7446,97 @@
           "block": 8,
           "type": 2,
           "renge": 1,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "LPB": 31,
+      "num": 10788,
+      "block": 0,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 10819,
+      "block": 0,
+      "type": 2,
+      "renge": 2,
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 10835,
+          "block": 7,
+          "type": 2,
+          "renge": 2,
+          "notes": []
+        },
+        {
+          "LPB": 31,
+          "num": 10850,
+          "block": 0,
+          "type": 2,
+          "renge": 2,
+          "notes": []
+        },
+        {
+          "LPB": 31,
+          "num": 10867,
+          "block": 3,
+          "type": 2,
+          "renge": 2,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "LPB": 31,
+      "num": 10881,
+      "block": 7,
+      "type": 2,
+      "renge": 2,
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 10899,
+          "block": 4,
+          "type": 2,
+          "renge": 2,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "LPB": 31,
+      "num": 10928,
+      "block": 0,
+      "type": 2,
+      "renge": 2,
+      "notes": [
+        {
+          "LPB": 31,
+          "num": 10943,
+          "block": 0,
+          "type": 2,
+          "renge": 2,
+          "notes": []
+        },
+        {
+          "LPB": 31,
+          "num": 10974,
+          "block": 7,
+          "type": 2,
+          "renge": 2,
+          "notes": []
+        },
+        {
+          "LPB": 31,
+          "num": 10992,
+          "block": 4,
+          "type": 2,
+          "renge": 2,
           "notes": []
         }
       ]
@@ -7098,8 +7559,32 @@
     },
     {
       "LPB": 31,
+      "num": 11062,
+      "block": 0,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 11083,
       "block": 0,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 11083,
+      "block": 8,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 11107,
+      "block": 8,
       "type": 3,
       "renge": 1,
       "notes": []
@@ -7122,7 +7607,31 @@
     },
     {
       "LPB": 31,
+      "num": 11129,
+      "block": 8,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
       "num": 11145,
+      "block": 0,
+      "type": 3,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 11145,
+      "block": 8,
+      "type": 0,
+      "renge": 1,
+      "notes": []
+    },
+    {
+      "LPB": 31,
+      "num": 11160,
       "block": 8,
       "type": 3,
       "renge": 1,
@@ -8929,4 +9438,5 @@
         }
       ]
     }
-  ]}
+  ]
+}
