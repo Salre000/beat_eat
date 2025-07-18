@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private float pitch = 1;
 
-    private readonly int poolCount = 50;
+    private readonly int poolCount = 100;
     [SerializeField] private List<AudioSource> souresPool = new List<AudioSource>();
 
     [SerializeField] AudioMixerGroup mixerGroup;
