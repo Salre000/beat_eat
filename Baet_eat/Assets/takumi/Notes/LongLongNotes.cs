@@ -40,7 +40,7 @@ public class LongLongNotes : NotesBase
 
     }
     //•K—v
-    public void FixedUpdate()
+    public void Update()
     {
         XXX = boxArea.leftTop.x;
         YYY = boxArea.rightTop.x;
