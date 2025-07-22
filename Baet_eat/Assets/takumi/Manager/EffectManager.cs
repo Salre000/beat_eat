@@ -16,6 +16,7 @@ public class EffectManager : MonoBehaviour
     {
         GameObject effect = GameObject.Instantiate(Effect);
         effect.transform.position = Pos;
+        Destroy(effect,2);
 
     }
 

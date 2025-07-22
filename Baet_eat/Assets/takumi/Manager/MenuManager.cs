@@ -9,7 +9,9 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //初めてゲームを起動した
+        AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._StartGame);
+
     }
 
     //メニューの状況を反転
@@ -21,12 +23,13 @@ public class MenuManager : MonoBehaviour
     public void TutorialStart() 
     {
 
-        ScoreStatus.nowDifficulty = 0;
+        ScoreStatus.nowDifficulty = publicEnum.Difficulty.dessert;
         ScoreStatus.nowMusic = 0;
 
         AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._Tutorial);
+        OptionStatus.SetNotesSpeed(1);
 
-        new GameObject().AddComponent<TutorialManager>();
+        new GameObject("TutorialObject").AddComponent<TutorialManager>();
 
         TransitionEffect.nextSceneNameSystem = GameSceneManager.mainScene;
 

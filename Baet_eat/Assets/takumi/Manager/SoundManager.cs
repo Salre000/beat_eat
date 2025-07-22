@@ -108,6 +108,11 @@ public class SoundManager : MonoBehaviour
         return false;
 
     }
+    public void StartTutorial() {
+        OneFlag = true;
+        _soundSource.Play();
+
+    }
 
     public void OpenPose()
     {

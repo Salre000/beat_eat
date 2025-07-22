@@ -24,6 +24,8 @@ public class TutorialManager : MonoBehaviour
         PlayFlick,//フリックノーツタッチで取らせる
         SkillDemo,//スキルノーツをオートで取らせる
         PlaySkill,//スキルノーツタッチで取らせる
+        SideNotes,//サイドレーンの説明もこみ
+        SideNotesFlick,//フリックすると
         End
     }
     private TutorialPhase phase;
@@ -95,6 +97,12 @@ public class TutorialManager : MonoBehaviour
                 TutorialPhaseSkillPlay();
                 break;
             case TutorialPhase.PlaySkill:
+                TutorialPhaseSideNotes();
+                break;
+            case TutorialPhase.SideNotes:
+                TutorialPhaseSideFlick();
+                break;
+            case TutorialPhase.SideNotesFlick:
                 TutorialPhaseEnd();
                 break;
             case TutorialPhase.End:
@@ -556,12 +564,162 @@ public class TutorialManager : MonoBehaviour
     {
         if (!oneFlag) return;
         oneFlag = false;
-        SoundUtility.MainBGMStop();
-        NotesMove.Instance.stopFlag = true;
-
-        TextShow.showText = "Skillノーツのプレイ。＞_＜";
+        TextShow.showText = "実際にノーツをプレイ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() => { NextPhase = TutorialPhase.PlaySkill; oneFlag = true; });
+        TextShow.AddEndAction(() =>
+        {
+
+            SoundUtility.MainBGMStart();
+            NotesMove.Instance.stopFlag = false;
+            TextShow.OFFSet = 200;
+            TextShow.Speed = 2;
+            TextShow.showText = "プレイ中。＞_＜";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+            TextShow.AddEndAction(() =>
+            {
+                NextPhase = TutorialPhase.PlaySkill; oneFlag = true;
+                SoundUtility.MainBGMStop();
+                NotesMove.Instance.stopFlag = true;
+
+
+
+            });
+        });
+    }
+    private void TutorialPhaseSideNotes()
+    {
+        if (!oneFlag) return;
+        oneFlag = false;
+        TextShow.OFFSet = 200;
+        TextShow.Speed = 2;
+        TextShow.showText = "ここからの説明は一部の難易度しかでない！！。";
+        SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+        TextShow.AddEndAction(() =>
+        {
+
+            TextShow.OFFSet = 200;
+            TextShow.Speed = 2;
+            TextShow.showText = "サイドレーンの説明";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+            TextShow.AddEndAction(() =>
+            {
+                TextShow.OFFSet = 200;
+                TextShow.Speed = 2;
+                TextShow.showText = "タップする場所が違うだけ";
+                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                TextShow.AddEndAction(() =>
+                {
+                    StartMask(new Vector2(620, 150), new Vector2(200, 250));
+                    TextShow.OFFSet = -200;
+                    TextShow.Speed = 2;
+                    TextShow.showText = "タップする場所はここと";
+                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                    TextShow.AddEndAction(() =>
+                    {
+                        StartMask(new Vector2(-620, 150), new Vector2(200, 250));
+                        TextShow.OFFSet = -200;
+                        TextShow.Speed = 2;
+                        TextShow.showText = "ここの二箇所";
+                        SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                        TextShow.AddEndAction(() =>
+                        {
+
+                            TextShow.Speed = 3;
+                            SoundUtility.MainBGMStart();
+                            NotesMove.Instance.stopFlag = false;
+
+
+
+                            TextShow.showText = "次はサイドレーンにしかないノーツ";
+                            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                            TextShow.AddEndAction(() =>
+                            {
+                                StartMask(new Vector2(-250, 250), new Vector2(110, 150));
+                                SoundUtility.MainBGMStop();
+                                NotesMove.Instance.stopFlag = true;
+
+                                NextPhase = TutorialPhase.SideNotes; oneFlag = true;
+
+
+
+                            });
+
+                        });
+
+                    });
+                });
+            });
+        });
+    }
+    private void TutorialPhaseSideFlick()
+    {
+        if (!oneFlag) return;
+        oneFlag = false;
+        TextShow.showText = "このノーツはサイドフリックノーツ";
+        SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+        TextShow.AddEndAction(() =>
+        {
+            TextShow.showText = "矢印の方向にフリックが必要";
+            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+            TextShow.AddEndAction(() =>
+            {
+
+                EndMask();
+                TextShow.OFFSet = 200;
+                TextShow.Speed = 2;
+                TextShow.showText = "デモプレイを開始";
+                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                TextShow.AddEndAction(() =>
+                {
+                    SoundUtility.MainBGMStart();
+                    NotesMove.Instance.stopFlag = false;
+
+                    TextShow.OFFSet = 200;
+                    TextShow.Speed = 2;
+                    TextShow.showText = "デモプレイ中";
+                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                    TextShow.AddEndAction(() =>
+                    {
+                        SoundUtility.MainBGMStop();
+                        NotesMove.Instance.stopFlag = true;
+                        TextShow.showText = "ビックリした？";
+                        SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                        TextShow.AddEndAction(() =>
+                        {
+                            SoundUtility.MainBGMStop();
+                            NotesMove.Instance.stopFlag = true;
+
+                            TextShow.showText = "このノーツはサイドレーンをひっくり返すんだ";
+                            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                            TextShow.AddEndAction(() =>
+                            {
+                                TextShow.showText = "それじゃあプレイしてみよう";
+                                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                                TextShow.AddEndAction(() =>
+                                {
+                                    SoundUtility.MainBGMStart();
+                                    NotesMove.Instance.stopFlag = false;
+
+                                    TextShow.showText = "プレイ中";
+                                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+                                    TextShow.AddEndAction(() =>
+                                    {
+                                        NextPhase = TutorialPhase.SideNotesFlick; oneFlag = true;
+                                    });
+                                });
+
+                            });
+
+                        });
+
+                    });
+
+
+                });
+
+
+            });
+        });
     }
     private void TutorialPhaseEnd()
     {

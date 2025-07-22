@@ -19,5 +19,7 @@ public static class SoundUtility
 
     public static bool GetPlaying() { return soundManager.GetPlayFlag(); }
 
+    public static void StartTutorial() {  soundManager.StartTutorial(); }
+
 
 }

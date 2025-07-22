@@ -39,8 +39,6 @@ public class AchievementStatus
 
         }
 
-        //‰‚ß‚ÄƒQ[ƒ€‚ğ‹N“®‚µ‚½
-        Achievement(AchievementTypeEnum.AchievementType._StartGame);
     }
 
 
