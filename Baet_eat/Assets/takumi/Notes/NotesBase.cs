@@ -87,7 +87,7 @@ public class NotesBase : MonoBehaviour
     }
 
     protected int NotesType = 0;
-    public void FixedUpdate()
+    public void Update()
     {
         //this.transform.position -= Vec;
 

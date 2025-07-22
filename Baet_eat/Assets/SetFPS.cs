@@ -5,7 +5,7 @@ using UnityEngine;
 public class SetFPS : MonoBehaviour
 {
 
-    private void FixedUpdate()
+    private void Start()
     {
         Application.targetFrameRate = 120;
     }
