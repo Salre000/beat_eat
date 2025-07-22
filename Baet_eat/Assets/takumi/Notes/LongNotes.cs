@@ -236,7 +236,7 @@ public class LongNotes : NotesBase
         //ŒÀŠE‚ð’´‚¦‚½Œã‚ÉÁ‚¦‚é‚Ü‚Å‚Ìƒ‰ƒO‚ð•â³
         if (posIndex >= _renge.Count) return;
 
-        rate += ((float)(OptionStatus.GetNotesSpeed() * 20) / 50.0f) / (float)(CreateNotes.Kankaku * _distanceNum[posIndex] * OptionStatus.GetNotesSpeed() * 20);
+        rate += ((float)(OptionStatus.GetNotesSpeed() * 20) / 120.0f) / (float)(CreateNotes.Kankaku * _distanceNum[posIndex] * OptionStatus.GetNotesSpeed() * 20);
 
         Vector3 scale = Vector3.one;
         float sizeX = renge - _renge[posIndex];

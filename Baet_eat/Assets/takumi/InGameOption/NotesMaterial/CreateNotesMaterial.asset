@@ -17,7 +17,7 @@ MonoBehaviour:
   flick: {fileID: 2100000, guid: 94f408b2b856e904e987175f852fe1fb, type: 2}
   flickup: {fileID: 2100000, guid: 4da52aa36f041284ab1305a0a77dca8f, type: 2}
   _long: {fileID: 2100000, guid: 518a27ae6be34224399eba59c232a153, type: 2}
-  _longlong: {fileID: 2100000, guid: 2c161b736feb72142a7b88902cb54213, type: 2}
+  _longlong: {fileID: 2100000, guid: 23a90fd6bd865da49a6a43ee223d28be, type: 2}
   _longlongCopy: {fileID: 2100000, guid: 23a90fd6bd865da49a6a43ee223d28be, type: 2}
   typeName: normal2
   typeNameExplanation: "\u8272\u304C\u8584\u3081"

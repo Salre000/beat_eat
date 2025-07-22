@@ -17,7 +17,7 @@ MonoBehaviour:
   flick: {fileID: 2100000, guid: ae26e0d4b7f4052438b1d76c23fce5b4, type: 2}
   flickup: {fileID: 2100000, guid: 4da52aa36f041284ab1305a0a77dca8f, type: 2}
   _long: {fileID: 2100000, guid: 3695bd3213fb4604c8b731c8b7659fb9, type: 2}
-  _longlong: {fileID: 2100000, guid: 2c161b736feb72142a7b88902cb54213, type: 2}
+  _longlong: {fileID: 2100000, guid: 23a90fd6bd865da49a6a43ee223d28be, type: 2}
   _longlongCopy: {fileID: 2100000, guid: 23a90fd6bd865da49a6a43ee223d28be, type: 2}
   typeName: circle
   typeNameExplanation: "\u5186\u306E\u5F62"
