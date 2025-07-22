@@ -30909,6 +30909,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1645349648}
     m_Modifications:
+    - target: {fileID: 670129860550972768, guid: 824731cdfe4edd445bb2cbb6c6840fa9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1701094039627799809, guid: 824731cdfe4edd445bb2cbb6c6840fa9, type: 3}
       propertyPath: m_Name
       value: FlickNotes (1)
