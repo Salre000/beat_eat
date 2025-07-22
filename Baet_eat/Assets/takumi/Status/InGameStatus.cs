@@ -44,7 +44,7 @@ public class InGameStatus
     private const float MAX_SCORE = 1010000.0f;
     public static float GetMAXScore() { return MAX_SCORE; }
     //ゲーム開始時に決定する1ノーツ当たりのスコア
-    private static float upScore = -1;
+    private static long upScore = -1;
 
     private static float ScoreRate = 0;
     public static float GetScoreRate() { return ScoreRate; }
@@ -115,7 +115,7 @@ public class InGameStatus
 
     public static void SetUpScore(int notesCount)
     {
-        float upscore = MAX_SCORE / (float)notesCount;
+        long upscore = (long)(MAX_SCORE / (float)notesCount);
         NotesCount = notesCount;
 
         upScore = upscore;

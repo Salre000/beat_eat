@@ -1,8 +1,4 @@
 using Coffee.UIExtensions;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -125,11 +121,33 @@ public class TutorialManager : MonoBehaviour
         one = true;
 
         GameObject canvas = GameObject.Find("PoseCanvas");
+        GameObject end= new GameObject("END");  
+
+        end.transform.parent = canvas.transform;
+        end.AddComponent<UnityEngine.UI.Button>();
+        end.AddComponent<Image>();
+        end.AddComponent<RectTransform>();
+        GameObject C = new GameObject("TEXT");
+        C.transform.parent = end.transform;
+        C.transform.localPosition = Vector3.zero;
+        C.AddComponent<Text>();
+        C.GetComponent<Text>().text = "終了";
+        end.GetComponent<RectTransform>().position+= new Vector3(100, 100);
+        end.GetComponent<Button>().onClick.AddListener(() => 
+        {
+
+            TransitionEffect.nextSceneNameSystem = GameSceneManager.selectScene;
+
+            GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
+
+            Destroy(gameObject);
+
+        });
 
         GameObject tutorialCanvas = new GameObject("tutorialcanvas");
 
         tutorialCanvas.transform.parent = canvas.transform;
-
+        tutorialCanvas.transform.SetAsFirstSibling();
         tutorialCanvas.AddComponent<RectTransform>().localPosition = Vector3.zero; ;
         tutorialCanvas.AddComponent<Mask>().showMaskGraphic = false; ;
         tutorialCanvas.AddComponent<Image>();
@@ -155,7 +173,7 @@ public class TutorialManager : MonoBehaviour
         back.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
 
         Color color = new Color(0.1f, 0.1f, 0.1f);
-        color.a = 0.7f;
+        color.a = 0.9f;
         back.GetComponent<Image>().color = color;
 
         TutorialBack = back;
@@ -532,7 +550,7 @@ public class TutorialManager : MonoBehaviour
         oneFlag = false;
         SoundUtility.MainBGMStop();
         NotesMove.Instance.stopFlag = true;
-        StartMask(new Vector2(-5, 155), new Vector2(120, 30));
+        StartMask(new Vector2(0, 100), new Vector2(500, 500));
 
 
         TextShow.showText = "このノーツはスキルノーツ。＞_＜";
