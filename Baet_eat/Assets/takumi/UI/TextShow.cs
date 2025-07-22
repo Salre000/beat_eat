@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class TextShow : MonoBehaviour
 {
@@ -20,13 +21,17 @@ public class TextShow : MonoBehaviour
 
     private static List<System.Action> EndAction = new List<System.Action>();
     public static void AddEndAction(System.Action action) { EndAction.Add(action); }
+    public static System.Action textShow;
     private void Awake()
     {
+        textShow = EndAction[0];
+
+
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = showText;
         showFlag = true;
     }
     private float speedRate = 1;
-    private void FixedUpdate()
+    private void Update()
     {
         Skip();
         if (t > 0.45f && t < 0.55) speedRate = 6;
@@ -43,16 +48,15 @@ public class TextShow : MonoBehaviour
         Speed = 1;
 
 
-        int count = EndAction.Count;
-        for (int i = 0; i < count; i++) EndAction[i]();
-        for (int i = 0; i < count; i++) EndAction.RemoveAt(0);
+        textShow();
+        EndAction.RemoveAt(0);
 
         SceneManager.UnloadSceneAsync("TextScene");
     }
     private void Skip()
     {
         if (NotesMove.Instance == null) return;
-        if (/*Input.touchCount == 0||*/!Input.GetKey(KeyCode.S)) return;
+        if (Input.touchCount == 0) return;
         if (!NotesMove.Instance.stopFlag) return;
         Speed = 8;
 
