@@ -35883,7 +35883,7 @@ MonoBehaviour:
   - {fileID: 780124631}
   - {fileID: 1051399761}
   - {fileID: 1252617741}
-  _scale: 400
+  _scale: 100
 --- !u!1 &1631053419
 GameObject:
   m_ObjectHideFlags: 0
