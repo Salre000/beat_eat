@@ -155,6 +155,7 @@ public class CreateNotes : MonoBehaviour
             notes.transform.position = new Vector3((inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,
                 (kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)
                 + (inputJson.offset / offsetReta) * OptionStatus.GetNotesSpeed() * 20) + LineOffset;
+
             //êeÇ…ìZÇﬂÇÈ
             notes.transform.parent = NotesParent.transform;
 
@@ -249,7 +250,7 @@ public class CreateNotes : MonoBehaviour
             DessertManager.CreateTapAreaDessert(_area);
 
 
-        GameObject NotesParent = new GameObject("Dessert"+SongName);
+        GameObject NotesParent = new GameObject("Dessert" + SongName);
 
         DessertUtility.SetNotesParent(NotesParent);
         NotesParent.transform.parent = notesParent.transform;
@@ -286,6 +287,10 @@ public class CreateNotes : MonoBehaviour
                 (inputJson.notes[i].block) - 4.5f + (float)inputJson.notes[i].renge / 2.0f, 0.03f,
                 (kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)
                 + (inputJson.offset / offsetReta) * OptionStatus.GetNotesSpeed() * 20) + LineOffset;
+
+            notes.transform.position += new Vector3(0, 0, 2.25f);
+
+
             //êeÇ…ìZÇﬂÇÈ
             notes.transform.parent = NotesParent.transform;
 
@@ -339,14 +344,14 @@ public class CreateNotes : MonoBehaviour
             LineUtility.AddActiveObject(notesBase);
             DessertNotes dessert = notes.AddComponent<DessertNotes>();
 
-            if (inputJson.notes[i].block==11)
+            if (inputJson.notes[i].block == 11)
             {
                 dessert.SetNotesPos(global::DessertNotes.NotesPos.right);
                 notes.transform.eulerAngles += new Vector3(0, 0, 90);
                 notes.transform.position = new Vector3
                     (DessertManager.GetAreaList(0).transform.up.x / 10,
                     0,
-                    notes.transform.position.z) + DessertManager.GetAreaList(0).transform.position;
+                    notes.transform.position.z) + DessertManager.GetAreaList(0).transform.position-new Vector3(0,0, DessertManager.GetAreaList(0).transform.position.z);
                 dessert.Initialize();
 
             }
@@ -357,7 +362,7 @@ public class CreateNotes : MonoBehaviour
                 notes.transform.position = new Vector3
                     (DessertManager.GetAreaList(1).transform.up.x / 10,
                      0,
-                     notes.transform.position.z) + DessertManager.GetAreaList(1).transform.position;
+                     notes.transform.position.z) + DessertManager.GetAreaList(1).transform.position - new Vector3(0, 0, DessertManager.GetAreaList(0).transform.position.z);
                 dessert.Initialize();
 
             }

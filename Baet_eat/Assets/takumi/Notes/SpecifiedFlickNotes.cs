@@ -85,7 +85,7 @@ public class SpecifiedFlickNotes : FlickNotes
         {
             Vector3 pos = FlickUps[i].transform.localPosition;
 
-            pos += (-FlickUps[i].transform.right * (leftFlag ? 1 : -1) *(_i*-1)*DessertUtility.RotetoRate) / 10.0f;
+            pos += (-FlickUps[i].transform.right * (_i*-1)*DessertUtility.RotetoRate) / 50.0f;
 
             FlickUps[i].transform.localPosition = pos;
 
