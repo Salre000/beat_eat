@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class TransitionEffect : MonoBehaviour
 {
@@ -46,11 +47,11 @@ public class TransitionEffect : MonoBehaviour
         SetNextScene();
 
         // タイルの生成と非アクティブ化させる
-        for (int sum = 0; sum <= tilesX + tilesY - 2; sum++)
+        for (int i = 0; i <= tilesX + tilesY - 2; i++)
         {
-            for (int x = 0; x <= sum; x++)
+            for (int x = 0; x <= i; x++)
             {
-                int y = sum - x;
+                int y = i - x;
                 if (x < tilesX && y < tilesY)
                 {
                     objects.Add(Instantiate(tile, canvas));
@@ -72,11 +73,11 @@ public class TransitionEffect : MonoBehaviour
         //第一引数　が行き先
         async = SceneManager.LoadSceneAsync(nextSceneName, LoadSceneMode.Additive);
         async.allowSceneActivation = false;
-        for (int sum = 0; sum <= tilesX + tilesY - 2; sum++)
+        for (int i = 0; i <= tilesX + tilesY - 2; i++)
         {
-            for (int x = 0; x <= sum; x++)
+            for (int x = 0; x <= i; x++)
             {
-                int y = sum - x;
+                int y = i - x;
                 if (x < tilesX && y < tilesY)
                 {
                     objects[index].SetActive(true);
@@ -105,11 +106,11 @@ public class TransitionEffect : MonoBehaviour
         }
         async.allowSceneActivation = true;
         int index = objects.Count-1;
-        for (int sum = tilesX + tilesY - 2; sum >= 0; sum--)
+        for (int i = tilesX + tilesY - 2; i >= 0; i--)
         {
-            for (int x = 0; x <= sum; x++)
+            for (int x = 0; x <= i; x++)
             {
-                int y = sum - x;
+                int y = i - x;
                 if (x < tilesX && y < tilesY)
                 {
                     objects[index].SetActive(false);
@@ -156,7 +157,7 @@ public class TransitionEffect : MonoBehaviour
 
         switch (nowSceneName) 
         {
-            case GameSceneManager.selectScene:nextSceneName = GameSceneManager.loadScene; break;
+            case GameSceneManager.selectScene:nextSceneName = GameSceneManager.isTargetTitle? GameSceneManager.titleScene: GameSceneManager.loadScene/*GameSceneManager.loadScene*/; break;
             case GameSceneManager.resultScene:nextSceneName = GameSceneManager.selectScene; break;
             case GameSceneManager.mainScene:nextSceneName = GameSceneManager.resultScene; break;
             case GameSceneManager.loadScene:nextSceneName = GameSceneManager.mainScene; break;

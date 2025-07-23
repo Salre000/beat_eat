@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField]Canvas _canvas;
+    [SerializeField] private GameObject _creditObject;
     // Start is called before the first frame update
     void Start()
     {
         //初めてゲームを起動した
         AchievementStatus.Achievement(AchievementTypeEnum.AchievementType._StartGame);
-
     }
 
     //メニューの状況を反転
@@ -36,5 +36,21 @@ public class MenuManager : MonoBehaviour
         GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
 
 
+    }
+
+    public void TitleScene()
+    {
+        GameSceneManager.isTargetTitle = true;
+        GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
+    }
+
+    // クレジットを表示
+    public void CreditView()
+    {
+        _creditObject.SetActive(true);
+    }
+    public void CreditClose()
+    {
+        _creditObject.SetActive(false);
     }
 }
