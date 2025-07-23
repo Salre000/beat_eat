@@ -219,7 +219,6 @@ public class LongNotes : NotesBase
             {
                 Hit(endNotes);
                 this.gameObject.SetActive(false);
-                SoundUtility.NotesLongHitSoundPlay();
                 return;
             }
         }
@@ -227,7 +226,6 @@ public class LongNotes : NotesBase
 
         if (One == true && InGameStatus.GetAuto() == true)
         {
-            SoundUtility.NotesLongHitSoundPlay();
 
             Hit(false);
 
@@ -282,7 +280,6 @@ public class LongNotes : NotesBase
 
                 LineUtility.ShowText("start");
 
-                SoundUtility.NotesLongHitSoundPlay();
 
                 Hit(false);
 
@@ -303,7 +300,6 @@ public class LongNotes : NotesBase
     {
         if (one) return;
         Hit(false);
-        SoundUtility.NotesLongHitSoundPlay();
         one = true;
     }
     public override void Hit()
@@ -318,8 +314,6 @@ public class LongNotes : NotesBase
         JudgmentImageUtility.SetNowJudgmentObjectPos(transform.position);
         //îªíËÇÃâ¡éZÇÇ∑ÇÈä÷êî
         SetJudgment(gameObject);
-
-        SoundUtility.NotesLongHitSoundPlay();
 
         //é©êgÇactiveÇ∂Ç·Ç»Ç¢èÛë‘Ç…ïœçX
         LineUtility.SbuActiveObject(this);
