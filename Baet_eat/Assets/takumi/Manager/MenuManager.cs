@@ -20,6 +20,24 @@ public class MenuManager : MonoBehaviour
         _canvas.gameObject.SetActive(!_canvas.gameObject.activeSelf);
     }
 
+    public void ChengeTitel() 
+    {
+
+        TransitionEffect.nextSceneNameSystem = GameSceneManager.titleScene;
+
+        GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
+
+    }
+    //一時的にタイトルへ移動になっている
+    public void ChengeCredit()
+    {
+
+        TransitionEffect.nextSceneNameSystem = GameSceneManager.titleScene;
+
+        GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
+
+    }
+
     public void TutorialStart() 
     {
 
