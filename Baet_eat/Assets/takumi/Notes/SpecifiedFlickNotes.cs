@@ -39,6 +39,8 @@ public class SpecifiedFlickNotes : FlickNotes
         }
         if (renge != 0) { _i *= -1; regular_position = false; }
 
+        Debug.Log(_i + "•ûŒü");
+
         for (int i = 0; i < 3; i++)
         {
             FlickUps[i] = this.transform.GetChild(i == 0 ? i : i + 1).gameObject;
@@ -83,11 +85,11 @@ public class SpecifiedFlickNotes : FlickNotes
     {
         for (int i = 0; i < 3; i++)
         {
-            Vector3 pos = FlickUps[i].transform.localPosition;
+            //Vector3 pos = FlickUps[i].transform.localPosition;
 
-            pos += (-FlickUps[i].transform.right * (_i*-1)*DessertUtility.RotetoRate) / 50.0f;
+            //pos += (-FlickUps[i].transform.right * (_i*-1)*DessertUtility.RotetoRate) / 20.0f;
 
-            FlickUps[i].transform.localPosition = pos;
+            //FlickUps[i].transform.localPosition = pos;
 
             Color color = meshs[i].material.color;
 
