@@ -23,6 +23,7 @@ public class NotesManager : MonoBehaviour
         ShowNotes();
 
         if (!SoundUtility.GetPlaying()) return;
+        if (InGameStatus.GetAuto()) return;
         List<HandManager.Hands> hands = HandUtility.GetHands();
 
         for(int i = 0; i < hands.Count; i++) 

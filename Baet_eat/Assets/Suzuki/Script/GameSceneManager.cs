@@ -13,6 +13,7 @@ public static class GameSceneManager
     public const string resultScene = "ResultScene";
     public const string loadScene = "LoadScene";
     public const string changeScene = "ChangeScene";
+    public const string titleScene = "TitleScene";
 
     // セレクトシーンからタイトルに戻るときにだけ使う変数
     public static bool isTargetTitle=false;
