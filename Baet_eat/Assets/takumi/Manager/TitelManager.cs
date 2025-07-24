@@ -8,17 +8,20 @@ public class TitelManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI pushTo;
     // Start is called before the first frame update
-
+    public static bool oneFlag = true;
+    public static bool startChangeFlag = false;
     private void Awake()
     {
         GameSceneManager.isTargetTitle = false;
+        oneFlag=true;
+        startChangeFlag = false;
 
-        if(!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.FoundationFileName + SaveData.FILR_EXTENSION)) 
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.FoundationFileName + SaveData.FILR_EXTENSION))
         {
             SaveData.SaveFoundation(1);
         }
 
-        if(!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.OpstionFileName + SaveData.FILR_EXTENSION)) 
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/" + SaveData.OpstionFileName + SaveData.FILR_EXTENSION))
         {
             SaveData.SaveOption(1);
         }
@@ -28,28 +31,29 @@ public class TitelManager : MonoBehaviour
     }
 
 
-    private bool oneFlag = false;
+
     public void FixedUpdate()
     {
-            if ((Input.GetMouseButton(0)||Input.touchCount>0)&&!oneFlag) 
+        if ((Input.GetMouseButton(0) || Input.touchCount > 0) && !oneFlag)
         {
+            startChangeFlag=true;
             oneFlag = true;
-           ChengeSelect();
+            ChengeSelect();
 
         }
         AlphaChenge();
     }
 
-    float alpha =0.01f;
-   private void AlphaChenge() 
+    float alpha = 0.01f;
+    private void AlphaChenge()
     {
-        Color color=pushTo.color;
+        Color color = pushTo.color;
         color.a += alpha;
         if (color.a >= 1 || color.a <= 0) alpha *= -1;
         pushTo.color = color;
 
     }
-    public void ChengeSelect() 
+    public void ChengeSelect()
     {
         TransitionEffect.nextSceneNameSystem = GameSceneManager.selectScene;
 
