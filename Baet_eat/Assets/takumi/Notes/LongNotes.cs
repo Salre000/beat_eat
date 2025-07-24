@@ -21,7 +21,7 @@ public class LongNotes : NotesBase
         dessertNotes = GetComponent<DessertNotes>();
         if (dessertNotes != null && dessertNotes.GetNotesPos() != DessertNotes.NotesPos.grand)
         {
-            destryRenge = -4f;
+            destryRenge = DessertManager.TAP_AREA_DESSERT;
 
         }
         else sideFlag = true;

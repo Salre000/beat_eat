@@ -30,7 +30,7 @@ public class DessertNotes : MonoBehaviour
     {
         notesBase=GetComponent<NotesBase>();
         if (GetComponent<LongNotes>() != null) longFlag = true;
-        notesBase.SetEndPos(notesPos == NotesPos .grand?-6.25f:- 4.0f);
+        notesBase.SetEndPos(notesPos == NotesPos .grand?-6.25f: DessertManager.TAP_AREA_DESSERT);
        
     }
 
@@ -65,7 +65,7 @@ public class DessertNotes : MonoBehaviour
     }
     public  bool CheckHitlane(int index)
     {
-        JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position,-4f));
+        JudgmentType judgmentType = (JudgmentType)((int)LineUtility.RangeToDecision(this.transform.position,DessertManager.TAP_AREA_DESSERT));
         bool flag = ((int)notesPos == index) && judgmentType <= JudgmentType.Good && (int)judgmentType >= -(int)JudgmentType.Good;
         return flag;
     }

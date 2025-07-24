@@ -13,7 +13,7 @@ public class SpecifiedFlickNotes : FlickNotes
     void Start()
     {
         renge = 15;
-        SetEndPos(-4.0f);
+        SetEndPos(DessertManager.TAP_AREA_DESSERT);
 
     }
     protected override void Action()

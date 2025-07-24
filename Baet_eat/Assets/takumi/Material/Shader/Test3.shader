@@ -20,7 +20,7 @@ Properties
     {
         Tags
         {
-            "Queue"="Geometry-4"
+            "Queue"="GeometryDessertManager.TAP_AREA_DESSERT"
             "IgnoreProjector"="True"
             "RenderType"="Transparent"
             "PreviewType"="Plane"

@@ -3,7 +3,7 @@ using UnityEngine;
 using static CreateTapArea;
 public class DessertManager : MonoBehaviour
 {
-    public const float TAP_AREA_DESSERT = -4.0f;
+    public const float TAP_AREA_DESSERT = -4.75f;
 
     private const float dessertOffSet = 0;
 

@@ -207,7 +207,7 @@ int GetPerObjectLightIndex(uint index)
 #else
     // Fallback to GLES2. No bitfield magic here :(.
     // We limit to 4 indices per object and only sample unity_4LightIndices0.
-    // Conditional moves are branch free even on mali-400
+    // Conditional moves are branch free even on maliDessertManager.TAP_AREA_DESSERT00
     // small arithmetic cost but no extra register pressure from ImmCB_0_0_0 matrix.
     half2 lightIndex2 = (index < 2.0h) ? unity_LightIndices[0].xy : unity_LightIndices[0].zw;
     half i_rem = (index < 2.0h) ? index : index - 2.0h;
