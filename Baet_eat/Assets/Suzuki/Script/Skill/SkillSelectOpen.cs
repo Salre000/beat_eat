@@ -19,6 +19,7 @@ public class SkillSelectOpen : MonoBehaviour
     private readonly Vector3 _skillmaskClosePosition = new Vector3(0, -135.0f, 0);
     private readonly Vector2 _skillmaskCloseSize = new Vector2(160, 138);
 
+    private float _speed = 10;
 
     private void Awake()
     {
@@ -48,15 +49,15 @@ public class SkillSelectOpen : MonoBehaviour
     // ìWäJ
     private void OpenSkill()
     {
-        _skillMask.localPosition = Vector3.Lerp(_skillMask.localPosition, _skillmaskOpenPosition, Time.deltaTime * 10f);
-        _skillMask.sizeDelta = Vector3.Lerp(_skillMask.sizeDelta, _skillmaskOpenSize, Time.deltaTime * 10f);
+        _skillMask.localPosition = Vector3.Lerp(_skillMask.localPosition, _skillmaskOpenPosition, Time.deltaTime * _speed);
+        _skillMask.sizeDelta = Vector3.Lerp(_skillMask.sizeDelta, _skillmaskOpenSize, Time.deltaTime * _speed);
         GetComponent<SkillSelectSingle>().OpenJammer();
     }
     // ëIÇ—èIÇÌÇË
     private void CloseSkill()
     {
-        _skillMask.localPosition = Vector3.Lerp(_skillMask.localPosition, _skillmaskClosePosition, Time.deltaTime * 10f);
-        _skillMask.sizeDelta = Vector3.Lerp(_skillMask.sizeDelta, _skillmaskCloseSize, Time.deltaTime * 10f);
+        _skillMask.localPosition = Vector3.Lerp(_skillMask.localPosition, _skillmaskClosePosition, Time.deltaTime * _speed);
+        _skillMask.sizeDelta = Vector3.Lerp(_skillMask.sizeDelta, _skillmaskCloseSize, Time.deltaTime * _speed);
         GetComponent<SkillSelectSingle>().CloseJammer();
     }
 

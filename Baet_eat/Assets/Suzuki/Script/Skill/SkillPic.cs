@@ -9,17 +9,15 @@ public class SkillPic : MonoBehaviour
 
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private RectTransform content;
-    private float snapSpeed = 1f;      // Lerpにかける時間
+    private float snapSpeed = 120f;      // Lerpにかける時間
     private bool isDragging = false;
     float minDist = float.MaxValue;
     // 中心となる指標のY座標を取得
     float centerY = 0;
     [SerializeField] RectTransform targetPic;
-    private List<GameObject> _skillCards = new(SkillManager.SKILLLIST_CAPACITY);
 
     private void Start()
     {
-        _skillCards = SkillManager.instance.GetSkillCards();
         SelectPicSnap.SkillSelectCard(targetPic, content);
     }
     void Update()
@@ -30,7 +28,7 @@ public class SkillPic : MonoBehaviour
             return;
         }
         // ドラッグしておらず、スクロール速度が遅くなったらスナップ開始
-        if (!isDragging && scrollRect.velocity.magnitude < 1000f)
+        if (!isDragging && scrollRect.velocity.magnitude < 10000f)
         {
             SkillManager.instance.SetClosest(null);
             minDist = float.MaxValue;

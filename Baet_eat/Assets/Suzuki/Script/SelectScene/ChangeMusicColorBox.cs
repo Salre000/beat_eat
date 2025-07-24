@@ -9,7 +9,8 @@ public class ChangeMusicColorBox : MonoBehaviour
     private List<Outline> _musicSelectOutLine = new(MusicManager.CAPACITY);
     private List<GameObject> _colorBoxs = new(MusicManager.CAPACITY);
     private const int _BOX_MAX = 4;
-    Image boxImage;
+    private Image _boxImage;
+    private Image _backJacketImage;
     // 難易度別カラー
 
 
@@ -20,7 +21,8 @@ public class ChangeMusicColorBox : MonoBehaviour
     private void Initialize()
     {
         _musicSelects = MusicManager.instance.GetMusicCards();
-
+        // ジャケット裏のイメージカラーも変更する
+        _backJacketImage=GameObject.Find("JacketBackImage").GetComponent<Image>();
         // 選択されている難易度で曲カードの色を変更
         for (int i = 0; i < _musicSelects.Count; i++)
         {
@@ -28,29 +30,30 @@ public class ChangeMusicColorBox : MonoBehaviour
             _musicSelectOutLine.Add(_musicSelects[i].GetComponent<Outline>());
             for (int n = 0; n < _BOX_MAX; n++)
             {
-                boxImage = _colorBoxs[i].transform.GetChild(n).GetComponent<Image>();
+                _boxImage = _colorBoxs[i].transform.GetChild(n).GetComponent<Image>();
 
                 switch (MusicManager.instance.GetDifficultyNumber())
                 {
                     case 0:
-                        boxImage.color = ColorManager.DRINK_COLOR;
+                        _boxImage.color = ColorManager.DRINK_COLOR;
                         break;
                     case 1:
-                        boxImage.color = ColorManager.HORSDOEUVRE_COLOR;
+                        _boxImage.color = ColorManager.HORSDOEUVRE_COLOR;
                         break;
                     case 2:
-                        boxImage.color = ColorManager.SOUP_COLOR;
+                        _boxImage.color = ColorManager.SOUP_COLOR;
                         break;
                     case 3:
-                        boxImage.color = ColorManager.MAINDISH_COLOR;
+                        _boxImage.color = ColorManager.MAINDISH_COLOR;
                         break;
                     case 4:
-                        boxImage.color = ColorManager.DESSERT_COLOR;
+                        _boxImage.color = ColorManager.DESSERT_COLOR;
                         break;
                 }
             }
-            _musicSelectOutLine[i].effectColor = boxImage.color;
-            boxImage = null;
+            _musicSelectOutLine[i].effectColor = _boxImage.color;
+            _backJacketImage.color=_boxImage.color;
+            _boxImage = null;
         }
         // ガベコレ行き
         _musicSelects = null;
@@ -72,30 +75,31 @@ public class ChangeMusicColorBox : MonoBehaviour
         {
             for (int n = 0; n < _BOX_MAX; n++)
             {
-                boxImage = _colorBoxs[i].transform.GetChild(n).GetComponent<Image>();
+                _boxImage = _colorBoxs[i].transform.GetChild(n).GetComponent<Image>();
 
                 switch (MusicManager.instance.GetDifficultyNumber())
                 {
                     case 0:
-                        boxImage.color = ColorManager.DRINK_COLOR;
+                        _boxImage.color = ColorManager.DRINK_COLOR;
                         break;
                     case 1:
-                        boxImage.color = ColorManager.HORSDOEUVRE_COLOR;
+                        _boxImage.color = ColorManager.HORSDOEUVRE_COLOR;
                         break;
                     case 2:
-                        boxImage.color = ColorManager.SOUP_COLOR;
+                        _boxImage.color = ColorManager.SOUP_COLOR;
                         break;
                     case 3:
-                        boxImage.color = ColorManager.MAINDISH_COLOR;
+                        _boxImage.color = ColorManager.MAINDISH_COLOR;
                         break;
                     case 4:
-                        boxImage.color = ColorManager.DESSERT_COLOR;
+                        _boxImage.color = ColorManager.DESSERT_COLOR;
                         break;
                 }
 
             }
-            _musicSelectOutLine[i].effectColor = boxImage.color;
-            boxImage = null;
+            _musicSelectOutLine[i].effectColor = _boxImage.color;
+            _backJacketImage.color=_boxImage.color;
+            _boxImage = null;
 
         }
     }

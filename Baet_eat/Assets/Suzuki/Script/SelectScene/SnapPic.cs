@@ -36,7 +36,7 @@ public class SnapPic : MonoBehaviour
             return;
         }
         // ドラッグしておらず、スクロール速度が遅くなったらスナップ開始
-        if (!isDragging && scrollRect.velocity.magnitude < 100f)
+        if (!isDragging && scrollRect.velocity.magnitude < 1000f)
         {
 
             MusicManager.instance.SetClosest(null);
