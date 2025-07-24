@@ -288,7 +288,7 @@ public class CreateNotes : MonoBehaviour
                 (kankaku * inputJson.notes[i].num * OptionStatus.GetNotesSpeed() * 20)
                 + (inputJson.offset / offsetReta) * OptionStatus.GetNotesSpeed() * 20) + LineOffset;
 
-            notes.transform.position += new Vector3(0, 0, 2.25f);
+            notes.transform.position += new Vector3(0, 0, 1.5f);
 
 
             //êeÇ…ìZÇﬂÇÈ

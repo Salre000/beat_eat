@@ -50,8 +50,8 @@ public class AnimationTitle : MonoBehaviour
         _bpmTime += Time.deltaTime;
         if (_bpmTime < _BPM_START_TIME) return;
         BpmScaleAnimation();
-        if(!TitelManager.startChangeFlag)
-            TitelManager.oneFlag = false;
+        if(!TitleManager.startChangeFlag)
+            TitleManager.oneFlag = false;
     }
 
     private void BpmScaleAnimation()

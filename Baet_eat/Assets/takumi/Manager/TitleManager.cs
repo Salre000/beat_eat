@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitelManager : MonoBehaviour
+public class TitleManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI pushTo;
     // Start is called before the first frame update
