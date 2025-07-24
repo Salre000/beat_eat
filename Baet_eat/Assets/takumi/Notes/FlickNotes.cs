@@ -13,6 +13,7 @@ public class FlickNotes : NotesBase
     protected float speed = 0.01f;
 
     protected bool count = false;
+
     public void Start()
     {
         FilickUp = this.transform.GetChild(0).gameObject;

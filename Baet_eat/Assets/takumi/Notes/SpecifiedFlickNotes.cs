@@ -81,6 +81,7 @@ public class SpecifiedFlickNotes : FlickNotes
 
 
     }
+
     public override void FlickImageMove()
     {
         for (int i = 0; i < 3; i++)
@@ -125,5 +126,9 @@ public class SpecifiedFlickNotes : FlickNotes
         flickStartPos = HandUtility.handPosition(touchID);
         count = true;
 
+    }
+    protected override void MissAction()
+    {
+        DessertUtility.StartRoteto(regular_position ? -1 : 1);
     }
 }

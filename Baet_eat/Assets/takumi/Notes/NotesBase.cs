@@ -32,6 +32,8 @@ public class NotesBase : MonoBehaviour
     protected float endPos = -6.25f;
     public float GetEndPos() { return endPos; } 
     public void SetEndPos(float _endPOs) { endPos = _endPOs; }
+
+    protected virtual void MissAction() { }
     //”»’èƒ^ƒCƒv
     public enum JudgmentType
     {
@@ -111,6 +113,7 @@ public class NotesBase : MonoBehaviour
 
         showTime = -100;
         InGameStatus.AddNoesTypeMIss(NotesType);
+        MissAction();
 
     }
 
