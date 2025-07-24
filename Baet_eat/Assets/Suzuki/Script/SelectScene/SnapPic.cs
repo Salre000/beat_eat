@@ -8,7 +8,7 @@ public class SnapPic : MonoBehaviour
 
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private RectTransform content;
-    private float snapSpeed = 30f;      // Lerp‚É‚©‚¯‚éŽžŠÔ
+    private float snapSpeed = 90f;      // Lerp‚É‚©‚¯‚éŽžŠÔ
     private bool isDragging = false;
 
     float minDist = float.MaxValue;
