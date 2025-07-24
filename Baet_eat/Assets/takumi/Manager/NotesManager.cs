@@ -45,7 +45,7 @@ public class NotesManager : MonoBehaviour
         {
             if (AllNotes[i].transform.position.z>50 || AllNotes[i].gameObject.activeSelf || AllNotes[i].GetShowTime() < -99) continue;
             //ƒm[ƒc‚Ì•`‰æ‚ð‚·‚é
-            AllNotes[i].gameObject.SetActive(true);
+            AllNotes[i]?.gameObject?.SetActive(true);
 
 
 
