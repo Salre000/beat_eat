@@ -39,7 +39,6 @@ public class SpecifiedFlickNotes : FlickNotes
         }
         if (renge != 0) { _i *= -1; regular_position = false; }
 
-        Debug.Log(_i + "•ûŒü");
 
         for (int i = 0; i < 3; i++)
         {
