@@ -110,7 +110,7 @@ public class InGameStatus
     //”»’è‚É‚æ‚éã¸ƒXƒRƒA‚Ì•Ï“®‚ ‚è‚ÌŠÖ”
     public static void AddScore(float rete)
     {
-        score += upScore * rete; LineUtility.SetScoreGage();
+        score += upScore * rete*(HP<=0?0.1f:1); LineUtility.SetScoreGage();
     }
 
     public static void SetUpScore(int notesCount)
