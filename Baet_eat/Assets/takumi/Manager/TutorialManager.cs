@@ -1,4 +1,4 @@
-using Coffee.UIExtensions;
+//using Coffee.UIExtensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -127,7 +127,7 @@ public class TutorialManager : MonoBehaviour
         GameObject Mask = new GameObject("tutorialMask");
         Mask.transform.parent = tutorialCanvas.transform;
         Mask.AddComponent<Image>();
-        Mask.AddComponent<Unmask>();
+        //Mask.AddComponent<Unmask>();
         Mask.AddComponent<RectTransform>();
         TutorialUnMask = Mask.GetComponent<RectTransform>();
         TutorialUnMask.sizeDelta = new Vector2(Screen.width / 2, Screen.height / 2);

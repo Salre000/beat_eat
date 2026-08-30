@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
 using static publicEnum;
@@ -13,16 +12,13 @@ public static class LoadData
 
         MusicDataBase dataBase = Resources.Load<MusicDataBase>(SaveData.MusicDataName);
 
-        string filePath = Path.Combine(Application.persistentDataPath, SaveData.FoundationFileName + ".txt");
+        string filePath = Path.Combine(Application.persistentDataPath, SaveData.FoundationFileName + ".json");
         if (File.Exists(filePath))
         {
 
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(filePath, FileMode.Open);
-            ScoreData data = formatter.Deserialize(stream) as ScoreData;
-            ScoreStatus.SetScoreData(data);
-
-            stream.Close();
+            string json = File.ReadAllText(filePath);
+            ScoreDataSaveModel saveModel = JsonUtility.FromJson<ScoreDataSaveModel>(json);
+            ScoreStatus.SetScoreData(saveModel.ToScoreData());
 
             if (dataBase.musicData.Count > ScoreStatus.GetScoreData().dessertScore[0].Count)
             {
@@ -41,16 +37,14 @@ public static class LoadData
     public static void LoadAchiveMent(System.Action Initialize)
     {
 
-        string filePath = Path.Combine(Application.persistentDataPath, SaveData.AchiveMentFileName + ".txt");
+        // NOTE: å®Ÿç¸¾ãƒ­ãƒ¼ãƒ‰ã¯æ—¢å­˜ä»•æ§˜ã«ã‚ˆã‚Šç„¡åŠ¹åŒ–ã•ã‚ŒãŸã¾ã¾(ç¾çŠ¶ç¶­æŒãƒ»ã‚¹ã‚³ãƒ¼ãƒ—å¤–)
+        string filePath = Path.Combine(Application.persistentDataPath, SaveData.AchiveMentFileName + ".json");
         if (false)//File.Exists(filePath))
         {
 
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(filePath, FileMode.Open);
-            Achievements data = formatter.Deserialize(stream) as Achievements;
+            string json = File.ReadAllText(filePath);
+            Achievements data = JsonUtility.FromJson<Achievements>(json);
             AchievementStatus.achievements = data;
-
-            stream.Close();
 
             if (data.GetAChiveMentStatus().Count > (int)AchievementTypeEnum.AchievementType.MAX) return;
 
@@ -76,42 +70,42 @@ public static class LoadData
 
         MusicDataBase dataBase = Resources.Load<MusicDataBase>(SaveData.MusicDataName);
 
-        //“Ç‚İ‚ñ‚¾CSVƒtƒ@ƒCƒ‹‚ğŠi”[
+        //ï¿½Ç‚İï¿½ï¿½ï¿½CSVï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[
         List<string[]> csvDatas = new List<string[]>();
 
-        //CSVƒtƒ@ƒCƒ‹‚Ìs”‚ğŠi”[
+        //CSVï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ìsï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[
         int height = 0;
 
-        //ƒtƒ@ƒCƒ‹ƒpƒX‚Æƒtƒ@ƒCƒ‹‚Ì–¼‘O‚ğŒq‚°‚é
+        //ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½pï¿½Xï¿½Æƒtï¿½@ï¿½Cï¿½ï¿½ï¿½Ì–ï¿½ï¿½Oï¿½ï¿½ï¿½qï¿½ï¿½ï¿½ï¿½
         StringBuilder builder = new StringBuilder();
         builder.Clear();
         builder.Append(SaveData.OpstionFileName);
 
-        //Œq‚°‚½ƒtƒ@ƒCƒ‹ƒpƒX‚ğg‚¢ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚ğs‚¤
+        //ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½pï¿½Xï¿½ï¿½ï¿½gï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½sï¿½ï¿½
         string filePath = Path.Combine(Application.persistentDataPath, SaveData.OpstionFileName + SaveData.FILR_EXTENSION);
 
         string[] lines = File.ReadAllLines(filePath);
 
-        //“Ç‚İ‚ñ‚¾ƒeƒLƒXƒg‚ğStringŒ^‚É‚µ‚ÄŠi”[
+        //ï¿½Ç‚İï¿½ï¿½ñ‚¾ƒeï¿½Lï¿½Xï¿½gï¿½ï¿½Stringï¿½^ï¿½É‚ï¿½ï¿½ÄŠiï¿½[
         //StringReader reader = new StringReader(textAsset.text);
 
         for (int i = 0; i < lines.Length; i++)
         {
-            // ,‚Å‹æØ‚Á‚ÄCSV‚ÉŠi”[
+            // ,ï¿½Å‹ï¿½Ø‚ï¿½ï¿½ï¿½CSVï¿½ÉŠiï¿½[
             csvDatas.Add(lines[i].Split(','));
-            height++; // s”‰ÁZ
+            height++; // ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½Z
         }
 
-        /// ÅŒã‚É‘I‚ñ‚Å‚¢‚½ƒXƒLƒ‹@int 
-        /// ƒm[ƒc‚Ì‘¬‚³@float 
-        /// ƒm[ƒc‚Ì”»’èˆÊ’u@float
-        /// ¬Œ÷”»’è‚ÌˆÊ’u
-        /// ¬Œ÷”»’è‚Ìoffset
-        /// ƒm[ƒc‚Æƒm[ƒc‚ÌŠÔ‚Ìü bool
-        /// BGM‚Ì‰¹—Ê@float
-        /// SE‚Ì‰¹—Ê@float
-        /// ƒm[ƒc‚ÌŒ©‚½–Ú@int
-        /// SE‚Ì‰¹@int
+        /// ï¿½ÅŒï¿½É‘Iï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½ï¿½@int 
+        /// ï¿½mï¿½[ï¿½cï¿½Ì‘ï¿½ï¿½ï¿½ï¿½@float 
+        /// ï¿½mï¿½[ï¿½cï¿½Ì”ï¿½ï¿½ï¿½Ê’uï¿½@float
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌˆÊ’u
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½offset
+        /// ï¿½mï¿½[ï¿½cï¿½Æƒmï¿½[ï¿½cï¿½ÌŠÔ‚Ìï¿½ bool
+        /// BGMï¿½Ì‰ï¿½ï¿½Ê@float
+        /// SEï¿½Ì‰ï¿½ï¿½Ê@float
+        /// ï¿½mï¿½[ï¿½cï¿½ÌŒï¿½ï¿½ï¿½ï¿½Ú@int
+        /// SEï¿½Ì‰ï¿½ï¿½@int
 
         int LineCount = 0;
         LineCount++;
@@ -136,30 +130,30 @@ public static class LoadData
 
     public static void LoadMusicLevel()
     {
-        //“Ç‚İ‚ñ‚¾CSVƒtƒ@ƒCƒ‹‚ğŠi”[
+        //ï¿½Ç‚İï¿½ï¿½ï¿½CSVï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[
         List<string[]> csvDatas = new List<string[]>();
 
-        //CSVƒtƒ@ƒCƒ‹‚Ìs”‚ğŠi”[
+        //CSVï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ìsï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[
         int height = 0;
 
-        //ƒtƒ@ƒCƒ‹ƒpƒX‚Æƒtƒ@ƒCƒ‹‚Ì–¼‘O‚ğŒq‚°‚é
+        //ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½pï¿½Xï¿½Æƒtï¿½@ï¿½Cï¿½ï¿½ï¿½Ì–ï¿½ï¿½Oï¿½ï¿½ï¿½qï¿½ï¿½ï¿½ï¿½
         StringBuilder builder = new StringBuilder();
         builder.Clear();
         builder.Append(MusicLevelPass);
 
-        //Œq‚°‚½ƒtƒ@ƒCƒ‹ƒpƒX‚ğg‚¢ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚ğs‚¤
+        //ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½pï¿½Xï¿½ï¿½ï¿½gï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½sï¿½ï¿½
         TextAsset textAsset = Resources.Load<TextAsset>(builder.ToString());
 
 
-        //“Ç‚İ‚ñ‚¾ƒeƒLƒXƒg‚ğStringŒ^‚É‚µ‚ÄŠi”[
+        //ï¿½Ç‚İï¿½ï¿½ñ‚¾ƒeï¿½Lï¿½Xï¿½gï¿½ï¿½Stringï¿½^ï¿½É‚ï¿½ï¿½ÄŠiï¿½[
         StringReader reader = new StringReader(textAsset.text);
 
         while (reader.Peek() > -1)
         {
             string line = reader.ReadLine();
-            // ,‚Å‹æØ‚Á‚ÄCSV‚ÉŠi”[
+            // ,ï¿½Å‹ï¿½Ø‚ï¿½ï¿½ï¿½CSVï¿½ÉŠiï¿½[
             csvDatas.Add(line.Split(','));
-            height++; // s”‰ÁZ
+            height++; // ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½Z
         }
         for(int i = 0; i < csvDatas.Count; i++) 
         {
