@@ -1,4 +1,8 @@
-using Coffee.UIExtensions;
+//using Coffee.UIExtensions;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,8 +24,6 @@ public class TutorialManager : MonoBehaviour
         PlayFlick,//フリックノーツタッチで取らせる
         SkillDemo,//スキルノーツをオートで取らせる
         PlaySkill,//スキルノーツタッチで取らせる
-        SideNotes,//サイドレーンの説明もこみ
-        SideNotesFlick,//フリックすると
         End
     }
     private TutorialPhase phase;
@@ -40,14 +42,13 @@ public class TutorialManager : MonoBehaviour
     }
 
     private bool startFlag = false;
-    private bool notesOneFlag = false;
     private void FixedUpdate()
     {
+        if (SceneManager.GetActiveScene().name == GameSceneManager.resultScene) Destroy(gameObject);
         if (SceneManager.GetActiveScene().name == GameSceneManager.mainScene) startFlag = true;
 
         //チュートリアルの開始
         if (!startFlag) return;
-
         CheckPhase();
         SwitchPhase();
 
@@ -55,8 +56,6 @@ public class TutorialManager : MonoBehaviour
     }
     private void SwitchPhase()
     {
-        if (!oneFlag) return;
-
         switch (phase)
         {
             case TutorialPhase.None:
@@ -96,12 +95,6 @@ public class TutorialManager : MonoBehaviour
                 TutorialPhaseSkillPlay();
                 break;
             case TutorialPhase.PlaySkill:
-                TutorialPhaseSideNotes();
-                break;
-            case TutorialPhase.SideNotes:
-                TutorialPhaseSideFlick();
-                break;
-            case TutorialPhase.SideNotesFlick:
                 TutorialPhaseEnd();
                 break;
             case TutorialPhase.End:
@@ -121,33 +114,11 @@ public class TutorialManager : MonoBehaviour
         one = true;
 
         GameObject canvas = GameObject.Find("PoseCanvas");
-        GameObject end= new GameObject("END");  
-
-        end.transform.parent = canvas.transform;
-        end.AddComponent<UnityEngine.UI.Button>();
-        end.AddComponent<Image>();
-        end.AddComponent<RectTransform>();
-        GameObject C = new GameObject("TEXT");
-        C.transform.parent = end.transform;
-        C.transform.localPosition = Vector3.zero;
-        C.AddComponent<Text>();
-        C.GetComponent<Text>().text = "終了";
-        end.GetComponent<RectTransform>().position+= new Vector3(100, 100);
-        end.GetComponent<Button>().onClick.AddListener(() => 
-        {
-
-            TransitionEffect.nextSceneNameSystem = GameSceneManager.selectScene;
-
-            GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
-
-            Destroy(gameObject);
-
-        });
 
         GameObject tutorialCanvas = new GameObject("tutorialcanvas");
 
         tutorialCanvas.transform.parent = canvas.transform;
-        tutorialCanvas.transform.SetAsFirstSibling();
+
         tutorialCanvas.AddComponent<RectTransform>().localPosition = Vector3.zero; ;
         tutorialCanvas.AddComponent<Mask>().showMaskGraphic = false; ;
         tutorialCanvas.AddComponent<Image>();
@@ -156,7 +127,7 @@ public class TutorialManager : MonoBehaviour
         GameObject Mask = new GameObject("tutorialMask");
         Mask.transform.parent = tutorialCanvas.transform;
         Mask.AddComponent<Image>();
-        Mask.AddComponent<Unmask>();
+        //Mask.AddComponent<Unmask>();
         Mask.AddComponent<RectTransform>();
         TutorialUnMask = Mask.GetComponent<RectTransform>();
         TutorialUnMask.sizeDelta = new Vector2(Screen.width / 2, Screen.height / 2);
@@ -173,7 +144,7 @@ public class TutorialManager : MonoBehaviour
         back.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
 
         Color color = new Color(0.1f, 0.1f, 0.1f);
-        color.a = 0.9f;
+        color.a = 0.7f;
         back.GetComponent<Image>().color = color;
 
         TutorialBack = back;
@@ -188,8 +159,6 @@ public class TutorialManager : MonoBehaviour
         if (!oneFlag) return;
         oneFlag = false;
         TextShow.showText = "これからチュートリアルを開始します。＞_＜";
-
-        NotesMove.Instance.transform.position += new Vector3(0, 0, 8f);
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
         TextShow.AddEndAction(() => { NextPhase = TutorialPhase.Start; oneFlag = true; });
         //チュートリアルに使うオブジェクトなどを生成
@@ -217,7 +186,7 @@ public class TutorialManager : MonoBehaviour
         //ノーツと音楽を止める
         SoundUtility.MainBGMStop();
         NotesMove.Instance.stopFlag = true;
-        StartMask(new Vector2(0, 100), new Vector2(500, 500));
+        StartMask(new Vector2(50, 130), new Vector2(110, 30));
 
         TextShow.showText = "ノーツの説明。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
@@ -225,6 +194,10 @@ public class TutorialManager : MonoBehaviour
         {
             TextShow.showText = "基本のタップノーツ。＞_＜";
             SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
+
+
+
+
             TextShow.AddEndAction(() =>
             {
 
@@ -342,14 +315,13 @@ public class TutorialManager : MonoBehaviour
             TextShow.OFFSet = 200;
             TextShow.Speed = 3;
 
-            //オートモードを解除
-            InGameStatus.AutoMode(false);
 
             TextShow.showText = "プレイ中。＞_＜";
             SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
 
             TextShow.AddEndAction(() =>
             {
+                NotesMove.Instance.stopFlag = false;
                 TextShow.OFFSet = 200;
                 TextShow.Speed = 2;
 
@@ -381,7 +353,7 @@ public class TutorialManager : MonoBehaviour
         //ノーツと音楽を止める
         SoundUtility.MainBGMStop();
         NotesMove.Instance.stopFlag = true;
-        StartMask(new Vector2(0, 100), new Vector2(500, 500));
+        StartMask(new Vector2(25, 240), new Vector2(100, 120));
 
         oneFlag = false;
         TextShow.showText = "このノーツはロングノーツ。＞_＜";
@@ -398,9 +370,6 @@ public class TutorialManager : MonoBehaviour
 
                 TextShow.showText = "デモプレイに切り替え。＞_＜";
                 SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-
-                //オートモードに変更
-                InGameStatus.AutoMode();
 
                 TextShow.AddEndAction(() =>
                 {
@@ -434,10 +403,6 @@ public class TutorialManager : MonoBehaviour
         oneFlag = false;
         TextShow.showText = "実際にノーツをプレイ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-
-        //オートモードを解除
-        InGameStatus.AutoMode(false);
-
         TextShow.AddEndAction(() =>
         {
 
@@ -473,7 +438,7 @@ public class TutorialManager : MonoBehaviour
         SoundUtility.MainBGMStop();
         NotesMove.Instance.stopFlag = true;
 
-        StartMask(new Vector2(0, 100), new Vector2(500, 500));
+        StartMask(new Vector2(-10, 230), new Vector2(90, 60));
 
         TextShow.showText = "このノーツはフリックノーツ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
@@ -489,9 +454,6 @@ public class TutorialManager : MonoBehaviour
 
                 TextShow.showText = "デモプレイに切り替え。＞_＜";
                 SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-
-                //オートモードに変更
-                InGameStatus.AutoMode();
 
                 TextShow.AddEndAction(() =>
                 {
@@ -525,10 +487,6 @@ public class TutorialManager : MonoBehaviour
         oneFlag = false;
         TextShow.showText = "実際にノーツをプレイ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-
-        //オートモードを解除
-        InGameStatus.AutoMode(false);
-
         TextShow.AddEndAction(() =>
         {
 
@@ -550,7 +508,7 @@ public class TutorialManager : MonoBehaviour
         oneFlag = false;
         SoundUtility.MainBGMStop();
         NotesMove.Instance.stopFlag = true;
-        StartMask(new Vector2(0, 100), new Vector2(500, 500));
+        StartMask(new Vector2(-5, 155), new Vector2(120, 30));
 
 
         TextShow.showText = "このノーツはスキルノーツ。＞_＜";
@@ -567,9 +525,6 @@ public class TutorialManager : MonoBehaviour
 
                 TextShow.showText = "デモプレイに切り替え。＞_＜";
                 SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-                //オートモードに変更
-                InGameStatus.AutoMode();
-
 
                 TextShow.AddEndAction(() =>
                 {
@@ -601,174 +556,12 @@ public class TutorialManager : MonoBehaviour
     {
         if (!oneFlag) return;
         oneFlag = false;
-        TextShow.showText = "実際にノーツをプレイ。＞_＜";
+        SoundUtility.MainBGMStop();
+        NotesMove.Instance.stopFlag = true;
+
+        TextShow.showText = "Skillノーツのプレイ。＞_＜";
         SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-
-        //オートモードを解除
-        InGameStatus.AutoMode(false);
-
-        TextShow.AddEndAction(() =>
-        {
-
-            SoundUtility.MainBGMStart();
-            NotesMove.Instance.stopFlag = false;
-            TextShow.OFFSet = 200;
-            TextShow.Speed = 2;
-            TextShow.showText = "プレイ中。＞_＜";
-            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-            TextShow.AddEndAction(() =>
-            {
-                NextPhase = TutorialPhase.PlaySkill; oneFlag = true;
-                SoundUtility.MainBGMStop();
-                NotesMove.Instance.stopFlag = true;
-
-
-
-            });
-        });
-    }
-    private void TutorialPhaseSideNotes()
-    {
-        if (!oneFlag) return;
-        oneFlag = false;
-        TextShow.OFFSet = 200;
-        TextShow.Speed = 2;
-        TextShow.showText = "ここからの説明は一部の難易度しかでない！！。";
-        SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() =>
-        {
-
-            TextShow.OFFSet = 200;
-            TextShow.Speed = 2;
-            TextShow.showText = "サイドレーンの説明";
-            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-            TextShow.AddEndAction(() =>
-            {
-                TextShow.OFFSet = 200;
-                TextShow.Speed = 2;
-                TextShow.showText = "タップする場所が違うだけ";
-                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-                TextShow.AddEndAction(() =>
-                {
-                    StartMask(new Vector2(620, 150), new Vector2(200, 250));
-                    TextShow.OFFSet = -200;
-                    TextShow.Speed = 2;
-                    TextShow.showText = "タップする場所はここと";
-                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-                    TextShow.AddEndAction(() =>
-                    {
-                        StartMask(new Vector2(-620, 150), new Vector2(200, 250));
-                        TextShow.OFFSet = -200;
-                        TextShow.Speed = 2;
-                        TextShow.showText = "ここの二箇所";
-                        SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-                        TextShow.AddEndAction(() =>
-                        {
-
-                            TextShow.Speed = 3;
-                            SoundUtility.MainBGMStart();
-                            NotesMove.Instance.stopFlag = false;
-
-
-
-                            TextShow.showText = "次はサイドレーンにしかないノーツ";
-                            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-                            TextShow.AddEndAction(() =>
-                            {
-                                StartMask(new Vector2(0, 100), new Vector2(700, 500));
-                                SoundUtility.MainBGMStop();
-                                NotesMove.Instance.stopFlag = true;
-
-                                NextPhase = TutorialPhase.SideNotes; oneFlag = true;
-
-
-
-                            });
-
-                        });
-
-                    });
-                });
-            });
-        });
-    }
-    private void TutorialPhaseSideFlick()
-    {
-        if (!oneFlag) return;
-        oneFlag = false;
-        TextShow.showText = "このノーツはサイドフリックノーツ";
-        SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-        TextShow.AddEndAction(() =>
-        {
-            TextShow.showText = "矢印の方向にフリックが必要";
-            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-            TextShow.AddEndAction(() =>
-            {
-
-                EndMask();
-                TextShow.OFFSet = 200;
-                TextShow.Speed = 2;
-                TextShow.showText = "デモプレイを開始";
-                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-
-                //オートモードに変更
-                InGameStatus.AutoMode();
-
-                TextShow.AddEndAction(() =>
-                {
-                    SoundUtility.MainBGMStart();
-                    NotesMove.Instance.stopFlag = false;
-
-                    TextShow.OFFSet = 200;
-                    TextShow.Speed = 2;
-                    TextShow.showText = "デモプレイ中";
-                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-                    TextShow.AddEndAction(() =>
-                    {
-                        SoundUtility.MainBGMStop();
-                        NotesMove.Instance.stopFlag = true;
-                        TextShow.showText = "ビックリした？";
-                        SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-                        TextShow.AddEndAction(() =>
-                        {
-                            SoundUtility.MainBGMStop();
-                            NotesMove.Instance.stopFlag = true;
-
-                            TextShow.showText = "このノーツはサイドレーンをひっくり返すんだ";
-                            SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-                            TextShow.AddEndAction(() =>
-                            {
-                                TextShow.showText = "それじゃあプレイしてみよう";
-                                SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-
-                                //オートモードを解除
-                                InGameStatus.AutoMode(false);
-
-                                TextShow.AddEndAction(() =>
-                                {
-                                    SoundUtility.MainBGMStart();
-                                    NotesMove.Instance.stopFlag = false;
-
-                                    TextShow.showText = "プレイ中";
-                                    SceneManager.LoadScene("TextScene", LoadSceneMode.Additive);
-                                    TextShow.AddEndAction(() =>
-                                    {
-                                        NextPhase = TutorialPhase.SideNotesFlick; oneFlag = true;
-                                    });
-                                });
-
-                            });
-
-                        });
-
-                    });
-
-
-                });
-
-
-            });
-        });
+        TextShow.AddEndAction(() => { NextPhase = TutorialPhase.PlaySkill; oneFlag = true; });
     }
     private void TutorialPhaseEnd()
     {
@@ -782,7 +575,6 @@ public class TutorialManager : MonoBehaviour
 
             GameSceneManager.LoadScene(GameSceneManager.changeScene, LoadSceneMode.Additive);
 
-           Destroy(gameObject);
 
         });
     }

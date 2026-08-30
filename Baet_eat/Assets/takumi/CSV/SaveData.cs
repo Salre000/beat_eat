@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-//ƒIƒvƒVƒ‡ƒ“ƒf[ƒ^‚ğCSV‚É•Û‘¶‚·‚éƒNƒ‰ƒX
+//ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½CSVï¿½É•Û‘ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½X
 public static class SaveData
 {
     public static string MusicDataName = "MusicDataBase";
@@ -21,90 +20,83 @@ public static class SaveData
 
     public static string Spece = ",";
 
-    //‡”ÔŠî‘bî•ñ
+    //ï¿½ï¿½ï¿½ÔŠï¿½bï¿½ï¿½ï¿½
     ///*
     ///
-    /// ƒXƒRƒA@‹È‚Ì”*“ïˆÕ“x(ƒfƒU[ƒg‚ ‚è)@int@
-    /// ƒXƒRƒA@‹È‚Ì”*“ïˆÕ“x(ƒfƒU[ƒg‚È‚µ)@int@
-    /// ƒI[ƒo[ƒXƒRƒA@‹È‚Ì”*“ïˆÕ“x(ƒfƒU[ƒg‚ ‚è)@int@
-    /// ƒI[ƒo[ƒXƒRƒA@‹È‚Ì”*“ïˆÕ“x(ƒfƒU[ƒg‚È‚µ)@int@
-    /// ƒXƒRƒAƒ‰ƒ“ƒN@‹È‚Ì”*“ïˆÕ“x(ƒfƒU[ƒg‚ ‚è)@enum@
-    /// ƒXƒRƒAƒ‰ƒ“ƒN@‹È‚Ì”*“ïˆÕ“x(ƒfƒU[ƒg‚È‚µ)@enum@
-    /// ƒNƒŠƒAó‹µ@‹È‚Ì”–“ïˆÕ“x(ƒfƒU[ƒg‚ ‚è)@enum
-    /// ƒNƒŠƒAó‹µ@‹È‚Ì”–“ïˆÕ“x(ƒfƒU[ƒg‚È‚µ)@enum
+    /// ï¿½Xï¿½Rï¿½Aï¿½@ï¿½È‚Ìï¿½*ï¿½ï¿½Õ“x(ï¿½fï¿½Uï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½)ï¿½@intï¿½@
+    /// ï¿½Xï¿½Rï¿½Aï¿½@ï¿½È‚Ìï¿½*ï¿½ï¿½Õ“x(ï¿½fï¿½Uï¿½[ï¿½gï¿½È‚ï¿½)ï¿½@intï¿½@
+    /// ï¿½Iï¿½[ï¿½oï¿½[ï¿½Xï¿½Rï¿½Aï¿½@ï¿½È‚Ìï¿½*ï¿½ï¿½Õ“x(ï¿½fï¿½Uï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½)ï¿½@intï¿½@
+    /// ï¿½Iï¿½[ï¿½oï¿½[ï¿½Xï¿½Rï¿½Aï¿½@ï¿½È‚Ìï¿½*ï¿½ï¿½Õ“x(ï¿½fï¿½Uï¿½[ï¿½gï¿½È‚ï¿½)ï¿½@intï¿½@
+    /// ï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½@ï¿½È‚Ìï¿½*ï¿½ï¿½Õ“x(ï¿½fï¿½Uï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½)ï¿½@enumï¿½@
+    /// ï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½@ï¿½È‚Ìï¿½*ï¿½ï¿½Õ“x(ï¿½fï¿½Uï¿½[ï¿½gï¿½È‚ï¿½)ï¿½@enumï¿½@
+    /// ï¿½Nï¿½ï¿½ï¿½Aï¿½ó‹µ@ï¿½È‚Ìï¿½ï¿½ï¿½ï¿½ï¿½Õ“x(ï¿½fï¿½Uï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½)ï¿½@enum
+    /// ï¿½Nï¿½ï¿½ï¿½Aï¿½ó‹µ@ï¿½È‚Ìï¿½ï¿½ï¿½ï¿½ï¿½Õ“x(ï¿½fï¿½Uï¿½[ï¿½gï¿½È‚ï¿½)ï¿½@enum
     ///*/
 
-    //‡”ÔƒIƒvƒVƒ‡ƒ“
+    //ï¿½ï¿½ï¿½ÔƒIï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½
     ///
     /// *
-    /// ÅŒã‚É‘I‚ñ‚Å‚¢‚½ƒXƒLƒ‹@int 
-    /// ƒm[ƒc‚Ì‘¬‚³@float 
-    /// ƒm[ƒc‚Ì”»’èˆÊ’u@float
-    /// ¬Œ÷”»’è‚ÌˆÊ’u
-    /// ¬Œ÷”»’è‚Ìoffset
-    /// ƒm[ƒc‚Æƒm[ƒc‚ÌŠÔ‚Ìü bool
-    /// BGM‚Ì‰¹—Ê@float
-    /// SE‚Ì‰¹—Ê@float
-    /// ƒm[ƒc‚ÌŒ©‚½–Ú@int
-    /// SE‚Ì‰¹@int
+    /// ï¿½ÅŒï¿½É‘Iï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½ï¿½@int 
+    /// ï¿½mï¿½[ï¿½cï¿½Ì‘ï¿½ï¿½ï¿½ï¿½@float 
+    /// ï¿½mï¿½[ï¿½cï¿½Ì”ï¿½ï¿½ï¿½Ê’uï¿½@float
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌˆÊ’u
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½offset
+    /// ï¿½mï¿½[ï¿½cï¿½Æƒmï¿½[ï¿½cï¿½ÌŠÔ‚Ìï¿½ bool
+    /// BGMï¿½Ì‰ï¿½ï¿½Ê@float
+    /// SEï¿½Ì‰ï¿½ï¿½Ê@float
+    /// ï¿½mï¿½[ï¿½cï¿½ÌŒï¿½ï¿½ï¿½ï¿½Ú@int
+    /// SEï¿½Ì‰ï¿½ï¿½@int
     /// */
     /// 
 
-    //Šî‘bî•ñ
+    //ï¿½ï¿½bï¿½ï¿½ï¿½
     public static void SaveFoundation(int Startnumber = 0)
     {
 
         MusicDataBase dataBase = Resources.Load<MusicDataBase>(MusicDataName);
 
-        string filePath = Path.Combine(Application.persistentDataPath, FoundationFileName + ".txt");
+        string filePath = Path.Combine(Application.persistentDataPath, FoundationFileName + ".json");
 
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(filePath, FileMode.OpenOrCreate);
         ScoreData scoreData;
         if (Startnumber == 1) ScoreStatus.DataInitialize(dataBase.musicData.Count);
 
         scoreData= ScoreStatus.GetScoreData();
 
-
-        formatter.Serialize(stream, scoreData);
-        stream.Close();
+        string json = JsonUtility.ToJson(ScoreDataSaveModel.FromScoreData(scoreData));
+        File.WriteAllText(filePath, json);
 
 
     }
-    //ƒAƒ`[ƒuƒƒ“ƒg‚Ìî•ñ
+    //ï¿½Aï¿½`ï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½gï¿½Ìï¿½ï¿½
     public static void SaveAchiveMent()
     {
 
 
-        string filePath = Path.Combine(Application.persistentDataPath, AchiveMentFileName + ".txt");
-
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(filePath, FileMode.OpenOrCreate);
+        string filePath = Path.Combine(Application.persistentDataPath, AchiveMentFileName + ".json");
 
         Achievements Data = AchievementStatus.achievements;
 
-
-        formatter.Serialize(stream,Data);
-        stream.Close();
+        string json = JsonUtility.ToJson(Data);
+        File.WriteAllText(filePath, json);
 
 
     }
-    //ƒIƒvƒVƒ‡ƒ“î•ñ
+    //ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public static void SaveOption(int Startnumber = 0)
     {
         StreamWriter sw;
 
         sw = new StreamWriter(Application.persistentDataPath + "/" + OpstionFileName + FILR_EXTENSION, false);
 
-        /// ÅŒã‚É‘I‚ñ‚Å‚¢‚½ƒXƒLƒ‹@int 
-        /// ƒm[ƒc‚Ì‘¬‚³@float 
-        /// ƒm[ƒc‚Ì”»’èˆÊ’u@float
-        /// ƒm[ƒc‚Æƒm[ƒc‚ÌŠÔ‚Ìü
-        /// BGM‚Ì‰¹—Ê@float
-        /// SE‚Ì‰¹—Ê@float
-        /// ƒm[ƒc‚ÌŒ©‚½–Ú@int
-        /// SE‚Ì‰¹@int
-        /// ‘I‚ñ‚Å‚¢‚½ƒXƒLƒ‹@int
+        /// ï¿½ÅŒï¿½É‘Iï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½ï¿½@int 
+        /// ï¿½mï¿½[ï¿½cï¿½Ì‘ï¿½ï¿½ï¿½ï¿½@float 
+        /// ï¿½mï¿½[ï¿½cï¿½Ì”ï¿½ï¿½ï¿½Ê’uï¿½@float
+        /// ï¿½mï¿½[ï¿½cï¿½Æƒmï¿½[ï¿½cï¿½ÌŠÔ‚Ìï¿½
+        /// BGMï¿½Ì‰ï¿½ï¿½Ê@float
+        /// SEï¿½Ì‰ï¿½ï¿½Ê@float
+        /// ï¿½mï¿½[ï¿½cï¿½ÌŒï¿½ï¿½ï¿½ï¿½Ú@int
+        /// SEï¿½Ì‰ï¿½ï¿½@int
+        /// ï¿½Iï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½ï¿½@int
 
         sw.WriteLine(Startnumber == 0 ? OptionStatus.GetSkillIndex().ToString() : 0);
         sw.WriteLine(Startnumber == 0 ? OptionStatus.GetNotesSpeed().ToString() : 1);

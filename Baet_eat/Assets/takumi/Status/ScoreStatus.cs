@@ -17,6 +17,75 @@ public class ScoreData
 
     public ScoreData() { }
 }
+
+// JsonUtility は List<List<T>> を直接シリアライズできないため、保存時だけ1階層ラッパーに詰め替える
+[Serializable]
+public class IntListWrapper
+{
+    public List<int> values;
+    public IntListWrapper() { }
+    public IntListWrapper(List<int> values) { this.values = values; }
+}
+
+[Serializable]
+public class ClearRankListWrapper
+{
+    public List<publicEnum.ClearRank> values;
+    public ClearRankListWrapper() { }
+    public ClearRankListWrapper(List<publicEnum.ClearRank> values) { this.values = values; }
+}
+
+[Serializable]
+public class ClearStatesListWrapper
+{
+    public List<publicEnum.ClearStates> values;
+    public ClearStatesListWrapper() { }
+    public ClearStatesListWrapper(List<publicEnum.ClearStates> values) { this.values = values; }
+}
+
+[Serializable]
+public class ScoreDataSaveModel
+{
+    public List<IntListWrapper> dessertScore;
+    public List<IntListWrapper> mainDeshScore;
+    public List<IntListWrapper> dessertOverScore;
+    public List<IntListWrapper> mainDeshOverScore;
+    public List<ClearRankListWrapper> dessertClearRanks;
+    public List<ClearRankListWrapper> mainDeshClearRanks;
+    public List<ClearStatesListWrapper> dessertClearStates;
+    public List<ClearStatesListWrapper> mainDeshClearStates;
+
+    public static ScoreDataSaveModel FromScoreData(ScoreData data)
+    {
+        return new ScoreDataSaveModel
+        {
+            dessertScore = data.dessertScore.ConvertAll(list => new IntListWrapper(list)),
+            mainDeshScore = data.mainDeshScore.ConvertAll(list => new IntListWrapper(list)),
+            dessertOverScore = data.dessertOverScore.ConvertAll(list => new IntListWrapper(list)),
+            mainDeshOverScore = data.mainDeshOverScore.ConvertAll(list => new IntListWrapper(list)),
+            dessertClearRanks = data.dessertClearRanks.ConvertAll(list => new ClearRankListWrapper(list)),
+            mainDeshClearRanks = data.mainDeshClearRanks.ConvertAll(list => new ClearRankListWrapper(list)),
+            dessertClearStates = data.dessertClearStates.ConvertAll(list => new ClearStatesListWrapper(list)),
+            mainDeshClearStates = data.mainDeshClearStates.ConvertAll(list => new ClearStatesListWrapper(list)),
+        };
+    }
+
+    public ScoreData ToScoreData()
+    {
+        return new ScoreData
+        {
+            dessertScore = dessertScore.ConvertAll(w => w.values),
+            mainDeshScore = mainDeshScore.ConvertAll(w => w.values),
+            dessertOverScore = dessertOverScore.ConvertAll(w => w.values),
+            mainDeshOverScore = mainDeshOverScore.ConvertAll(w => w.values),
+            dessertClearRanks = dessertClearRanks.ConvertAll(w => w.values),
+            mainDeshClearRanks = mainDeshClearRanks.ConvertAll(w => w.values),
+            dessertClearStates = dessertClearStates.ConvertAll(w => w.values),
+            mainDeshClearStates = mainDeshClearStates.ConvertAll(w => w.values),
+        };
+    }
+}
+
 public static class ScoreStatus
 {
     private static ScoreData Score;
@@ -67,7 +136,7 @@ public static class ScoreStatus
 
         if (OneFlag) return;
 
-        //�X�R�A�̏󋵂��l��
+        //�X�R�A�̏󋵂��l��
         LoadData.LoadFoundation(()=>DataInitialize(musicCount));
         LoadData.LoadMusicLevel();
 
@@ -79,7 +148,7 @@ public static class ScoreStatus
     {
 
         Score =new ScoreData();
-        Debug.Log("�C�j�V�����C�Y");
+        Debug.Log("�C�j�V�����C�Y");
         Score.dessertScore = new List<List<int>>();
         Score.dessertOverScore = new List<List<int>>();
         Score.dessertClearRanks = new List<List<publicEnum.ClearRank>>();

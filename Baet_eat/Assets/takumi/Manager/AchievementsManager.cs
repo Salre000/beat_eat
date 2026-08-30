@@ -58,14 +58,14 @@ public class AchievementsManager : MonoBehaviour
 
             achievement.transform.localPosition = Addpos;
 
-            //ƒAƒ`[ƒuƒƒ“ƒg‚Ì’†g‚ğ‹Lq‚µ‚Ä‚¢‚­
-            //‰æ‘œ
+            //ï¿½Aï¿½`ï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½gï¿½Ì’ï¿½ï¿½gï¿½ï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
+            //ï¿½æ‘œ
             achievement.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite =
                 _achievements.achievements[i].AchievementsImage;
-            //–¼‘O
+            //ï¿½ï¿½ï¿½O
             achievement.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text =
                 _achievements.achievements[i].AchievementsName;
-            //ó‹µ
+            //ï¿½ï¿½
             achievement.transform.GetChild(2).transform.GetChild(0).gameObject.
                 SetActive(AchievementStatus.achievements.GetAChiveMentStatus(i));
 
@@ -73,7 +73,7 @@ public class AchievementsManager : MonoBehaviour
                 achievement.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().material = sepiaMaterial;
 
 
-            //‚±‚ê•K{
+            //ï¿½ï¿½ï¿½ï¿½Kï¿½{
             int number = i;
 
             achievement.GetComponent<Button>().onClick.AddListener(() => { targetID = number; });
@@ -107,7 +107,7 @@ public class AchievementsManager : MonoBehaviour
         Condition.text = select.ConditionExplanation;
     }
 
-    //ÀÑ–¼ˆË‘¶‚Ì”Ô†æ“¾
+    //ï¿½ï¿½ï¿½Ñ–ï¿½ï¿½Ë‘ï¿½ï¿½Ì”Ôï¿½ï¿½æ“¾
     public int GetID(string name)
     {
         for (int i = 0; i < _achievements.achievements.Count; i++)
@@ -152,8 +152,8 @@ public class AchievementsManager : MonoBehaviour
 public class Achievements
 {
 
-    private List<bool> achiveMentesStatus = new List<bool>();
-    private List<int> achiveMentesCount = new List<int>();
+    [SerializeField] private List<bool> achiveMentesStatus = new List<bool>();
+    [SerializeField] private List<int> achiveMentesCount = new List<int>();
 
     public List<bool> GetAChiveMentStatus() { return achiveMentesStatus; }
 
